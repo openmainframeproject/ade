@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+    <meta charset="UTF-8">
+    
+    <title>Open Mainframe Project - ADE</title><meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen"></head>
+<body>
+    <section class="page-header">
+      <h1 class="project-name">ADE</h1>
+      <h2 class="project-tagline">Anomaly Detection Engine for Linux Logs</h2>
+      <a href="https://github.com/openmainframeproject/ade" class="btn">View on GitHub</a>
+	     <a href="https://github.com/openmainframeproject/ade/zipball/master" class="btn">Download .zip</a>
+   <a href="https://github.com/openmainframeproject/ade/tarball/master" class="btn">Download .tar.gz</a>
+      </section>
+
+    <section class="main-content">
+<h1>    
+<a id="anomaly-detection-engine-for-linux-logs-ade" class="anchor" href="#anomaly-detection-engine-for-linux-logs-ade" aria-hidden="true"><span class="octicon octicon-link"></span></a>Anomaly detection Engine for Linux Logs (ADE)</h1>
+
+<h1>
+<a id="analyze" class="anchor" href="#analyze" aria-hidden="true"><span class="octicon octicon-link"></span></a>Checking logs for anomalies - analyze</h1>
+
+
+<p><strong>analyze</strong> is a bash script which invokes the correct Java class after setting up the 
+environment needed. <strong>analyze</strong> parses the log, loads the information into the
+JDBC compliant database for use by <strong>verify</strong> and <strong>train</strong>, and uses the model
+created by <strong>train</strong> to detect anomalies, unusual behavior, in the Linux logs.</p>
+
+<hr>
+
+<h3>Usage</h3>
+
+<p>Use <strong>analyze</strong> to detect anomalies in Linux logs after a model has been created by
+<strong>train</strong>. 
+<strong>analyze</strong> can process Linux logs in 
+RFC 3164 or RFC 5424 format.  The logs can be in either files stored in the file system 
+or in “stdin”.</p>
+
+<blockquote>
+<p>Notes</p>
+
+<ul>
+<li>If a model has not been created or the model representation can not be loaded from 
+the file system, then <strong>analyze</strong> is the equivalent of <strong>upload</strong>.  In this case, no
+analysis results will be created.</li>
+<li>If the -d option is specified ADE will attempt to load all files in the directory</li>
+<li>ADE supports both files which are compressed with gzip and files which are not compressed</li>
+<li>Never seen before messages IDs(message keys) are detected during <strong>analyze</strong> </li>
+</ul>
+</blockquote>
+
+<hr>
+
+<h3>Options</h3>
+
+<hr>
+
+<table style="width: 900px; height: 600px;" border="10"><thead>
+<tr>
+<th>Option</th>
+<th>Required</th>
+<th align="left">Details</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>-d</td>
+<td>either -f or -d are required</td>
+<td align="left">Name of directory to be loaded into ADE</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>either -f or -d are required</td>
+<td align="left">Name of file to be loaded into ADE or “stdin”</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>no</td>
+<td align="left">GMT offset of the system which created the log</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>no</td>
+<td align="left">Print out help information</td>
+</tr>
+<tr>
+<td>-o</td>
+<td>no</td>
+<td align="left">Name of operating system that generated log, defaults to Linux</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>no</td>
+<td align="left">System name</td>
+</tr>
+<tr>
+<td>-years</td>
+<td>no</td>
+<td align="left">Year of the message log, the default is that it contains the current day</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>-dump_parse_report</td>
+<td>no</td>
+<td align="left">Creates a report of parsing failures</td>
+</tr>
+</tbody></table>
+
+<hr>
+
+<h3>Files created by <strong>analyze</strong></h3>
+
+<p>If you are using the defaults shipped with ADE, the following directories and files are created:</p>
+
+<ul>
+<li>directory system_name 1
+
+<ul>
+<li>directory yearMonthDay
+
+<ul>
+<li>index.xml (summary of intervals within the period)</li>
+<li>directory intervals
+
+<ul>
+<li>interval_nnn.xml ( details of messages issued during this interval)</li>
+<li>interval_nnn_debug.xml.gz ( information to debug problems with scorers (gzipped))</li>
+</ul></li>
+</ul></li>
+<li>directory yearMonthDay
+
+<ul>
+<li>index.xml (summary of intervals within the period)</li>
+<li>directory intervals
+
+<ul>
+<li>interval_nnn.xml ( details of messages issued during this interval)</li>
+<li>interval_nnn_debug.xml.gz ( information to debug problems with scorers (gzipped))</li>
+</ul></li>
+</ul></li>
+<li>directory yearMonthDay
+
+<ul>
+<li>index.xml (summary of intervals within the period)</li>
+<li>directory intervals
+
+<ul>
+<li>interval_nnn.xml ( details of messages issued during this interval)</li>
+<li>interval_nnn_debug.xml.gz ( information to debug problems with scorers (gzipped))</li>
+</ul></li>
+</ul></li>
+<li>directory yearMonthDay
+
+<ul>
+<li>index.xml (summary of intervals within the period)</li>
+<li>directory intervals
+
+<ul>
+<li>interval_nnn.xml ( details of messages issued during this interval)</li>
+<li>interval_nnn_debug.xml.gz ( information to debug problems with scorers (gzipped))</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>directory system_name 2
+
+<ul>
+<li>directory yearMonthDay
+
+<ul>
+<li>index.xml (summary of intervals within the period)</li>
+<li>directory intervals
+
+<ul>
+<li>interval_nnn.xml ( details of messages issued during this interval)</li>
+<li>interval_nnn_debug.xml.gz ( information to debug problems with scorers (gzipped))</li>
+</ul></li>
+</ul></li>
+<li>directory yearMonthDay
+
+<ul>
+<li>index.xml (summary of intervals within the period)</li>
+<li>directory intervals
+
+<ul>
+<li>interval_nnn.xml ( details of messages issued during this interval)</li>
+<li>interval_nnn_debug.xml.gz ( information to debug problems with scorers (gzipped))</li>
+</ul></li>
+</ul></li>
+<li>directory yearMonthDay
+
+<ul>
+<li>index.xml (summary of intervals within the period)</li>
+<li>directory intervals
+
+<ul>
+<li>interval_nnn.xml ( details of messages issued during this interval)</li>
+<li>interval_nnn_debug.xml.gz ( information to debug problems with scorers (gzipped))</li>
+</ul></li>
+</ul></li>
+<li>directory yearMonthDay
+
+<ul>
+<li>index.xml (summary of intervals within the period)</li>
+<li>directory intervals
+
+<ul>
+<li>interval_nnn.xml ( details of messages issued during this interval)</li>
+<li>interval_nnn_debug.xml.gz ( information to debug problems with scorers (gzipped))</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<hr>
+
+<h3>Restrictions</h3>
+
+<p><strong>analyze</strong> does not support merging of logs.  If you <strong>analyze</strong> data for an interval
+which already exists, the existing data will be replaced.</p>
+
+
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/openmainframeproject/ade">ADE</a> is maintained by <a href="https://github.com/openmainframeproject/ade">Open Mainframe project - ADE</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    
+
+  
+  </body></html>

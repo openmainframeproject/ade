@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+<meta charset="UTF-8"><title>Open Mainframe Project - ADE</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen"></head>
+<body>
+<section class="page-header">
+<h1 class="project-name">ADE</h1>
+<h2 class="project-tagline">Anomaly Detection Engine for Linux Logs</h2>
+<a href="https://github.com/openmainframeproject/ade" class="btn">View on GitHub</a>
+   <a href="https://github.com/openmainframeproject/ade/zipball/master" class="btn">Download .zip</a>
+   <a href="https://github.com/openmainframeproject/ade/tarball/master" class="btn">Download .tar.gz</a>
+  </section>
+<section class="main-content">
+<h1>    
+<a id="anomaly-detection-engine-for-linux-logs-ade" class="anchor" href="#anomaly-detection-engine-for-linux-logs-ade" aria-hidden="true"><span class="octicon octicon-link"></span></a>Anomaly detection Engine for Linux Logs (ADE)</h1>
+<h1>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>How&nbsp;ADE analyzes&nbsp;a Linux system to find anomalies</h1>
+<p>Using
+unsupervised machine learning,&nbsp; ADE extracts and organizes message
+data to&nbsp;build a model of behavior for each&nbsp;Linux model group.
+&nbsp;ADE use the model for the model group which contains the Linux
+system to compare the expected behavior with the actual behavior and
+flag the difference as anomalies. &nbsp;ADE analyzes each message
+within a time slice (interval) &nbsp;to determine how different the behavior of the
+message(s) within the interval are from expected. &nbsp;It then totals the differences for all the messages&nbsp;within an
+interval and compares this value with the normal value from the model
+to calculate interval anomaly score.&nbsp;</p>
+<h3>Time slice (interval)</h3>
+To
+produce meaningful analysis results for a monitored system, ADE divides
+the log into time slices. These time slices are called the<span style="font-style: italic;"> analysis
+interval</span>, the length of which varies depending on the volume of message
+traffic.&nbsp; For Linux systems, which tend to produce lower volume and
+less consistent message traffic, the default analysis interval length in the flowlayout.xml is 60 minutes.<br><br>To display and record the results of analysis intervals, &nbsp;ADE produces an <span style="font-style: italic;">analysis snapshot</span>
+every 10 minutes for each monitored system. Each analysis snapshot is a
+point-in-time record of the anomaly score for an analysis interval. For
+example:<br><ul><li>For a Linux system, the snapshot recorded at 09:00
+UTC represents the analysis score and number of&nbsp;unique messages
+issued by that system from 08:00 to 9:00 UTC. The next snapshot is
+taken at 09:10&nbsp;UTC for the analysis interval from 08:10 to 09:10,
+and so on. Because of the 60-minute analysis interval,&nbsp;every
+snapshot for a Linux system overlaps with previous snapshots.</li></ul>
+
+<h3>Model Group</h3>Because the message traffic on Linux systems often
+can be relatively light, and because Linux images are typically
+configured in pools of dynamically activated images, ADE is designed to
+provide<br>analysis results for Linux systems through the use of model
+groups. Through model groups, multiple systems contribute to the
+generation of a single model for the group; the more systems in the
+group, the more data ADE can use to build the model.<br><h4>Defining model groups and their member systems</h4>A
+model group is a collection of one or more systems that handle the same
+type of workload, and thus can be expected to exhibit similar
+behavior.&nbsp;When considering Linux systems to group together in a
+single model group, use the following guidelines:<br><ul><li>Group
+together Linux systems that support very similar workloads. For
+example, group a set of Linuxweb servers in one model group, and a set
+of Linux database servers in another model group.</li></ul><h4>Building a model for a model group</h4>ADE
+builds one model for a group of Linux systems with similar workloads,
+and uses that model to compare to current syslog data from each system
+in the group. To build a robust model of Linux<br>system behavior, ADE
+generally needs a minimum of 120 days of message data. Analysis can
+begin, however, as soon as the system data that is available for
+training meets the criteria for building a<br>valid model.<h3>Measuring behavior of an Interval</h3>ADE provides four measure of the how unusual the interval is<br><ol><li>Number of unique message ids</li><li>Interval anomaly score</li><li>Number of messages not in the model</li><li>Number of message &nbsp;which have not been seen by analyze</li></ol>
+<h4>Number of unique message ids</h4>
+<h4>Interval anomaly scores</h4>
+<p>The interval anomaly score indicates the difference in current
+behavior compared to the expected behavior that is reflected in the
+model. If the analysis interval contains messages that are relatively<br>normal,
+common messages for that system, ADE assigns a low score to the
+analysis interval and low score&nbsp;to the analysis snapshot. For
+example, suppose that you have analyzed a relatively stable test <br>system.
+On this test system, various daemons, are recycled on a regular basis.
+This behavioral pattern is reflected in the model that ADE uses for
+analysis. When a current daemon recycle completes normally, the
+intervals for daemon recycling receive a low interval anomaly score,
+because the pattern of messages issued during a successful recycle
+match an expected behavior in the model. However, if any unexpected
+messages are issued during a current daemon recycle, ADE assigns a
+higher interval anomaly score to those analysis intervals that contain
+the unexpected or unique messages.&nbsp;</p><p>The possible interval anomaly scores are:</p><p style="margin-left: 40px;"><span style="font-weight: bold;">0 through 99.4</span><br>The
+analysis interval contains messages and message clusters that match or
+exhibit relatively insignificant differences in expected behavior, as
+defined in the ADE model. A score of 0 is possible because ADE
+eliminates all expected, in-context messages from its scoring
+calculation. A score of 0 indicates intervals that exhibit no
+difference in behavior compared to the&nbsp; group model.
+&nbsp;Analysis intervals with scores that are greater than 0 but less
+than 99.5 contain some messages that are unexpected or issued out of
+context. Scores in this range indicate intervals that do not vary
+significantly from the system model.&nbsp; Analysis intervals with this
+score contain some rarely seen, unexpected, or out-of-context messages.
+Generally speaking, this score indicates analysis intervals with some
+differences from the system or group model but do not contain messages
+of much diagnostic value.<br><span style="font-weight: bold;">99.6 - 100</span><br>Analysis
+intervals with this score contain rarely seen messages (these messages
+appear in the model only once or twice), or many messages that are
+unexpected or issued out of context. This score indicates analysis
+intervals with more differences from the&nbsp;group model; these
+intervals can contain messages that might help you diagnose anomalous
+system behavior.&nbsp;<br><span style="font-weight: bold;">101&nbsp;</span><br>Analysis
+intervals with this score exhibit the most significant differences from
+the&nbsp;group model; these intervals contain messages that merit
+investigation. ADE assigns this score to analysis intervals<br>that contain:<br></p><ul style="margin-left: 40px;"><li>Unusual or unexpected messages.</li><li>A much higher volume of messages than expected.</li></ul><h4>Messages not in the model</h4>In
+the message traffic for a Linux system, ADE detected one or more
+messages that are not in the current model that is in use for analysis.
+These messages might have been issued by the Linux system before, and
+therefore might have been included in previous models, but are not in
+the current model.&nbsp;In the&nbsp;Anomaly Detection Engine Interval
+View, the entry for this type of new message displays one of the
+following values in the Periodicity Status column:<br><ul><li>NEW, if the message has never been reported&nbsp;in analysis results</li><li>NOT_PERIODIC, if the message was in a&nbsp;previous model and was random</li><li>NOT_IN_SYNC, if the message was in a&nbsp;previous model at an expected time</li></ul>For values other than NEW, a date and time is displayed in the Last Issued column.
+<h4>Message new to analyze</h4>In the message traffic for a specific
+Linux system, ADE detected one or more messages that the system has
+issued for the first time since the day on which the ADE began
+reporting analysis results for this system. In the Anomaly Detection
+Engine Interval View, the entry for this type of new message displays
+the following attributes:<br><ul><li>The value New in the Periodicity Status&nbsp;column</li><li>A
+dash (&#8211;) in the Last Issued column&nbsp;Only if the initial occurrence
+of the message is&nbsp;followed by subsequent occurrences within
+the&nbsp;same analysis interval, the Last Issued column&nbsp;contains a
+date and time.</li></ul><h3>Measuring behavior of a message&nbsp;</h3>
+<p>A message anomaly score is created by comparing the&nbsp;patterns of
+message traffic observed during the interval being analyzed with the
+expected pattern of message traffic observed during all the intervals
+that are within the training period. &nbsp;&nbsp;</p>
+<ul><li>Through the training process, the ADE determines which
+messages are issued during routine system events. For such
+system&nbsp;events, ADE identifies and recognizes groups of messages
+that are associated with each event. The message groups are called
+clusters and define the normal context for the messages in the cluster.
+When ADE detects a specific message that is issued outside of its
+expected context (that is, without the other messages in the cluster),
+ADE assigns a higher message anomaly score, which is combined
+with the other message anomaly scores in the interval to assign the
+interval anomaly score.</li><li>ADE also detects messages that are
+issued periodically; for example, a message that is issued every 11
+minutes. This attribute affects the anomaly score when a periodic
+message is not issued as expected.</li><li>Also through the training
+process, ADE determines the distribution of each unique message key
+(message ID) within a collection of intervals in the message data used
+for training. This distribution influences the interval anomaly score
+that the ADE creates for an interval</li></ul><span style="font-weight: bold; font-style: italic;">In summary, through the
+training process, the ADE learns about expected message patterns, and
+stores this information as part of the model for a specific&nbsp;
+group. ADE uses this model data to determine interval and message scores when it
+analyzes the data from a Linux system..</span>
+<br><br>
+<footer class="site-footer"><span class="site-footer-owner"><a href="https://github.com/openmainframeproject/ade">ADE</a> is
+maintained by <a href="https://github.com/openmainframeproject/ade">Open Mainframe project - ADE</a>.</span>
+<span class="site-footer-credits">This page was generated
+by <a href="https://pages.github.com">GitHub Pages</a>
+using the <a href="https://github.com/jasonlong/cayman-theme">Cayman
+theme</a> by <a href="https://twitter.com/jasonlong">Jason
+Long</a></span></footer>
+</body></html>

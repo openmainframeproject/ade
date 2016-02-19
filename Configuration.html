@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Open Mainframe Project - ADE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">ADE</h1>
+      <h2 class="project-tagline">Anomaly Detection Engine for Linux Logs</h2>
+      <a href="https://github.com/openmainframeproject/ade" class="btn">View on GitHub</a>
+	  <a href="https://github.com/openmainframeproject/ade/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/openmainframeproject/ade/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="anomaly-detection-engine-for-linux-logs-ade" class="anchor" href="#anomaly-detection-engine-for-linux-logs-ade" aria-hidden="true"><span class="octicon octicon-link"></span></a>Anomaly detection Engine for Linux Logs (ADE)</h1>
+
+<h1>
+<a id="configuration---setupprops" class="anchor" href="#configuration---setupprops" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration - setup.props</h1>
+
+<p>Use the property keys in the <strong>setup.props</strong> file to tailor ADE to your environment. 
+ADE contains a working, default configuration that is defined in the
+<em>conf/setup.props</em> file. If the default configuration
+does not meet your needs it can be changed by editing the setup.props file
+or by using a different setup.props file that you created.</p>
+<p>The following information may need to be changed:</p>
+<ul>
+<li>Where data and control files are stored</li>
+<li>What the time zone is</li>
+<li>How to connection to a JDBC compliant database</li>
+</ul>
+<p>The setup.props file contains the minimum  set of properties that are required by ADE.</p>
+<p>Examine the source code carefully before changing any of these properties.</p>
+<p>The location of the setup.props file is passed to each command using the
+Java command line argument 
+-Dade.setUpFilePath.  The env.sh bash script creates an environment variable
+ADE_SETUP_FILE which points to the location of this file.</p>
+<h2>Definition of how data is laid out in the file system</h2>
+
+<h4>ade.outputPath</h4>
+
+<p>The property <em>ade.outputPath</em> defines where ADE writes the files it generates, including
+directories for trace information and models. </p>
+
+<h4>ade.analysisOutputPath</h4>
+
+<p>The property <em>ade.analysisOutputPath</em> defines where ADE writes the files that
+contains the results.</p>
+
+<p>The results are organized using the following directory structure</p>
+
+<ul>
+<li><code>system name</code>
+
+<ul>
+<li><code>date of results</code> 
+
+<ul>
+<li>index.xml, which contains the summary of results for the period; See 
+<a href="period.html" title="Content of Period files">Period description</a>
+for description of the content of this type of file.</li>
+<li><code>intervals</code>
+
+<ul>
+<li>interval_nnn.xml, which contains the details for each interval; the flowlayout.xml and 
+outputter provided creates one file for every 10 minutes, 
+so nnn ranges from 1 to 144. See 
+<a href="interval.html" title="Content of Interval files ">Interval description</a>
+for description of the content of this type of file.</li>
+<li>interval_nnn.debug provides, for each interval additional information which can 
+be used to review the results of the analytics; the file has been compressed with gzip.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h4>ade.flowLayoutFile</h4>
+
+<p>The property <em>ade.flowLayoutFile</em> defines where ADE finds the information that controls how to
+process the Linux logs.  See <a href="flowlayout.html" title="Flowlayout description">flowlayout description</a>
+for additional details about content of file.</p>
+
+<h4>ade.xml.xsltDir</h4>
+
+<p>The property <em>ade.xml.xsltDir</em> defines where ADE finds the XML schema and style sheets.</p>
+
+<h4>ade.criticalWords.file</h4>
+
+<p>The property <em>ade.criticalWords.file</em> defines where ADE finds the list of critical words that
+are used by the CriticalWord scorer.</p>
+
+
+<h2>Time</h2>
+
+<h4>ade.inputTimeZone</h4>
+
+<p>The property <em>ade.inputTimeZone</em> defines the time zone associated with input log data.</p>
+
+<h4>ade.outputTimeZone</h4>
+
+<p>The property <em>ade.outputTimeZone</em> defines the time zone to be used to store the output from
+the analysis.</p>
+
+<hr/>
+
+<h2>JDBC Database connection</h2>
+
+<h4>ade.databaseUrl</h4>
+
+<p>The property <em>ade.databaseUrl</em> defines how to access the networked database. 
+ADE does not currently support an embedded database. </p>
+
+<p>The statement in the example
+uses a networked database <em>Derby</em> on the local machine <em>localhost</em> listening on port <em>1527</em>.
+The database is created in the directory <em>database/db1</em>. </p>
+
+<h4>ade.databaseUser</h4>
+
+<p>The property <em>ade.databaseUser</em> defines the user id that ADE uses to accesses the database.</p>
+
+<h4>ade.databasePassword</h4>
+
+<p>The property <em>ade.databasePassword</em> defines the password used to access the database.</p>
+
+<h4>ade.database.keepOnlyAscii</h4>
+
+<p>The property <em>ade.database.keepOnlyAscii</em> defines where only Ascii characters are allowed in database.</p>
+
+<h4>ade.dataStoreType</h4>
+
+<p>The property <em>ade.dataStoreType</em> defines what type of database can be supported.  ADE 
+only supports SQL.</p>
+
+<h4>ade.databaseDriver</h4>
+
+<p>The property <em>ade.databaseDriver</em> defines the name of the JDBC driver that is used to access the 
+JDBC compliant database.</p>
+
+<hr/>
+
+<h3>Period Length</h3>
+
+<h4>ade.periodMode</h4>
+
+<p>The property <em>ade.periodMode</em> defines the length of the period.  The default flowlayout
+shipped with ADE assumes that the ade.periodMode is DAILY (24 hours long). </p>
+
+<hr/>
+
+<h2>Defining Java class to use</h2>
+
+<h4>ade.analysisGroupToFlowNameMapperClass</h4>
+
+<p>The property <em>ade.analysisGroupToFlowNameMapperClass</em> specifies the JAVA class that maps 
+Linux system names to the model group.</p>
+
+<h4>ade.outputFilenameGenerator</h4>
+
+<p>The property <em>ade.outputFilenameGenerator</em> specifies the JAVA class that creates the 
+file name used for ADE results. </p>
+
+<hr/>
+
+<h2>Statistics</h2>
+
+<h4>adeext.parseErrorToKeep</h4>
+
+<p>The property <em>adeext.parseErrorToKeep</em> defines how many parsing errors to record.  If more
+than the specified number of parsing errors are found, then they are not recorded</p>
+
+<h4>adeext.parseErrorTrackNullComponent</h4>
+
+<p>The property <em>adeext.parseErrorTrackNullComponent</em> defines whether the absence of a component
+name is defined as an error which needs to be tracked.</p>
+
+<h4>adeext.msgRateReportFreq</h4>
+
+<p>The property <em>adeext.msgRateReportFreq</em> specifies how often the message rate report is to be
+created.  This is used when upload or analyze are receiving data from std in.</p>
+
+<h4>adeext.msgRateMsgToKeep</h4>
+
+<p>The property <em>adeext.msgRateMsgToKeep</em> specifies how many unique messages are needed for each line
+in the message rate report. This is used when upload or analyze are receiving data from std in.</p>
+
+<h4>adeext.msgRate10MinSlotsToKeep</h4>
+
+<p>The property <em>adeext.msgRate10MinSlotsToKeep</em> specifies the number of ten minute slots to keep for
+the message rate report.  This is used when upload and analyze are receiving data from std id.</p>
+
+<h4>adeext.msgRateMergeSource</h4>
+
+<p>The property <em>adeext.msgRateMergeSource</em> specifies if message rates should be keep by individual systems
+or merged together. This is used when upload and analyze are receiving data from std id.</p>
+
+
+<h2>Example</h2>
+
+<pre><code># --------------------------------------------------------------------
+# Paths
+# --------------------------------------------------------------------
+
+ade.outputPath=output/
+ade.analysisOutputPath=output/continuous
+
+ade.flowLayoutFile=conf/xml/FlowLayout.xml
+ade.xml.xsltDir=conf/xml
+ade.criticalWords.file=conf/criticalWords.txt
+
+
+# ----------------------------------------------------------------------
+# Time Zone definition
+# -----------------------------------------------------------------------
+
+ade.inputTimeZone=GMT+00:00
+ade.outputTimeZone=GMT
+
+# --------------------------------------------------------------------
+# Database settings
+# --------------------------------------------------------------------
+
+ade.databaseUrl=jdbc:derby://localhost:1527/databases/db1
+ade.databaseUser=dbuser
+ade.databasePassword=passw0rd
+
+ade.database.keepOnlyAscii=true
+ade.dataStoreType=SQL
+ade.databaseDriver=org.apache.derby.jdbc.ClientDriver
+
+# --------------------------------------------------------------------
+# Interval/Period settings
+# --------------------------------------------------------------------
+
+# Available period modes: HOURLY, DAILY, WEEKLY, MONTHLY
+ade.periodMode=DAILY
+
+# --------------------------------------------------------------------
+# Defining class to use for advanced functions
+# --------------------------------------------------------------------
+
+ade.analysisGroupToFlowNameMapperClass=com.ibm.ade.ext.os.LinuxAnalysisGroupToFlowNameConstantMapper
+ade.outputFilenameGenerator=com.ibm.ade.ext.output.ZOutputFilenameGenerator
+
+# --------------------------------------------------------------------
+# Control gathering of statistics 
+# --------------------------------------------------------------------
+
+adeext.parseErrorToKeep=100
+adeext.parseErrorTrackNullComponent=false
+
+adeext.msgRateReportFreq=5
+adeext.msgRateMsgToKeep=1000
+adeext.msgRate10MinSlotsToKeep=24
+adeext.msgRateMergeSource=true
+</code></pre>
+
+</code></pre>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/openmainframeproject/ade">ADE</a> is maintained by <a href="https://github.com/openmainframeproject/ade">Open Mainframe project - ADE</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>

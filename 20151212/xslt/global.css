@@ -1,0 +1,101 @@
+body 
+{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:   small;
+	font-weight: bold; 
+}
+
+td  
+{ 
+  font-family: Arial, Helvetica, verdana, sans-serif;
+  font-size:   small;
+  font-weight: normal;
+}
+
+tr  
+{ 
+  font-family: Arial, Helvetica, verdana, sans-serif;
+  font-size:   small;
+  font-weight: normal;
+  background-color: #c0c0c0; 
+}
+
+
+th  
+{ 
+  font-family: Arial, Helvetica, verdana, sans-serif;
+  font-size:   small;
+  font-weight: normal;
+  text-align:  left;
+  background-color: DarkBlue; 
+  color: White;
+}
+
+table
+{
+	border-collapse:collapse;
+	border: 1px solid black;	
+}
+
+table.white 
+{
+	background-color:white;
+	border-collapse:collapse;
+	border: 0px solid white;
+	font-size: larger	
+}
+
+table.white td
+{
+	background-color:white;
+	border-collapse:collapse;
+	border: 0px solid white;
+	font-size: large	
+	
+}
+table.white tr
+{
+	background-color:white;
+	border-collapse:collapse;
+	border: 0px solid white;
+	font-size: larger	
+	
+}
+
+table.sortable thead {
+    background-color:#eee;
+    color:#666666;
+    font-weight: bold;
+    cursor: default;
+}
+
+div.scrollTableContainer {
+height:   auto;
+width:    auto;
+margin:   15px 0 0 0;
+position: relative;
+overflow:   auto;
+}
+
+div.scrollTableContainer table {
+width: 1000px;
+}
+
+div.scrollTableContainer table {
+width: 1000px;
+}
+
+div.scrollTableContainer table>tbody {
+overflow:   auto;
+height:     250px;
+overflow-x: hidden;
+}
+
+div.scrollTableContainer thead tr {
+position:relative;
+left:    0px;
+}
+
+div.scrollTableContainer td:last-child {
+padding-right: 20px;
+}

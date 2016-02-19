@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+    <meta charset="UTF-8">
+    
+    <title>Open Mainframe Project - ADE</title><meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen"></head>
+
+  <body>
+    <section class="page-header">
+     <h1 class="project-name">ADE</h1>
+      <h2 class="project-tagline">Anomaly Detection Engine for Linux Logs</h2>
+      <a href="https://github.com/openmainframeproject/ade" class="btn">View on GitHub</a>
+	     <a href="https://github.com/openmainframeproject/ade/zipball/master" class="btn">Download .zip</a>
+   <a href="https://github.com/openmainframeproject/ade/tarball/master" class="btn">Download .tar.gz</a>
+     </section>
+
+    <section class="main-content">
+      <h1>
+<a id="anomaly-detection-engine-for-linux-logs-ade" class="anchor" href="#anomaly-detection-engine-for-linux-logs-ade" aria-hidden="true"><span class="octicon octicon-link"></span></a>Anomaly detection Engine for Linux Logs (ADE)</h1>
+
+<h1>
+<a id="train" class="anchor" href="#train" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generating a model of 'normal' behavior - <strong>train</strong></h1>
+
+
+<p><strong>train</strong> is a bash script which invokes the correct Java class after setting up the 
+environment needed. <strong>train</strong> creates a baseline of expected behavior against which
+the Linux logs being processed by <strong>analyze</strong> are compared.</p>
+
+<hr>
+
+<h3>Usage</h3>
+
+<p>Use <strong>train</strong> to create a model(baseline) that is 
+used by  <strong>analyze</strong> to detect anomalies in Linux logs. <strong>train</strong> extracts the
+information it needs from the JDBC compliant database which is populated 
+by <strong>upload</strong> and  <strong>analyze</strong>.  The results are written to the file 
+system when <strong>train</strong> completes and are
+read from the file system by <strong>analyze</strong>.</p>
+
+<blockquote>
+<p>Notes</p>
+
+<ul>
+<li>train will use all the information in the database to create a model unless either
+a start date or a start date and end date are provided</li>
+<li>not seen in model is based on the information processed during <strong>train</strong></li>
+</ul>
+</blockquote>
+
+<hr>
+
+<h3>Command syntax</h3>
+
+<hr>
+
+<table border="10"><thead>
+<tr>
+<th>Command</th>
+<th>Options selected</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>train <em>model-group</em></td>
+<td>Processes all systems in the model group,
+starting with the first date with data in the database and continuing to the final date with data in the database </td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>train <em>all</em></td>
+<td>processes all systems in the database, 
+starting with the first date with data in the database and continuing to the final date of data in the database</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>train <em>model-group</em> <em>start-date</em></td>
+<td>processes all systems in the model group, 
+using data between the specified start date and the last date with data in the database</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>train <em>model-group</em> <em>start-date</em> <em>end-date</em></td>
+<td>processes all systems in the model group, 
+using data between the specified start and end dates </td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>train <em>all</em> <em>start-date</em></td>
+<td>processes all systems, 
+using data between the specified start date and the  last date with data in the database</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>train <em>all</em> <em>start-date</em> <em>end-date</em></td>
+<td>processes all systems, 
+using data between the specified start and  end dates</td>
+</tr>
+</tbody></table>
+
+<hr>
+
+<h3>Restrictions</h3>
+
+<p>The quality of the model depends on the amount of information that is available to create
+the model. <strong>analyze</strong> will mark certain analysis results as questionable
+using information created by <strong>train</strong>. This happens when <strong>train</strong> is able to detect that the model 
+will have problems differentiating between good and bad intervals. If 
+<strong>verify</strong> indicated that there was insufficient data, <strong>train</strong> may not run successfully
+and will likely not produce a model which has a lot of explanatory power.</p>
+
+
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/openmainframeproject/ade">ADE</a> is maintained by <a href="https://github.com/openmainframeproject/ade">Open Mainframe project - ADE</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    
+
+  
+  </body></html>

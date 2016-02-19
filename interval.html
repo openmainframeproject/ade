@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+<meta charset="UTF-8"><title>Open Mainframe Project - ADE</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+</head>
+<body>
+<section class="page-header">
+<h1 class="project-name">ADE</h1>
+<h2 class="project-tagline">Anomaly Detection Engine for Linux Logs</h2>
+<a href="https://github.com/openmainframeproject/ade" class="btn">View on GitHub</a>
+   <a href="https://github.com/openmainframeproject/ade/zipball/master" class="btn">Download .zip</a>
+   <a href="https://github.com/openmainframeproject/ade/tarball/master" class="btn">Download .tar.gz</a>
+</section>
+<section class="main-content">
+      <h1>
+<a id="anomaly-detection-engine-for-linux-logs-ade" class="anchor" href="#anomaly-detection-engine-for-linux-logs-ade" aria-hidden="true"><span class="octicon octicon-link"></span></a>Anomaly detection Engine for Linux Logs (ADE)</h1>
+
+<link rel="Start" href="appendix_apis_v2.html" /><title>XML for a Version 2 INTERVAL request</title>
+<body id="XML results for interval">
+<div role="main">
+<h1 class="title topictitle1">XML Results from an Analyze
+Request - details of each interval</h1>
+<div class="body">
+<p class="p">The following code illustrates the XML
+structure &nbsp;generated &nbsp;by <span style="font-weight: bold;">analyze </span>for each
+analysis interval &nbsp;for each Linux system in the model group
+from the collection of logs processed by <span style="font-weight: bold;">analyze</span><samp class="ph codeph"></samp>.
+The major element is the <span class="keyword parmname parmname">interval</span>
+element, which
+contains information about a specific analysis interval for a specific
+system&nbsp;.
+The <span class="keyword parmname parmname">interval</span>
+element also contains one <span class="keyword parmname parmname">interval_message</span>
+element
+for each unique message issued during the interval. If the same message
+ID was issued more than once during the selected interval, the XML
+contains only one <span class="keyword parmname parmname">interval_message</span>
+element for
+that unique message ID. </p>
+<pre class="pre codeblock"><code>&lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" <br /> targetNamespace="http://www.ibm.com/zAware/MelodyCoreIntervalV2"<br /> xmlns="http://www.ibm.com/zAware/MelodyCoreIntervalV2" elementFormDefault="qualified"&gt;<br /> &lt;xs:element name="interval"&gt;<br /> &lt;xs:complexType&gt;<br /> &lt;xs:sequence&gt;<br /> &lt;xs:element name="version" type="xs:int" /&gt;<br /> &lt;xs:element name="sys_id" type="xs:string" /&gt;<br /> &lt;xs:element name="start_time" type="xs:dateTime" /&gt;<br /> &lt;xs:element name="end_time" type="xs:dateTime" /&gt;<br /> &lt;xs:element name="anomaly_score" type="xs:double" /&gt;<br /> &lt;xs:element name="model_internal_id" type="xs:int" /&gt;<br /> &lt;xs:element name="melody_version" type="xs:int" /&gt;<br /> &lt;xs:element name="gmt_offset" type="xs:string" /&gt;<br /> &lt;xs:element name="model_info"&gt;<br /> &lt;xs:complexType&gt;<br /> &lt;xs:attribute name="model_creation_date" type="xs:dateTime" use="required" /&gt;<br /> &lt;xs:attribute name="training_period" type="xs:int" use="required" /&gt;<br /> &lt;xs:attribute name="interval_size_in_sec" type="xs:long" use="required" /&gt;<br /> &lt;xs:attribute name="analysis_group" type="xs:string" use="required" /&gt;<br /> &lt;/xs:complexType&gt;<br /> &lt;/xs:element&gt;<br /> &lt;xs:element name="msg_summary"&gt;<br /> &lt;xs:complexType&gt;<br /> &lt;xs:attribute name="num_new_msg" type="xs:int" use="required" /&gt;<br /> &lt;/xs:complexType&gt;<br /> &lt;/xs:element&gt;<br /> &lt;xs:element name="interval_message" type="interval_message_type" maxOccurs="unbounded"<br /> minOccurs="0" /&gt;<br /> &lt;/xs:sequence&gt;<br /> &lt;/xs:complexType&gt;<br /> &lt;/xs:element&gt;<br /><br /> &lt;xs:complexType name="interval_message_type"&gt;<br /> &lt;xs:sequence&gt;<br /> &lt;xs:element name="num_instances" type="xs:int" /&gt;<br /> &lt;xs:element name="bernoulli"&gt;<br /> &lt;xs:complexType&gt;<br /> &lt;xs:simpleContent&gt;<br /> &lt;xs:extension base="xs:double"&gt;<br /> &lt;xs:attribute name="frequency" type="xs:double" use="required" /&gt;<br /> &lt;/xs:extension&gt;<br /> &lt;/xs:simpleContent&gt;<br /> &lt;/xs:complexType&gt;<br /> &lt;/xs:element&gt;<br /> &lt;xs:element name="cluster_id" type="xs:int" /&gt;<br /> &lt;xs:element name="periodicity"&gt;<br /> &lt;xs:complexType&gt;<br /> &lt;xs:attribute name="status" use="required"&gt;<br /> &lt;xs:simpleType&gt;<br /> &lt;xs:restriction base="xs:string"&gt;<br /> &lt;xs:enumeration value="IN_SYNC" /&gt;<br /> &lt;xs:enumeration value="NOT_IN_SYNC" /&gt;<br /> &lt;xs:enumeration value="NOT_PERIODIC" /&gt;<br /> &lt;xs:enumeration value="NEW" /&gt;<br /> &lt;/xs:restriction&gt;<br /> &lt;/xs:simpleType&gt;<br /> &lt;/xs:attribute&gt;<br /> &lt;xs:attribute name="last_issued" type="xs:dateTime" use="optional" /&gt;<br /> &lt;xs:attribute name="score" type="xs:double" use="optional" /&gt;<br /> &lt;/xs:complexType&gt;<br /> &lt;/xs:element&gt;<br /> &lt;xs:element name="poisson"&gt;<br /> &lt;xs:complexType&gt;<br /> &lt;xs:simpleContent&gt;<br /> &lt;xs:extension base="xs:double"&gt;<br /> &lt;xs:attribute name="mean" type="xs:double" use="required" /&gt;<br /> &lt;/xs:extension&gt;<br /> &lt;/xs:simpleContent&gt;<br /> &lt;/xs:complexType&gt;<br /> &lt;/xs:element&gt;<br /> &lt;xs:element name="intCont" type="xs:double" /&gt;<br /> &lt;xs:element name="normIntCont" type="xs:double" /&gt;<br /> &lt;xs:element name="anomaly" type="xs:double" /&gt;<br /> &lt;xs:element name="cluster_status" type="xs:string" /&gt;<br /> &lt;xs:element name="critical_words" type="xs:double" /&gt;<br /> &lt;xs:element name="text_sum" type="xs:string" /&gt;<br /> &lt;xs:element name="text_smp" type="xs:string" /&gt;<br /> &lt;xs:element name="time_vec" type="interval_time_vector_type" /&gt;<br /> &lt;xs:element name="active_rules" type="active_rules_type" maxOccurs="1" minOccurs="0" /&gt;<br /> &lt;/xs:sequence&gt;<br /> &lt;xs:attribute name="msg_id" type="xs:string" use="required" /&gt;<br /> &lt;/xs:complexType&gt;<br /><br /> &lt;xs:complexType name="interval_time_vector_type"&gt;<br /> &lt;xs:sequence&gt;<br /> &lt;xs:element name="occ" maxOccurs="unbounded" minOccurs="0" type="xs:int" /&gt;<br /> &lt;/xs:sequence&gt;<br /> &lt;/xs:complexType&gt;<br /><br /><br /><br /> &lt;xs:complexType name="active_rules_type"&gt;<br /> &lt;xs:sequence&gt;<br /> &lt;xs:element name="rule" type="rule_type" maxOccurs="unbounded" minOccurs="0" /&gt;<br /> &lt;/xs:sequence&gt;<br /> &lt;/xs:complexType&gt;<br /><br /> &lt;xs:complexType name="rule_type"&gt;<br /> &lt;xs:sequence&gt;<br /> &lt;xs:element name="name"&gt;<br /> &lt;xs:complexType&gt;<br /> &lt;xs:simpleContent&gt;<br /> &lt;xs:extension base="xs:string"&gt;<br /> &lt;xs:attribute name="affected_score" type="xs:boolean" /&gt;<br /> &lt;/xs:extension&gt;<br /> &lt;/xs:simpleContent&gt;<br /> &lt;/xs:complexType&gt;<br /> &lt;/xs:element&gt;<br /> &lt;xs:element name="action" type="xs:string" /&gt;<br /> &lt;/xs:sequence&gt;<br /> &lt;/xs:complexType&gt;<br />&lt;/xs:schema&gt;</code></pre>
+<div class="section" id="appendix_apis_4zaware_v2interval__get_interval_elements">
+<h2 class="title sectiontitle">XML element descriptions
+for&nbsp;INTERVAL output</h2>
+<div class="p">The
+following list describes the major elements in the <span class="keyword parmname parmname">interval</span>
+element.
+<dl class="dl parml">
+<dt class="dt pt dlterm">version</dt>
+<dd class="dd pd">An integer that identifies the version
+of the <span class="ph">ADE</span> application
+programming
+interface (API).</dd>
+<dt class="dt pt dlterm"><a name="appendix_apis_4zaware_v2interval__api_sys_id"><!-- --></a>sys_id</dt>
+<dd class="dd pd">A string that provides the name of the
+system that was specified
+on the INTERVAL request<span class="ph">, and the name of
+the system group to which
+the system belongs</span>.</dd>
+<dt class="dt pt dlterm">start_time</dt>
+<dd class="dd pd">Indicates the beginning of the first
+interval for which data is
+available for the specified system on the date in the INTERVAL request.
+The start time is indicated in the XML <samp class="ph codeph">dateTime</samp>
+data
+type format in Coordinated Universal Time (UTC).
+<pre class="pre codeblock"><code><var class="keyword varname">YYYY-MM-DD</var><strong class="ph b">T</strong><var class="keyword varname">hh:mm:ss.ttt</var><strong class="ph b">Z</strong></code></pre>
+</dd>
+<dt class="dt pt dlterm">end_time</dt>
+<dd class="dd pd">Indicates the beginning of the first
+interval <em class="ph i">after</em> the
+date specified in the INTERVAL request. The end time is indicated
+in the XML <samp class="ph codeph">dateTime</samp>
+data type format in Coordinated
+Universal Time (UTC).
+<pre class="pre codeblock"><code><var class="keyword varname">YYYY-MM-DD</var><strong class="ph b">T</strong><var class="keyword varname">hh:mm:ss.ttt</var><strong class="ph b">Z</strong></code></pre>
+</dd>
+<dt class="dt pt dlterm">anomaly_score</dt>
+<dd class="dd pd">A double value that provides the
+anomaly
+score for this interval. The interval anomaly score is the percentile
+of the sum of each anomaly score for individual message IDs within
+an interval. When ADE
+uses priming data and current data to create a model of system
+behavior,
+a process that is called <span class="q">"training"</span>,
+ADE captures the
+distribution of interval anomaly scores for all intervals that are
+represented in the training data. ADE uses the distribution
+results and uses them to establish the range of values for each
+percentile.
+<div class="p">The
+possible interval anomaly scores are:
+<dl class="dl">
+<dt class="dt dlterm">0 through 99.4</dt>
+<dd class="dd">The analysis interval contains
+messages and message clusters that
+match or exhibit relatively insignificant differences in expected
+behavior, as defined in the&nbsp;<span class="ph"></span>ADE&nbsp;
+model. A score of
+0 is possible because the server eliminates all expected, in-context
+messages from its scoring calculation. A score of 0 indicates intervals
+that exhibit no difference in behavior compared to the system <span class="ph">or
+group</span> model. The <span class="ph">analysis
+snapshots for</span> these analysis
+intervals are colored with the lightest blue shade.
+<p class="p">Analysis intervals
+with scores that are greater than 0 but less than 99.5 contain some
+messages that are unexpected or issued out of context. Scores in this
+range indicate intervals that do not vary significantly from the system
+model. The <span class="ph">analysis snapshots for</span>
+these analysis intervals
+are colored with varying shades of blue.</p>
+</dd>
+<dt class="dt dlterm">99.5 </dt>
+<dd class="dd">Analysis intervals with this score
+contain some rarely seen, unexpected,
+or out-of-context messages. Generally speaking, this score indicates
+analysis intervals with some differences from the system <span class="ph">or group</span> model
+but do not contain messages of much diagnostic value. The <span class="ph">analysis
+snapshots for</span> these analysis intervals are colored with
+the darkest
+blue shade.</dd>
+<dt class="dt dlterm">99.6 - 100</dt>
+<dd class="dd">Analysis intervals with this score
+contain rarely seen messages
+(these messages appear in the model only once or twice), or many
+messages
+that are unexpected or issued out of context. This score indicates
+analysis intervals with more differences from the system <span class="ph">or group</span> model;
+these intervals can contain messages that might help you diagnose
+anomalous system behavior. The <span class="ph">analysis
+snapshots for</span> these
+analysis intervals are the color gold.</dd>
+<dt class="dt dlterm">101</dt>
+<dd class="dd">Analysis intervals with this score
+exhibit the most significant
+differences from the system <span class="ph">or group</span>
+model; these intervals
+contain messages that merit investigation. The <span class="ph">analysis
+</span>&nbsp;assigns this score
+to analysis intervals that contain:
+<ul class="ul" compact="compact">
+<li class="li">Unusual or unexpected messages.</li>
+<li class="li">A much higher volume of messages
+than expected.</li>
+</ul>
+</dd>
+</dl>
+</div>
+</dd>
+<dt class="dt pt dlterm"><a name="appendix_apis_4zaware_v2interval__api_model_internal_id"><!-- --></a>model_internal_id</dt>
+<dd class="dd pd">An integer that the <span class="ph">ADE</span>
+uses to identify this system model.</dd>
+<dt class="dt pt dlterm">melody_version</dt>
+<dd class="dd pd">An integer that represents the version
+of the analytics engine
+that the <span class="ph">ADE&nbsp; </span>is
+using.</dd>
+<dt class="dt pt dlterm">gmt_offset</dt>
+<dd class="dd pd">An integer that indicates the
+difference in hours and minutes
+from Coordinated Universal Time (UTC) for the requested start time.</dd>
+<dt class="dt pt dlterm">model_info</dt>
+<dd class="dd pd">Provides information about the model
+associated with the specified
+system.
+<dl class="dl parml">
+<dt class="dt pt dlterm">model_creation_date</dt>
+<dd class="dd pd">An element that provides the date
+and time when <span class="ph">ADE</span>
+successfully built
+the most recent model of system behavior.</dd>
+<dt class="dt pt dlterm">training_period</dt>
+<dd class="dd pd">An integer that indicates the
+number of consecutive calendar days
+that the <span class="ph">ADE </span>&nbsp;uses
+to identify the instrumentation data to include in training models.</dd>
+<dt class="dt pt dlterm">interval_size_in_sec</dt>
+<dd class="dd pd"><span class="ph">An
+integer that indicates the number
+of seconds in an interval.</span></dd>
+<dt class="dt pt dlterm">analysis_group</dt>
+<dd class="dd pd">An element that provides <span class="ph">the
+name of a &nbsp;Linux model group in the <span class="ph">ADE</span>
+topology</span>. </dd>
+</dl>
+</dd>
+<dt class="dt pt dlterm">msg_summary</dt>
+<dd class="dd pd">An element that contains summary
+information about messages in
+the interval.
+<dl class="dl parml">
+<dt class="dt pt dlterm">num_new_msg</dt>
+<dd class="dd pd">An integer that provides the total
+number of new messages issued
+by the system during this interval. </dd>
+</dl>
+</dd>
+<dt class="dt pt dlterm">interval_message</dt>
+<dd class="dd pd">The XML response contains one <span class="keyword parmname parmname">interval_message</span>
+element
+for each unique message ID that was issued within the interval
+specified
+on the INTERVAL request. Each <span class="keyword parmname parmname">interval_message</span>
+contains
+the following attributes for the message.
+<dl class="dl parml">
+<dt class="dt pt dlterm">num_instances</dt>
+<dd class="dd pd">An integer that specifies the
+number of times that this message
+was issued within this 10-minute interval.</dd>
+<dt class="dt pt dlterm"><a name="appendix_apis_4zaware_v2interval__api_bernoulli"><!-- --></a>bernoulli</dt>
+<dd class="dd pd">A double value that indicates how
+frequently the message ID is
+issued within a sampled set of 10-minute analysis snapshots in the
+system model. Values range from 1 to 101:
+<ul class="ul" compact="compact">
+<li class="li">A value of 1 indicates that the
+message is issued in almost all
+analysis intervals in the model.</li>
+<li class="li">A value of 100 indicates that the
+message is issued in almost
+none of the analysis intervals in the model.</li>
+<li class="li">A value of 101 indicates that
+this message ID has not been issued
+in any analysis interval in the model. </li>
+</ul>
+</dd>
+<dt class="dt pt dlterm">frequency</dt>
+<dd class="dd pd">An integer that indicates the
+average number of analysis intervals
+in which the message is issued each day, according to analysis of
+the message data that <span class="ph">ADE</span>
+uses
+for training.</dd>
+<dt class="dt pt dlterm"><a name="appendix_apis_4zaware_v2interval__api_cluster_id"><!-- --></a>cluster_id</dt>
+<dd class="dd pd">An integer that represents the
+identifier of the cluster to which
+this message belongs. When the message is not part of a recognized
+cluster, the cluster ID is <samp class="ph codeph">-1</samp>.</dd>
+<dt class="dt pt dlterm">periodicty_status</dt>
+<dd class="dd pd">An element that indicates whether
+or not this message has a tendency
+to recur at specific times, and whether the message recurred as
+expected
+within the analysis interval. Valid values are:
+<dl class="dl" compact="compact">
+<dt class="dt dlterm">NEW</dt>
+<dd class="dd"><span class="ph">ADE</span>
+has not previously
+detected this message. <span class="ph">.</span></dd>
+<dt class="dt dlterm">IN_SYNC</dt>
+<dd class="dd"><span class="ph">ADE</span>
+expects this
+message to be issued in a periodic pattern, and the message was issued
+as expected during the analysis interval.</dd>
+<dt class="dt dlterm">NOT_IN_SYNC</dt>
+<dd class="dd"><span class="ph">ADE</span>
+expects this
+message to be issued in a periodic pattern, but the message was not
+issued as expected during the analysis interval.</dd>
+<dt class="dt dlterm">NOT_PERIODIC</dt>
+<dd class="dd"><span class="ph">ADE</span>
+does not expect
+this message to be issued in a periodic pattern.</dd>
+</dl>
+</dd>
+<dt class="dt pt dlterm">last_issued</dt>
+<dd class="dd pd">An element that provides the UTC
+date and time when this message
+was last observed.</dd>
+<dt class="dt pt dlterm">score</dt>
+<dd class="dd pd">An integer that indicates how the
+periodicity status of this message
+contributed to the message anomaly score for the analysis interval. <span class="ph">Higher scores generally
+indicate greater contribution to the message anomaly score</span></dd>
+<dt class="dt pt dlterm"><a name="appendix_apis_4zaware_v2interval__api_poisson"><!-- --></a>poisson</dt>
+<dd class="dd pd">A double value that indicates how
+closely the message ID distribution
+in current data matches the Poisson distribution of that message ID
+in data during the training period for the system model. This value
+is provided only for message IDs that are not part of a cluster. The
+higher the <span class="keyword parmname parmname">poisson</span>
+value, the greater the difference
+from expected behavior. </dd>
+<dt class="dt pt dlterm">intCont</dt>
+<dd class="dd pd">A double value that indicates the
+relative contribution of this
+message to the interval anomaly score for the analysis interval. This
+interval score is a function of the message anomaly score, the number
+of times that the message appears within this interval, and whether
+the message appeared in context.</dd>
+<dt class="dt pt dlterm">normIntCont</dt>
+<dd class="dd pd">A double value that indicates the
+normalized contribution of this
+message to the interval anomaly score for the analysis interval. </dd>
+<dt class="dt pt dlterm">anomaly</dt>
+<dd class="dd pd">A double value that indicates the
+rarity of this specific message
+ID within the selected interval. The anomaly score is a combination
+of the interval contribution score for this message and the rule,
+if any, that is in effect for this message. Higher scores indicate
+greater anomaly so messages with high anomaly scores are more likely
+to indicate a problem.</dd>
+<dt class="dt pt dlterm">cluster_status</dt>
+<dd class="dd pd">A string that indicates whether or
+not this message is part of
+an expected pattern of messages associated with a routine system event
+(for example, starting a subsystem or workload). <span class="ph">ADE</span>
+identifies and recognizes
+these patterns or groups, which are called <span class="q">"clusters"</span>,
+and the
+specific message IDs that constitute a specific cluster. When analyzing
+data, the ADE determines whether a specific
+message is expected to be issued within a specific cluster. <span class="ph">A message that is issued out
+of context (without the other messages in the same cluster) might
+indicate a problem.</span>
+<div class="p">Values
+for <span class="keyword parmname parmname">cluster_status</span>
+are:
+<dl class="dl" compact="compact">
+<dt class="dt dlterm">New</dt>
+<dd class="dd"><span class="ph">ADE</span>
+has not previously
+detected this message in the model.&nbsp;<span class="ph">.</span></dd>
+<dt class="dt dlterm">Unclustered</dt>
+<dd class="dd">This message is not part of a
+defined cluster.</dd>
+<dt class="dt dlterm">In context</dt>
+<dd class="dd"><span class="ph">ADE</span>
+expects this
+message to be issued within a specific cluster, and the message was
+issued as expected in the analysis interval.</dd>
+<dt class="dt dlterm">Out of context</dt>
+<dd class="dd"><span class="ph">ADE</span>
+expects this
+message to be issued within a specific cluster, but the message was
+issued in a different context during the analysis interval.</dd>
+</dl>
+</div>
+</dd>
+<dt class="dt pt dlterm">critical_words</dt>
+<dd class="dd pd">A double value that indicates
+whether the message contains specific
+words that indicate potential problems. Critical words include <span class="q">"abend"</span>, <span class="q">"failure"</span>,
+and <span class="q">"warning"</span>.</dd>
+<dt class="dt pt dlterm">text_sum</dt>
+<dd class="dd pd">A string that contains a summary
+of the common message text that
+was issued for each occurrence of the same message.</dd>
+<dt class="dt pt dlterm">text_smp</dt>
+<dd class="dd pd">A string that contains the full
+message text for the first occurrence
+of this message within the interval.</dd>
+<dt class="dt pt dlterm">time_vec</dt>
+<dd class="dd pd">The XML response contains one <span class="keyword parmname parmname">time_vec</span>
+element
+for each unique message ID that was issued within the interval
+specified
+on the INTERVAL request.
+<dl class="dl parml">
+<dt class="dt pt dlterm">occ</dt>
+<dd class="dd pd">The XML response contains one <span class="keyword parmname parmname">occ</span> element
+for each time that this message ID was issued within the interval
+specified on the INTERVAL request. </dd>
+</dl>
+</dd>
+<dd class="dd pd">
+<dl class="dl parml">
+<dd class="dd pd">
+<dl class="dl parml">
+<dd class="dd pd">
+<dl class="dl" id="appendix_apis_4zaware_v2interval__rules_status_values">
+<dd class="dd">.</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt class="dt pt dlterm">msg_id</dt>
+<dd class="dd pd">A string that identifies the
+unique message ID.</dd>
+</dl>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section"><h2 class="title sectiontitle">Sample XML Output Messages within an Interval</h2><dl class="dl parml"><dd class="dd pd">The output:
+
+<pre><code>&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39; ?&gt; 
+&lt;?xml-stylesheet href=&#39;./xslt/AdeCoreIntervalV2.xsl&#39; type=&#39;text/xsl&#39; ?&gt; 
+&lt;interval xsi:noNamespaceSchemaLocation=&quot;/xml/AdeCoreIntervalV2.xsd&quot; xmlns=&quot;http://www.openmainframe.org/ade/AdeCoreIntervalV2&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+    &lt;version&gt;2&lt;/version&gt;
+    &lt;sys_id&gt;sys1.openmainframe.org&lt;/sys_id&gt;
+    &lt;start_time&gt;2015-12-11T23:50:00.000Z&lt;/start_time&gt;
+    &lt;end_time&gt;2015-12-12T00:50:00.000Z&lt;/end_time&gt;
+    &lt;anomaly_score&gt;99.5&lt;/anomaly_score&gt;
+    &lt;model_internal_id&gt;1&lt;/model_internal_id&gt;
+    &lt;ade_version&gt;321&lt;/ade_version&gt;
+    &lt;gmt_offset&gt;GMT+00:00&lt;/gmt_offset&gt;
+    &lt;model_info model_creation_date=&quot;2016-02-10T16:02:56.840Z&quot; training_period=&quot;7&quot; interval_size_in_sec=&quot;3600&quot; analysis_group=&quot;default&quot; limited_model=&quot;Yes&quot;/&gt;
+    &lt;msg_summary num_new_msg=&quot;8&quot;/&gt;
+    &lt;interval_message msg_id=&quot;sshd_47&quot;&gt;
+        &lt;num_instances&gt;24&lt;/num_instances&gt;
+        &lt;bernoulli frequency=&quot;0.07058823529411765&quot;&gt;99.70588235294117&lt;/bernoulli&gt;
+        &lt;cluster_id&gt;14&lt;/cluster_id&gt;
+        &lt;periodicity status=&quot;NOT_PERIODIC&quot; last_issued=&quot;2015-12-11T23:35:30.000Z&quot;/&gt;
+        &lt;poisson mean=&quot;1.4234978142529124&quot;&gt;0.9999876239444027&lt;/poisson&gt;
+        &lt;intCont&gt;6.920749476374009&lt;/intCont&gt;
+        &lt;normIntCont&gt;6.920749476374009&lt;/normIntCont&gt;
+        &lt;anomaly&gt;0.9990129101373006&lt;/anomaly&gt;
+        &lt;cluster_status&gt;OUT_OF_CONTEXT&lt;/cluster_status&gt;
+        &lt;critical_words&gt;0.0&lt;/critical_words&gt;
+        &lt;text_sum&gt;Accepted keyboard-interactive/pam for user1 from 5dbf2b6d08477c5fc7774f590b31abd4f39be38a port * ssh2&lt;/text_sum&gt;
+        &lt;text_smp&gt;Accepted keyboard-interactive/pam for user1 from 5dbf2b6d08477c5fc7774f590b31abd4f39be38a port 1582 ssh2&lt;/text_smp&gt;
+        &lt;time_vec&gt;
+            &lt;occ&gt;1&lt;/occ&gt;
+            &lt;occ&gt;31&lt;/occ&gt;
+            &lt;occ&gt;61&lt;/occ&gt;
+            &lt;occ&gt;62&lt;/occ&gt;
+            &lt;occ&gt;91&lt;/occ&gt;
+            &lt;occ&gt;92&lt;/occ&gt;
+        &lt;/time_vec&gt;
+    &lt;/interval_message&gt;
+    &lt;interval_message msg_id=&quot;/usr/sbin/cron(notes):/home/notes/getsysdata.ksh_311&quot;&gt;
+        &lt;num_instances&gt;4&lt;/num_instances&gt;
+        &lt;bernoulli frequency=&quot;0.07100591715976332&quot;&gt;101.0&lt;/bernoulli&gt;
+        &lt;cluster_id&gt;-1&lt;/cluster_id&gt;
+        &lt;periodicity status=&quot;NOT_PERIODIC&quot; last_issued=&quot;2015-12-11T23:45:00.000Z&quot;/&gt;
+        &lt;poisson mean=&quot;2.0&quot;&gt;0.0&lt;/poisson&gt;
+        &lt;intCont&gt;4.656066344281889&lt;/intCont&gt;
+        &lt;normIntCont&gt;4.656066344281889&lt;/normIntCont&gt;
+        &lt;anomaly&gt;0.9904962264578541&lt;/anomaly&gt;
+        &lt;cluster_status&gt;NEW&lt;/cluster_status&gt;
+        &lt;critical_words&gt;0.0&lt;/critical_words&gt;
+        &lt;text_sum&gt;(notes) CMD (/home/notes/getsysdata.ksh 1&amp;gt;/home/notes/run.out 2&amp;gt;&amp;amp;1)&lt;/text_sum&gt;
+        &lt;text_smp&gt;(notes) CMD (/home/notes/getsysdata.ksh 1&amp;gt;/home/notes/run.out 2&amp;gt;&amp;amp;1)&lt;/text_smp&gt;
+        &lt;time_vec&gt;
+            &lt;occ&gt;20&lt;/occ&gt;
+            &lt;occ&gt;50&lt;/occ&gt;
+            &lt;occ&gt;80&lt;/occ&gt;
+            &lt;occ&gt;110&lt;/occ&gt;
+        &lt;/time_vec&gt;
+    &lt;/interval_message&gt;
+    &lt;interval_message msg_id=&quot;/usr/sbin/cron(notesa):/home/notes/getdomdata.ksh_309&quot;&gt;
+        &lt;num_instances&gt;4&lt;/num_instances&gt;
+        &lt;bernoulli frequency=&quot;0.07100591715976332&quot;&gt;101.0&lt;/bernoulli&gt;
+        &lt;cluster_id&gt;-1&lt;/cluster_id&gt;
+        &lt;periodicity status=&quot;NOT_PERIODIC&quot; last_issued=&quot;2015-12-11T23:45:00.000Z&quot;/&gt;
+        &lt;poisson mean=&quot;2.0&quot;&gt;0.0&lt;/poisson&gt;
+        &lt;intCont&gt;4.656066344281889&lt;/intCont&gt;
+        &lt;normIntCont&gt;4.656066344281889&lt;/normIntCont&gt;
+        &lt;anomaly&gt;0.9904962264578541&lt;/anomaly&gt;
+        &lt;cluster_status&gt;NEW&lt;/cluster_status&gt;
+        &lt;critical_words&gt;0.0&lt;/critical_words&gt;
+        &lt;text_sum&gt;(notesa) CMD (/home/notes/getdomdata.ksh 1&amp;gt;~/doms.out 2&amp;gt;&amp;amp;1)&lt;/text_sum&gt;
+        &lt;text_smp&gt;(notesa) CMD (/home/notes/getdomdata.ksh 1&amp;gt;~/doms.out 2&amp;gt;&amp;amp;1)&lt;/text_smp&gt;
+        &lt;time_vec&gt;
+            &lt;occ&gt;20&lt;/occ&gt;
+            &lt;occ&gt;50&lt;/occ&gt;
+            &lt;occ&gt;80&lt;/occ&gt;
+            &lt;occ&gt;110&lt;/occ&gt;
+        &lt;/time_vec&gt;
+    &lt;/interval_message&gt;
+    ..........
+    &lt;interval_message msg_id=&quot;sudo(root):/etc/init.d/syslog_41&quot;&gt;
+        &lt;num_instances&gt;1&lt;/num_instances&gt;
+        &lt;bernoulli frequency=&quot;23.788235294117648&quot;&gt;1.0&lt;/bernoulli&gt;
+        &lt;cluster_id&gt;-1&lt;/cluster_id&gt;
+        &lt;periodicity status=&quot;NOT_IN_SYNC&quot; last_issued=&quot;2015-12-11T23:45:00.000Z&quot; score=&quot;0.005970166986503796&quot;/&gt;
+        &lt;poisson mean=&quot;1.0&quot;&gt;0.0&lt;/poisson&gt;
+        &lt;intCont&gt;-3.777176513347405&lt;/intCont&gt;
+        &lt;normIntCont&gt;-3.777176513347405&lt;/normIntCont&gt;
+        &lt;anomaly&gt;0.0&lt;/anomaly&gt;
+        &lt;cluster_status&gt;UNCLUSTERED&lt;/cluster_status&gt;
+        &lt;critical_words&gt;0.0&lt;/critical_words&gt;
+        &lt;text_sum&gt;    root : TTY=unknown ; PWD=/root ; USER=root ; COMMAND=/etc/init.d/syslog status&lt;/text_sum&gt;
+        &lt;text_smp&gt;    root : TTY=unknown ; PWD=/root ; USER=root ; COMMAND=/etc/init.d/syslog status&lt;/text_smp&gt;
+        &lt;time_vec&gt;
+            &lt;occ&gt;110&lt;/occ&gt;
+        &lt;/time_vec&gt;
+    &lt;/interval_message&gt;
+&lt;/interval&gt;
+</code></pre>
+</div>
+<footer class="site-footer"> <span class="site-footer-owner"><a href="https://github.com/openmainframeproject/ade">ADE</a> is
+maintained by <a href="https://github.com/openmainframeproject/ade">Open Mainframe project - ADE</a>.</span>
+<span class="site-footer-credits">This page was generated
+by <a href="https://pages.github.com">GitHub Pages</a>
+using the <a href="https://github.com/jasonlong/cayman-theme">Cayman
+theme</a> by <a href="https://twitter.com/jasonlong">Jason
+Long</a>.</span> </footer>
+</body>
+</html>

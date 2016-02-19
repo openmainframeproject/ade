@@ -1,0 +1,464 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<?xml-stylesheet href='./xslt/AdeCoreIntervalV2.xsl' type='text/xsl' ?> 
+<interval xsi:noNamespaceSchemaLocation="/xml/AdeCoreIntervalV2.xsd" xmlns="http://www.openmainframe.org/ade/AdeCoreIntervalV2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <version>2</version>
+    <sys_id>sys1.openmainframe.org</sys_id>
+    <start_time>2015-12-12T18:20:00.000Z</start_time>
+    <end_time>2015-12-12T19:20:00.000Z</end_time>
+    <anomaly_score>99.5</anomaly_score>
+    <model_internal_id>1</model_internal_id>
+    <ade_version>321</ade_version>
+    <gmt_offset>GMT+00:00</gmt_offset>
+    <model_info model_creation_date="2016-02-10T16:02:56.840Z" training_period="7" interval_size_in_sec="3600" analysis_group="default" limited_model="Yes"/>
+    <msg_summary num_new_msg="7"/>
+    <interval_message msg_id="sshd_47">
+        <num_instances>24</num_instances>
+        <bernoulli frequency="0.07058823529411765">99.70588235294117</bernoulli>
+        <cluster_id>14</cluster_id>
+        <periodicity status="NOT_PERIODIC" last_issued="2015-12-12T18:06:00.000Z"/>
+        <poisson mean="1.4234978142529124">0.9999876239444027</poisson>
+        <intCont>6.920749476374009</intCont>
+        <normIntCont>6.920749476374009</normIntCont>
+        <anomaly>0.9990129101373006</anomaly>
+        <cluster_status>OUT_OF_CONTEXT</cluster_status>
+        <critical_words>0.0</critical_words>
+        <text_sum>Accepted keyboard-interactive/pam for user1 from 5dbf2b6d08477c5fc7774f590b31abd4f39be38a port * ssh2</text_sum>
+        <text_smp>Accepted keyboard-interactive/pam for user1 from 5dbf2b6d08477c5fc7774f590b31abd4f39be38a port 1203 ssh2</text_smp>
+        <time_vec>
+            <occ>1</occ>
+            <occ>2</occ>
+            <occ>31</occ>
+            <occ>32</occ>
+            <occ>61</occ>
+            <occ>62</occ>
+            <occ>92</occ>
+        </time_vec>
+    </interval_message>
+    <interval_message msg_id="/usr/sbin/cron(notes):/home/notes/getsysdata.ksh_311">
+        <num_instances>4</num_instances>
+        <bernoulli frequency="0.07100591715976332">101.0</bernoulli>
+        <cluster_id>-1</cluster_id>
+        <periodicity status="NOT_PERIODIC" last_issued="2015-12-12T18:15:00.000Z"/>
+        <poisson mean="2.0">0.0</poisson>
+        <intCont>4.656066344281889</intCont>
+        <normIntCont>4.656066344281889</normIntCont>
+        <anomaly>0.9904962264578541</anomaly>
+        <cluster_status>NEW</cluster_status>
+        <critical_words>0.0</critical_words>
+        <text_sum>(notes) CMD (/home/notes/getsysdata.ksh 1&gt;/home/notes/run.out 2&gt;&amp;1)</text_sum>
+        <text_smp>(notes) CMD (/home/notes/getsysdata.ksh 1&gt;/home/notes/run.out 2&gt;&amp;1)</text_smp>
+        <time_vec>
+            <occ>20</occ>
+            <occ>50</occ>
+            <occ>80</occ>
+            <occ>110</occ>
+        </time_vec>
+    </interval_message>
+    <interval_message msg_id="/usr/sbin/cron(notesa):/home/notes/getdomdata.ksh_309">
+        <num_instances>4</num_instances>
+        <bernoulli frequency="0.07100591715976332">101.0</bernoulli>
+        <cluster_id>-1</cluster_id>
+        <periodicity status="NOT_PERIODIC" last_issued="2015-12-12T18:15:00.000Z"/>
+        <poisson mean="2.0">0.0</poisson>
+        <intCont>4.656066344281889</intCont>
+        <normIntCont>4.656066344281889</normIntCont>
+        <anomaly>0.9904962264578541</anomaly>
+        <cluster_status>NEW</cluster_status>
+        <critical_words>0.0</critical_words>
+        <text_sum>(notesa) CMD (/home/notes/getdomdata.ksh 1&gt;~/doms.out 2&gt;&amp;1)</text_sum>
+        <text_smp>(notesa) CMD (/home/notes/getdomdata.ksh 1&gt;~/doms.out 2&gt;&amp;1)</text_smp>
+        <time_vec>
+            <occ>20</occ>
+            <occ>50</occ>
+            <occ>80</occ>
+            <occ>110</occ>
+        </time_vec>
+    </interval_message>
+    <interval_message msg_id="/usr/sbin/cron(notesb):/home/notes/getdomdata.ksh_312">
+        <num_instances>4</num_instances>
+        <bernoulli frequency="0.07100591715976332">101.0</bernoulli>
+        <cluster_id>-1</cluster_id>
+        <periodicity status="NOT_PERIODIC" last_issued="2015-12-12T18:15:00.000Z"/>
+        <poisson mean="2.0">0.0</poisson>
+        <intCont>4.656066344281889</intCont>
+        <normIntCont>4.656066344281889</normIntCont>
+        <anomaly>0.9904962264578541</anomaly>
+        <cluster_status>NEW</cluster_status>
+        <critical_words>0.0</critical_words>
+        <text_sum>(notesb) CMD (/home/notes/getdomdata.ksh 1&gt;~/doms.out 2&gt;&amp;1)</text_sum>
+        <text_smp>(notesb) CMD (/home/notes/getdomdata.ksh 1&gt;~/doms.out 2&gt;&amp;1)</text_smp>
+        <time_vec>
+            <occ>20</occ>
+            <occ>50</occ>
+            <occ>80</occ>
+            <occ>110</occ>
+        </time_vec>
+    </interval_message>
+    <interval_message msg_id="kernel_280">
+        <num_instances>20</num_instances>
+        <bernoulli frequency="0.07100591715976332">101.0</bernoulli>
+        <cluster_id>-1</cluster_id>
+        <periodicity status="NOT_PERIODIC" last_issued="2015-12-12T18:16:30.000Z"/>
+        <poisson mean="2.0">0.0</poisson>
+        <intCont>4.656066344281889</intCont>
+        <normIntCont>4.656066344281889</normIntCont>
+        <anomaly>0.9904962264578541</anomaly>
+        <cluster_status>NEW</cluster_status>
+        <critical_words>0.0</critical_words>
+        <text_sum>TCP: Possible SYN flooding on port 1352. Sending cookies.</text_sum>
+        <text_smp>TCP: Possible SYN flooding on port 1352. Sending cookies.</text_smp>
+        <time_vec>
+            <occ>21</occ>
+            <occ>52</occ>
+        </time_vec>
+    </interval_message>
+    <interval_message msg_id="kernel_286">
+        <num_instances>2</num_instances>
+        <bernoulli frequency="0.07100591715976332">101.0</bernoulli>
+        <cluster_id>-1</cluster_id>
+        <periodicity status="NOT_PERIODIC" last_issued="2015-12-12T17:07:00.000Z"/>
+        <poisson mean="2.0">0.0</poisson>
+        <intCont>4.656066344281889</intCont>
+        <normIntCont>4.656066344281889</normIntCont>
+        <anomaly>0.9904962264578541</anomaly>
+        <cluster_status>NEW</cluster_status>
+        <critical_words>0.0</critical_words>
+        <text_sum>net_ratelimit: * callbacks suppressed</text_sum>
+        <text_smp>net_ratelimit: 10 callbacks suppressed</text_smp>
+        <time_vec>
+            <occ>21</occ>
+            <occ>52</occ>
+        </time_vec>
+    </interval_message>
+    <interval_message msg_id="sshd_281">
+        <num_instances>24</num_instances>
+        <bernoulli frequency="0.07100591715976332">101.0</bernoulli>
+        <cluster_id>-1</cluster_id>
+        <periodicity status="NOT_PERIODIC" last_issued="2015-12-12T18:06:00.000Z"/>
+        <poisson mean="2.0">0.0</poisson>
+        <intCont>4.656066344281889</intCont>
+        <normIntCont>4.656066344281889</normIntCont>
+        <anomaly>0.9904962264578541</anomaly>
+        <cluster_status>NEW</cluster_status>
+        <critical_words>0.0</critical_words>
+        <text_sum>subsystem request for sftp by user user1</text_sum>
+        <text_smp>subsystem request for sftp by user user1</text_smp>
+        <time_vec>
+            <occ>1</occ>
+            <occ>2</occ>
+            <occ>31</occ>
+            <occ>32</occ>
+            <occ>61</occ>
+            <occ>62</occ>
+            <occ>92</occ>
+        </time_vec>
+    </interval_message>
+    <interval_message msg_id="syslog-ng_279">
+        <num_instances>1</num_instances>
+        <bernoulli frequency="0.07100591715976332">101.0</bernoulli>
+        <cluster_id>-1</cluster_id>
+        <periodicity status="NOT_PERIODIC" last_issued="2015-12-12T17:45:00.000Z"/>
+        <poisson mean="2.0">0.0</poisson>
+        <intCont>4.656066344281889</intCont>
+        <normIntCont>4.656066344281889</normIntCont>
+        <anomaly>0.9904962264578541</anomaly>
+        <cluster_status>NEW</cluster_status>
+        <critical_words>0.0</critical_words>
+        <text_sum>Log statistics; dropped='pipe(/dev/xconsole)=0', processed='center(queued)=77033', processed='center(received)=28143', processed='destination(messages)=8804', processed='destination(mailinfo)=11412', processed='destination(mailwarn)=0', processed='destination(localmessages)=0', processed='destination(newserr)=0', processed='destination(mailerr)=0', processed='destination(warn)=496', processed='destination(console)=456', processed='destination(netmgm)=0', processed='destination(mail)=11412', processed='destination(xconsole)=456', processed='destination(firewall)=0', processed='destination(zaware)=28143', processed='destination(secure)=15854', processed='destination(acpid)=0', processed='destination(newscrit)=0', processed='destination(newsnotice)=0', processed='source(src)=28143'</text_sum>
+        <text_smp>Log statistics; dropped='pipe(/dev/xconsole)=0', processed='center(queued)=77033', processed='center(received)=28143', processed='destination(messages)=8804', processed='destination(mailinfo)=11412', processed='destination(mailwarn)=0', processed='destination(localmessages)=0', processed='destination(newserr)=0', processed='destination(mailerr)=0', processed='destination(warn)=496', processed='destination(console)=456', processed='destination(netmgm)=0', processed='destination(mail)=11412', processed='destination(xconsole)=456', processed='destination(firewall)=0', processed='destination(zaware)=28143', processed='destination(secure)=15854', processed='destination(acpid)=0', processed='destination(newscrit)=0', processed='destination(newsnotice)=0', processed='source(src)=28143'</text_smp>
+        <time_vec>
+            <occ>50</occ>
+        </time_vec>
+    </interval_message>
+    <interval_message msg_id="postfix/cleanup_15">
+        <num_instances>24</num_instances>
+        <bernoulli frequency="0.07058823529411765">99.70588235294117</bernoulli>
+        <cluster_id>15</cluster_id>
+        <periodicity status="IN_SYNC" last_issued="2015-12-12T18:15:00.000Z" score="3.871201010907891"/>
+        <poisson mean="16.494435213356095">0.024776536028119245</poisson>
+        <intCont>3.1019785368118864</intCont>
+        <normIntCont>3.1019785368118864</normIntCont>
+        <anomaly>0.9550398409948655</anomaly>
+        <cluster_status>OUT_OF_CONTEXT</cluster_status>
+        <critical_words>0.0</critical_words>
+        <text_sum>*: message-id=&lt;*.pok.ibm.com&gt;</text_sum>
+        <text_smp>EC48E52F: message-id=&lt;9e672162f7e776f50b1d7488ce808f6e358f7165.pok.ibm.com&gt;</text_smp>
+        <time_vec>
+            <occ>20</occ>
+            <occ>21</occ>
+            <occ>50</occ>
+            <occ>51</occ>
+            <occ>80</occ>
+            <occ>81</occ>
+            <occ>110</occ>
+        </time_vec>
+    </interval_message>
+    <interval_message msg_id="postfix/qmgr_16">
+        <num_instances>24</num_instances>
+        <bernoulli frequency="0.07058823529411765">99.70588235294117</bernoulli>
+        <cluster_id>15</cluster_id>
+        <periodicity status="IN_SYNC" last_issued="2015-12-12T18:15:00.000Z" score="3.871201010907891"/>
+        <poisson mean="16.494435213356095">0.024776536028119245</poisson>
+        <intCont>3.1019785368118864</intCont>
+        <normIntCont>3.1019785368118864</normIntCont>
+        <anomaly>0.9550398409948655</anomaly>
+        <cluster_status>OUT_OF_CONTEXT</cluster_status>
+        <critical_words>0.0</critical_words>
+        <text_sum>*: from=&lt;4cc7ea0db01495b595e9919334966f65b41ff926.pok.ibm.com&gt;, size=*, nrcpt=1 (queue active)</text_sum>
+        <text_smp>EC48E52F: from=&lt;4cc7ea0db01495b595e9919334966f65b41ff926.pok.ibm.com&gt;, size=551, nrcpt=1 (queue active)</text_smp>
+        <time_vec>
+            <occ>20</occ>
+            <occ>21</occ>
+            <occ>50</occ>
+            <occ>51</occ>
+            <occ>80</occ>
+            <occ>81</occ>
+            <occ>110</occ>
+        </time_vec>
+    </interval_message>
+    <interval_message msg_id="/usr/sbin/cron(root):/var/adm/perfmgr/bin/verify.srm_20">
+        <num_instances>2</num_instances>
+        <bernoulli frequency="0.07058823529411765">99.70588235294117</bernoulli>
+        <cluster_id>15</cluster_id>
+        <periodicity status="NOT_IN_SYNC" last_issued="2015-12-12T17:55:00.000Z" score="0.0029806281381377893"/>
+        <poisson mean="1.983661253945203">4.911810632335367E-5</poisson>
+        <intCont>0.0023943263730416423</intCont>
+        <normIntCont>0.0023943263730416423</normIntCont>
+        <anomaly>0.002391462259981103</anomaly>
+        <cluster_status>OUT_OF_CONTEXT</cluster_status>
+        <critical_words>0.0</critical_words>
+        <text_sum>(root) CMD (/var/adm/perfmgr/bin/verify.srm)</text_sum>
+        <text_smp>(root) CMD (/var/adm/perfmgr/bin/verify.srm)</text_smp>
+        <time_vec>
+            <occ>10</occ>
+            <occ>70</occ>
+        </time_vec>
+    </interval_message>
+    <interval_message msg_id="/usr/sbin/cron(root):/etc/init.d/synctime_64">
+        <num_instances>1</num_instances>
+        <bernoulli frequency="4.023529411764706">83.23529411764706</bernoulli>
+        <cluster_id>4</cluster_id>
+        <periodicity status="NOT_IN_SYNC" last_issued="2015-12-12T12:34:00.000Z" score="0.03636764417087483"/>
+        <poisson mean="1.0">0.0</poisson>
+        <intCont>0.0</intCont>
+        <normIntCont>0.0</normIntCont>
+        <anomaly>0.0</anomaly>
+        <cluster_status>IN_CONTEXT</cluster_status>
+        <critical_words>0.0</critical_words>
+        <text_sum>(root) CMD (/etc/init.d/synctime cronjob)</text_sum>
+        <text_smp>(root) CMD (/etc/init.d/synctime cronjob)</text_smp>
+        <time_vec>
+            <occ>28</occ>
+        </time_vec>
+    </interval_message>
+    <interval_message msg_id="/usr/sbin/cron(root):/usr/local/support/workfstest_10">
+        <num_instances>12</num_instances>
+        <bernoulli frequency="23.929411764705883">1.0</bernoulli>
+        <cluster_id>4</cluster_id>
+        <periodicity status="NOT_IN_SYNC" last_issued="2015-12-12T18:15:00.000Z" score="4.961548104758767E-4"/>
+        <poisson mean="11.899983731248682">1.4142730147215232E-5</poisson>
+        <intCont>0.0</intCont>
+        <normIntCont>0.0</normIntCont>
+        <anomaly>0.0</anomaly>
+        <cluster_status>IN_CONTEXT</cluster_status>
+        <critical_words>0.0</critical_words>
+        <text_sum>(root) CMD (/usr/local/support/workfstest)</text_sum>
+        <text_smp>(root) CMD (/usr/local/support/workfstest)</text_smp>
+        <time_vec>
+            <occ>0</occ>
+            <occ>10</occ>
+            <occ>20</occ>
+            <occ>30</occ>
+            <occ>40</occ>
+            <occ>50</occ>
+            <occ>60</occ>
+            <occ>70</occ>
+            <occ>80</occ>
+            <occ>90</occ>
+            <occ>100</occ>
+            <occ>110</occ>
+        </time_vec>
+    </interval_message>
+    <interval_message msg_id="postfix/local_17">
+        <num_instances>12</num_instances>
+        <bernoulli frequency="23.929411764705883">1.0</bernoulli>
+        <cluster_id>4</cluster_id>
+        <periodicity status="IN_SYNC" last_issued="2015-12-12T18:15:00.000Z" score="7.2456550675945355"/>
+        <poisson mean="8.162530601971598">0.03474581725275194</poisson>
+        <intCont>0.0</intCont>
+        <normIntCont>0.0</normIntCont>
+        <anomaly>0.0</anomaly>
+        <cluster_status>IN_CONTEXT</cluster_status>
+        <critical_words>0.0</critical_words>
+        <text_sum>*: to=&lt;4cc7ea0db01495b595e9919334966f65b41ff926.pok.ibm.com&gt;, orig_to=&lt;root&gt;, relay=local, delay=*, delays=*/0*/0/*, dsn=2.0.0, status=sent (forwarded as *)</text_sum>
+        <text_smp>EC48E52F: to=&lt;4cc7ea0db01495b595e9919334966f65b41ff926.pok.ibm.com&gt;, orig_to=&lt;root&gt;, relay=local, delay=0.11, delays=0.07/0.03/0/0.01, dsn=2.0.0, status=sent (forwarded as 05FE6506)</text_smp>
+        <time_vec>
+            <occ>20</occ>
+            <occ>21</occ>
+            <occ>50</occ>
+            <occ>51</occ>
+            <occ>80</occ>
+            <occ>81</occ>
+            <occ>110</occ>
+        </time_vec>
+    </interval_message>
+    <interval_message msg_id="postfix/pickup_13">
+        <num_instances>12</num_instances>
+        <bernoulli frequency="23.929411764705883">1.0</bernoulli>
+        <cluster_id>4</cluster_id>
+        <periodicity status="IN_SYNC" last_issued="2015-12-12T18:15:00.000Z" score="7.2456550675945355"/>
+        <poisson mean="8.168221387373963">0.03461116111003959</poisson>
+        <intCont>0.0</intCont>
+        <normIntCont>0.0</normIntCont>
+        <anomaly>0.0</anomaly>
+        <cluster_status>IN_CONTEXT</cluster_status>
+        <critical_words>0.0</critical_words>
+        <text_sum>*: uid=0 from=&lt;root&gt;</text_sum>
+        <text_smp>EC48E52F: uid=0 from=&lt;root&gt;</text_smp>
+        <time_vec>
+            <occ>20</occ>
+            <occ>21</occ>
+            <occ>50</occ>
+            <occ>51</occ>
+            <occ>80</occ>
+            <occ>81</occ>
+            <occ>110</occ>
+        </time_vec>
+    </interval_message>
+    <interval_message msg_id="postfix/qmgr_18">
+        <num_instances>24</num_instances>
+        <bernoulli frequency="23.929411764705883">1.0</bernoulli>
+        <cluster_id>4</cluster_id>
+        <periodicity status="IN_SYNC" last_issued="2015-12-12T18:15:00.000Z" score="3.7515780483295003"/>
+        <poisson mean="16.494435213356095">0.024776536028119245</poisson>
+        <intCont>0.0</intCont>
+        <normIntCont>0.0</normIntCont>
+        <anomaly>0.0</anomaly>
+        <cluster_status>IN_CONTEXT</cluster_status>
+        <critical_words>0.0</critical_words>
+        <text_sum>*: removed</text_sum>
+        <text_smp>EC48E52F: removed</text_smp>
+        <time_vec>
+            <occ>20</occ>
+            <occ>21</occ>
+            <occ>50</occ>
+            <occ>51</occ>
+            <occ>80</occ>
+            <occ>81</occ>
+            <occ>110</occ>
+        </time_vec>
+    </interval_message>
+    <interval_message msg_id="postfix/smtp_19">
+        <num_instances>12</num_instances>
+        <bernoulli frequency="23.929411764705883">1.0</bernoulli>
+        <cluster_id>4</cluster_id>
+        <periodicity status="IN_SYNC" last_issued="2015-12-12T18:15:00.000Z" score="5.865050622252323"/>
+        <poisson mean="8.162530601971598">0.03474581725275194</poisson>
+        <intCont>0.0</intCont>
+        <normIntCont>0.0</normIntCont>
+        <anomaly>0.0</anomaly>
+        <cluster_status>IN_CONTEXT</cluster_status>
+        <critical_words>0.0</critical_words>
+        <text_sum>*: to=&lt;95aafababc2b3a0a3125f840c51e90a51cd6a808@us.ibm.com&gt;, orig_to=&lt;root&gt;, relay=*.*.ibm.com[*]:25, delay=*.*, delays=*/*/*.*/*.*, dsn=2.0.0, status=sent (250 2.0.0 * Message accepted for delivery)</text_sum>
+        <text_smp>05FE6506: to=&lt;95aafababc2b3a0a3125f840c51e90a51cd6a808@us.ibm.com&gt;, orig_to=&lt;root&gt;, relay=de0f61b2f1e0850cc2f04b6d4bb87192acfdee53.pok.ibm.com[c1d83b080cf8369a3f014af28f2ca5da30c7a20e]:25, delay=0.12, delays=0/0.02/0.06/0.03, dsn=2.0.0, status=sent (250 2.0.0 rBCNU2aB012087 Message accepted for delivery)</text_smp>
+        <time_vec>
+            <occ>20</occ>
+            <occ>21</occ>
+            <occ>50</occ>
+            <occ>51</occ>
+            <occ>80</occ>
+            <occ>81</occ>
+            <occ>110</occ>
+        </time_vec>
+    </interval_message>
+    <interval_message msg_id="sshd_4">
+        <num_instances>12</num_instances>
+        <bernoulli frequency="23.929411764705883">1.0</bernoulli>
+        <cluster_id>4</cluster_id>
+        <periodicity status="NOT_IN_SYNC" last_issued="2015-12-12T18:15:30.000Z" score="0.06773035276534735"/>
+        <poisson mean="12.946186064424845">0.0</poisson>
+        <intCont>0.0</intCont>
+        <normIntCont>0.0</normIntCont>
+        <anomaly>0.0</anomaly>
+        <cluster_status>IN_CONTEXT</cluster_status>
+        <critical_words>0.0</critical_words>
+        <text_sum>Accepted publickey for support from 861719a3aa0caa2cf4c5a6fffe21f5088c53eae8 port * ssh2</text_sum>
+        <text_smp>Accepted publickey for support from 861719a3aa0caa2cf4c5a6fffe21f5088c53eae8 port 51876 ssh2</text_smp>
+        <time_vec>
+            <occ>1</occ>
+            <occ>11</occ>
+            <occ>21</occ>
+            <occ>31</occ>
+            <occ>41</occ>
+            <occ>51</occ>
+            <occ>61</occ>
+            <occ>71</occ>
+            <occ>81</occ>
+            <occ>91</occ>
+            <occ>101</occ>
+            <occ>111</occ>
+        </time_vec>
+    </interval_message>
+    <interval_message msg_id="sshd_7">
+        <num_instances>12</num_instances>
+        <bernoulli frequency="23.929411764705883">1.0</bernoulli>
+        <cluster_id>4</cluster_id>
+        <periodicity status="NOT_IN_SYNC" last_issued="2015-12-12T18:15:30.000Z" score="0.058124130959907504"/>
+        <poisson mean="12.381945777695442">0.0</poisson>
+        <intCont>0.0</intCont>
+        <normIntCont>0.0</normIntCont>
+        <anomaly>0.0</anomaly>
+        <cluster_status>IN_CONTEXT</cluster_status>
+        <critical_words>0.0</critical_words>
+        <text_sum>Received disconnect from 861719a3aa0caa2cf4c5a6fffe21f5088c53eae8: 11: disconnected by user</text_sum>
+        <text_smp>Received disconnect from 861719a3aa0caa2cf4c5a6fffe21f5088c53eae8: 11: disconnected by user</text_smp>
+        <time_vec>
+            <occ>1</occ>
+            <occ>11</occ>
+            <occ>21</occ>
+            <occ>31</occ>
+            <occ>41</occ>
+            <occ>51</occ>
+            <occ>61</occ>
+            <occ>71</occ>
+            <occ>81</occ>
+            <occ>91</occ>
+            <occ>101</occ>
+            <occ>111</occ>
+        </time_vec>
+    </interval_message>
+    <interval_message msg_id="run-crons_42">
+        <num_instances>1</num_instances>
+        <bernoulli frequency="23.788235294117648">1.0</bernoulli>
+        <cluster_id>-1</cluster_id>
+        <periodicity status="NOT_IN_SYNC" last_issued="2015-12-12T17:45:00.000Z" score="0.08961215868968717"/>
+        <poisson mean="1.0335577830070277">0.0</poisson>
+        <intCont>-3.777176513347405</intCont>
+        <normIntCont>-3.777176513347405</normIntCont>
+        <anomaly>0.0</anomaly>
+        <cluster_status>UNCLUSTERED</cluster_status>
+        <critical_words>0.0</critical_words>
+        <text_sum>support: OK</text_sum>
+        <text_smp>support: OK</text_smp>
+        <time_vec>
+            <occ>50</occ>
+        </time_vec>
+    </interval_message>
+    <interval_message msg_id="sudo(root):/etc/init.d/syslog_41">
+        <num_instances>1</num_instances>
+        <bernoulli frequency="23.788235294117648">1.0</bernoulli>
+        <cluster_id>-1</cluster_id>
+        <periodicity status="NOT_IN_SYNC" last_issued="2015-12-12T17:45:00.000Z" score="0.005970166986503796"/>
+        <poisson mean="1.0">0.0</poisson>
+        <intCont>-3.777176513347405</intCont>
+        <normIntCont>-3.777176513347405</normIntCont>
+        <anomaly>0.0</anomaly>
+        <cluster_status>UNCLUSTERED</cluster_status>
+        <critical_words>0.0</critical_words>
+        <text_sum>    root : TTY=unknown ; PWD=/root ; USER=root ; COMMAND=/etc/init.d/syslog status</text_sum>
+        <text_smp>    root : TTY=unknown ; PWD=/root ; USER=root ; COMMAND=/etc/init.d/syslog status</text_smp>
+        <time_vec>
+            <occ>50</occ>
+        </time_vec>
+    </interval_message>
+</interval>

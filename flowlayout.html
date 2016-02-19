@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+<meta charset="UTF-8"><title>Open Mainframe Project - ADE</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen"></head>
+<body>
+<section class="page-header">
+<h1 class="project-name">ADE</h1>
+<h2 class="project-tagline">Anomaly Detection Engine for
+Linux Logs</h2>
+<a href="https://github.com/openmainframeproject/ade" class="btn">View
+on GitHub</a>
+   <a href="https://github.com/openmainframeproject/ade/zipball/master" class="btn">Download .zip</a>
+   <a href="https://github.com/openmainframeproject/ade/tarball/master" class="btn">Download .tar.gz</a>
+</section>
+<section class="main-content">
+
+<h1><a id="anomaly-detection-engine-for-linux-logs-ade" class="anchor" href="#anomaly-detection-engine-for-linux-logs-ade" aria-hidden="true"><span class="octicon octicon-link"></span></a>Anomaly
+detection Engine for Linux Logs (ADE)</h1>
+<h1>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>flowlayout.xml</h1>
+ADE uses the flowlayout.xml file to control the analytics. &nbsp;The flowlayout .xml file specifies<br>
+<ul><li>How to divide the log into time slices</li>
+<li>What types of analytics (scorers) are use to detect anomalies</li>
+<li>How to save the results</li></ul>
+How to divide logs into time slices is specified using the target namespace value&nbsp; <span style="font-style: italic;">FramingFlow</span> . 
+The <span style="font-style: italic;">duration </span>key defines the &nbsp;length of the interval in milliseconds.<span style="font-style: italic;"> </span>&nbsp; <br>
+<pre>&lt;tns:FramingFlow consecutive="true" duration="600000" name="tenMinutesTrain" databaseId="0"&gt;<br>    &lt;tns:FramerClass&gt;ConsecutiveTimeFramer&lt;/tns:FramerClass&gt;<br>  &lt;/tns:FramingFlow&gt;<br><br> &lt;tns:FramingFlow consecutive="true" duration="3600000" name="oneHour" databaseId="6"&gt;<br>    &lt;tns:FramerClass&gt;ContinuousTimeFramer&lt;/tns:FramerClass&gt;<br>    &lt;tns:FramerProperty Key="Permanent_Split_Factor" Value="6"/&gt;<br>    &lt;!--60 minutes will be split into 6 permanent XML output, which is 10 minutes per output--&gt;<br>    &lt;tns:FramerProperty Key="Temporary_Split_Factor" Value="5"/&gt;<br>    &lt;!--10 minutes will be split into 5 temporary XML output, which is 2 minutes per output--&gt;<br>  &lt;/tns:FramingFlow&gt;<br></pre>
+What analytics &nbsp;are defined &nbsp;using the target namespace value <span style="font-style: italic;">AnalysisGroupFlow</span>. Within the <span style="font-style: italic;">AnalysisGroupFlow </span>&nbsp;there are six target namespace values<br>
+<ul><li>UploadFramingFlow</li></ul><pre>    &lt;tns:UploadFramingFlow&gt;tenMinutesTrain&lt;/tns:UploadFramingFlow&gt;</pre>
+<ul><li>TrainingIntervalFactor</li></ul><pre>    &lt;tns:TrainingIntervalFactor&gt;6&lt;/tns:TrainingIntervalFactor&gt;</pre>
+<ul><li>AnalysisFramingFlow</li></ul><pre>&nbsp;&nbsp;&nbsp; &lt;tns:AnalysisFramingFlow&gt;oneHour&lt;/tns:AnalysisFramingFlow&gt;<br></pre>
+<ul><li>ScoringSchema</li></ul><pre>    &lt;tns:ScoringSchema id="LINUX01" ScoredEntity="message"&gt;<br>      &lt;tns:ScorerClass&gt;ClusteringContextScore&lt;/tns:ScorerClass&gt;<br>      &lt;tns:ScorerProperty Key="numClustersSqrtNumMsgs" Value="true"/&gt;<br>      &lt;tns:ScorerProperty Key="numClustersSqrtNumMsgsFactor" Value="3"/&gt;<br>      &lt;tns:ScorerProperty Key="numRuns" Value="50"/&gt;<br>      &lt;tns:ScorerProperty Key="clusterContextFraction" Value="0.3"/&gt;<br>      &lt;tns:ScorerProperty Key="seed" Value="1"/&gt;<br>      &lt;tns:ScorerProperty Key="maxTrials" Value="100000"/&gt;<br>      &lt;tns:ScorerProperty Key="maxIdleTrials" Value="15000"/&gt;<br>      &lt;tns:ScorerProperty Key="minAppearThresh" Value="3"/&gt;<br>      &lt;tns:ScorerProperty Key="alpha" Value="0.1"/&gt;<br>      &lt;tns:ScorerProperty Key="minAverageInformationRatio" Value="2"/&gt;<br>      &lt;tns:ScorerProperty Key="allowEmptyClusters" Value="false"/&gt;<br>      &lt;tns:ScorerProperty Key="useTimelineForMutualInformation" Value="true"/&gt;<br>      &lt;tns:ScorerProperty Key="trace" Value="false"/&gt;<br>    &lt;/tns:ScoringSchema&gt;</pre>
+<ul><li>Outputer</li></ul><pre>    &lt;tns:Outputer id="LINUXx35"&gt;<br>      &lt;tns:OutputerClass&gt;org.openmainframe.ade.ext.output.ExtJaxbAnalyzedIntervalV2XmlStorer&lt;/tns:OutputerClass&gt;<br>      &lt;tns:OutputerProperty Key="createXSLDirectory" Value="true"/&gt;<br>      &lt;tns:OutputerProperty Key="formatXMLOutput" Value="true"/&gt;<br>    &lt;/tns:Outputer&gt;<br></pre>
+<ul><li>Results&nbsp;</li></ul><pre>    &lt;tns:FinalAnomalyMessageScorer&gt;LINUX51&lt;/tns:FinalAnomalyMessageScorer&gt;<br>    &lt;tns:FinalAnomalyIntervalScorer&gt;LINUX52&lt;/tns:FinalAnomalyIntervalScorer&gt;</pre>
+<footer class="site-footer"> <span class="site-footer-owner"><a href="https://github.com/openmainframeproject/ade">ADE</a> is
+maintained by <a href="https://github.com/openmainframeproject/ade">Open Mainframe project - ADE</a>.</span>
+<span class="site-footer-credits">This page was generated
+by <a href="https://pages.github.com">GitHub Pages</a>
+using the <a href="https://github.com/jasonlong/cayman-theme">Cayman
+theme</a> by <a href="https://twitter.com/jasonlong">Jason
+Long</a>.</span> </footer>
+</body></html>

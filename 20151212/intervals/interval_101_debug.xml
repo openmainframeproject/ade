@@ -1,0 +1,1036 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<?xml-stylesheet href='./xslt/AnalyzedInterval.xsl' type="text/xsl" ?> 
+<AnalyzedInterval xsi:noNamespaceSchemaLocation="xslt/AnalyzedInterval.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Source>sys1.openmainframe.org</Source>
+    <StartTime>2015-12-12T16:00:00.000Z</StartTime>
+    <StartTimeUnix>1449936000000</StartTimeUnix>
+    <EndTime>2015-12-12T17:00:00.000Z</EndTime>
+    <EndTimeUnix>1449939600000</EndTimeUnix>
+    <AnomalyScore>0.995</AnomalyScore>
+    <ModelId>1</ModelId>
+    <AdeVersion>321</AdeVersion>
+    <AnalyzedMessageSummary MsgId="sshd_47">
+        <NumOccurrences>24</NumOccurrences>
+        <AnomalyScore>0.9990129101373006</AnomalyScore>
+        <ScoreSet>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.anomaly" Score="0.9990129101373006"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.logProb" Score="6.920749476374009"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.main" Score="0.9990129101373006"/>
+            <Score ScoreName="BestOfTwoScorer.anomaly" Score="0.9970501474926253"/>
+            <Score ScoreName="BestOfTwoScorer.logProb" Score="5.82600010738045"/>
+            <Score ScoreName="BestOfTwoScorer.main" Score="0.002949852507374632"/>
+            <Score ScoreName="ClusteringContextScore.clusterId" Score="14.0"/>
+            <Score ScoreName="ClusteringContextScore.main" Score="1.0"/>
+            <Score ScoreName="CriticalWordCountReporter.logProb" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.main" Score="0.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.frequency" Score="340.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.logProb" Score="5.82600010738045"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.main" Score="0.9970501474926253"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.probability" Score="0.0029498525073746312"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawAnomaly" Score="0.9970588235294118"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawLogProb" Score="5.8289456176102075"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.main" Score="1.0"/>
+            <Score ScoreName="LogNormalScore.isNew" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.logProb" Score="11.299746952348249"/>
+            <Score ScoreName="LogNormalScore.main" Score="0.9999876239444027"/>
+            <Score ScoreName="LogNormalScore.mean" Score="1.4234978142529124"/>
+            <Score ScoreName="SeverityScore.main" Score="1.0"/>
+            <Score ScoreName="anomaly" Score="0.9990129101373006"/>
+            <Score ScoreName="logProb" Score="6.920749476374009"/>
+            <Attribute ScoreAttributeName="BestOfTwoScorer.used" Value="FullBernoulliClusterAwareScore.logProb"/>
+            <Attribute ScoreAttributeName="ClusteringContextScore.status" Value="OUT_OF_CONTEXT"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.LastTime" Value="2015-12-12T15:51:00.000Z"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.main" Value="regular"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.res" Value="[870, 30, 870, 30, 870, 30, 870, 30]"/>
+        </ScoreSet>
+        <SummarizedText>Accepted keyboard-interactive/pam for user1 from 5dbf2b6d08477c5fc7774f590b31abd4f39be38a port * ssh2</SummarizedText>
+        <TextSample>Accepted keyboard-interactive/pam for user1 from 5dbf2b6d08477c5fc7774f590b31abd4f39be38a port 4726 ssh2</TextSample>
+        <TimeLine>
+            <Occurrence>0.09166667</Occurrence>
+            <Occurrence>0.1</Occurrence>
+            <Occurrence>0.34166667</Occurrence>
+            <Occurrence>0.35</Occurrence>
+            <Occurrence>0.59166664</Occurrence>
+            <Occurrence>0.6</Occurrence>
+            <Occurrence>0.84166664</Occurrence>
+            <Occurrence>0.85</Occurrence>
+        </TimeLine>
+    </AnalyzedMessageSummary>
+    <AnalyzedMessageSummary MsgId="/usr/sbin/cron(notes):/home/notes/getsysdata.ksh_311">
+        <NumOccurrences>4</NumOccurrences>
+        <AnomalyScore>0.9904962264578541</AnomalyScore>
+        <ScoreSet>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.anomaly" Score="0.9904962264578541"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.logProb" Score="4.656066344281889"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.main" Score="0.9904962264578541"/>
+            <Score ScoreName="BestOfTwoScorer.anomaly" Score="0.9970326409495549"/>
+            <Score ScoreName="BestOfTwoScorer.logProb" Score="5.820082930352362"/>
+            <Score ScoreName="BestOfTwoScorer.main" Score="0.0029673590504451044"/>
+            <Score ScoreName="ClusteringContextScore.clusterId" Score="-1.0"/>
+            <Score ScoreName="ClusteringContextScore.main" Score="1.0"/>
+            <Score ScoreName="CriticalWordCountReporter.logProb" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.main" Score="0.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.frequency" Score="338.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.logProb" Score="5.820082930352362"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.main" Score="1.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.probability" Score="0.002967359050445104"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawAnomaly" Score="0.9970414201183432"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawLogProb" Score="5.823045895483019"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.main" Score="1.0"/>
+            <Score ScoreName="LogNormalScore.isNew" Score="1.0"/>
+            <Score ScoreName="LogNormalScore.logProb" Score="-0.0"/>
+            <Score ScoreName="LogNormalScore.main" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.mean" Score="2.0"/>
+            <Score ScoreName="SeverityScore.main" Score="1.0"/>
+            <Score ScoreName="anomaly" Score="0.9904962264578541"/>
+            <Score ScoreName="logProb" Score="4.656066344281889"/>
+            <Attribute ScoreAttributeName="BestOfTwoScorer.used" Value="FullBernoulliClusterAwareScore.logProb"/>
+            <Attribute ScoreAttributeName="ClusteringContextScore.status" Value="NEW"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.LastTime" Value="2015-12-12T15:45:00.000Z"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.main" Value="regular"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.res" Value="[900, 900, 900, 900]"/>
+        </ScoreSet>
+        <SummarizedText>(notes) CMD (/home/notes/getsysdata.ksh 1&gt;/home/notes/run.out 2&gt;&amp;1)</SummarizedText>
+        <TextSample>(notes) CMD (/home/notes/getsysdata.ksh 1&gt;/home/notes/run.out 2&gt;&amp;1)</TextSample>
+        <TimeLine>
+            <Occurrence>0.0</Occurrence>
+            <Occurrence>0.25</Occurrence>
+            <Occurrence>0.5</Occurrence>
+            <Occurrence>0.75</Occurrence>
+        </TimeLine>
+    </AnalyzedMessageSummary>
+    <AnalyzedMessageSummary MsgId="/usr/sbin/cron(notesa):/home/notes/getdomdata.ksh_309">
+        <NumOccurrences>4</NumOccurrences>
+        <AnomalyScore>0.9904962264578541</AnomalyScore>
+        <ScoreSet>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.anomaly" Score="0.9904962264578541"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.logProb" Score="4.656066344281889"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.main" Score="0.9904962264578541"/>
+            <Score ScoreName="BestOfTwoScorer.anomaly" Score="0.9970326409495549"/>
+            <Score ScoreName="BestOfTwoScorer.logProb" Score="5.820082930352362"/>
+            <Score ScoreName="BestOfTwoScorer.main" Score="0.0029673590504451044"/>
+            <Score ScoreName="ClusteringContextScore.clusterId" Score="-1.0"/>
+            <Score ScoreName="ClusteringContextScore.main" Score="1.0"/>
+            <Score ScoreName="CriticalWordCountReporter.logProb" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.main" Score="0.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.frequency" Score="338.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.logProb" Score="5.820082930352362"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.main" Score="1.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.probability" Score="0.002967359050445104"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawAnomaly" Score="0.9970414201183432"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawLogProb" Score="5.823045895483019"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.main" Score="1.0"/>
+            <Score ScoreName="LogNormalScore.isNew" Score="1.0"/>
+            <Score ScoreName="LogNormalScore.logProb" Score="-0.0"/>
+            <Score ScoreName="LogNormalScore.main" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.mean" Score="2.0"/>
+            <Score ScoreName="SeverityScore.main" Score="1.0"/>
+            <Score ScoreName="anomaly" Score="0.9904962264578541"/>
+            <Score ScoreName="logProb" Score="4.656066344281889"/>
+            <Attribute ScoreAttributeName="BestOfTwoScorer.used" Value="FullBernoulliClusterAwareScore.logProb"/>
+            <Attribute ScoreAttributeName="ClusteringContextScore.status" Value="NEW"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.LastTime" Value="2015-12-12T15:45:00.000Z"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.main" Value="regular"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.res" Value="[900, 900, 900, 900]"/>
+        </ScoreSet>
+        <SummarizedText>(notesa) CMD (/home/notes/getdomdata.ksh 1&gt;~/doms.out 2&gt;&amp;1)</SummarizedText>
+        <TextSample>(notesa) CMD (/home/notes/getdomdata.ksh 1&gt;~/doms.out 2&gt;&amp;1)</TextSample>
+        <TimeLine>
+            <Occurrence>0.0</Occurrence>
+            <Occurrence>0.25</Occurrence>
+            <Occurrence>0.5</Occurrence>
+            <Occurrence>0.75</Occurrence>
+        </TimeLine>
+    </AnalyzedMessageSummary>
+    <AnalyzedMessageSummary MsgId="/usr/sbin/cron(notesb):/home/notes/getdomdata.ksh_312">
+        <NumOccurrences>4</NumOccurrences>
+        <AnomalyScore>0.9904962264578541</AnomalyScore>
+        <ScoreSet>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.anomaly" Score="0.9904962264578541"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.logProb" Score="4.656066344281889"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.main" Score="0.9904962264578541"/>
+            <Score ScoreName="BestOfTwoScorer.anomaly" Score="0.9970326409495549"/>
+            <Score ScoreName="BestOfTwoScorer.logProb" Score="5.820082930352362"/>
+            <Score ScoreName="BestOfTwoScorer.main" Score="0.0029673590504451044"/>
+            <Score ScoreName="ClusteringContextScore.clusterId" Score="-1.0"/>
+            <Score ScoreName="ClusteringContextScore.main" Score="1.0"/>
+            <Score ScoreName="CriticalWordCountReporter.logProb" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.main" Score="0.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.frequency" Score="338.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.logProb" Score="5.820082930352362"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.main" Score="1.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.probability" Score="0.002967359050445104"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawAnomaly" Score="0.9970414201183432"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawLogProb" Score="5.823045895483019"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.main" Score="1.0"/>
+            <Score ScoreName="LogNormalScore.isNew" Score="1.0"/>
+            <Score ScoreName="LogNormalScore.logProb" Score="-0.0"/>
+            <Score ScoreName="LogNormalScore.main" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.mean" Score="2.0"/>
+            <Score ScoreName="SeverityScore.main" Score="1.0"/>
+            <Score ScoreName="anomaly" Score="0.9904962264578541"/>
+            <Score ScoreName="logProb" Score="4.656066344281889"/>
+            <Attribute ScoreAttributeName="BestOfTwoScorer.used" Value="FullBernoulliClusterAwareScore.logProb"/>
+            <Attribute ScoreAttributeName="ClusteringContextScore.status" Value="NEW"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.LastTime" Value="2015-12-12T15:45:00.000Z"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.main" Value="regular"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.res" Value="[900, 900, 900, 900]"/>
+        </ScoreSet>
+        <SummarizedText>(notesb) CMD (/home/notes/getdomdata.ksh 1&gt;~/doms.out 2&gt;&amp;1)</SummarizedText>
+        <TextSample>(notesb) CMD (/home/notes/getdomdata.ksh 1&gt;~/doms.out 2&gt;&amp;1)</TextSample>
+        <TimeLine>
+            <Occurrence>0.0</Occurrence>
+            <Occurrence>0.25</Occurrence>
+            <Occurrence>0.5</Occurrence>
+            <Occurrence>0.75</Occurrence>
+        </TimeLine>
+    </AnalyzedMessageSummary>
+    <AnalyzedMessageSummary MsgId="kernel_280">
+        <NumOccurrences>107</NumOccurrences>
+        <AnomalyScore>0.9904962264578541</AnomalyScore>
+        <ScoreSet>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.anomaly" Score="0.9904962264578541"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.logProb" Score="4.656066344281889"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.main" Score="0.9904962264578541"/>
+            <Score ScoreName="BestOfTwoScorer.anomaly" Score="0.9970326409495549"/>
+            <Score ScoreName="BestOfTwoScorer.logProb" Score="5.820082930352362"/>
+            <Score ScoreName="BestOfTwoScorer.main" Score="0.0029673590504451044"/>
+            <Score ScoreName="ClusteringContextScore.clusterId" Score="-1.0"/>
+            <Score ScoreName="ClusteringContextScore.main" Score="1.0"/>
+            <Score ScoreName="CriticalWordCountReporter.logProb" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.main" Score="0.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.frequency" Score="338.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.logProb" Score="5.820082930352362"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.main" Score="1.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.probability" Score="0.002967359050445104"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawAnomaly" Score="0.9970414201183432"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawLogProb" Score="5.823045895483019"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.main" Score="1.0"/>
+            <Score ScoreName="LogNormalScore.isNew" Score="1.0"/>
+            <Score ScoreName="LogNormalScore.logProb" Score="-0.0"/>
+            <Score ScoreName="LogNormalScore.main" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.mean" Score="2.0"/>
+            <Score ScoreName="SeverityScore.main" Score="1.0"/>
+            <Score ScoreName="anomaly" Score="0.9904962264578541"/>
+            <Score ScoreName="logProb" Score="4.656066344281889"/>
+            <Attribute ScoreAttributeName="BestOfTwoScorer.used" Value="FullBernoulliClusterAwareScore.logProb"/>
+            <Attribute ScoreAttributeName="ClusteringContextScore.status" Value="NEW"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.LastTime" Value="2015-12-12T15:56:30.000Z"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.main" Value="regular"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.res" Value="[270, 210, 300, 240, 300, 300, 300, 240, 270, 330, 300, 300, 300]"/>
+        </ScoreSet>
+        <SummarizedText>TCP: Possible SYN flooding on port 1352. Sending cookies.</SummarizedText>
+        <TextSample>TCP: Possible SYN flooding on port 1352. Sending cookies.</TextSample>
+        <TimeLine>
+            <Occurrence>0.016666668</Occurrence>
+            <Occurrence>0.075</Occurrence>
+            <Occurrence>0.15833333</Occurrence>
+            <Occurrence>0.225</Occurrence>
+            <Occurrence>0.30833334</Occurrence>
+            <Occurrence>0.39166668</Occurrence>
+            <Occurrence>0.475</Occurrence>
+            <Occurrence>0.5416667</Occurrence>
+            <Occurrence>0.6166667</Occurrence>
+            <Occurrence>0.7083333</Occurrence>
+            <Occurrence>0.7916667</Occurrence>
+            <Occurrence>0.875</Occurrence>
+            <Occurrence>0.9583333</Occurrence>
+        </TimeLine>
+    </AnalyzedMessageSummary>
+    <AnalyzedMessageSummary MsgId="kernel_286">
+        <NumOccurrences>8</NumOccurrences>
+        <AnomalyScore>0.9904962264578541</AnomalyScore>
+        <ScoreSet>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.anomaly" Score="0.9904962264578541"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.logProb" Score="4.656066344281889"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.main" Score="0.9904962264578541"/>
+            <Score ScoreName="BestOfTwoScorer.anomaly" Score="0.9970326409495549"/>
+            <Score ScoreName="BestOfTwoScorer.logProb" Score="5.820082930352362"/>
+            <Score ScoreName="BestOfTwoScorer.main" Score="0.0029673590504451044"/>
+            <Score ScoreName="ClusteringContextScore.clusterId" Score="-1.0"/>
+            <Score ScoreName="ClusteringContextScore.main" Score="1.0"/>
+            <Score ScoreName="CriticalWordCountReporter.logProb" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.main" Score="0.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.frequency" Score="338.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.logProb" Score="5.820082930352362"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.main" Score="1.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.probability" Score="0.002967359050445104"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawAnomaly" Score="0.9970414201183432"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawLogProb" Score="5.823045895483019"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.main" Score="1.0"/>
+            <Score ScoreName="LogNormalScore.isNew" Score="1.0"/>
+            <Score ScoreName="LogNormalScore.logProb" Score="-0.0"/>
+            <Score ScoreName="LogNormalScore.main" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.mean" Score="2.0"/>
+            <Score ScoreName="SeverityScore.main" Score="1.0"/>
+            <Score ScoreName="anomaly" Score="0.9904962264578541"/>
+            <Score ScoreName="logProb" Score="4.656066344281889"/>
+            <Attribute ScoreAttributeName="BestOfTwoScorer.used" Value="FullBernoulliClusterAwareScore.logProb"/>
+            <Attribute ScoreAttributeName="ClusteringContextScore.status" Value="NEW"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.LastTime" Value="2015-12-12T15:56:30.000Z"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.main" Value="regular"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.res" Value="[270, 210, 540, 300, 600, 510, 330, 600]"/>
+        </ScoreSet>
+        <SummarizedText>net_ratelimit: * callbacks suppressed</SummarizedText>
+        <TextSample>net_ratelimit: 10 callbacks suppressed</TextSample>
+        <TimeLine>
+            <Occurrence>0.016666668</Occurrence>
+            <Occurrence>0.075</Occurrence>
+            <Occurrence>0.225</Occurrence>
+            <Occurrence>0.30833334</Occurrence>
+            <Occurrence>0.475</Occurrence>
+            <Occurrence>0.6166667</Occurrence>
+            <Occurrence>0.7083333</Occurrence>
+            <Occurrence>0.875</Occurrence>
+        </TimeLine>
+    </AnalyzedMessageSummary>
+    <AnalyzedMessageSummary MsgId="sshd_281">
+        <NumOccurrences>24</NumOccurrences>
+        <AnomalyScore>0.9904962264578541</AnomalyScore>
+        <ScoreSet>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.anomaly" Score="0.9904962264578541"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.logProb" Score="4.656066344281889"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.main" Score="0.9904962264578541"/>
+            <Score ScoreName="BestOfTwoScorer.anomaly" Score="0.9970326409495549"/>
+            <Score ScoreName="BestOfTwoScorer.logProb" Score="5.820082930352362"/>
+            <Score ScoreName="BestOfTwoScorer.main" Score="0.0029673590504451044"/>
+            <Score ScoreName="ClusteringContextScore.clusterId" Score="-1.0"/>
+            <Score ScoreName="ClusteringContextScore.main" Score="1.0"/>
+            <Score ScoreName="CriticalWordCountReporter.logProb" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.main" Score="0.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.frequency" Score="338.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.logProb" Score="5.820082930352362"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.main" Score="1.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.probability" Score="0.002967359050445104"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawAnomaly" Score="0.9970414201183432"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawLogProb" Score="5.823045895483019"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.main" Score="1.0"/>
+            <Score ScoreName="LogNormalScore.isNew" Score="1.0"/>
+            <Score ScoreName="LogNormalScore.logProb" Score="-0.0"/>
+            <Score ScoreName="LogNormalScore.main" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.mean" Score="2.0"/>
+            <Score ScoreName="SeverityScore.main" Score="1.0"/>
+            <Score ScoreName="anomaly" Score="0.9904962264578541"/>
+            <Score ScoreName="logProb" Score="4.656066344281889"/>
+            <Attribute ScoreAttributeName="BestOfTwoScorer.used" Value="FullBernoulliClusterAwareScore.logProb"/>
+            <Attribute ScoreAttributeName="ClusteringContextScore.status" Value="NEW"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.LastTime" Value="2015-12-12T15:51:00.000Z"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.main" Value="regular"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.res" Value="[870, 30, 870, 30, 870, 30, 870, 30]"/>
+        </ScoreSet>
+        <SummarizedText>subsystem request for sftp by user user1</SummarizedText>
+        <TextSample>subsystem request for sftp by user user1</TextSample>
+        <TimeLine>
+            <Occurrence>0.09166667</Occurrence>
+            <Occurrence>0.1</Occurrence>
+            <Occurrence>0.34166667</Occurrence>
+            <Occurrence>0.35</Occurrence>
+            <Occurrence>0.59166664</Occurrence>
+            <Occurrence>0.6</Occurrence>
+            <Occurrence>0.84166664</Occurrence>
+            <Occurrence>0.85</Occurrence>
+        </TimeLine>
+    </AnalyzedMessageSummary>
+    <AnalyzedMessageSummary MsgId="syslog-ng_279">
+        <NumOccurrences>1</NumOccurrences>
+        <AnomalyScore>0.9904962264578541</AnomalyScore>
+        <ScoreSet>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.anomaly" Score="0.9904962264578541"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.logProb" Score="4.656066344281889"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.main" Score="0.9904962264578541"/>
+            <Score ScoreName="BestOfTwoScorer.anomaly" Score="0.9970326409495549"/>
+            <Score ScoreName="BestOfTwoScorer.logProb" Score="5.820082930352362"/>
+            <Score ScoreName="BestOfTwoScorer.main" Score="0.0029673590504451044"/>
+            <Score ScoreName="ClusteringContextScore.clusterId" Score="-1.0"/>
+            <Score ScoreName="ClusteringContextScore.main" Score="1.0"/>
+            <Score ScoreName="CriticalWordCountReporter.logProb" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.main" Score="0.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.frequency" Score="338.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.logProb" Score="5.820082930352362"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.main" Score="1.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.probability" Score="0.002967359050445104"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawAnomaly" Score="0.9970414201183432"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawLogProb" Score="5.823045895483019"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.main" Score="1.0"/>
+            <Score ScoreName="LogNormalScore.isNew" Score="1.0"/>
+            <Score ScoreName="LogNormalScore.logProb" Score="-0.0"/>
+            <Score ScoreName="LogNormalScore.main" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.mean" Score="2.0"/>
+            <Score ScoreName="SeverityScore.main" Score="1.0"/>
+            <Score ScoreName="anomaly" Score="0.9904962264578541"/>
+            <Score ScoreName="logProb" Score="4.656066344281889"/>
+            <Attribute ScoreAttributeName="BestOfTwoScorer.used" Value="FullBernoulliClusterAwareScore.logProb"/>
+            <Attribute ScoreAttributeName="ClusteringContextScore.status" Value="NEW"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.LastTime" Value="2015-12-12T15:45:00.000Z"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.main" Value="regular"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.res" Value="[3600]"/>
+        </ScoreSet>
+        <SummarizedText>Log statistics; dropped='pipe(/dev/xconsole)=0', processed='center(queued)=75660', processed='center(received)=27644', processed='destination(messages)=8668', processed='destination(mailinfo)=11196', processed='destination(mailwarn)=0', processed='destination(localmessages)=0', processed='destination(newserr)=0', processed='destination(mailerr)=0', processed='destination(warn)=492', processed='destination(console)=452', processed='destination(netmgm)=0', processed='destination(mail)=11196', processed='destination(xconsole)=452', processed='destination(firewall)=0', processed='destination(zaware)=27644', processed='destination(secure)=15560', processed='destination(acpid)=0', processed='destination(newscrit)=0', processed='destination(newsnotice)=0', processed='source(src)=27644'</SummarizedText>
+        <TextSample>Log statistics; dropped='pipe(/dev/xconsole)=0', processed='center(queued)=75660', processed='center(received)=27644', processed='destination(messages)=8668', processed='destination(mailinfo)=11196', processed='destination(mailwarn)=0', processed='destination(localmessages)=0', processed='destination(newserr)=0', processed='destination(mailerr)=0', processed='destination(warn)=492', processed='destination(console)=452', processed='destination(netmgm)=0', processed='destination(mail)=11196', processed='destination(xconsole)=452', processed='destination(firewall)=0', processed='destination(zaware)=27644', processed='destination(secure)=15560', processed='destination(acpid)=0', processed='destination(newscrit)=0', processed='destination(newsnotice)=0', processed='source(src)=27644'</TextSample>
+        <TimeLine>
+            <Occurrence>0.75</Occurrence>
+        </TimeLine>
+    </AnalyzedMessageSummary>
+    <AnalyzedMessageSummary MsgId="postfix/cleanup_15">
+        <NumOccurrences>24</NumOccurrences>
+        <AnomalyScore>0.9674946511535811</AnomalyScore>
+        <ScoreSet>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.anomaly" Score="0.9674946511535811"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.logProb" Score="3.4263506232984176"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.main" Score="0.9674946511535811"/>
+            <Score ScoreName="BestOfTwoScorer.anomaly" Score="0.9861111111111112"/>
+            <Score ScoreName="BestOfTwoScorer.logProb" Score="4.276666119016055"/>
+            <Score ScoreName="BestOfTwoScorer.main" Score="0.013888888888888888"/>
+            <Score ScoreName="ClusteringContextScore.clusterId" Score="15.0"/>
+            <Score ScoreName="ClusteringContextScore.main" Score="1.0"/>
+            <Score ScoreName="CriticalWordCountReporter.logProb" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.main" Score="0.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.frequency" Score="340.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.logProb" Score="5.82600010738045"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.main" Score="0.9970501474926253"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.probability" Score="0.0029498525073746312"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawAnomaly" Score="0.9970588235294118"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawLogProb" Score="5.8289456176102075"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.LogProbGivenLast" Score="4.276666119016055"/>
+            <Score ScoreName="LastSeenScorer.anomaly" Score="0.9840510366826156"/>
+            <Score ScoreName="LastSeenScorer.logProb" Score="4.138361447638875"/>
+            <Score ScoreName="LastSeenScorer.main" Score="0.01594896331738437"/>
+            <Score ScoreName="LastSeenScorer.maxl" Score="0.13830467137718028"/>
+            <Score ScoreName="LogNormalScore.isNew" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.logProb" Score="0.025088640427866737"/>
+            <Score ScoreName="LogNormalScore.main" Score="0.024776536028119245"/>
+            <Score ScoreName="LogNormalScore.mean" Score="16.494435213356095"/>
+            <Score ScoreName="SeverityScore.main" Score="1.0"/>
+            <Score ScoreName="anomaly" Score="0.9674946511535811"/>
+            <Score ScoreName="logProb" Score="3.4263506232984176"/>
+            <Attribute ScoreAttributeName="BestOfTwoScorer.used" Value="LastSeenScorer.LogProbGivenLast"/>
+            <Attribute ScoreAttributeName="ClusteringContextScore.status" Value="OUT_OF_CONTEXT"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.LastTime" Value="2015-12-12T15:45:30.000Z"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.main" Value="regular"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.res" Value="[870, 900, 30, 870, 900]"/>
+            <Attribute ScoreAttributeName="LastSeenScorer.PerTickScores" Value="[4.138361447638875, 0.0, 3.732896339530711, 0.0, 0.0]"/>
+        </ScoreSet>
+        <SummarizedText>*: message-id=&lt;*.pok.ibm.com&gt;</SummarizedText>
+        <TextSample>97657521: message-id=&lt;3f20704e07b151956586e1ee3eff369ef8fefc6f.pok.ibm.com&gt;</TextSample>
+        <TimeLine>
+            <Occurrence>0.0</Occurrence>
+            <Occurrence>0.25</Occurrence>
+            <Occurrence>0.25833333</Occurrence>
+            <Occurrence>0.5</Occurrence>
+            <Occurrence>0.75</Occurrence>
+        </TimeLine>
+    </AnalyzedMessageSummary>
+    <AnalyzedMessageSummary MsgId="postfix/qmgr_16">
+        <NumOccurrences>24</NumOccurrences>
+        <AnomalyScore>0.9674946511535811</AnomalyScore>
+        <ScoreSet>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.anomaly" Score="0.9674946511535811"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.logProb" Score="3.4263506232984176"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.main" Score="0.9674946511535811"/>
+            <Score ScoreName="BestOfTwoScorer.anomaly" Score="0.9861111111111112"/>
+            <Score ScoreName="BestOfTwoScorer.logProb" Score="4.276666119016055"/>
+            <Score ScoreName="BestOfTwoScorer.main" Score="0.013888888888888888"/>
+            <Score ScoreName="ClusteringContextScore.clusterId" Score="15.0"/>
+            <Score ScoreName="ClusteringContextScore.main" Score="1.0"/>
+            <Score ScoreName="CriticalWordCountReporter.logProb" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.main" Score="0.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.frequency" Score="340.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.logProb" Score="5.82600010738045"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.main" Score="0.9970501474926253"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.probability" Score="0.0029498525073746312"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawAnomaly" Score="0.9970588235294118"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawLogProb" Score="5.8289456176102075"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.LogProbGivenLast" Score="4.276666119016055"/>
+            <Score ScoreName="LastSeenScorer.anomaly" Score="0.9840510366826156"/>
+            <Score ScoreName="LastSeenScorer.logProb" Score="4.138361447638875"/>
+            <Score ScoreName="LastSeenScorer.main" Score="0.01594896331738437"/>
+            <Score ScoreName="LastSeenScorer.maxl" Score="0.13830467137718028"/>
+            <Score ScoreName="LogNormalScore.isNew" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.logProb" Score="0.025088640427866737"/>
+            <Score ScoreName="LogNormalScore.main" Score="0.024776536028119245"/>
+            <Score ScoreName="LogNormalScore.mean" Score="16.494435213356095"/>
+            <Score ScoreName="SeverityScore.main" Score="1.0"/>
+            <Score ScoreName="anomaly" Score="0.9674946511535811"/>
+            <Score ScoreName="logProb" Score="3.4263506232984176"/>
+            <Attribute ScoreAttributeName="BestOfTwoScorer.used" Value="LastSeenScorer.LogProbGivenLast"/>
+            <Attribute ScoreAttributeName="ClusteringContextScore.status" Value="OUT_OF_CONTEXT"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.LastTime" Value="2015-12-12T15:45:30.000Z"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.main" Value="regular"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.res" Value="[870, 900, 30, 870, 900]"/>
+            <Attribute ScoreAttributeName="LastSeenScorer.PerTickScores" Value="[4.138361447638875, 0.0, 3.732896339530711, 0.0, 0.0]"/>
+        </ScoreSet>
+        <SummarizedText>*: from=&lt;4cc7ea0db01495b595e9919334966f65b41ff926.pok.ibm.com&gt;, size=*, nrcpt=1 (queue active)</SummarizedText>
+        <TextSample>97657521: from=&lt;4cc7ea0db01495b595e9919334966f65b41ff926.pok.ibm.com&gt;, size=551, nrcpt=1 (queue active)</TextSample>
+        <TimeLine>
+            <Occurrence>0.0</Occurrence>
+            <Occurrence>0.25</Occurrence>
+            <Occurrence>0.25833333</Occurrence>
+            <Occurrence>0.5</Occurrence>
+            <Occurrence>0.75</Occurrence>
+        </TimeLine>
+    </AnalyzedMessageSummary>
+    <AnalyzedMessageSummary MsgId="/usr/sbin/cron(root):/var/adm/perfmgr/bin/verify.srm_20">
+        <NumOccurrences>2</NumOccurrences>
+        <AnomalyScore>0.002391462259981103</AnomalyScore>
+        <ScoreSet>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.anomaly" Score="0.002391462259981103"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.logProb" Score="0.0023943263730416423"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.main" Score="0.002391462259981103"/>
+            <Score ScoreName="BestOfTwoScorer.anomaly" Score="0.0029761904761904656"/>
+            <Score ScoreName="BestOfTwoScorer.logProb" Score="0.0029806281381377893"/>
+            <Score ScoreName="BestOfTwoScorer.main" Score="0.9970238095238095"/>
+            <Score ScoreName="ClusteringContextScore.clusterId" Score="15.0"/>
+            <Score ScoreName="ClusteringContextScore.main" Score="1.0"/>
+            <Score ScoreName="CriticalWordCountReporter.logProb" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.main" Score="0.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.frequency" Score="340.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.logProb" Score="5.82600010738045"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.main" Score="0.9970501474926253"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.probability" Score="0.0029498525073746312"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawAnomaly" Score="0.9970588235294118"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawLogProb" Score="5.8289456176102075"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.LogProbGivenLast" Score="0.0029806281381377893"/>
+            <Score ScoreName="LastSeenScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.main" Score="1.0"/>
+            <Score ScoreName="LastSeenScorer.maxl" Score="0.0029806281381377893"/>
+            <Score ScoreName="LogNormalScore.isNew" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.logProb" Score="4.911931265705327E-5"/>
+            <Score ScoreName="LogNormalScore.main" Score="4.911810632335367E-5"/>
+            <Score ScoreName="LogNormalScore.mean" Score="1.983661253945203"/>
+            <Score ScoreName="SeverityScore.main" Score="1.0"/>
+            <Score ScoreName="anomaly" Score="0.002391462259981103"/>
+            <Score ScoreName="logProb" Score="0.0023943263730416423"/>
+            <Attribute ScoreAttributeName="BestOfTwoScorer.used" Value="LastSeenScorer.LogProbGivenLast"/>
+            <Attribute ScoreAttributeName="ClusteringContextScore.status" Value="OUT_OF_CONTEXT"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.LastTime" Value="2015-12-12T15:55:00.000Z"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.main" Value="regular"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.res" Value="[1800, 1800]"/>
+            <Attribute ScoreAttributeName="LastSeenScorer.PerTickScores" Value="[0.0, 0.0]"/>
+        </ScoreSet>
+        <SummarizedText>(root) CMD (/var/adm/perfmgr/bin/verify.srm)</SummarizedText>
+        <TextSample>(root) CMD (/var/adm/perfmgr/bin/verify.srm)</TextSample>
+        <TimeLine>
+            <Occurrence>0.41666666</Occurrence>
+            <Occurrence>0.9166667</Occurrence>
+        </TimeLine>
+    </AnalyzedMessageSummary>
+    <AnalyzedMessageSummary MsgId="/usr/sbin/cron(root):/usr/local/support/workfstest_10">
+        <NumOccurrences>12</NumOccurrences>
+        <AnomalyScore>0.0</AnomalyScore>
+        <ScoreSet>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.anomaly" Score="0.0"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.logProb" Score="0.0"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.main" Score="0.0"/>
+            <Score ScoreName="BestOfTwoScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="BestOfTwoScorer.logProb" Score="-5.8260001073804535"/>
+            <Score ScoreName="BestOfTwoScorer.main" Score="1.0"/>
+            <Score ScoreName="ClusteringContextScore.clusterId" Score="4.0"/>
+            <Score ScoreName="ClusteringContextScore.main" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.logProb" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.main" Score="0.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.frequency" Score="1.0029498525073746"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.logProb" Score="-5.8260001073804535"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.main" Score="-338.0000000000012"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.probability" Score="339.0000000000012"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawAnomaly" Score="0.002941176470588225"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawLogProb" Score="0.002945510229756803"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.LogProbGivenLast" Score="4.961548104758767E-4"/>
+            <Score ScoreName="LastSeenScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.main" Score="1.0"/>
+            <Score ScoreName="LastSeenScorer.maxl" Score="4.961548104758767E-4"/>
+            <Score ScoreName="LogNormalScore.isNew" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.logProb" Score="1.414283015654938E-5"/>
+            <Score ScoreName="LogNormalScore.main" Score="1.4142730147215232E-5"/>
+            <Score ScoreName="LogNormalScore.mean" Score="11.899983731248682"/>
+            <Score ScoreName="SeverityScore.main" Score="1.0"/>
+            <Score ScoreName="anomaly" Score="0.0"/>
+            <Score ScoreName="logProb" Score="0.0"/>
+            <Attribute ScoreAttributeName="BestOfTwoScorer.used" Value="FullBernoulliClusterAwareScore.logProb"/>
+            <Attribute ScoreAttributeName="ClusteringContextScore.status" Value="IN_CONTEXT"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.LastTime" Value="2015-12-12T15:55:00.000Z"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.main" Value="regular"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.res" Value="[300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300]"/>
+            <Attribute ScoreAttributeName="LastSeenScorer.PerTickScores" Value="[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]"/>
+        </ScoreSet>
+        <SummarizedText>(root) CMD (/usr/local/support/workfstest)</SummarizedText>
+        <TextSample>(root) CMD (/usr/local/support/workfstest)</TextSample>
+        <TimeLine>
+            <Occurrence>0.0</Occurrence>
+            <Occurrence>0.083333336</Occurrence>
+            <Occurrence>0.16666667</Occurrence>
+            <Occurrence>0.25</Occurrence>
+            <Occurrence>0.33333334</Occurrence>
+            <Occurrence>0.41666666</Occurrence>
+            <Occurrence>0.5</Occurrence>
+            <Occurrence>0.5833333</Occurrence>
+            <Occurrence>0.6666667</Occurrence>
+            <Occurrence>0.75</Occurrence>
+            <Occurrence>0.8333333</Occurrence>
+            <Occurrence>0.9166667</Occurrence>
+        </TimeLine>
+    </AnalyzedMessageSummary>
+    <AnalyzedMessageSummary MsgId="postfix/local_17">
+        <NumOccurrences>12</NumOccurrences>
+        <AnomalyScore>0.0</AnomalyScore>
+        <ScoreSet>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.anomaly" Score="0.0"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.logProb" Score="0.0"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.main" Score="0.0"/>
+            <Score ScoreName="BestOfTwoScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="BestOfTwoScorer.logProb" Score="-5.8260001073804535"/>
+            <Score ScoreName="BestOfTwoScorer.main" Score="1.0"/>
+            <Score ScoreName="ClusteringContextScore.clusterId" Score="4.0"/>
+            <Score ScoreName="ClusteringContextScore.main" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.logProb" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.main" Score="0.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.frequency" Score="1.0029498525073746"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.logProb" Score="-5.8260001073804535"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.main" Score="-338.0000000000012"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.probability" Score="339.0000000000012"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawAnomaly" Score="0.002941176470588225"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawLogProb" Score="0.002945510229756803"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.LogProbGivenLast" Score="7.2456550675945355"/>
+            <Score ScoreName="LastSeenScorer.anomaly" Score="0.9992223950233281"/>
+            <Score ScoreName="LastSeenScorer.logProb" Score="7.1592919047975645"/>
+            <Score ScoreName="LastSeenScorer.main" Score="7.776049766718509E-4"/>
+            <Score ScoreName="LastSeenScorer.maxl" Score="0.0863631627969707"/>
+            <Score ScoreName="LogNormalScore.isNew" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.logProb" Score="0.03536381051669779"/>
+            <Score ScoreName="LogNormalScore.main" Score="0.03474581725275194"/>
+            <Score ScoreName="LogNormalScore.mean" Score="8.162530601971598"/>
+            <Score ScoreName="SeverityScore.main" Score="1.0"/>
+            <Score ScoreName="anomaly" Score="0.0"/>
+            <Score ScoreName="logProb" Score="0.0"/>
+            <Attribute ScoreAttributeName="BestOfTwoScorer.used" Value="FullBernoulliClusterAwareScore.logProb"/>
+            <Attribute ScoreAttributeName="ClusteringContextScore.status" Value="IN_CONTEXT"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.LastTime" Value="2015-12-12T15:45:30.000Z"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.main" Value="regular"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.res" Value="[870, 900, 30, 870, 900]"/>
+            <Attribute ScoreAttributeName="LastSeenScorer.PerTickScores" Value="[7.1592919047975645, 0.0, 7.1592919047975645, 0.0, 0.0]"/>
+        </ScoreSet>
+        <SummarizedText>*: to=&lt;4cc7ea0db01495b595e9919334966f65b41ff926.pok.ibm.com&gt;, orig_to=&lt;root&gt;, relay=local, delay=*, delays=*/0*/0/0.*, dsn=2.0.0, status=sent (forwarded as *)</SummarizedText>
+        <TextSample>97657521: to=&lt;4cc7ea0db01495b595e9919334966f65b41ff926.pok.ibm.com&gt;, orig_to=&lt;root&gt;, relay=local, delay=0.16, delays=0.11/0.04/0/0.01, dsn=2.0.0, status=sent (forwarded as AD47F4BE)</TextSample>
+        <TimeLine>
+            <Occurrence>0.0</Occurrence>
+            <Occurrence>0.25</Occurrence>
+            <Occurrence>0.25833333</Occurrence>
+            <Occurrence>0.5</Occurrence>
+            <Occurrence>0.75</Occurrence>
+        </TimeLine>
+    </AnalyzedMessageSummary>
+    <AnalyzedMessageSummary MsgId="postfix/pickup_13">
+        <NumOccurrences>12</NumOccurrences>
+        <AnomalyScore>0.0</AnomalyScore>
+        <ScoreSet>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.anomaly" Score="0.0"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.logProb" Score="0.0"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.main" Score="0.0"/>
+            <Score ScoreName="BestOfTwoScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="BestOfTwoScorer.logProb" Score="-5.8260001073804535"/>
+            <Score ScoreName="BestOfTwoScorer.main" Score="1.0"/>
+            <Score ScoreName="ClusteringContextScore.clusterId" Score="4.0"/>
+            <Score ScoreName="ClusteringContextScore.main" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.logProb" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.main" Score="0.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.frequency" Score="1.0029498525073746"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.logProb" Score="-5.8260001073804535"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.main" Score="-338.0000000000012"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.probability" Score="339.0000000000012"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawAnomaly" Score="0.002941176470588225"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawLogProb" Score="0.002945510229756803"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.LogProbGivenLast" Score="7.2456550675945355"/>
+            <Score ScoreName="LastSeenScorer.anomaly" Score="0.9992223950233281"/>
+            <Score ScoreName="LastSeenScorer.logProb" Score="7.1592919047975645"/>
+            <Score ScoreName="LastSeenScorer.main" Score="7.776049766718509E-4"/>
+            <Score ScoreName="LastSeenScorer.maxl" Score="0.0863631627969707"/>
+            <Score ScoreName="LogNormalScore.isNew" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.logProb" Score="0.03522431694753814"/>
+            <Score ScoreName="LogNormalScore.main" Score="0.03461116111003959"/>
+            <Score ScoreName="LogNormalScore.mean" Score="8.168221387373963"/>
+            <Score ScoreName="SeverityScore.main" Score="1.0"/>
+            <Score ScoreName="anomaly" Score="0.0"/>
+            <Score ScoreName="logProb" Score="0.0"/>
+            <Attribute ScoreAttributeName="BestOfTwoScorer.used" Value="FullBernoulliClusterAwareScore.logProb"/>
+            <Attribute ScoreAttributeName="ClusteringContextScore.status" Value="IN_CONTEXT"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.LastTime" Value="2015-12-12T15:45:30.000Z"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.main" Value="regular"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.res" Value="[870, 900, 30, 870, 900]"/>
+            <Attribute ScoreAttributeName="LastSeenScorer.PerTickScores" Value="[7.1592919047975645, 0.0, 7.1592919047975645, 0.0, 0.0]"/>
+        </ScoreSet>
+        <SummarizedText>*: uid=0 from=&lt;root&gt;</SummarizedText>
+        <TextSample>97657521: uid=0 from=&lt;root&gt;</TextSample>
+        <TimeLine>
+            <Occurrence>0.0</Occurrence>
+            <Occurrence>0.25</Occurrence>
+            <Occurrence>0.25833333</Occurrence>
+            <Occurrence>0.5</Occurrence>
+            <Occurrence>0.75</Occurrence>
+        </TimeLine>
+    </AnalyzedMessageSummary>
+    <AnalyzedMessageSummary MsgId="postfix/qmgr_18">
+        <NumOccurrences>24</NumOccurrences>
+        <AnomalyScore>0.0</AnomalyScore>
+        <ScoreSet>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.anomaly" Score="0.0"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.logProb" Score="0.0"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.main" Score="0.0"/>
+            <Score ScoreName="BestOfTwoScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="BestOfTwoScorer.logProb" Score="-5.8260001073804535"/>
+            <Score ScoreName="BestOfTwoScorer.main" Score="1.0"/>
+            <Score ScoreName="ClusteringContextScore.clusterId" Score="4.0"/>
+            <Score ScoreName="ClusteringContextScore.main" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.logProb" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.main" Score="0.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.frequency" Score="1.0029498525073746"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.logProb" Score="-5.8260001073804535"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.main" Score="-338.0000000000012"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.probability" Score="339.0000000000012"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawAnomaly" Score="0.002941176470588225"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawLogProb" Score="0.002945510229756803"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.LogProbGivenLast" Score="4.099884742597716"/>
+            <Score ScoreName="LastSeenScorer.anomaly" Score="0.9807383627608347"/>
+            <Score ScoreName="LastSeenScorer.logProb" Score="3.9496398689994527"/>
+            <Score ScoreName="LastSeenScorer.main" Score="0.01926163723916533"/>
+            <Score ScoreName="LastSeenScorer.maxl" Score="0.15024487359826316"/>
+            <Score ScoreName="LogNormalScore.isNew" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.logProb" Score="0.025088640427866737"/>
+            <Score ScoreName="LogNormalScore.main" Score="0.024776536028119245"/>
+            <Score ScoreName="LogNormalScore.mean" Score="16.494435213356095"/>
+            <Score ScoreName="SeverityScore.main" Score="1.0"/>
+            <Score ScoreName="anomaly" Score="0.0"/>
+            <Score ScoreName="logProb" Score="0.0"/>
+            <Attribute ScoreAttributeName="BestOfTwoScorer.used" Value="FullBernoulliClusterAwareScore.logProb"/>
+            <Attribute ScoreAttributeName="ClusteringContextScore.status" Value="IN_CONTEXT"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.LastTime" Value="2015-12-12T15:45:30.000Z"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.main" Value="regular"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.res" Value="[870, 900, 30, 870, 900]"/>
+            <Attribute ScoreAttributeName="LastSeenScorer.PerTickScores" Value="[3.9496398689994527, 0.0, 3.601333174731237, 0.0, 0.0]"/>
+        </ScoreSet>
+        <SummarizedText>*: removed</SummarizedText>
+        <TextSample>97657521: removed</TextSample>
+        <TimeLine>
+            <Occurrence>0.0</Occurrence>
+            <Occurrence>0.25</Occurrence>
+            <Occurrence>0.25833333</Occurrence>
+            <Occurrence>0.5</Occurrence>
+            <Occurrence>0.75</Occurrence>
+        </TimeLine>
+    </AnalyzedMessageSummary>
+    <AnalyzedMessageSummary MsgId="postfix/smtp_19">
+        <NumOccurrences>12</NumOccurrences>
+        <AnomalyScore>0.0</AnomalyScore>
+        <ScoreSet>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.anomaly" Score="0.0"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.logProb" Score="0.0"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.main" Score="0.0"/>
+            <Score ScoreName="BestOfTwoScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="BestOfTwoScorer.logProb" Score="-5.8260001073804535"/>
+            <Score ScoreName="BestOfTwoScorer.main" Score="1.0"/>
+            <Score ScoreName="ClusteringContextScore.clusterId" Score="4.0"/>
+            <Score ScoreName="ClusteringContextScore.main" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.logProb" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.main" Score="0.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.frequency" Score="1.0029498525073746"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.logProb" Score="-5.8260001073804535"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.main" Score="-338.0000000000012"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.probability" Score="339.0000000000012"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawAnomaly" Score="0.002941176470588225"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawLogProb" Score="0.002945510229756803"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.LogProbGivenLast" Score="5.865050622252323"/>
+            <Score ScoreName="LastSeenScorer.anomaly" Score="0.9968701095461658"/>
+            <Score ScoreName="LastSeenScorer.logProb" Score="5.766757273817589"/>
+            <Score ScoreName="LastSeenScorer.main" Score="0.0031298904538341167"/>
+            <Score ScoreName="LastSeenScorer.maxl" Score="0.09829334843473388"/>
+            <Score ScoreName="LogNormalScore.isNew" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.logProb" Score="0.03536381051669779"/>
+            <Score ScoreName="LogNormalScore.main" Score="0.03474581725275194"/>
+            <Score ScoreName="LogNormalScore.mean" Score="8.162530601971598"/>
+            <Score ScoreName="SeverityScore.main" Score="1.0"/>
+            <Score ScoreName="anomaly" Score="0.0"/>
+            <Score ScoreName="logProb" Score="0.0"/>
+            <Attribute ScoreAttributeName="BestOfTwoScorer.used" Value="FullBernoulliClusterAwareScore.logProb"/>
+            <Attribute ScoreAttributeName="ClusteringContextScore.status" Value="IN_CONTEXT"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.LastTime" Value="2015-12-12T15:45:30.000Z"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.main" Value="regular"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.res" Value="[870, 900, 30, 870, 900]"/>
+            <Attribute ScoreAttributeName="LastSeenScorer.PerTickScores" Value="[5.766757273817589, 0.0, 5.766757273817589, 0.0, 0.0]"/>
+        </ScoreSet>
+        <SummarizedText>*: to=&lt;95aafababc2b3a0a3125f840c51e90a51cd6a808@us.ibm.com&gt;, orig_to=&lt;root&gt;, relay=*.*.ibm.com[*]:25, delay=*.*, delays=0.*/*/*.*/*.*, dsn=2.0.0, status=sent (250 2.0.0 * Message accepted for delivery)</SummarizedText>
+        <TextSample>AD47F4BE: to=&lt;95aafababc2b3a0a3125f840c51e90a51cd6a808@us.ibm.com&gt;, orig_to=&lt;root&gt;, relay=0855fae87e58248180c3f0beea822da22e129407.boulder.ibm.com[f06f44e4e45c28715c329aaa8c24270f0c94b01d]:25, delay=1.2, delays=0.01/0.03/0.99/0.19, dsn=2.0.0, status=sent (250 2.0.0 rBCL35uN030185 Message accepted for delivery)</TextSample>
+        <TimeLine>
+            <Occurrence>0.0</Occurrence>
+            <Occurrence>0.25</Occurrence>
+            <Occurrence>0.25833333</Occurrence>
+            <Occurrence>0.5</Occurrence>
+            <Occurrence>0.75</Occurrence>
+        </TimeLine>
+    </AnalyzedMessageSummary>
+    <AnalyzedMessageSummary MsgId="sshd_4">
+        <NumOccurrences>12</NumOccurrences>
+        <AnomalyScore>0.0</AnomalyScore>
+        <ScoreSet>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.anomaly" Score="0.0"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.logProb" Score="0.0"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.main" Score="0.0"/>
+            <Score ScoreName="BestOfTwoScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="BestOfTwoScorer.logProb" Score="-5.8260001073804535"/>
+            <Score ScoreName="BestOfTwoScorer.main" Score="1.0"/>
+            <Score ScoreName="ClusteringContextScore.clusterId" Score="4.0"/>
+            <Score ScoreName="ClusteringContextScore.main" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.logProb" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.main" Score="0.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.frequency" Score="1.0029498525073746"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.logProb" Score="-5.8260001073804535"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.main" Score="-338.0000000000012"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.probability" Score="339.0000000000012"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawAnomaly" Score="0.002941176470588225"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawLogProb" Score="0.002945510229756803"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.LogProbGivenLast" Score="0.06773035276534735"/>
+            <Score ScoreName="LastSeenScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.main" Score="1.0"/>
+            <Score ScoreName="LastSeenScorer.maxl" Score="0.06773035276534735"/>
+            <Score ScoreName="LogNormalScore.isNew" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.logProb" Score="-0.0"/>
+            <Score ScoreName="LogNormalScore.main" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.mean" Score="12.946186064424845"/>
+            <Score ScoreName="SeverityScore.main" Score="1.0"/>
+            <Score ScoreName="anomaly" Score="0.0"/>
+            <Score ScoreName="logProb" Score="0.0"/>
+            <Attribute ScoreAttributeName="BestOfTwoScorer.used" Value="FullBernoulliClusterAwareScore.logProb"/>
+            <Attribute ScoreAttributeName="ClusteringContextScore.status" Value="IN_CONTEXT"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.LastTime" Value="2015-12-12T15:55:30.000Z"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.main" Value="regular"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.res" Value="[300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300]"/>
+            <Attribute ScoreAttributeName="LastSeenScorer.PerTickScores" Value="[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]"/>
+        </ScoreSet>
+        <SummarizedText>Accepted publickey for support from 861719a3aa0caa2cf4c5a6fffe21f5088c53eae8 port * ssh2</SummarizedText>
+        <TextSample>Accepted publickey for support from 861719a3aa0caa2cf4c5a6fffe21f5088c53eae8 port 35532 ssh2</TextSample>
+        <TimeLine>
+            <Occurrence>0.008333334</Occurrence>
+            <Occurrence>0.09166667</Occurrence>
+            <Occurrence>0.175</Occurrence>
+            <Occurrence>0.25833333</Occurrence>
+            <Occurrence>0.34166667</Occurrence>
+            <Occurrence>0.425</Occurrence>
+            <Occurrence>0.5083333</Occurrence>
+            <Occurrence>0.59166664</Occurrence>
+            <Occurrence>0.675</Occurrence>
+            <Occurrence>0.7583333</Occurrence>
+            <Occurrence>0.84166664</Occurrence>
+            <Occurrence>0.925</Occurrence>
+        </TimeLine>
+    </AnalyzedMessageSummary>
+    <AnalyzedMessageSummary MsgId="sshd_7">
+        <NumOccurrences>12</NumOccurrences>
+        <AnomalyScore>0.0</AnomalyScore>
+        <ScoreSet>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.anomaly" Score="0.0"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.logProb" Score="0.0"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.main" Score="0.0"/>
+            <Score ScoreName="BestOfTwoScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="BestOfTwoScorer.logProb" Score="-5.8260001073804535"/>
+            <Score ScoreName="BestOfTwoScorer.main" Score="1.0"/>
+            <Score ScoreName="ClusteringContextScore.clusterId" Score="4.0"/>
+            <Score ScoreName="ClusteringContextScore.main" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.logProb" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.main" Score="0.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.frequency" Score="1.0029498525073746"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.logProb" Score="-5.8260001073804535"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.main" Score="-338.0000000000012"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.probability" Score="339.0000000000012"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawAnomaly" Score="0.002941176470588225"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawLogProb" Score="0.002945510229756803"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.LogProbGivenLast" Score="0.058124130959907504"/>
+            <Score ScoreName="LastSeenScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.main" Score="1.0"/>
+            <Score ScoreName="LastSeenScorer.maxl" Score="0.058124130959907504"/>
+            <Score ScoreName="LogNormalScore.isNew" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.logProb" Score="-0.0"/>
+            <Score ScoreName="LogNormalScore.main" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.mean" Score="12.381945777695442"/>
+            <Score ScoreName="SeverityScore.main" Score="1.0"/>
+            <Score ScoreName="anomaly" Score="0.0"/>
+            <Score ScoreName="logProb" Score="0.0"/>
+            <Attribute ScoreAttributeName="BestOfTwoScorer.used" Value="FullBernoulliClusterAwareScore.logProb"/>
+            <Attribute ScoreAttributeName="ClusteringContextScore.status" Value="IN_CONTEXT"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.LastTime" Value="2015-12-12T15:55:30.000Z"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.main" Value="regular"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.res" Value="[300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300]"/>
+            <Attribute ScoreAttributeName="LastSeenScorer.PerTickScores" Value="[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]"/>
+        </ScoreSet>
+        <SummarizedText>Received disconnect from 861719a3aa0caa2cf4c5a6fffe21f5088c53eae8: 11: disconnected by user</SummarizedText>
+        <TextSample>Received disconnect from 861719a3aa0caa2cf4c5a6fffe21f5088c53eae8: 11: disconnected by user</TextSample>
+        <TimeLine>
+            <Occurrence>0.008333334</Occurrence>
+            <Occurrence>0.09166667</Occurrence>
+            <Occurrence>0.175</Occurrence>
+            <Occurrence>0.25833333</Occurrence>
+            <Occurrence>0.34166667</Occurrence>
+            <Occurrence>0.425</Occurrence>
+            <Occurrence>0.5083333</Occurrence>
+            <Occurrence>0.59166664</Occurrence>
+            <Occurrence>0.675</Occurrence>
+            <Occurrence>0.7583333</Occurrence>
+            <Occurrence>0.84166664</Occurrence>
+            <Occurrence>0.925</Occurrence>
+        </TimeLine>
+    </AnalyzedMessageSummary>
+    <AnalyzedMessageSummary MsgId="run-crons_42">
+        <NumOccurrences>1</NumOccurrences>
+        <AnomalyScore>-42.69250221473031</AnomalyScore>
+        <ScoreSet>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.anomaly" Score="-42.69250221473031"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.logProb" Score="-3.777176513347405"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.main" Score="-42.69250221473031"/>
+            <Score ScoreName="BestOfTwoScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="BestOfTwoScorer.logProb" Score="-4.721470641684256"/>
+            <Score ScoreName="BestOfTwoScorer.main" Score="1.0"/>
+            <Score ScoreName="ClusteringContextScore.clusterId" Score="-1.0"/>
+            <Score ScoreName="ClusteringContextScore.main" Score="1.0"/>
+            <Score ScoreName="CriticalWordCountReporter.logProb" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.main" Score="0.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.frequency" Score="1.0089020771513353"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.logProb" Score="-4.721470641684256"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.main" Score="-111.33333333333374"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.probability" Score="112.33333333333374"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawAnomaly" Score="0.008823529411764675"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawLogProb" Score="0.008862687257845317"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.LogProbGivenLast" Score="0.08961215868968717"/>
+            <Score ScoreName="LastSeenScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.main" Score="1.0"/>
+            <Score ScoreName="LastSeenScorer.maxl" Score="0.08961215868968717"/>
+            <Score ScoreName="LogNormalScore.isNew" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.logProb" Score="-0.0"/>
+            <Score ScoreName="LogNormalScore.main" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.mean" Score="1.0335577830070277"/>
+            <Score ScoreName="SeverityScore.main" Score="1.0"/>
+            <Score ScoreName="anomaly" Score="-42.69250221473031"/>
+            <Score ScoreName="logProb" Score="-3.777176513347405"/>
+            <Attribute ScoreAttributeName="BestOfTwoScorer.used" Value="FullBernoulliClusterAwareScore.logProb"/>
+            <Attribute ScoreAttributeName="ClusteringContextScore.status" Value="UNCLUSTERED"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.LastTime" Value="2015-12-12T15:45:00.000Z"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.main" Value="regular"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.res" Value="[3600]"/>
+            <Attribute ScoreAttributeName="LastSeenScorer.PerTickScores" Value="[0.0]"/>
+        </ScoreSet>
+        <SummarizedText>support: OK</SummarizedText>
+        <TextSample>support: OK</TextSample>
+        <TimeLine>
+            <Occurrence>0.75</Occurrence>
+        </TimeLine>
+    </AnalyzedMessageSummary>
+    <AnalyzedMessageSummary MsgId="sudo(root):/etc/init.d/syslog_41">
+        <NumOccurrences>1</NumOccurrences>
+        <AnomalyScore>-42.69250221473031</AnomalyScore>
+        <ScoreSet>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.anomaly" Score="-42.69250221473031"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.logProb" Score="-3.777176513347405"/>
+            <Score ScoreName="AdeWeightedMessageAnomalyScorerLogNormal.main" Score="-42.69250221473031"/>
+            <Score ScoreName="BestOfTwoScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="BestOfTwoScorer.logProb" Score="-4.721470641684256"/>
+            <Score ScoreName="BestOfTwoScorer.main" Score="1.0"/>
+            <Score ScoreName="ClusteringContextScore.clusterId" Score="-1.0"/>
+            <Score ScoreName="ClusteringContextScore.main" Score="1.0"/>
+            <Score ScoreName="CriticalWordCountReporter.logProb" Score="0.0"/>
+            <Score ScoreName="CriticalWordCountReporter.main" Score="0.0"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.frequency" Score="1.0089020771513353"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.logProb" Score="-4.721470641684256"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.main" Score="-111.33333333333374"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.probability" Score="112.33333333333374"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawAnomaly" Score="0.008823529411764675"/>
+            <Score ScoreName="FullBernoulliClusterAwareScore.rawLogProb" Score="0.008862687257845317"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenLoggingScorerContinuous.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.LogProbGivenLast" Score="0.005970166986503796"/>
+            <Score ScoreName="LastSeenScorer.anomaly" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.logProb" Score="0.0"/>
+            <Score ScoreName="LastSeenScorer.main" Score="1.0"/>
+            <Score ScoreName="LastSeenScorer.maxl" Score="0.005970166986503796"/>
+            <Score ScoreName="LogNormalScore.isNew" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.logProb" Score="-0.0"/>
+            <Score ScoreName="LogNormalScore.main" Score="0.0"/>
+            <Score ScoreName="LogNormalScore.mean" Score="1.0"/>
+            <Score ScoreName="SeverityScore.main" Score="1.0"/>
+            <Score ScoreName="anomaly" Score="-42.69250221473031"/>
+            <Score ScoreName="logProb" Score="-3.777176513347405"/>
+            <Attribute ScoreAttributeName="BestOfTwoScorer.used" Value="FullBernoulliClusterAwareScore.logProb"/>
+            <Attribute ScoreAttributeName="ClusteringContextScore.status" Value="UNCLUSTERED"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.LastTime" Value="2015-12-12T15:45:00.000Z"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.main" Value="regular"/>
+            <Attribute ScoreAttributeName="LastSeenLoggingScorerContinuous.res" Value="[3600]"/>
+            <Attribute ScoreAttributeName="LastSeenScorer.PerTickScores" Value="[0.0]"/>
+        </ScoreSet>
+        <SummarizedText>    root : TTY=unknown ; PWD=/root ; USER=root ; COMMAND=/etc/init.d/syslog status</SummarizedText>
+        <TextSample>    root : TTY=unknown ; PWD=/root ; USER=root ; COMMAND=/etc/init.d/syslog status</TextSample>
+        <TimeLine>
+            <Occurrence>0.75</Occurrence>
+        </TimeLine>
+    </AnalyzedMessageSummary>
+    <ScoreSet>
+        <Score ScoreName="AdeAnomalyIntervalScorer.FactorFromOne" Score="0.8458745843024538"/>
+        <Score ScoreName="AdeAnomalyIntervalScorer.logProb" Score="38.8139564326223"/>
+        <Score ScoreName="AdeAnomalyIntervalScorer.main" Score="0.995"/>
+        <Score ScoreName="anomaly" Score="0.995"/>
+        <Score ScoreName="logProb" Score="38.8139564326223"/>
+        <Score ScoreName="minIntervalScore" Score="0.0"/>
+    </ScoreSet>
+</AnalyzedInterval>

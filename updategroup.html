@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+    <meta charset="UTF-8">
+    
+    <title>Open Mainframe Project - ADE</title><meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen"></head>
+<body>
+    <section class="page-header">
+      <h1 class="project-name">ADE</h1>
+      <h2 class="project-tagline">Anomaly Detection Engine for Linux Logs</h2>
+      <a href="https://github.com/openmainframeproject/ade" class="btn">View on GitHub</a>
+	     <a href="https://github.com/openmainframeproject/ade/zipball/master" class="btn">Download .zip</a>
+   <a href="https://github.com/openmainframeproject/ade/tarball/master" class="btn">Download .tar.gz</a>
+     </section>
+
+    <section class="main-content">
+     <h1>
+<a id="anomaly-detection-engine-for-linux-logs-ade" class="anchor" href="#anomaly-detection-engine-for-linux-logs-ade" aria-hidden="true"><span class="octicon octicon-link"></span></a>Anomaly detection Engine for Linux Logs (ADE)</h1>
+
+<h1>
+<a id="updategroups" class="anchor" href="#updategroups" aria-hidden="true"><span class="octicon octicon-link"></span></a>Defines the relationship between systems and model groups - <strong>updategroups</strong></h1>
+
+<p><strong>updategroups</strong> is a bash script which invokes the correct Java class after setting up the 
+environment needed. <strong>updategroups</strong> loads the ADE tables which define the relationship
+between Linux systems and model groups based on the name of the system.  <strong>train</strong> uses the
+model group to group one or more Linux systems when it creates a model of
+normal behavior.</p>
+
+<hr>
+
+<h3>Usage</h3>
+
+<p><strong>updategroups</strong> updates the ADE tables which defines how <strong>train</strong>
+groups Linux systems.  </p>
+
+<p>There are two ADE tables which are updated by
+<strong>updategroups</strong>:</p>
+
+<ul>
+<li>Groups table</li>
+<li>Rules table</li>
+</ul>
+
+<p>The rules stored in the rules table use the name of the system to
+assign a Linux system to a model group.</p>
+
+<blockquote>
+<p>Notes</p>
+
+<ul>
+<li><strong>updategroups</strong> replaces the tables in the database with the contents
+of the json file.</li>
+<li>If <strong>verify</strong> determines that there are too few message ids (message keys)
+to create a high quality model, one solution is to increase the number of
+Linux systems containing in the model groups.  This can be done by reducing the number
+of model groups and reloading the model groups using <strong>updategroups</strong>.</li>
+</ul>
+</blockquote>
+
+<hr>
+
+<h3>Command options</h3>
+
+<hr>
+
+<table style="width: 800px; height: 200px;" border="10"><thead>
+<tr>
+<th>options</th>
+<th align="left">action</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&nbsp;-j <em>“name_of_json_file”</em></td>
+<td align="left">Updates the ADE database tables with data from json file</td>
+</tr>
+</tbody></table>
+
+<hr>
+
+<h3>Description of fields in json file</h3>
+
+<table style="width: 800px; height: 500px;" border="10"><thead>
+<tr>
+<th>field</th>
+<th style="text-align: left;">description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>groups</strong></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>name</td>
+<td align="left">Name of group</td>
+</tr>
+<tr>
+<td>dataType</td>
+<td align="left">Must be “syslog”</td>
+</tr>
+<tr>
+<td>evaluationOrder</td>
+<td align="left">Determines the order in which the rules are evaluated</td>
+</tr>
+<tr>
+<td>ruleName</td>
+<td align="left">Name of the rule to use to create the group</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td><strong>rules</strong></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>name</td>
+<td align="left">Name of rule should match a ruleName entry in groups</td>
+</tr>
+<tr>
+<td>description</td>
+<td align="left">Text description of rule may contain any characters supported by ADE database</td>
+</tr>
+<tr>
+<td>membershipRule</td>
+<td align="left">Rule that is used to assign a Linux system to a group</td>
+</tr>
+</tbody></table>
+
+<p>Details:</p>
+
+<blockquote>
+<p>The name field is a required field for a model group definition. The name can
+contain alphanumeric characters (A through Z, a through z, and 0 through 9),
+underscores (_), and blanks.</p>
+
+<p>Rules for membershipRule.
+The text string is a full or partial Linux system name, which can be a fully
+qualified domain name, a hostname, or an IP address. The text string can contain
+alphanumeric characters (A through Z, a through z, and 0 through 9), periods (.),
+colons (:), dashes (–), and forward slashes (/)</p>
+
+<p>When specifying an evaluation order, make sure that more specific
+membership rules are evaluated before more generic rules; otherwise, a Linux system
+might be assigned to the wrong group. For example, suppose you have several
+systems with names ranging from LNXVM50 to LNXVM59. If you define a group for
+them with a rule of LNXVM5<em>, that rule has to be moved higher in the evaluation
+order than a more general rule, such as LNXVM</em>.</p>
+</blockquote>
+
+<hr>
+
+<h3>Example of model group json file</h3>
+
+<pre><code>{<br>    "groups":<br>        {<br>            "modelgroups":<br>                [<br>                    {"name" : "mg1", "dataType": "syslog", "evaluationOrder" : 1, "ruleName" : "prefixRule" },<br>                    {"name" : "mg2", "dataType": "syslog", "evaluationOrder" : 2, "ruleName" : "postfixRule"},<br>                    {"name" : "default", "dataType": "syslog", "evaluationOrder" : 3, "ruleName" : "defaultRule"}<br>                ]<br>        },<br>    "rules":<br>        [<br>            {"name" : "prefixRule", "description" : "Matches systems that start with PREFIX", "membershipRule" : "PREFIX*" },<br>            {"name" : "postfixRule", "description" : "Matches systems that end with POSTFIX", "membershipRule" : "*POSTFIX" },<br>            {"name" : "defaultRule", "description" : "Matches systems that do not fit another rule", "membershipRule" : "*" }<br>        ]<br>}<br></code></pre>
+
+<hr>
+
+<h3>Restrictions</h3>
+
+<p><strong>updategroups</strong> does not check for the internal consistency of the json file.  There could be groups without rules and
+rules without ruleNames. The only failures detected are from parsing the json file.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/openmainframeproject/ade">ADE</a> is maintained by <a href="https://github.com/openmainframeproject/ade">Open Mainframe project - ADE</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    
+
+  
+  </body></html>

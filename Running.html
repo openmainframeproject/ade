@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+<meta charset="UTF-8"><title>Open Mainframe Project - ADE</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+</head>
+<body>
+<section class="page-header">
+<h1 class="project-name">ADE</h1>
+<h2 class="project-tagline">Anomaly Detection Engine for Linux Logs</h2>
+<a href="https://github.com/openmainframeproject/ade" class="btn">View on GitHub</a>
+   <a href="https://github.com/openmainframeproject/ade/zipball/master" class="btn">Download .zip</a>
+   <a href="https://github.com/openmainframeproject/ade/tarball/master" class="btn">Download .tar.gz</a>
+</section>
+<section class="main-content">
+      <h1>
+<a id="anomaly-detection-engine-for-linux-logs-ade" class="anchor" href="#anomaly-detection-engine-for-linux-logs-ade" aria-hidden="true"><span class="octicon octicon-link"></span></a>Anomaly detection Engine for Linux Logs (ADE)</h1>
+
+<h1>Why run ADE</h1>
+<h2>To answer the question. Are your systems behaving badly?</h2>
+Many everyday activities can
+introduce system anomalies and initiate failures in complex, integrated
+data centers; these activities include:<br>
+<ul>
+<li>Increased volume of business activity</li>
+<li>Application modifications to comply with changing
+regulatory requirements</li>
+<li>Standard operational changes, such as adding or upgrading
+hardware or software, or changing network configurations.</li>
+</ul>
+You
+can use a combination of existing system management tools to determine
+whether any of these activities is causing one or more systems to
+behave abnormally, but none can detect every possible combination of
+change and failure. Even when using these tools, you might have to look
+through<br>
+message logs to help solve the problem but the sheer volume of messages
+can make this task a daunting one.<br><p>ADE
+helps you look through the massive volumes of &nbsp;log data to find
+the &nbsp;portions of the log to focus on for further detailed review.</p>
+<h1>
+<a id="running-ade" class="anchor" href="#running-ade" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running
+ADE</h1>
+<p>To run ADE to detect anomalies in Linux logs
+requires the following manual steps to understand the problem before ADE is run
+<ul>
+<li>Determine if you want to find anomalies in a single time period for root cause analysis or if you want to
+have anomaly detection continuously available to help support manage Linux systems</li>
+<li>Determine which Linux systems you want anomaly detection for</li>
+<li>Understand how the workload run on those Linux systems</li>
+</ul></p>
+<br>
+<h2>Basic approach</h2>
+<hr>
+<p>The basic approach is</p>
+<ul>
+<li>Pick data to prime the model</li>
+<li>Determine how to group systems into “model groups”</li>
+<li>Prime the database with Linux logs</li>
+<li>Create a model of normal behavior from a set of Linux logs</li>
+<li>Analyze additional logs to detect anomalies</li>
+<li>Examine the results written to the file system using your
+favorite web browser </li>
+</ul>
+<h3>Pick data to prime the model</h3>
+<hr>
+<p>For ADE to create a model that will generate useful analytic
+results, there
+needs to be a sufficient number of unique message ids (message keys).
+Because ADE uses unsupervised learning, ADE does not require the user
+to label either messages
+or intervals, it requires that the systems being analyzed are
+“relatively” stable.</p>
+<p><em><strong>Almost any Linux system that is used
+to support production will be stable enough for ADE to find anomalies.</strong></em></p>
+<h3>Determining how to group systems into "model groups"</h3>
+<hr>
+<p>ADE supports grouping similar systems together when building
+the model.
+Here is an example of eleven servers and one way you can assign them to
+model groups:</p>
+<ul>
+<li>model group 1
+<ul>
+<li>primary mail server</li>
+<li>secondary mail server to handle traffic which overflows
+from the primary server</li>
+<li>deployment mail server is the Linux image on which a
+new version of the mail server code is deployed</li>
+</ul>
+</li>
+<li>model group 2
+<ul>
+<li>external web server 1</li>
+<li>external web server 2</li>
+<li>external web server 3</li>
+</ul>
+</li>
+<li>model group 3
+<ul>
+<li>internal web server 1</li>
+<li>internal web server 2</li>
+<li>internal web server 3</li>
+</ul>
+</li>
+<li>model group 4
+<ul>
+<li>database server 1</li>
+</ul>
+</li>
+<li>model group 5
+<ul>
+<li>database server 2</li>
+</ul>
+</li>
+</ul>
+<h2>Examine a time period to find if unusual behavior occurred
+during that time period - root cause analysis</h2>
+<hr>
+<h3>Prime the database with Linux logs</h3>
+<p>To prime the ADE database:</p>
+<ol>
+<li>Delete any information left in the database <strong>controldb
+delete</strong></li>
+<li>Identify when the potential anomaly occurred </li>
+<li>
+<p>Load Linux logs from time period immediately before that
+time period <strong>upload -f <em>filename or
+directoryname</em></strong></p>
+</li>
+<li>
+<p>Check if sufficient data has been loaded <strong>verify
+<em>model group name</em></strong></p>
+<ul>
+<li>If there is sufficient information then proceed to
+training</li>
+<li>else
+<ul>
+<li>If there are additional logs from before the set of
+logs loaded then load
+additional Linux logs</li>
+<li>If there aren't any more logs available then reduce
+the number of model groups. Using the example above, if the problem is
+with model group 2 consider combining model group 2 and model group 3</li>
+<li>If after loading additional logs and simplifying
+the model group structure
+<strong>verify</strong> still
+indicates there is insufficient information then, try training but
+remember that the results may be questionable.<br>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3>Create a model of normal behavior from a set of Linux logs</h3>
+<p>To create a model of the normal behavior of the Linux systems:</p>
+<ul>
+<li>Issue <strong>train</strong> command for each model group <strong>train
+<em>model group name</em></strong></li>
+</ul>
+<h3>Analyze additional logs to detect anomalies</h3>
+<p>To analyze the time period for anomalies</p>
+<ul>
+<li>Issue Analyze command for the time periods of interest <strong>analyze
+-f <em>filename or directoryname</em></strong></li>
+</ul>
+<h3>Examine the results written to the file system using your favorite web browser</h3>
+<p>To examine the results for a period, point your web browser at the <em>index.xml</em> file for the time
+period and system of interest. To select a specific interval for further review
+<ul>
+<li> Click on the box in the graph</li> <li>Click on link <em>XML</em> for the  
+interval</li> 
+</ul>
+The xslt provided will display a summary of the period(day).
+<p>To examine a specific ten minute interval point your web browser at the <em>interval_nnn.xml</em>
+for the time period, interval, and system of interest.  The xslt provided will display a summary of the 
+interval.
+</p>
+The following samples illustrate how the analysis output is
+written to files using the defaults specified in setup.props:</p>
+<ul>
+<li>directory system_name 1
+<ul>
+<li>directory yearMonthDay
+<ul>
+<li>index.xml (summary of intervals within the period)</li>
+<li>directory intervals
+<ul>
+<li>interval_nnn.xml ( details of messages issued
+during this interval)</li>
+<li>interval_nnn_debug.xml.gz ( information to
+debug problems with scorers (gzipped))</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>directory yearMonthDay
+<ul>
+<li>index.xml (summary of intervals within the period)</li>
+<li>directory intervals
+<ul>
+<li>interval_nnn.xml ( details of messages issued
+during this interval)</li>
+<li>interval_nnn_debug.xml.gz ( information to
+debug problems with scorers (gzipped))</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>directory yearMonthDay
+<ul>
+<li>index.xml (summary of intervals within the period)</li>
+<li>directory intervals
+<ul>
+<li>interval_nnn.xml ( details of messages issued
+during this interval)</li>
+<li>interval_nnn_debug.xml.gz ( information to
+debug problems with scorers (gzipped))</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>directory yearMonthDay
+<ul>
+<li>index.xml (summary of intervals within the period)</li>
+<li>directory intervals
+<ul>
+<li>interval_nnn.xml ( details of messages issued
+during this interval)</li>
+<li>interval_nnn_debug.xml.gz ( information to
+debug problems with scorers (gzipped))</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>directory system_name 2
+<ul>
+<li>directory yearMonthDay
+<ul>
+<li>index.xml (summary of intervals within the period)</li>
+<li>directory intervals
+<ul>
+<li>interval_nnn.xml ( details of messages issued
+during this interval)</li>
+<li>interval_nnn_debug.xml.gz ( information to
+debug problems with scorers (gzipped))</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>directory yearMonthDay
+<ul>
+<li>index.xml (summary of intervals within the period)</li>
+<li>directory intervals
+<ul>
+<li>interval_nnn.xml ( details of messages issued
+during this interval)</li>
+<li>interval_nnn_debug.xml.gz ( information to
+debug problems with scorers (gzipped))</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>directory yearMonthDay
+<ul>
+<li>index.xml (summary of intervals within the period)</li>
+<li>directory intervals
+<ul>
+<li>interval_nnn.xml ( details of messages issued
+during this interval)</li>
+<li>interval_nnn_debug.xml.gz ( information to
+debug problems with scorers (gzipped))</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>directory yearMonthDay
+<ul>
+<li>index.xml (summary of intervals within the period)</li>
+<li>directory intervals
+<ul>
+<li>interval_nnn.xml ( details of messages issued
+during this interval)</li>
+<li>interval_nnn_debug.xml.gz ( information to
+debug problems with scorers (gzipped))</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Continuously process Linux Logs so anomaly information is
+always available</h2>
+<hr>
+<p>To set up ADE to provide continuous analysis results, 
+the following steps need to
+be scheduled to run automatically:</p>
+<ul>
+<li>Creating a model which should be run after a certain period
+of time has elapsed</li>
+<li>Creating analysis results which should be run either
+<ul>
+<li>when the logs are being rotated or</li>
+<li>after a certain period of time</li>
+</ul>
+</li>
+<li>remove results which are no longer needed</li>
+</ul>
+<p>If there are duplicate time periods in the logs, ADE will
+overlay the existing time period in the database with the time period
+being added by either <strong>upload</strong> or <strong>analyze</strong>.</p>
+<h3>Prime the database with Linux logs</h3>
+<p>To prime the ADE database:</p>
+<ul>
+<li>
+<p>load Linux logs from time period immediately before today <strong>upload
+-f <em>filename or directoryname</em></strong></p>
+</li>
+<li>
+<p>check if sufficient data has been loaded <strong>verify
+<em>model group name</em></strong></p>
+<ul>
+<li>if there is sufficient data then proceed to training</li>
+<li>else
+<ul>
+<li>if there are additional logs from before the set of
+logs loaded then load
+additional Linux logs</li>
+<li>if there aren't any more logs available then reduce
+the number of model groups; using the example above if the problem is
+with model group 2 consider combining model group 2 and model group 3</li>
+<li>if after loading additional logs and simplifying
+the model group structure
+<strong>verify</strong> still
+indicates there is insufficient information then, wait until
+the Linux systems generate more logs before trying training.<br>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Create a model of normal behavior from a set of Linux logs</h3>
+<p>To create a model of the normal behavior of the Linux systems:</p>
+<ul>
+<li>issue <strong>train</strong> command for each model group <strong>train
+<em>model group name</em></strong></li></li>
+<li>the suggested length of the training interval (time from
+the start date
+to the end date) is 120 days </li>
+<li>it is suggested that training be redone every 30 days or
+after a substantial change
+to the Linux systems like deploying additional software on those
+systems has occurred.</li>
+</ul>
+<h3>Analyze additional logs to detect anomalies</h3>
+<p>Routinely analyze the available logs so anomalies information
+is available when needed</p>
+<ul>
+<li>issue analyze command for the next available logs <strong>analyze
+-f <em>filename or directoryname</em></strong></li>
+</ul>
+<h3>Examine the results written to the file system using your favorite web browser</h3>
+<p>To examine the results for a period, point your web browser at the <em>index.xml</em> file for the time
+period and system of interest. To select a specific interval for further review
+<ul>
+<li> Click on the box in the graph</li> <li>Click on link <em>XML</em> for the  
+interval</li> 
+</ul>
+The xslt provided will display a summary of the period(day). 
+<p>To examine a specific ten minute interval point your web browser at the <em>interval_nnn.xml</em>
+for the time period, interval, and system of interest.  The xslt provided will display a summary of the 
+interval.
+</p>
+<p>After the automation has been running for a few days, you will probably want to
+make sure that it is generating the appropriate results.</p>
+<h3>Delete no longer needed results</h3>
+<p>After training has run, use standard linux commands to delete
+the results that are no longer
+valuable. For example, you could choose to delete all the ADE results
+which are older than one year. </p>
+<footer class="site-footer"> <span class="site-footer-owner"><a href="https://github.com/openmainframeproject/ade">ADE</a> is
+maintained by <a href="https://github.com/openmainframeproject/ade">Open Mainframe project - ADE</a>.</span>
+<span class="site-footer-credits">This page was generated
+by <a href="https://pages.github.com">GitHub Pages</a>
+using the <a href="https://github.com/jasonlong/cayman-theme">Cayman
+theme</a> by <a href="https://twitter.com/jasonlong">Jason
+Long</a>.</span> </footer>
+</body></html>
