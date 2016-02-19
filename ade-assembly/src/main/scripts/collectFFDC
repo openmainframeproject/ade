@@ -1,0 +1,62 @@
+#!/bin/bash
+#************************************************************************
+# Copyright IBM Corp. 2016                                              *
+# This file is part of Anomaly Detection Engine for Linux Logs (ADE).   *
+#                                                                       *
+# ADE is free software: you can redistribute it and/or modify           *
+# it under the terms of the GNU General Public License as published by  *
+# the Free Software Foundation, either version 3 of the License, or     *
+# (at your option) any later version.                                   *
+#                                                                       *
+# ADE is distributed in the hope that it will be useful,                *
+# but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         * 
+# GNU General Public License for more details.                          *
+#                                                                       *
+# You should have received a copy of the GNU General Public License     *
+# along with ADE.  If not, see <http://www.gnu.org/licenses/>.          *
+#************************************************************************
+
+DEFAULT_LOGDIR="/tmp/adeffdc_`date "+%Y%m%d%H%M%S"`"
+
+# assumes this script is in <product_home>/bin directory
+ADE_HOME=`dirname "$0"`/..
+
+# set ADE_HOME to fully qualified path and change to that directory
+ADE_HOME=`cd "$ADE_HOME" && pwd`
+eval "cd $ADE_HOME"
+
+. bin/env.sh
+
+FFDCDIR=$DEFAULT_LOGDIR  # begin with it set to default
+
+usage() {
+  echo
+  echo "  $0 [-a] [-d directory]"
+  echo "    -a indicates that all database tables should be collected"
+  echo "    -d indicate output directory for database content"
+  echo
+  exit -1
+}
+
+# parse input options 
+while getopts ":ad:" opt; do
+  case $opt in
+    a) COLLECT_ALL_DB_TABLES=1;;
+    d) FFDCDIR=$OPTARG;;
+    \?) usage;;
+    :) echo "Option -$OPTARG requires an argument." 
+       usage;;
+  esac      
+ done
+
+# if COLLECT_ALL_DB_TABLES not defined then collect minimal
+if [ -z $COLLECT_ALL_DB_TABLES ]; then
+  $ADE_JAVA -Xmx1548M -cp $ADE_CLASSPATH -Dade.setUpFilePath=$ADE_SETUP_FILE $LOG_CMD_OPT org.openmainframe.ade.ext.main.DBMinimalFFDCDataCollector $FFDCDIR
+else   # '-a' was specified so collect all tables
+  $ADE_JAVA -Xmx1548M -cp $ADE_CLASSPATH -Dade.setUpFilePath=$ADE_SETUP_FILE $LOG_CMD_OPT org.openmainframe.ade.ext.main.ExportAllDBTables $FFDCDIR
+fi
+
+if [ $? -eq 0 ]; then
+  echo "Database content successfully exported to $FFDCDIR"
+fi

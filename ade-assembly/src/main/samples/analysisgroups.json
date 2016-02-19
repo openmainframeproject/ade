@@ -1,0 +1,17 @@
+{
+	"groups":
+		{
+			"modelgroups":
+				[
+					{"name" : "mg1", "dataType": "syslog", "evaluationOrder" : 1, "ruleName" : "prefixRule" },
+					{"name" : "mg2", "dataType": "syslog", "evaluationOrder" : 2, "ruleName" : "postfixRule"},
+					{"name" : "default", "dataType": "syslog", "evaluationOrder" : 3, "ruleName" : "defaultRule"}
+				]
+		},
+	"rules":
+		[
+			{"name" : "prefixRule", "description" : "Matches systems that start with PREFIX", "membershipRule" : "PREFIX*" },
+			{"name" : "postfixRule", "description" : "Matches systems that end with POSTFIX", "membershipRule" : "*POSTFIX" },
+            {"name" : "defaultRule", "description" : "Matches systems that do not fit another rule", "membershipRule" : "*" }
+		]
+}

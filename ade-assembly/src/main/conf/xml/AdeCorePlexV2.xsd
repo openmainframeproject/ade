@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ 
+ Copyright IBM Corp. 2012, 2016
+ This file is part of Anomaly Detection Engine for Linux Logs (ADE).
+
+ ADE is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ ADE is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with ADE.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.openmainframe.org/ade/AdeCorePlexV2"
+    xmlns="http://www.openmainframe.org/ade/AdeCorePlexV2" elementFormDefault="qualified">
+
+    <xs:element name="systems">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="version" type="xs:int" />
+                <xs:element name="start_time" type="xs:dateTime" />
+                <xs:element name="end_time" type="xs:dateTime" />
+                <xs:element name="gmt_offset" type="xs:string" />
+                <xs:element name="number_intervals">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:int">
+                                <xs:attribute name="analysis_snapshot_size" type="xs:int" use="required" />
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="interval_size" type="xs:int" />
+                <xs:element name="model_info">
+                    <xs:complexType>
+                        <xs:attribute name="model_creation_date" type="xs:dateTime" use="required" />
+                        <xs:attribute name="training_period" type="xs:int" use="required" />
+                        <xs:attribute name="analysis_group" type="xs:string" use="required" />
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="system" type="systems_system_type" minOccurs="1" maxOccurs="1" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="systems_system_type">
+        <xs:sequence>
+            <xs:element name="interval" type="systems_interval_type" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute name="sys_id" type="xs:string" use="required" />
+        <xs:attribute name="log_type" type="xs:string" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="systems_interval_type">
+        <xs:sequence>
+            <xs:element name="num_unique_msg_ids" type="xs:int" />
+            <xs:element name="anomaly_score" type="xs:double" />
+        </xs:sequence>
+        <xs:attribute name="num_never_seen_before_messages" type="xs:int" use="required" />
+        <xs:attribute name="num_new_messages" type="xs:int" use="required" />        
+        <xs:attribute name="index" type="xs:int" use="required" />
+        <xs:attribute name="missing" type="xs:boolean" use="required" />
+        <xs:attribute name="missing_reason" type="xs:string" use="optional" />
+        <xs:attribute name="limited_model" use="optional">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Yes" />
+                    <xs:enumeration value="No" />
+                    <xs:enumeration value="Unknown" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ 
+ Copyright IBM Corp. 2010, 2016
+ This file is part of Anomaly Detection Engine for Linux Logs (ADE).
+
+ ADE is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ ADE is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with ADE.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!--xmlns:ai="http://www.openmainframe.org/AnalyzedInterval" >
+	targetNamespace="http://www.openmainframe.org/AnalyzedInterval"
+	elementFormDefault="qualified" attributeFormDefault="qualified"-->
+
+	<xsd:element name="AnalyzedInterval"
+		type="AnalyzedIntervalType">
+	</xsd:element>
+	
+	<xsd:complexType name="AnalyzedIntervalType">
+	
+			<xsd:sequence>
+				<xsd:element name="Source" type="xsd:string"
+					maxOccurs="1" minOccurs="1" />
+				<xsd:element name="StartTime" type="xsd:dateTime"
+					maxOccurs="1" minOccurs="1" />
+            <xsd:element name="StartTimeUnix" type="xsd:long" maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="EndTime" type="xsd:dateTime"
+					maxOccurs="1" minOccurs="1" />
+            <xsd:element name="EndTimeUnix" type="xsd:long" maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="AnomalyScore" type="xsd:double"
+					maxOccurs="1" minOccurs="1" />
+				<xsd:element name="ModelId" type="xsd:int" maxOccurs="1"
+					minOccurs="1" />
+				<xsd:element name="AdeVersion" type="xsd:int"
+					maxOccurs="1" minOccurs="1" />
+				<xsd:element name="AnalyzedMessageSummary"
+					type="AnalyzedMessageSummaryType" maxOccurs="unbounded"
+					minOccurs="0" />
+				<xsd:element name="ScoreSet" type="ScoreSetType"
+					maxOccurs="1" minOccurs="0">
+				</xsd:element>
+			</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="AnalyzedMessageSummaryType">
+		<xsd:sequence>
+			<xsd:element name="NumOccurrences" type="xsd:int"
+				maxOccurs="1" minOccurs="1" />
+			<xsd:element name="AnomalyScore" type="xsd:double"
+				maxOccurs="1" minOccurs="1"></xsd:element>
+			<xsd:element name="ScoreSet" type="ScoreSetType"
+				maxOccurs="1" minOccurs="0"></xsd:element>
+
+			<xsd:element name="SummarizedText" type="xsd:string"
+				maxOccurs="1" minOccurs="1" />
+			<xsd:element name="TextSample" type="xsd:string"
+				maxOccurs="1" minOccurs="1" />
+			<xsd:element name="ActiveRules" type="ActiveRulesType"
+				maxOccurs="1" minOccurs="0" />
+			<xsd:element name="TimeLine" type="TimeLineType"
+				maxOccurs="1" minOccurs="1" />
+			<xsd:any maxOccurs="unbounded" minOccurs="0" />
+		</xsd:sequence>
+		<xsd:attribute name="MsgId" type="xsd:string" use="required" />
+	</xsd:complexType>
+
+	<xsd:complexType name="TimeLineType">
+		<xsd:sequence>
+			<xsd:element name="Occurrence" maxOccurs="unbounded"
+				minOccurs="0" type="xsd:float" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+
+	<xsd:complexType name="ActiveRulesType">
+		<xsd:sequence>
+			<xsd:element name="Rule" type="RuleType" maxOccurs="unbounded"
+				minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="RuleType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="xsd:string" />
+			<xsd:element name="Action" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ScoreType">
+		<xsd:sequence>
+			<xsd:element name="DependsOn" type="ScoreSetType"
+				maxOccurs="1" minOccurs="0">
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="ScoreName" type="xsd:string"></xsd:attribute>
+		<xsd:attribute name="Score" type="xsd:double"></xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="ScoreAttributeType">
+		<xsd:sequence>
+			<xsd:element name="DependsOn" type="ScoreSetType"
+				maxOccurs="1" minOccurs="0">
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="ScoreAttributeName" type="xsd:string"></xsd:attribute>
+		<xsd:attribute name="Value" type="xsd:string"></xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="ScoreSetType">
+		<xsd:sequence>
+			<xsd:element ref="Score" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+			<xsd:element ref="Attribute" maxOccurs="unbounded"
+				minOccurs="0"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="Score" type="ScoreType"></xsd:element>
+	<xsd:element name="Attribute" type="ScoreAttributeType"></xsd:element>
+
+</xsd:schema>

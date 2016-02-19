@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--   
+
+ Copyright IBM Corp. 2012, 2016
+ This file is part of Anomaly Detection Engine for Linux Logs (ADE).
+
+ ADE is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ ADE is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with ADE.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.openmainframe.org/ade/AdeCoreIntervalV2"
+    xmlns="http://www.openmainframe.org/ade/AdeCoreIntervalV2" elementFormDefault="qualified">
+    <xs:element name="interval">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="version" type="xs:int" />
+                <xs:element name="sys_id" type="xs:string" />
+                <xs:element name="start_time" type="xs:dateTime" />
+                <xs:element name="end_time" type="xs:dateTime" />
+                <xs:element name="anomaly_score" type="xs:double" />
+                <xs:element name="model_internal_id" type="xs:int" />
+                <xs:element name="ade_version" type="xs:int" />
+                <xs:element name="gmt_offset" type="xs:string" />
+                <xs:element name="model_info">
+                    <xs:complexType>
+                        <xs:attribute name="model_creation_date" type="xs:dateTime" use="required" />
+                        <xs:attribute name="training_period" type="xs:int" use="required" />
+                        <xs:attribute name="interval_size_in_sec" type="xs:long" use="required" />
+                        <xs:attribute name="analysis_group" type="xs:string" use="required" />
+                        <xs:attribute name="limited_model" use="optional">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Yes" />
+                                    <xs:enumeration value="No" />
+                                    <xs:enumeration value="Unknown" />
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="msg_summary">
+                    <xs:complexType>
+                        <xs:attribute name="num_new_msg" type="xs:int" use="required" />
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="interval_message" type="interval_message_type" maxOccurs="unbounded"
+                    minOccurs="0" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="interval_message_type">
+        <xs:sequence>
+            <xs:element name="num_instances" type="xs:int" />
+            <xs:element name="bernoulli">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:double">
+                            <xs:attribute name="frequency" type="xs:double" use="required" />
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="cluster_id" type="xs:int" />
+            <xs:element name="periodicity">
+                <xs:complexType>
+                    <xs:attribute name="status" use="required">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="IN_SYNC" />
+                                <xs:enumeration value="NOT_IN_SYNC" />
+                                <xs:enumeration value="NOT_PERIODIC" />
+                                <xs:enumeration value="NEW" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="last_issued" type="xs:dateTime" use="optional" />
+                    <xs:attribute name="score" type="xs:double" use="optional" />
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="poisson">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:double">
+                            <xs:attribute name="mean" type="xs:double" use="required" />
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="intCont" type="xs:double" />
+            <xs:element name="normIntCont" type="xs:double" />
+            <xs:element name="anomaly" type="xs:double" />
+            <xs:element name="cluster_status" type="xs:string" />
+            <xs:element name="critical_words" type="xs:double" />
+            <xs:element name="text_sum" type="xs:string" />
+            <xs:element name="text_smp" type="xs:string" />
+            <xs:element name="time_vec" type="interval_time_vector_type" />
+            <xs:element name="active_rules" type="active_rules_type" maxOccurs="1" minOccurs="0" />
+        </xs:sequence>
+        <xs:attribute name="msg_id" type="xs:string" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="interval_time_vector_type">
+        <xs:sequence>
+            <xs:element name="occ" maxOccurs="unbounded" minOccurs="0" type="xs:int" />
+        </xs:sequence>
+    </xs:complexType>
+
+
+
+    <xs:complexType name="active_rules_type">
+        <xs:sequence>
+            <xs:element name="rule" type="rule_type" maxOccurs="unbounded" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="rule_type">
+        <xs:sequence>
+            <xs:element name="name">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="affected_score" type="xs:boolean" />
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="action" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
