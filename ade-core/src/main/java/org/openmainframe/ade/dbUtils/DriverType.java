@@ -20,7 +20,7 @@
 package org.openmainframe.ade.dbUtils;
 
 public enum DriverType {
-    DB2("db2"), DERBY("derby"), MY_SQL("mysql");
+    DB2("db2"), DERBY("derby"), MY_SQL("mysql"), MARIADB("mariadb");
 
     public static DriverType parseDriverType(String driver) {
         driver = driver.toLowerCase();

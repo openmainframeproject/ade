@@ -19,6 +19,12 @@
 */
 package org.openmainframe.ade.ext.utils;
 
+import org.openmainframe.ade.Ade;
+import org.openmainframe.ade.dbUtils.DriverType;
+import org.openmainframe.ade.exceptions.AdeException;
+import org.openmainframe.ade.summary.SummarizationProperties;
+import org.openmainframe.ade.utils.patches.Version;
+
 /** Create sql statements of ext-specific tables */
 public enum EXT_TABLES_SQL {
 
@@ -55,8 +61,15 @@ public enum EXT_TABLES_SQL {
         this.m_create = create;
     }
 
-    public String create() {
-        return m_create;
-    }
+    public String create() throws AdeException {
+        String createString = m_create;
 
+        final String driver = Ade.getAde().getConfigProperties().database().getDatabaseDriver();
+
+        if ((DriverType.parseDriverType(driver) == DriverType.MY_SQL) ||
+            (DriverType.parseDriverType(driver) == DriverType.MARIADB)) {
+            createString = createString.replace("GENERATED ALWAYS AS IDENTITY NOT NULL", "NOT NULL AUTO_INCREMENT");
+        }
+        return createString;
+    }
 }
