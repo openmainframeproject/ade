@@ -193,7 +193,12 @@ public class VerifyLinuxTraining extends ExtControlProgram {
 
         /*  process requested sources */
         System.out.printf("Start VerifyLinuxTraining for analysis group %s \n", m_analysisGroupId);
-
+        
+        System.out.println("\tSources:");
+        for (ISource source : sources) {
+            System.out.println("\t " + source.getSourceId());
+        }
+        
         /* Extract data from the database */
         final MessageMetrics metrics = computeMessageMetrics(a_ade, sources, m_startDate, m_endDate);
 
@@ -201,6 +206,7 @@ public class VerifyLinuxTraining extends ExtControlProgram {
         // Throws if the message traffic is not sufficient for training.
         checkMessageDensity(metrics);
 
+        System.out.println("\nMessage traffic is sufficient for training.\n");
         return true;
     }
 
