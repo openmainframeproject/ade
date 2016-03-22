@@ -1,1 +1,1 @@
-Please see http://openmainframeproject.github.io/ade/ for documentation on ADE.
+Please see http://openmainframeproject.github.io/ade/ for documentation on ADE!
