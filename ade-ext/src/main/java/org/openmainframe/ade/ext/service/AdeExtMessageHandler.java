@@ -126,7 +126,11 @@ public class AdeExtMessageHandler {
         /* This method is a first attempt to use typed exceptions an get away from the
          * brittle message mapping code in this module.
          */
-        debugAssist(tpe);
+        System.out.flush();
+
+        if (tpe.getMessage() != null) {
+            System.out.println("\n"+tpe.getMessage());            
+        }
 
         // Magic number the old version of this code used.
         final int return_value = 14; 
