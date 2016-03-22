@@ -169,8 +169,7 @@ public class ManagedSystemInfo {
         public boolean performAtomicTransaction() throws AdeException {
             try {
 		if (mySQL) 
-;
-//                    execute("LOCK TABLES " + GroupsQueryImpl.MANAGED_SYSTEMS_TABLE + " WRITE");
+                    execute("LOCK TABLES " + GroupsQueryImpl.MANAGED_SYSTEMS_TABLE + " WRITE");
 		else
                     execute("LOCK TABLE " + GroupsQueryImpl.MANAGED_SYSTEMS_TABLE + " IN EXCLUSIVE MODE");
 
@@ -183,13 +182,13 @@ public class ManagedSystemInfo {
             } catch (SQLException e) {
                 logger.error("Error encountered executing the transaction.", e);
             }
-//            if (mySQL) {
-//                try {
-//                    execute("UNLOCK TABLES");
-//                } catch (SQLException e) {
-//                    logger.error("Error encountered unlocking the table.", e);
-//                }
-//            }
+            if (mySQL) {
+                try {
+                    execute("UNLOCK TABLES");
+                } catch (SQLException e) {
+                    logger.error("Error encountered unlocking the table.", e);
+                }
+            }
 
             return true;
         }
