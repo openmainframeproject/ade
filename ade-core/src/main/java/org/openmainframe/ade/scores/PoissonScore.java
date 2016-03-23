@@ -167,7 +167,7 @@ public class PoissonScore extends MessageScorer {
             numAppear = Math.min(numAppear, MAX_NUM_APPEAR);
         }
         // k *(log lambda) - lambda - (log k!)
-        final double res = (double) (numAppear * Math.log(lambda)) - lambda
+        final double res = (numAppear * Math.log(lambda)) - lambda
                 - m_logFactorials.computeLogFactorial(numAppear);
 
         assert (res <= 0);
