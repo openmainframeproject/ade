@@ -213,11 +213,7 @@ public class PercentileScorer implements IScorer<Double, Double> {
 
     @Override
     public boolean needsAnotherIteration() throws AdeException {
-        if (m_observations == null) {
-            return false;
-        } else {
-            return true;
-        }
+        return m_observations != null;
     }
 
     @Override
