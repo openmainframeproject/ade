@@ -188,7 +188,7 @@ public class PercentileScorer implements IScorer<Double, Double> {
         final double step = ((double) m_totalNumObservations + 1.0) / (NUM_PERCENTILE_BINS);
         for (int i = 0; i < NUM_PERCENTILE_BINS; ++i) {
             double tmp_score = 0.0;
-            final double exactIndex = (step * i);
+            final double exactIndex = step * i;
             final int index = (int) Math.floor(exactIndex);
             if (index == 0) { //  -> 7.2.5.2 case 2 
 
