@@ -201,11 +201,7 @@ public class LinuxMessageTextPreprocessor implements IMessageTextPreprprocessor 
      */
     @Override
     public final boolean isNonPairedMagicWord(String missing) {
-        if (missing == null || missing.equalsIgnoreCase("root")) {
-            return true;
-        } else {
-            return false;
-        }
+        return (missing == null || missing.equalsIgnoreCase("root"));
     }
     /**
      * Returns true unconditionally. The message text will be considered all one token.

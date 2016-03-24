@@ -160,11 +160,7 @@ public class XMLMetaDataRetriever {
          * Note: This code could break, if a model newer than the current code is read by the current code.  This 
          * is because the current code doesn't know if the newer model is still compatible.  
          */
-        if (MODEL_VERSION_SUPPORTED.compareTo(version) <= 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return MODEL_VERSION_SUPPORTED.compareTo(version) <= 0;
     }
 
     /**
