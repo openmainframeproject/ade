@@ -105,7 +105,7 @@ public class Rule {
         if (o == this) return true;
         if (!(o instanceof Rule)) return false;
         Rule rule = (Rule) o;
-        return  (rule.name.equalsIgnoreCase(name));
+        return  rule.name.equalsIgnoreCase(name);
     }
 
     @Override
