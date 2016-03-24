@@ -274,7 +274,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
      * Check complex property relationship (relationships between property keys).
      */
     protected final void processProperties() throws AdeException {
-        if (m_config.m_initialPartitionFromFile != null && m_config.m_initialPartitionOccurrence == true) {
+        if (m_config.m_initialPartitionFromFile != null && m_config.m_initialPartitionOccurrence) {
             throw new AdeUsageException("Two kinds of initial partition were defined: " + m_config.toString());
         }
     }
