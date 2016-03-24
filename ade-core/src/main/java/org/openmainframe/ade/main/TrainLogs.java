@@ -59,7 +59,7 @@ public class TrainLogs extends Train {
                 includedPeriods.add(period);
             }
         }
-        if (analysisGroupPeriods.size() == 0) {
+        if (analysisGroupPeriods.isEmpty()) {
             String groupName = GroupRead.getAnalysisGroupName(analysisGroup);
             s_logger.warn("No data to train " + groupName + " - skipping");
             System.out.println("No data to train " + groupName + " - skipping");
