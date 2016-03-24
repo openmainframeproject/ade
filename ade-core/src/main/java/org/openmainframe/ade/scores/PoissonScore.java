@@ -21,6 +21,7 @@ package org.openmainframe.ade.scores;
 
 import java.io.PrintStream;
 import java.io.Serializable;
+import java.util.Map.Entry;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -179,8 +180,8 @@ public class PoissonScore extends MessageScorer {
         out.println("Trained=" + m_trained);
         out.println("Total interval count=" + m_totalIntervalCount);
         out.println("min lambda=" + m_minLambda);
-        for (String key : m_msgData.keySet()) {
-            out.println(key + " : " + m_msgData.get(key));
+        for (Entry<String, MsgData> msg : m_msgData.entrySet()) {
+            out.println(msg.getKey() + " : " + msg.getValue());
         }
     }
 

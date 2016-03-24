@@ -21,6 +21,7 @@ package org.openmainframe.ade.scores;
 
 import java.io.PrintStream;
 import java.io.Serializable;
+import java.util.Map.Entry;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -143,9 +144,9 @@ public class BernoulliScore extends MessageScorer {
         super.debugPrint(out);
         out.println("Trained=" + m_trained);
         out.println("Total interval count=" + m_totalIntervalCount);
-        for (String key : m_msgData.keySet()) {
-            final MsgData value = m_msgData.get(key);
-            out.println(key + " : " + value);
+        for (Entry<String, MsgData> msg : m_msgData.entrySet()) {
+            final MsgData value = msg.getValue();
+            out.println(msg.getKey() + " : " + value);
         }
     }
 
