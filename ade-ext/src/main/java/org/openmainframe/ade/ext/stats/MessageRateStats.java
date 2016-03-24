@@ -341,12 +341,12 @@ public class MessageRateStats {
         long prevMessageInputTime = m_messageInputDateTime.getMillis();
         if (prevMessageInputTime % TEN_MINUTES > 0) {
 
-            prevMessageInputTime = TEN_MINUTES * (long) (prevMessageInputTime / TEN_MINUTES) + TEN_MINUTES;
+            prevMessageInputTime = TEN_MINUTES * (prevMessageInputTime / TEN_MINUTES) + TEN_MINUTES;
         }
         final DateTime prevMessageDateTime = new DateTime(prevMessageInputTime).withZone(s_outTimeZone);
 
         /* Find the end of the 10 minutes interval before the next message */
-        nextMessageInputTime = TEN_MINUTES * (long) (nextMessageInputTime / TEN_MINUTES);
+        nextMessageInputTime = TEN_MINUTES * (nextMessageInputTime / TEN_MINUTES);
         final DateTime nextMessageDateTime = new DateTime(nextMessageInputTime).withZone(s_outTimeZone);
 
         /* Find the number of 10 minutes interval being skipped */
@@ -934,7 +934,7 @@ public class MessageRateStats {
          */
         public double getMsg1UniqueMsgIdVariance() {
             final double variance = (double) m_sumOfMsg1UniqueMsgIdCountSquare / (double) m_numberOfIntervals -
-                    -((double) getMsg1UniqueMsgIdMean() * (double) getMsg1UniqueMsgIdMean());
+                    -(getMsg1UniqueMsgIdMean() * getMsg1UniqueMsgIdMean());
             return variance;
         }
 
