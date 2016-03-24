@@ -30,6 +30,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import org.openmainframe.ade.Ade;
+import org.openmainframe.ade.dbUtils.DriverType;
 import org.openmainframe.ade.data.DataType;
 import org.openmainframe.ade.data.GroupType;
 import org.openmainframe.ade.exceptions.AdeException;
@@ -427,6 +429,9 @@ public final class GroupsQueryImpl {
          * atomic action has not yet been performed.
          */
         private String assignedGroupName;       
+
+	private boolean mySQL;
+
         /**
          * The explicit value constructor for calling the parent constructor
          * and initializing the source name.
@@ -435,6 +440,17 @@ public final class GroupsQueryImpl {
         public DetermineSourceGroupAtomic(String sourceName) {
             super();
             this.sourceName = sourceName;
+	    try {
+	        final String driver = Ade.getAde().getConfigProperties().database().getDatabaseDriver();
+
+	        if ((DriverType.parseDriverType(driver) == DriverType.MY_SQL) ||
+		    (DriverType.parseDriverType(driver) == DriverType.MARIADB))
+		    mySQL = true;
+	        else
+    	            mySQL = false;
+            } catch (AdeException e) {
+                logger.error("An error occurred while trying to retrieve driver type");
+            }	
         }
 
         @Override
@@ -443,7 +459,15 @@ public final class GroupsQueryImpl {
                 // Lock the sources table so that we can update it without worrying if
                 // analysis groups are currently being changed. This will be
                 // released at the end of this transaction.
-                this.execute("LOCK TABLE " + SOURCES_TABLE + " IN EXCLUSIVE MODE");
+		if (mySQL) 
+                    this.execute("LOCK TABLES " + SOURCES_TABLE + " WRITE, " +
+                                 GROUPS_TABLE + " WRITE, " + 
+                                 MANAGED_SYSTEMS_TABLE + " WRITE, " +
+                                 MODELS_TABLE + " WRITE, " +
+                                 ANALYSIS_GROUPS_TIME_TABLE + " WRITE, " +
+                                 RULES_TABLE + " WRITE");
+		else
+                    this.execute("LOCK TABLE " + SOURCES_TABLE + " IN EXCLUSIVE MODE");
 
                 final List<Group> groups = getGroupListAtomic();
 
@@ -466,6 +490,15 @@ public final class GroupsQueryImpl {
                 throw new AdeInternalException("An error occurred while "
                         + "trying to update " + SOURCES_TABLE + " table.", e);
             }
+            if (mySQL) {
+                try {
+                    this.execute("UNLOCK TABLES");
+                } catch (SQLException e) {
+                    logger.error("An error occurred while trying to unlock " + SOURCES_TABLE + " table.");
+                    throw new AdeInternalException("An error occurred while "
+                            + "trying to unlock " + SOURCES_TABLE + " table.", e);
+                }
+            }
             return true;
         }
 
@@ -487,6 +520,7 @@ public final class GroupsQueryImpl {
     {
         List<Group> groups;
         private IllegalArgumentException illegalArgEx;
+	private boolean mySQL;
 
         /**
          * Constructor for initializing the new list of groups.
@@ -495,6 +529,17 @@ public final class GroupsQueryImpl {
         public ModifyModelGroupAtomic(List<Group> groups) {
             super();
             this.groups = groups;
+	    try {
+	        final String driver = Ade.getAde().getConfigProperties().database().getDatabaseDriver();
+
+	        if ((DriverType.parseDriverType(driver) == DriverType.MY_SQL) ||
+		    (DriverType.parseDriverType(driver) == DriverType.MARIADB))
+		    mySQL = true;
+	        else
+    	            mySQL = false;
+            } catch (AdeException e) {
+                logger.error("An error occurred while trying to retrieve driver type");
+            }	
         }
 
         /**
@@ -510,7 +555,15 @@ public final class GroupsQueryImpl {
                 // Lock the sources table so that we can update it without worrying if
                 // analysis groups are currently being changed. This will be
                 // released at the end of this transaction.
-                this.execute("LOCK TABLE " + SOURCES_TABLE + " IN EXCLUSIVE MODE");
+		if (mySQL)
+                    this.execute("LOCK TABLES " + SOURCES_TABLE + " WRITE, " +
+                                 GROUPS_TABLE + " WRITE, " + 
+                                 RULES_TABLE + " WRITE, " + 
+                                 MANAGED_SYSTEMS_TABLE + " WRITE, " + 
+                                 ANALYSIS_GROUPS_TIME_TABLE + " WRITE, " + 
+                                 MODELS_TABLE + " WRITE");
+		else
+                    this.execute("LOCK TABLE " + SOURCES_TABLE + " IN EXCLUSIVE MODE");
 
                 List<Group> currentGroups = this.getGroupListAtomic();
                 List<Group> groupsToAdd = getGroupsToAdd(currentGroups);
@@ -537,6 +590,8 @@ public final class GroupsQueryImpl {
                 updateTimestamp(batchList);
                 updateModelsTable(batchList, groupsToDelete);
                 executeBatch(batchList); 
+		if (mySQL)
+                    this.execute("UNLOCK TABLES");
             }
             catch (IllegalArgumentException ex)
             {
@@ -719,7 +774,15 @@ public final class GroupsQueryImpl {
                 // it's possible the a new model could be inserted after the "list" action
                 // is performed here and as a result that model would reference a now
                 // non-existent analysis group
-                batchList.add("LOCK TABLE " + MODELS_TABLE + " IN EXCLUSIVE MODE");
+                if (mySQL)
+		    batchList.add("LOCK TABLES " + MODELS_TABLE + " WRITE, " +
+                                  GROUPS_TABLE + " WRITE, " + 
+                                  RULES_TABLE + " WRITE, " + 
+                                  SOURCES_TABLE + " WRITE, " + 
+                                  ANALYSIS_GROUPS_TIME_TABLE + " WRITE, " + 
+                                  MANAGED_SYSTEMS_TABLE + " WRITE");
+		else
+		    batchList.add("LOCK TABLE " + MODELS_TABLE + " IN EXCLUSIVE MODE");
 
                 // Iterate over the models to update analysis group names
                 while (modelsResult.next())
@@ -738,6 +801,8 @@ public final class GroupsQueryImpl {
                 // Clean up
                 modelsResult.close();
                 modelListStatement.close();
+                if (mySQL)
+                    this.execute("UNLOCK TABLES");
             }            
         }
         
