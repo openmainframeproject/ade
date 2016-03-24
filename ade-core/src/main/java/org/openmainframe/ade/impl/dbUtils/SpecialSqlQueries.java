@@ -45,7 +45,8 @@ public final class SpecialSqlQueries {
      * @throws AdeException
      */
     public static int getLastKey() throws AdeException {
-        if (Ade.getAde().getConfigProperties().database().getDatabaseDriver().contains("mysql")) {
+        if ((Ade.getAde().getConfigProperties().database().getDatabaseDriver().contains("mysql")) ||
+	    (Ade.getAde().getConfigProperties().database().getDatabaseDriver().contains("mariadb"))) {
             return executeIntQuery("SELECT LAST_INSERT_ID()");
         }
         return executeIntQuery("values IDENTITY_VAL_LOCAL()");

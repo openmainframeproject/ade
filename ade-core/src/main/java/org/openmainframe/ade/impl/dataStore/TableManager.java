@@ -149,7 +149,8 @@ public class TableManager {
         final String driver = Ade.getAde().getConfigProperties().database().getDatabaseDriver();
 
         String query = "insert into " + SQL.ADE_VERSIONS + " (ADE_VERSION, PATCHED_TIME) values ('" + Ade.getAde().getDbVersion() + "', current timestamp)";
-        if (DriverType.parseDriverType(driver) == DriverType.MY_SQL) {
+        if ((DriverType.parseDriverType(driver) == DriverType.MY_SQL) ||
+            (DriverType.parseDriverType(driver) == DriverType.MARIADB)) {
             query = query.replace("current timestamp", "current_timestamp");
         }
 
