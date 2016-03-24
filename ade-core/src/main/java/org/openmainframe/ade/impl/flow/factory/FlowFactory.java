@@ -302,7 +302,7 @@ public class FlowFactory {
             } catch (NoSuchMethodException e) {
                 throw new AdeUsageException(String.format("The constructor for %s must accept a single %s argument"
                         , className, Properties.class), e);
-            } catch (SecurityException e) {
+            } catch (SecurityException|IllegalAccessException e) {
                 throw new AdeUsageException(String.format("The constructor for %s must be visible", className), e);
             } catch (InstantiationException e) {
                 throw new AdeUsageException(String.format(
@@ -310,8 +310,6 @@ public class FlowFactory {
             } catch (IllegalArgumentException e) {
                 throw new AdeInternalException(String.format(
                         "Should not have met this exception while trying to instantiate %s", className), e);
-            } catch (IllegalAccessException e) {
-                throw new AdeUsageException(String.format("The constructor for %s must be visible", className), e);
             } catch (InvocationTargetException e) {
                 throw new AdeUsageException(String.format(
                         "The contstructor for %s threw an exception", className), e);

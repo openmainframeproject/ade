@@ -86,7 +86,7 @@ public class ContinuousTimeFramer extends ConsecutiveTimeFramer {
      * @throws AdeFlowException
      */
     private final short validatePermSplitFactor(String splitFactor) throws AdeFlowException{
-        short permSplitFactor = Short.valueOf(splitFactor);
+        short permSplitFactor = Short.parseShort(splitFactor);
         if (permSplitFactor <= 0 || 
                 ((m_outerFramingFlow.getDuration() /permSplitFactor) < MILLISECONDS_IN_ONE_MINUTE)){
             throw new AdeFlowException("Permanent Split Factor cannot be negative or 0.");
@@ -109,7 +109,7 @@ public class ContinuousTimeFramer extends ConsecutiveTimeFramer {
      */
     private final short validateTempSplitFactor(String splitFactor, short permDurationInMinutes, 
             short permSplitFactor) throws AdeFlowException{
-        short tempSplitFactor = Short.valueOf(splitFactor);
+        short tempSplitFactor = Short.parseShort(splitFactor);
         if (tempSplitFactor <= 0 || (permDurationInMinutes % tempSplitFactor != 0)){
             throw new AdeFlowException("Temporary Split Factor cannot be negative or 0 and MUST be a factor of the "
                     + "Permanent Split Duration : " + permDurationInMinutes);
