@@ -269,7 +269,7 @@ public class PoissonScore extends MessageScorer {
         m_totalIntervalCount = 1;
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         calcThreshold(0.99, 1.2569444444444444);
 
     }

@@ -67,7 +67,7 @@ public abstract class AdeTest extends TestCase {
     }
 
     @Override
-    protected void tearDown() throws Exception {
+    public void tearDown() throws Exception {
         super.tearDown();
     }
 
@@ -77,7 +77,7 @@ public abstract class AdeTest extends TestCase {
      * @see junit.framework.TestCase#setUp()
      */
     @Override
-    protected void setUp() throws Exception {
+    public void setUp() throws Exception {
         super.setUp();
         if (!Ade.isCreated()) {
             Ade ade = mock(Ade.class, RETURNS_DEEP_STUBS);
