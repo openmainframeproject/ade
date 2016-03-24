@@ -39,7 +39,7 @@ public class DbDictionary {
 
     NumStringMap m_nameIdMap = null;
     CodeTableSqlStatements m_sqlStatements;
-    long m_lastRefreashTime = 0l;
+    long m_lastRefreashTime = 0L;
 
     /**
      * turn this on at your own risk!  This will disable the locking of message id tables in the database.
