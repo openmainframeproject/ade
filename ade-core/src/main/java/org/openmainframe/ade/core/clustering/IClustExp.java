@@ -292,7 +292,7 @@ public class IClustExp implements IClusteringAlgorithm {
                 if (totalN > 0) {
                     newScore = (mSize - 1) * (mSimilaritySum - mCandidateExtraSum) / totalN;
                 }
-                return (scoreContribution() - newScore);
+                return scoreContribution() - newScore;
             }
 
             private double candidateContribution() {
@@ -303,7 +303,7 @@ public class IClustExp implements IClusteringAlgorithm {
                 if (totalN > 0) {
                     newScore = (mSize + 1) * (mCandidateExtraSum + mSimilaritySum) / totalN;
                 }
-                return (newScore - scoreContribution());
+                return newScore - scoreContribution();
 
             }
 
@@ -587,7 +587,7 @@ public class IClustExp implements IClusteringAlgorithm {
                         partition.mSeed, mIdleTrials));
             }
             if (bestPartition == null || partition.mTotalScore > bestPartition.mTotalScore) {
-                mConverged = (mTrials < mMaxTrialNum);
+                mConverged = mTrials < mMaxTrialNum;
                 bestPartition = partition;
             }
             if (partition.getScore() >= 1) {
