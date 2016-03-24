@@ -594,7 +594,8 @@ public class IClustExp implements IClusteringAlgorithm {
                 break;
             }
         }
-        myPrintln(1, "Finished all runs with score=" + bestPartition.mTotalScore);
+        myPrintln(1, "Finished all runs with score=" + 
+                (bestPartition != null ? bestPartition.mTotalScore : 0));
         return bestPartition;
     }
 

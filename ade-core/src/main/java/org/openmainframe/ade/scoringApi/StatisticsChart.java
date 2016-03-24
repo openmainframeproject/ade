@@ -272,7 +272,7 @@ public class StatisticsChart {
                 }
             }
         }
-        if (bldinvalidMaps.toString() != null) {
+        if (bldinvalidMaps != null && bldinvalidMaps.toString() != null) {
             throw new AdeUsageException("The following result mapping were not found: " + bldinvalidMaps.toString() + ". Valid staistics are " + m_allKeys);
         }
     }
