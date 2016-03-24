@@ -301,7 +301,7 @@ abstract class Train extends ControlProgram {
                     break;
                 }
             }
-            if (containsAnalysisGroup == false){
+            if (!containsAnalysisGroup){
                 throw new AdeUsageException("Unknown analysis group: " + analysisGroup + ".\nAvailable analysis groups: " + groupIdToNameMap.values().toString());
             }
         }
