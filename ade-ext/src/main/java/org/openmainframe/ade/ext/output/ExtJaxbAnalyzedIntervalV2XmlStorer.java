@@ -362,10 +362,7 @@ public class ExtJaxbAnalyzedIntervalV2XmlStorer extends ExtendedAnalyzedInterval
                 throw new IOException("failed to rename " + tempOutputFile.getName() + " to " + outFile.getName());
             }
 
-        } catch (JAXBException e) {
-            throw new AdeInternalException("Failed to write xml file for interval " + outFile.getName()
-                    + " of source " + m_source.getSourceId(), e);
-        } catch (IOException e) {
+        } catch (JAXBException|IOException e) {
             throw new AdeInternalException("Failed to write xml file for interval " + outFile.getName()
                     + " of source " + m_source.getSourceId(), e);
         } finally {
