@@ -55,7 +55,7 @@ public class CodeTableSqlStatements {
     public String getWord(int id) throws AdeException {
         final WordReader wordReader = new WordReader(id);
         wordReader.executeQuery();
-        if (wordReader.m_words.size() == 0) {
+        if (wordReader.m_words.isEmpty()) {
             return null;
         }
         if (wordReader.m_words.size() > 1) {

@@ -63,7 +63,7 @@ abstract public class UploadOrAnalyze extends ExtControlProgram {
             return false;
         }
 
-        return (s_uploadOrAnalyzeObject.getInputSource() == INPUT_SOURCE.STDIN);
+        return s_uploadOrAnalyzeObject.getInputSource() == INPUT_SOURCE.STDIN;
     }
 
     public static AdeExtRequestType getAdeRequestType() {

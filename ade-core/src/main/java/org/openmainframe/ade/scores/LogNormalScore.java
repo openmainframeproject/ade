@@ -236,7 +236,7 @@ public class LogNormalScore extends MessageScorer {
     private boolean locateMismatchingDistributions(MsgData data) throws AdeException {
 
         final double maxScore = -calcLogProb(data.m_maxNumAppearance, data.m_lambda);
-        return (maxScore >= m_badMessageCountScoreThreshold);
+        return maxScore >= m_badMessageCountScoreThreshold;
     }
 
     /**
@@ -342,7 +342,7 @@ public class LogNormalScore extends MessageScorer {
 
         final double sigma = calcSigmaFromMu(mu);
 
-        return (-s_logSqrtTwoPi - Math.log(sigma));
+        return -s_logSqrtTwoPi - Math.log(sigma);
     }
 
     /**

@@ -185,13 +185,13 @@ public class AdeAnomalyIntervalScorer extends IntervalAnomalyScorer {
     private void calcPercentiles() {
         m_percentiles = new double[NUM_BUCKETS];
         // To support the case of empty model
-        if (m_rawScores.size() == 0) {
+        if (m_rawScores.isEmpty()) {
             return;
         }
         Collections.sort(m_rawScores);
         final int numIntervals = m_rawScores.size();
         for (int i = 0; i < NUM_BUCKETS; i++) {
-            final int index = ((numIntervals * i) / NUM_BUCKETS);
+            final int index = (numIntervals * i) / NUM_BUCKETS;
             m_percentiles[i] = m_rawScores.get(index);
         }
 
