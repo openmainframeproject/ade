@@ -185,16 +185,19 @@ public class ConnectionWrapper {
      */
     public void endTransaction() throws SQLException {
         if (m_returnAutoCommit) {
-            unlockTables();
             m_connection.setAutoCommit(true);
 
             m_returnAutoCommit = false;
         }
+        unlockTables();
     }
 
     private void unlockTables() throws SQLException {
         switch (s_driverType.get()) {
             case MY_SQL:
+                executeDml("unlock tables");
+                break;
+            case MARIADB:
                 executeDml("unlock tables");
                 break;
             default:
@@ -251,6 +254,9 @@ public class ConnectionWrapper {
             case MY_SQL:
                 executeDml("lock table " + tableName + " write");
                 break;
+            case MARIADB:
+                executeDml("lock table " + tableName + " write");
+                break;
             default:
                 executeDml("lock table " + tableName + " in exclusive mode");
         }
@@ -259,6 +265,9 @@ public class ConnectionWrapper {
     public void lockTableShare(String tableName) throws SQLException {
         switch (s_driverType.get()) {
             case MY_SQL:
+                executeDml("lock table " + tableName + " read");
+                break;
+            case MARIADB:
                 executeDml("lock table " + tableName + " read");
                 break;
             default:

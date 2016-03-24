@@ -64,7 +64,8 @@ public abstract class DmlPreparedStatementChunkExecuter extends DmlStatementExec
     protected void createAndExecute(String sqlString) throws SQLException, AdeException {
         m_stmt = m_preparedStatement = m_con.prepareStatement(sqlString);
         setAllParameters(m_preparedStatement);
-        flush();
+        if (m_stmtCount > 0)
+            flush();
     }
 
     protected abstract void setAllParameters(PreparedStatement stmt) throws SQLException, AdeException;
