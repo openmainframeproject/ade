@@ -706,7 +706,7 @@ public final class GroupsQueryImpl {
          * @throws SQLException
          */
         private void updateModelsTable(List<String> batchList, List<Group> groupsToDelete) throws SQLException{
-            if (groupsToDelete.size() > 0)
+            if (!groupsToDelete.isEmpty())
             {
                 // Get the list of the models that are associated with a group.
                 PreparedStatement modelListStatement =
