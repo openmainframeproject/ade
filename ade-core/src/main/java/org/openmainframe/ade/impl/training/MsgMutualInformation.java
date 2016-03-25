@@ -24,7 +24,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.TreeSet;
 
 import org.openmainframe.ade.AdeInternal;
 import org.openmainframe.ade.core.ListSortedByKey;
@@ -363,7 +362,7 @@ public class MsgMutualInformation implements IFrameableTarget<IInterval, TimeSep
      * @throws AdeException
      */
     public void printMemberReport(PrintWriter out, int member,
-            TreeSet<Integer> cluster) throws AdeException {
+            Set<Integer> cluster) throws AdeException {
         out.printf("%-15s:\n", memberStr(member));
 
         final ListSortedByKey<Double, String> list = new ListSortedByKey<Double, String>();
@@ -427,7 +426,7 @@ public class MsgMutualInformation implements IFrameableTarget<IInterval, TimeSep
         return m_msgId2msgIndicesMap.indexOf(msgId);
     }
 
-    public double calcSimilaritySum(TreeSet<Integer> cluster) {
+    public double calcSimilaritySum(Set<Integer> cluster) {
         double similaritySum = 0;
         int similaritySumN = 0;
         for (int i : cluster) {

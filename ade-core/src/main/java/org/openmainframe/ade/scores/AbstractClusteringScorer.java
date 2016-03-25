@@ -30,9 +30,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
-import java.util.TreeSet;
 
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import org.openmainframe.ade.core.ListSortedByKey;
@@ -706,7 +706,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
 
             for (int i = 0; i < clusterList.size(); ++i) {
                 final ClusterData cd = clusterList.getValue(i);
-                final TreeSet<Integer> c = cd.m_cluster;
+                final Set<Integer> c = cd.m_cluster;
                 out.printf("%d. Cluster id=%d, Used=%s, Size=%d, ", i, cd.m_id, cd.m_clusterUsage.toString(), c.size());
                 if (!Double.isNaN(cd.m_score)){
                     out.printf("Score=%f", cd.m_score);
@@ -736,7 +736,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
             final double threshold = m_config.m_clusterMinAvgInfo == null ? -1 : m_config.m_clusterMinAvgInfo * m_model.m_meanInfo;
 
             for (int i = 0; i < partition.getNumClusters(); ++i) {
-                final TreeSet<Integer> clusterElements = partition.getClusterElements(i);
+                final Set<Integer> clusterElements = partition.getClusterElements(i);
                 final ClusterData cd = new ClusterData();
                 cd.m_cluster = clusterElements;
                 clusterData.add(cd);
@@ -765,7 +765,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
             return clusterData;
         }
 
-        private double calcClusterMeanInfo(TreeSet<Integer> members) throws AdeInternalException {
+        private double calcClusterMeanInfo(Set<Integer> members) throws AdeInternalException {
             if (members.size() == 1){
                 return 0;
             }
@@ -951,7 +951,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
      */
     public static class ClusterData {
         public ClusterUsage m_clusterUsage = ClusterUsage.UNKNOWN;
-        public TreeSet<Integer> m_cluster = null;
+        public Set<Integer> m_cluster = null;
         public int m_id = -1;
         public double m_meanInfo = Double.NaN;
         public double m_score = Double.NaN;
