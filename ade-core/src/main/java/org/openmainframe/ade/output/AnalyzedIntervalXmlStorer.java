@@ -374,8 +374,7 @@ public class AnalyzedIntervalXmlStorer extends AnalyzedIntervalOutputer {
 
     protected final String cleanTextSample(String textSample) {
         final Matcher matcher = s_invalidXMLChars.matcher(textSample);
-        final String res = matcher.replaceAll("");
-        return res;
+        return matcher.replaceAll("");
     }
 
     /**

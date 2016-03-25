@@ -150,9 +150,7 @@ public class ManagedSystemInfo {
         }
 
         public boolean execute() throws AdeException {
-            final boolean success = ExtDataStoreUtils.executeAtomicTransaction(this);
-
-            return success;
+            return ExtDataStoreUtils.executeAtomicTransaction(this);
         }
 
         @Override

@@ -79,8 +79,7 @@ public class AnalysisResultMarshallerImpl implements IAnalysisResultMarshaller {
         } catch (JAXBException e) {
             throw new AdeInternalException("JAXB exception occured in file: " + f.getAbsolutePath(), e);
         }
-        final AnalyzedIntervalType res = analyzedIntervalElement.getValue();
-        return res;
+        return analyzedIntervalElement.getValue();
     }
 
 }

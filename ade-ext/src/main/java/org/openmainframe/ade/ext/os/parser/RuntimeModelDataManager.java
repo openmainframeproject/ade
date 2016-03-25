@@ -543,10 +543,8 @@ public class RuntimeModelDataManager {
      * @return the temporary file (where the file name is the runtime model data file name with ".tmp" appended)
      */
     private File getTempFile(File runtimeModelDataFile) {
-        final File ret = new File(runtimeModelDataFile.getParent(),
+        return new File(runtimeModelDataFile.getParent(),
                 runtimeModelDataFile.getName() + ".tmp");
-
-        return ret;
     }
 
     /**
@@ -555,9 +553,7 @@ public class RuntimeModelDataManager {
      * @return the error file (where the file name is the runtime model data file name with ".ffdc" appended)
      */
     private File getErrorFile(File runtimeModelDataFile) {
-        final File ret = new File(runtimeModelDataFile.getParent(),
+        return new File(runtimeModelDataFile.getParent(),
                 runtimeModelDataFile.getName() + ".ffdc");
-
-        return ret;
     }
 }

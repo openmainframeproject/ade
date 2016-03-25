@@ -307,8 +307,7 @@ public final class GroupsQueryImpl {
                     UNASSIGNED_DATA_TYPE, ruleid , evaluationOrder);
             groupStatement = prepareStatement(unassignedGroupSqlStatement, new String[]{"GROUP_INTERNAL_ID"});
             groupStatement.execute();
-            final int unassignedGroupId = getInternalId(groupStatement);
-            return unassignedGroupId;
+            return getInternalId(groupStatement);
         }
 
         /**
@@ -326,8 +325,7 @@ public final class GroupsQueryImpl {
                     UNASSIGNED_RULE_DESCRIPTION, UNASSIGNED_RULE);
             ruleStatement = prepareStatement(unassignedRuleSqlStatement, new String[]{"RULE_INTERNAL_ID"});
             ruleStatement.execute();
-            final int ruleid = getInternalId(ruleStatement);
-            return ruleid;
+            return getInternalId(ruleStatement);
         }
 
         /**

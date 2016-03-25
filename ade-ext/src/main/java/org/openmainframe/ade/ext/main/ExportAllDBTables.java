@@ -143,9 +143,7 @@ public class ExportAllDBTables extends DBDataCollector {
      */
     public final File getArchivedCompressedDBFile() {
         final String fname = getArchivedCompressedDBName();
-        final File f = new File(fname);
-
-        return f;
+        return new File(fname);
     }
 
     /**
