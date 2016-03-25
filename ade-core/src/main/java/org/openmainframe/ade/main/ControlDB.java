@@ -154,10 +154,8 @@ public class ControlDB extends ControlProgram {
     protected boolean doControlLogic() throws AdeException {
         final String msg = String.format("Performing %s operation on: %s. Are you sure? ",
                 m_op, a_ade.getConfigProperties().database().getDatabaseUrl());
-        if (!m_forceOp) {
-            if (!AdeIoUtils.promptUser(msg)) {
-                return true;
-            }
+        if (!m_forceOp && !AdeIoUtils.promptUser(msg)) {
+            return true;
         }
 
         // Important!!! this line is required even if not used. It set the JDBC connection!
