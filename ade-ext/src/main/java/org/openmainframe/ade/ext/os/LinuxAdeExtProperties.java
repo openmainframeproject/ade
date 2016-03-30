@@ -63,7 +63,7 @@ public class LinuxAdeExtProperties extends AdeExtProperties {
      * @param year
      */
     public boolean isYearDefined() {
-        return year != YEAR_NOT_DEFINED;
+        return (year != YEAR_NOT_DEFINED);
     }
 
     /**

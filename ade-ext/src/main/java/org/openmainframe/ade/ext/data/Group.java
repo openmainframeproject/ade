@@ -137,7 +137,7 @@ public class Group {
         if (o == this) return true;
         if (!(o instanceof Group)) return false;
         Group group = (Group) o;
-        return  group.name.equalsIgnoreCase(name) && (group.groupType == groupType);
+        return  (group.name.equalsIgnoreCase(name) && (group.groupType == groupType));
     }
 
     @Override
