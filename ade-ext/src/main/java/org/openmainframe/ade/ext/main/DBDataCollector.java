@@ -177,10 +177,7 @@ public abstract class DBDataCollector {
      * @return the file name
      */
     protected final String formFFDCDBExportedTableFileName(String tableName) {
-        final String outputFileName = ffdcDirectoryName
-                + File.separator + tableName + ".dat";
-
-        return outputFileName;
+        return ffdcDirectoryName + File.separator + tableName + ".dat";
     }
 
     /**
@@ -190,9 +187,7 @@ public abstract class DBDataCollector {
      */
     protected final Connection getDBConnection() throws AdeException {
         final DatabaseManager dbManager = DatabaseManager.getDatabaseManager(propertiesFileName);
-        final Connection con = dbManager.getConnection();
-
-        return con;
+        return dbManager.getConnection();
     }
 
     /**
@@ -406,9 +401,7 @@ public abstract class DBDataCollector {
      * @return  the name of the archived and compressed DB file
      */
     protected final String getArchivedCompressedDBName() {
-        final String compressedArchivedDBFileName = ffdcRootDirectoryName + File.separator + DB_FFDC_SUB_DIRECTORY_NAME + ARCHIVED_COMPRESSED_FILE_EXTENSION;
-
-        return compressedArchivedDBFileName;
+        return ffdcRootDirectoryName + File.separator + DB_FFDC_SUB_DIRECTORY_NAME + ARCHIVED_COMPRESSED_FILE_EXTENSION;
     }
 
     /**
@@ -472,9 +465,7 @@ public abstract class DBDataCollector {
         }
         ffdcDirectoryName = ffdcRootDirectoryName + File.separator + DB_FFDC_SUB_DIRECTORY_NAME;
 
-        final File ffdcDir = createDBFFDCDirectory();
-
-        return ffdcDir;
+        return createDBFFDCDirectory();
     }
 
     /**
@@ -532,9 +523,7 @@ public abstract class DBDataCollector {
     public final File getFFDCWorkspaceDirectory(String[] args) throws AdeException {
         final String dirName = getFFDCDBWorkspaceDirectory(args);
         if (dirName != null) {
-            final File ffdcDir = new File(dirName);
-
-            return ffdcDir;
+            return new File(dirName);
         }
 
         return null;

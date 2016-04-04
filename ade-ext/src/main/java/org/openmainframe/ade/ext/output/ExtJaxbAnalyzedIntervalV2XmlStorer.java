@@ -182,9 +182,7 @@ public class ExtJaxbAnalyzedIntervalV2XmlStorer extends ExtendedAnalyzedInterval
         ExtOutputFilenameGenerator outputFilenameGenerator = (ExtOutputFilenameGenerator) Ade.getAde()
                 .getConfigProperties().getOutputFilenameGenerator();
 
-        File outFile = outputFilenameGenerator.getIntervalXmlV2File(analyzedInterval, m_framingFlowType);
-
-        return outFile;
+        return outputFilenameGenerator.getIntervalXmlV2File(analyzedInterval, m_framingFlowType);
     }
 
     /**

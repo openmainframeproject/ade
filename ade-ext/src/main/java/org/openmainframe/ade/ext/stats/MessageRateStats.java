@@ -901,16 +901,14 @@ public class MessageRateStats {
          * Return the mean value
          */
         public double getMsg1UniqueMsgIdMean() {
-            final double mean = (double) m_sumOfMsg1UniqueMsgIdCount / (double) m_numberOfIntervals;
-            return mean;
+            return (double) m_sumOfMsg1UniqueMsgIdCount / (double) m_numberOfIntervals;
         }
 
         /**
          * Return the mean value
          */
         public double getMsg2UniqueMsgIdMean() {
-            final double mean = (double) m_sumOfMsg2UniqueMsgIdCount / (double) m_numberOfIntervals;
-            return mean;
+            return (double) m_sumOfMsg2UniqueMsgIdCount / (double) m_numberOfIntervals;
         }
 
         /**
@@ -933,9 +931,8 @@ public class MessageRateStats {
          * Return the mean value
          */
         public double getMsg1UniqueMsgIdVariance() {
-            final double variance = (double) m_sumOfMsg1UniqueMsgIdCountSquare / (double) m_numberOfIntervals -
+            return (double) m_sumOfMsg1UniqueMsgIdCountSquare / (double) m_numberOfIntervals -
                     -((double) getMsg1UniqueMsgIdMean() * (double) getMsg1UniqueMsgIdMean());
-            return variance;
         }
 
         /**
@@ -943,8 +940,7 @@ public class MessageRateStats {
          */
         public double getMsg1UniqueMsgIdStandardVariation() {
             final double variance = getMsg1UniqueMsgIdVariance();
-            final double stdDev = Math.sqrt(variance);
-            return stdDev;
+            return Math.sqrt(variance);
         }
 
         @Override

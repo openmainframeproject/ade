@@ -140,8 +140,7 @@ public class LinuxSyslog5424ParserBase extends LinuxSyslogLineParser {
             try {
                 final DateTime dt = fmt.withOffsetParsed().parseDateTime(s);
                 m_dateTime = dt;
-                final Date d = dt.toDate();
-                return d;
+                return dt.toDate();
             } catch (IllegalArgumentException e) {
                 // Ignore and continue to the next formatter.
             }

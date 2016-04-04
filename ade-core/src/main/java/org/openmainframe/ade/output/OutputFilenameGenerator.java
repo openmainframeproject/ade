@@ -163,8 +163,7 @@ public class OutputFilenameGenerator {
             FramingFlowType framingFlowType) throws AdeException {
         final File periodDir = getIntervalXmlStorageDir(sourceId, intervalStart, customAnalysisOutputPath);
 
-        final File intervalXml = new File(periodDir, getIntervalXmlFileRelativeToIndex(intervalStart));
-        return intervalXml;
+        return new File(periodDir, getIntervalXmlFileRelativeToIndex(intervalStart));
     }
 
     protected File getIntervalXmlStorageDir(IAnalyzedInterval analyzedInterval)
@@ -199,8 +198,7 @@ public class OutputFilenameGenerator {
         final DateFormat periodFormat = getPeriodFormat();
 
         final File logAnalysisDir = new File(getMarshallDirBySource(sourceId, customAnalysisOutputPath), LOG_ANALYSIS_DIR_NAME);
-        final File periodDir = new File(logAnalysisDir, periodFormat.format(PeriodUtils.getContainingPeriodStart(dateInInterval)));
-        return periodDir;
+        return new File(logAnalysisDir, periodFormat.format(PeriodUtils.getContainingPeriodStart(dateInInterval)));
     }
 
     /************************** Configuration outputs ***********************************/
@@ -231,8 +229,7 @@ public class OutputFilenameGenerator {
      * @throws AdeException
      */
     public final File getConfigXmlFile(String sourceId, Date configurationTime, File customAnalysisOutputPath) throws AdeException {
-        final File configXml = new File(getConfigAnalysisDir(sourceId, customAnalysisOutputPath), String.format(CONFIG_XML_FILE_NAME_FORMAT, s_dateFormat.format(configurationTime)));
-        return configXml;
+        return new File(getConfigAnalysisDir(sourceId, customAnalysisOutputPath), String.format(CONFIG_XML_FILE_NAME_FORMAT, s_dateFormat.format(configurationTime)));
     }
 
     static protected File getMarshallDirBySource(String sourceId, File customAnalysisOutputPath) throws AdeException {

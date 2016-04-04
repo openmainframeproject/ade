@@ -126,8 +126,7 @@ public abstract class ExtControlProgram extends ControlProgram {
             return false;
         }
 
-        final boolean success = execute();
-        return success;
+        return execute();
     }
 
     /** 

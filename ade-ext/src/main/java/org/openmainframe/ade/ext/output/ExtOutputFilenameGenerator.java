@@ -274,8 +274,7 @@ public class ExtOutputFilenameGenerator extends OutputFilenameGenerator {
             File customAnalysisOutputPath, FramingFlowType framingFlowType) throws AdeException {
         final File periodDir = getIntervalXmlStorageDir(sourceId, intervalStart, customAnalysisOutputPath);
 
-        final File intervalXml = new File(periodDir, getIntervalXmlFileRelativeToIndex2(intervalStart, framingFlowType));
-        return intervalXml;
+        return new File(periodDir, getIntervalXmlFileRelativeToIndex2(intervalStart, framingFlowType));
     }
 
     /* This method intended to replace getIntervalXmlFileRelativeToIndex().*/
@@ -288,8 +287,7 @@ public class ExtOutputFilenameGenerator extends OutputFilenameGenerator {
     }
 
     private File getIntervalXmlFile(String sourceId, int serialNumber, File periodDir, String pattern) throws AdeException {
-        final File intervalXml = new File(periodDir, getIntervalXmlFileRelativeToIndex(serialNumber, pattern));
-        return intervalXml;
+        return new File(periodDir, getIntervalXmlFileRelativeToIndex(serialNumber, pattern));
     }
 
     @Override
@@ -330,8 +328,7 @@ public class ExtOutputFilenameGenerator extends OutputFilenameGenerator {
     public final File getIntervalXmlStorageDir(String sourceId, Date dateInInterval, File customAnalysisOutputPath)
             throws AdeInternalException, AdeException {
         final File periodDir = getPeriodDir(sourceId, PeriodUtils.getContainingPeriodStart(dateInInterval));
-        final File intevalXmlStorageDir = new File(periodDir, EXT_INTERVAL_RELATIVE_PATH);
-        return intevalXmlStorageDir;
+        return new File(periodDir, EXT_INTERVAL_RELATIVE_PATH);
     }
 
     @Override
@@ -351,7 +348,6 @@ public class ExtOutputFilenameGenerator extends OutputFilenameGenerator {
         final DateFormat periodFormat = getPeriodFormat();
 
         final File logAnalysisDir = getMarshallDirBySource(sourceId, null);
-        final File periodDir = new File(logAnalysisDir, periodFormat.format(periodStartDate));
-        return periodDir;
+        return new File(logAnalysisDir, periodFormat.format(periodStartDate));
     }
 }

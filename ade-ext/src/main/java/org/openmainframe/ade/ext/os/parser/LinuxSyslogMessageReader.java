@@ -242,8 +242,7 @@ public class LinuxSyslogMessageReader extends AdeMessageReader {
         boolean gotLine = false;
         boolean unexpectedSource = false;        
         if (m_messageInstanceWaiting != null) {
-            final IMessageInstance tmp = getMessageInstanceWaiting();
-            return tmp;
+            return getMessageInstanceWaiting();
         }
         if (m_suppressedMessagesRemaining > 0) {
             updateSuppressedMessageStats();
@@ -400,8 +399,7 @@ public class LinuxSyslogMessageReader extends AdeMessageReader {
         final Pair<String, IThresholdSetter> p = m_messageTextPreprocessor.updateComponent(lineParser.m_component, lineParser.m_text);
         lineParser.m_component = p.m_first;
         final IThresholdSetter thresholdSetter = p.m_second;
-        final String msgId = generateMessageId(lineParser, thresholdSetter);
-        return msgId;
+        return generateMessageId(lineParser, thresholdSetter);
     }
     /**
      * Updates the last determined date time and returns the updated value. 

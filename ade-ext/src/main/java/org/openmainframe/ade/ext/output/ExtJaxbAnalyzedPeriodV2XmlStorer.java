@@ -494,10 +494,8 @@ public class ExtJaxbAnalyzedPeriodV2XmlStorer extends AnalyzedIntervalOutputer {
          * periodFinder.getLastSerialNum() will based on the current interval start to determine the serial.  Since XML
          * Hardened interval is different than the analysis Windows, we need to use the interval end time instead.
          */
-        int index = ExtOutputFilenameGenerator.getIntervalSerialNumber(
+        return ExtOutputFilenameGenerator.getIntervalSerialNumber(
                 analyzedInterval.getIntervalEndTime(), m_framingFlowType);
-
-        return index;
     }
 
     /**

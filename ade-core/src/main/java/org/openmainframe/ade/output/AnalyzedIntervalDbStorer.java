@@ -101,9 +101,7 @@ public class AnalyzedIntervalDbStorer extends AnalyzedIntervalOutputer {
      * Determine the index for the interval.
      */
     protected int getIntervalIndex(IAnalyzedInterval interval) throws AdeException {
-        final int serialNum = m_periodFinder.getLastSerialNum();
-
-        return serialNum;
+        return m_periodFinder.getLastSerialNum();
     }
 
     @Override
