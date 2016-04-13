@@ -20,8 +20,9 @@
 package org.openmainframe.ade.ext.output;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -336,11 +337,11 @@ public class ExtJaxbAnalyzedIntervalV2XmlStorer extends ExtendedAnalyzedInterval
         if (m_verbose) {
             System.out.println("saving xml in " + outFile.getAbsolutePath());
         }
-        FileWriter xmlStreamWriter;
+        OutputStreamWriter xmlStreamWriter;
         try {
             File parentdir = outFile.getParentFile();
             parentdir.mkdirs();
-            xmlStreamWriter = new FileWriter(tempOutputFile);
+            xmlStreamWriter = new OutputStreamWriter(new FileOutputStream(tempOutputFile), "UTF-8");
             xmlStreamWriter.write("<?xml version='1.0' encoding='UTF-8' ?> \n");
             xmlStreamWriter.write("<?xml-stylesheet href='" + XSL_FILENAME + "' type='text/xsl' ?> \n");
 
