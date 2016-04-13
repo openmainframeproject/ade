@@ -235,13 +235,13 @@ public class StatisticsChart {
     public String toString() {
         StringBuilder bldres = new StringBuilder("");
         if (m_doubleStats != null) {
-            for (String key : m_doubleStats.keySet()) {
-                bldres.append(String.format("%-15s: %10.6f\n", key, m_doubleStats.get(key)));
+            for (Entry<String, Double> dStat : m_doubleStats.entrySet()) {
+                bldres.append(String.format("%-15s: %10.6f\n", dStat.getKey(), dStat.getValue()));
             }
         }
         if (m_stringStats != null) {
-            for (String key : m_stringStats.keySet()) {
-                bldres.append(String.format("%-15s: %s\n", key, m_stringStats.get(key)));
+            for (Entry<String, String> sStat : m_stringStats.entrySet()) {
+                bldres.append(String.format("%-15s: %s\n", sStat.getKey(), sStat.getValue()));
             }
         }
         return bldres.toString();
@@ -272,7 +272,7 @@ public class StatisticsChart {
                 }
             }
         }
-        if (bldinvalidMaps.toString() != null) {
+        if (bldinvalidMaps != null && bldinvalidMaps.toString() != null) {
             throw new AdeUsageException("The following result mapping were not found: " + bldinvalidMaps.toString() + ". Valid staistics are " + m_allKeys);
         }
     }

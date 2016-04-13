@@ -21,6 +21,7 @@ package org.openmainframe.ade.scores;
 
 import java.io.PrintStream;
 import java.io.Serializable;
+import java.util.Map.Entry;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -167,7 +168,7 @@ public class PoissonScore extends MessageScorer {
             numAppear = Math.min(numAppear, MAX_NUM_APPEAR);
         }
         // k *(log lambda) - lambda - (log k!)
-        final double res = (double) (numAppear * Math.log(lambda)) - lambda
+        final double res = (numAppear * Math.log(lambda)) - lambda
                 - m_logFactorials.computeLogFactorial(numAppear);
 
         assert (res <= 0);
@@ -179,8 +180,8 @@ public class PoissonScore extends MessageScorer {
         out.println("Trained=" + m_trained);
         out.println("Total interval count=" + m_totalIntervalCount);
         out.println("min lambda=" + m_minLambda);
-        for (String key : m_msgData.keySet()) {
-            out.println(key + " : " + m_msgData.get(key));
+        for (Entry<String, MsgData> msg : m_msgData.entrySet()) {
+            out.println(msg.getKey() + " : " + msg.getValue());
         }
     }
 
@@ -268,7 +269,7 @@ public class PoissonScore extends MessageScorer {
         m_totalIntervalCount = 1;
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         calcThreshold(0.99, 1.2569444444444444);
 
     }

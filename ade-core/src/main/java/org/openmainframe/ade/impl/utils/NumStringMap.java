@@ -43,7 +43,7 @@ public class NumStringMap {
 
     public NumStringMap(Set<Entry<Integer, String>> entrySet) {
         this();
-        if (entrySet.size() > 0) {
+        if (!entrySet.isEmpty()) {
             for (Entry<Integer, String> entry : entrySet) {
                 m_numToStringMap.put(entry.getKey(), entry.getValue());
                 m_stringToNumMap.put(entry.getValue(), entry.getKey());

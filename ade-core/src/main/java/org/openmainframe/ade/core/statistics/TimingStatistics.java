@@ -188,10 +188,10 @@ public class TimingStatistics {
     }
 
     private static void printErrorSummary(PrintStream out) {
-        if (mInstance.mDuplicateStarts.size() > 0) {
+        if (!mInstance.mDuplicateStarts.isEmpty()) {
             out.println("ERROR: start eithout end on " + mInstance.mDuplicateStarts);
         }
-        if (mInstance.mDuplicateStarts.size() > 0) {
+        if (!mInstance.mDuplicateStarts.isEmpty()) {
             out.println("ERROR: start eithout end on " + mInstance.mDuplicateStarts);
         }
     }
@@ -298,7 +298,7 @@ public class TimingStatistics {
 
     synchronized static public void popPrefix() {
         end("all");
-        if (mPrefixes.get().size() > 0) {
+        if (!mPrefixes.get().isEmpty()) {
             mPrefixes.get().remove(mPrefixes.get().size() - 1);
         }
         recalcFinalPrefix();

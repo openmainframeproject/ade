@@ -138,7 +138,7 @@ public class StringTestComparator {
         }
     }
 
-    static public void main(String args[]) throws Exception {
+    static public void main(String[] args) throws Exception {
         String v1 = "hello\nworld\nfoo";
         String v2 = "hello\nworld\nfoo ";
         new StringTestComparator("obj1", v1, "obj2", v2);

@@ -156,9 +156,9 @@ public class LastSeenScorer extends MessageScorer {
                         logger.info("trainig last seen model for "
                                 + name);
                     }
-                    for (int i : mPointDifferences.keySet()) {
-                        logger.info("  " + i + ", "
-                                + mPointDifferences.get(i));
+                    for (Entry<Integer, Integer> pointDiff : mPointDifferences.entrySet()) {
+                        logger.info("  " + pointDiff.getKey() + ", "
+                                + pointDiff.getValue());
                     }
                 }
                 computeScores();
@@ -282,9 +282,9 @@ public class LastSeenScorer extends MessageScorer {
                 out.println("Last seen model for " + name + ": " + getLLMax());
             }
             if (m_pointScores != null && !m_pointScores.isEmpty()) {
-                for (int i : m_pointScores.keySet()) {
-                    out.println("  " + i + ", "
-                            + m_pointScores.get(i));
+                for (Entry<Integer, Double> pointScore : m_pointScores.entrySet()) {
+                    out.println("  " + pointScore.getKey() + ", "
+                            + pointScore.getValue());
                 }
                 out.println("  missing, "
                         + -m_logHalf);
@@ -420,9 +420,9 @@ public class LastSeenScorer extends MessageScorer {
      */
     @Override
     public void endOfStream() throws AdeException, AdeFlowException {
-        for (String name : m_lastSeen.keySet()) {
-            final PerodicityBounder pb = m_lastSeen.get(name);
-            pb.train(name);
+        for (Entry<String, PerodicityBounder> last : m_lastSeen.entrySet()) {
+            final PerodicityBounder pb = last.getValue();
+            pb.train(last.getKey());
         }
         m_trained = true;
     }
@@ -433,8 +433,8 @@ public class LastSeenScorer extends MessageScorer {
     @Override
     public void debugPrint(PrintStream out) throws AdeException {
         super.debugPrint(out);
-        for (String name : m_lastSeen.keySet()) {
-            m_lastSeen.get(name).debugPrint(name, out);
+        for (Entry<String, PerodicityBounder> last : m_lastSeen.entrySet()) {
+            last.getValue().debugPrint(last.getKey(), out);
         }
 
     }
