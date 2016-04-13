@@ -130,6 +130,6 @@ public class AdeInputStreamHandlerExt extends AdeInputStreamHandler {
      */
     protected final String getNameForStdin() {
         final SimpleDateFormat F = new SimpleDateFormat("-hhmmss-MMddyyyy");
-        return "stdin" + F.format(new Date());
+        return ("stdin" + F.format(new Date()));
     }
 }

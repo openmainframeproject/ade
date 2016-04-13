@@ -101,7 +101,7 @@ public final class RulesQueryImpl {
             String description = ruleListResultSet.getString("DESCRIPTION");
             String rule = ruleListResultSet.getString("RULE");
             
-            return new Rule(uid, name, rule, description);
+            return (new Rule(uid, name, rule, description));
         }    
     }
 

@@ -52,7 +52,7 @@ public final class XMLUtil {
      */
     public static int getNumberOfSnapshots(FramingFlowType fft) {
         long minutesInDay = DateTimeUtils.HOURS_IN_DAY * DateTimeUtils.MINUTES_IN_HOUR;
-        long numMinutesPerSnapShot = XMLUtil.getXMLHardenedDurationInMillis(fft) / DateTimeUtils.MILLIS_IN_MINUTE;
+        long numMinutesPerSnapShot = (XMLUtil.getXMLHardenedDurationInMillis(fft) / DateTimeUtils.MILLIS_IN_MINUTE);
         return (int) (minutesInDay / numMinutesPerSnapShot);
     }
 }

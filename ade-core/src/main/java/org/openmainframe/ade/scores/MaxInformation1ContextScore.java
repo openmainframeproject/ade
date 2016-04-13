@@ -266,7 +266,7 @@ public class MaxInformation1ContextScore extends MessageScorer {
 
     @Override
     public boolean needsAnotherIteration() throws AdeException {
-        return !m_doneTrain;
+        return (!m_doneTrain);
     }
 
     @Override

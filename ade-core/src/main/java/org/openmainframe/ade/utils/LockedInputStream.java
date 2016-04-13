@@ -83,7 +83,7 @@ public class LockedInputStream extends InputStream {
 
     @Override
     public int read() throws IOException {
-        return m_raf.read();
+        return (m_raf.read());
     }
 
 }

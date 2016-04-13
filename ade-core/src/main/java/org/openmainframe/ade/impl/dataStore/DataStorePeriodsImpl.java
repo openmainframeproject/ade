@@ -271,7 +271,7 @@ public class DataStorePeriodsImpl implements IDataStorePeriods {
             int pos = 1;
             final int periodInternalId = rs.getInt(pos++);
             final int temp = rs.getInt(pos++);
-            boolean excludeFromTraining = temp > 0;
+            boolean excludeFromTraining = (temp > 0);
             final int status = rs.getInt(pos++);
             final String comment = rs.getString(pos++);
             
@@ -342,7 +342,7 @@ public class DataStorePeriodsImpl implements IDataStorePeriods {
             int pos = 1;
             final int periodInternalId = rs.getInt(pos++);
             final int temp = rs.getInt(pos++);
-            boolean excludeFromTraining = temp > 0;
+            boolean excludeFromTraining = (temp > 0);
             final int status = rs.getInt(pos++);
             final String comment = rs.getString(pos++);
             final Date startTime = PreparedStatementWrapper.getResultSetTimestamp(rs, pos++);
