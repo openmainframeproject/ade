@@ -22,8 +22,8 @@ package org.openmainframe.ade.ext.output;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.util.zip.GZIPOutputStream;
@@ -139,7 +139,7 @@ public class ExtAnalyzedIntervalV2FullXmlStorer extends ExtendedAnalyzedInterval
 
                 xmlStreamWriter = new PrintWriter(zos);
             } else {
-                xmlStreamWriter = new FileWriter(outFile);
+                xmlStreamWriter = new OutputStreamWriter(new FileOutputStream(outFile), "UTF-8");
             }
             xmlStreamWriter.write("<?xml version='1.0' encoding='UTF-8' ?> \n");
             xmlStreamWriter.write("<?xml-stylesheet href='" + XSL_FILENAME + "' type=\"text/xsl\" ?> \n");
