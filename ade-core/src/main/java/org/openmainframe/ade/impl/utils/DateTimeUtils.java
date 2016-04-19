@@ -153,7 +153,7 @@ public final class DateTimeUtils {
     public static long getTimeStampLocal(int year, int month, int day, double frac) {
         GregorianCalendar gc = new GregorianCalendar(year, month - 1, day);
 
-        return gc.getTimeInMillis() + (int) (frac * 24L * 3600L * 1000L);
+        return gc.getTimeInMillis() + (int) (frac * 24l * 3600l * 1000l);
     }
 
     /**

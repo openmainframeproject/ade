@@ -245,7 +245,7 @@ public class ExtOutputFilenameGenerator extends OutputFilenameGenerator {
         final int intervalSerialNum = getIntervalSerialNumber(analyzedInterval.getIntervalEndTime(), framingFlowType);
 
         final File periodDir = getPeriodDir(analyzedInterval.getInterval().getSource(),
-                PeriodUtils.getContainingPeriodStart(new Date(analyzedInterval.getIntervalEndTime() - 1L)));
+                PeriodUtils.getContainingPeriodStart(new Date(analyzedInterval.getIntervalEndTime() - 1l)));
 
         return getIntervalXmlFile(sourceId, intervalSerialNum, periodDir, pattern);
     }
@@ -257,7 +257,7 @@ public class ExtOutputFilenameGenerator extends OutputFilenameGenerator {
     @Override
     public final File getIntervalXmlStorageDir(IAnalyzedInterval analyzedInterval) throws AdeException {
         final String sourceId = analyzedInterval.getInterval().getSource().getSourceId();
-        final Long intervalEnd = analyzedInterval.getIntervalEndTime() - 1L;
+        final Long intervalEnd = analyzedInterval.getIntervalEndTime() - 1l;
         return getIntervalXmlStorageDir(sourceId, new Date(intervalEnd));
     }
 
