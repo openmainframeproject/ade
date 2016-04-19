@@ -610,7 +610,7 @@ public class ExtJaxbAnalyzedPeriodV2XmlStorer extends AnalyzedIntervalOutputer {
 
             intervalType.setIndex(i);
 
-            double value = Double.valueOf(SingleDigitFormatter.format(m_aiVec[i].m_anomaly_score * 100));
+            double value = Double.parseDouble(SingleDigitFormatter.format(m_aiVec[i].m_anomaly_score * 100));
             intervalType.setAnomalyScore(value);
             intervalType.setNumUniqueMsgIds(m_aiVec[i].m_num_unique_msg_ids);
             intervalType.setNumNewMessages(m_aiVec[i].m_numNewMessages);
@@ -676,10 +676,7 @@ public class ExtJaxbAnalyzedPeriodV2XmlStorer extends AnalyzedIntervalOutputer {
                 throw new IOException("failed to rename " + tempOutputFile.getName() + " to " + outFile.getName());
             }
 
-        } catch (JAXBException e) {
-            throw new AdeInternalException("Failed to write xml file for interval " + outFile.getName()
-                    + " of source " + m_source.getSourceId(), e);
-        } catch (IOException e) {
+        } catch (JAXBException|IOException e) {
             throw new AdeInternalException("Failed to write xml file for interval " + outFile.getName()
                     + " of source " + m_source.getSourceId(), e);
         } finally {

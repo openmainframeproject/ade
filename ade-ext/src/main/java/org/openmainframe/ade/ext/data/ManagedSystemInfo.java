@@ -26,6 +26,8 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.openmainframe.ade.data.ISource;
+import org.openmainframe.ade.Ade;
+import org.openmainframe.ade.dbUtils.DriverType;
 import org.openmainframe.ade.exceptions.AdeException;
 import org.openmainframe.ade.exceptions.AdeInternalException;
 import org.openmainframe.ade.ext.utils.AtomicTransaction;
@@ -143,10 +145,18 @@ public class ManagedSystemInfo {
 
     private class UpdateManagedSystemAtomicTransaction extends AtomicTransaction {
         private ISource source;
+        private boolean mySQL;
 
-        public UpdateManagedSystemAtomicTransaction(ISource source) {
+        public UpdateManagedSystemAtomicTransaction(ISource source) throws AdeException {
             super();
             this.source = source;
+            final String driver = Ade.getAde().getConfigProperties().database().getDatabaseDriver();
+
+            if ((DriverType.parseDriverType(driver) == DriverType.MY_SQL) ||
+                (DriverType.parseDriverType(driver) == DriverType.MARIADB))
+                mySQL = true;
+            else
+                mySQL = false;
         }
 
         public boolean execute() throws AdeException {
@@ -158,7 +168,10 @@ public class ManagedSystemInfo {
         @Override
         public boolean performAtomicTransaction() throws AdeException {
             try {
-                execute("LOCK TABLE " + GroupsQueryImpl.MANAGED_SYSTEMS_TABLE + " IN EXCLUSIVE MODE");
+		if (mySQL) 
+                    execute("LOCK TABLES " + GroupsQueryImpl.MANAGED_SYSTEMS_TABLE + " WRITE");
+		else
+                    execute("LOCK TABLE " + GroupsQueryImpl.MANAGED_SYSTEMS_TABLE + " IN EXCLUSIVE MODE");
 
                 m_dbqueryManagedSystem = lookupManagedSystemInfo(source);
                 if (m_dbqueryManagedSystem == null) {
@@ -168,6 +181,13 @@ public class ManagedSystemInfo {
                 }
             } catch (SQLException e) {
                 logger.error("Error encountered executing the transaction.", e);
+            }
+            if (mySQL) {
+                try {
+                    execute("UNLOCK TABLES");
+                } catch (SQLException e) {
+                    logger.error("Error encountered unlocking the table.", e);
+                }
             }
 
             return true;

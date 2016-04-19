@@ -38,20 +38,7 @@ public class TestInputTimeZoneManager {
         assertEquals("getTimezone with 1L ","GMT-05:00",InputTimeZoneManager.getTimezone("5"));
     }
     
-    @Test
-    public void TestGetTimezoneWithEpochTime() throws AdeException {
-        DateTime dt = new DateTime(DateTimeZone.forID("America/Recife"));
-        InputTimeZoneManager.updateTimezone("1", dt);
-        TimeZone tz = Calendar.getInstance().getTimeZone();
-        assertEquals("getTimezone with 1L and GMT-3:00 ","GMT-03:00",InputTimeZoneManager.getTimezone("1"));
-    }
-    
-    @Test
-    public void TestGetTimezoneWithOffsetOverOne() throws AdeException {
-        DateTime dt = new DateTime(DateTimeZone.forID("Europe/Berlin"));
-        InputTimeZoneManager.updateTimezone("1", dt);
-        assertEquals("getTimezone with offset > 0 ","GMT+01:00",InputTimeZoneManager.getTimezone("1"));
-    }
+
     
     @Test
     public void TestGetTimezoneWithNullDateAndNonNullConfig() throws AdeException{

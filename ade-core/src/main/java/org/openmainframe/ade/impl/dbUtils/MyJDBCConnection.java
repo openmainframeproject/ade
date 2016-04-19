@@ -102,7 +102,7 @@ public final class MyJDBCConnection {
         }
 
         String url = connectionUrl;
-        if (create && connectionUrl.contains("jdbc:derby")) {
+        if (create && connectionUrl !=null && connectionUrl.contains("jdbc:derby")) {
             url += ";create=true";
         }
 

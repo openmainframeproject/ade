@@ -213,8 +213,10 @@ public enum SQL {
 
         final String driver = Ade.getAde().getConfigProperties().database().getDatabaseDriver();
 
-        if (DriverType.parseDriverType(driver) == DriverType.MY_SQL) {
+        if ((DriverType.parseDriverType(driver) == DriverType.MY_SQL) ||
+            (DriverType.parseDriverType(driver) == DriverType.MARIADB)) {
             createString = createString.replace("GENERATED ALWAYS AS IDENTITY NOT NULL", "NOT NULL AUTO_INCREMENT");
+            createString = createString.replace("GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)", "AUTO_INCREMENT");
         }
         return createString;
     }

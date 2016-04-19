@@ -56,7 +56,7 @@ public class RarityScore extends MessageScorer {
         }
 
         private static final long serialVersionUID = 1L;
-        int m_counts[];
+        int[] m_counts;
         int m_count = 0;
         double[] m_probs;
         public double m_bernoulliProb;

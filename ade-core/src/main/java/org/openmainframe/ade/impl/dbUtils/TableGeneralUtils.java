@@ -137,8 +137,9 @@ public final class TableGeneralUtils {
         final ConnectionWrapper cw = new ConnectionWrapper(AdeInternal.getDefaultConnection());
         final String tableName = table.toString();
         try {
-            if (Ade.getAde().getConfigProperties().database().getDatabaseDriver().contains("mysql")) {
-                cw.executeDml("lock table " + tableName + " write");
+            if ((Ade.getAde().getConfigProperties().database().getDatabaseDriver().contains("mysql")) || 
+                (Ade.getAde().getConfigProperties().database().getDatabaseDriver().contains("mariadb"))) {
+                cw.executeDml("lock tables " + tableName + " write");
                 cw.close();
             } else {
                 cw.executeDml("lock table " + tableName + " in exclusive mode");
@@ -153,8 +154,9 @@ public final class TableGeneralUtils {
         final String tableName = table.toString();
         final ConnectionWrapper cw = new ConnectionWrapper(AdeInternal.getDefaultConnection());
         try {
-            if (Ade.getAde().getConfigProperties().database().getDatabaseDriver().contains("mysql")) {
-                cw.executeDml("lock table " + tableName + " read");
+            if ((Ade.getAde().getConfigProperties().database().getDatabaseDriver().contains("mysql")) ||
+                (Ade.getAde().getConfigProperties().database().getDatabaseDriver().contains("mariadb"))) {
+                cw.executeDml("lock tables " + tableName + " read");
                 cw.close();
 
             } else {
@@ -188,12 +190,12 @@ public final class TableGeneralUtils {
     }
 
     private static void unlockTables() throws AdeException {
-        if (!Ade.getAde().getConfigProperties().database().getDatabaseDriver().contains("mysql")) {
+        if ((!Ade.getAde().getConfigProperties().database().getDatabaseDriver().contains("mysql")) ||
+            (!Ade.getAde().getConfigProperties().database().getDatabaseDriver().contains("mariadb"))) {
             return;
         }
         final ConnectionWrapper cw = new ConnectionWrapper(AdeInternal.getDefaultConnection());
         try {
-
             cw.executeDml("unlock tables");
             cw.close();
         } catch (SQLException e) {

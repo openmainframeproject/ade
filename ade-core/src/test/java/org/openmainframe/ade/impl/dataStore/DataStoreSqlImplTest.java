@@ -27,11 +27,14 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openmainframe.ade.Ade;
+import org.openmainframe.ade.dbUtils.DriverType;
 import org.openmainframe.ade.exceptions.AdeException;
 import org.openmainframe.ade.impl.dataStore.DataStoreSqlImpl;
 import org.openmainframe.ade.impl.dbUtils.Database;
 import org.openmainframe.ade.impl.dbUtils.DerbyDatabase;
 import org.openmainframe.ade.impl.dbUtils.MyJDBCConnection;
+import org.openmainframe.ade.utils.LazyObj;
+import org.openmainframe.ade.utils.LazyObj.ObjectCreationException;
 import org.openmainframe.ade.utils.patches.Version;
 
 public class DataStoreSqlImplTest {
@@ -40,6 +43,8 @@ public class DataStoreSqlImplTest {
 
     private static Ade ade;
 
+    private static LazyObj<DriverType> s_driverType;
+    
     @BeforeClass
     public static void setup() throws Exception {
         /* Set the properties for our local database */
@@ -49,8 +54,10 @@ public class DataStoreSqlImplTest {
          * encountered on our way. */
         ade = mock(Ade.class, RETURNS_DEEP_STUBS);
         when(ade.getConfigProperties().database().getDatabaseDriver()).thenReturn("derby");
+        when(ade.getConfigProperties().database().getDriverType()).thenReturn(DriverType.DERBY);
         when(ade.getConfigProperties().getOverrideVersionCheck()).thenReturn(true);
         when(ade.getDbVersion()).thenReturn(new Version(1, 0));
+        
         Ade.create(ade);
     }
 
