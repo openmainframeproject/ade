@@ -24,6 +24,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import org.openmainframe.ade.data.IAnalyzedInterval;
 import org.openmainframe.ade.data.IBasicInterval;
@@ -40,7 +41,7 @@ public final class AnalyzedIntervalLoader {
         // Private constructor to hide the implicit public one.        
     }
 
-    public static ArrayList<IAnalyzedInterval> loadAnalyzedIntervalsByPeriod(int periodInternalId, FramingFlowType framingFlowType, Connection con) throws AdeException {
+    public static List<IAnalyzedInterval> loadAnalyzedIntervalsByPeriod(int periodInternalId, FramingFlowType framingFlowType, Connection con) throws AdeException {
         final ByPeriod bp = new ByPeriod(periodInternalId, framingFlowType, con);
         bp.executeQuery();
         Collections.sort(bp.m_result, new IBasicInterval.ByStartTimeComparator());

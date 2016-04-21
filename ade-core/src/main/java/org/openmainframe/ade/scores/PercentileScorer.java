@@ -21,6 +21,7 @@ package org.openmainframe.ade.scores;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.NavigableMap;
@@ -62,11 +63,11 @@ public class PercentileScorer implements IScorer<Double, Double> {
     public static final int NUM_PERCENTILE_BINS = 100;
 
     private class GetVecMemberFromFullIndex {
-        ArrayList<Double> m_vec;
+        List<Double> m_vec;
         int m_totalNumIntervals;
         int m_numIntervalsWithZeroOccurrences;
 
-        public GetVecMemberFromFullIndex(ArrayList<Double> vec,
+        public GetVecMemberFromFullIndex(List<Double> vec,
                 int totalNumIntervals) {
             super();
             this.m_vec = vec;
@@ -111,7 +112,7 @@ public class PercentileScorer implements IScorer<Double, Double> {
      *  for example:  if the array is of size 100, then 
      *  entry number 0 represents the XXXXXXX  
      */
-    public ArrayList<Double> getPercentiles() {
+    public List<Double> getPercentiles() {
         final ArrayList<Double> res = new ArrayList<Double>();
         int lastPercIndex = -1;
         for (Entry<Double, Integer> percentileEntry : m_percentiles.entrySet()) {
