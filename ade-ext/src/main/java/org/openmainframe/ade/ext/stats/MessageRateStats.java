@@ -154,7 +154,7 @@ public class MessageRateStats {
     /**
      * 10 minutes
      */
-    private static final long TEN_MINUTES = 10 * 60 * 1000;
+    private static final long TEN_MINUTES = (long)10 * 60 * 1000;
 
     /**
      * Output format

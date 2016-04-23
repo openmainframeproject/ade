@@ -83,7 +83,7 @@ public final class MessagesWithUnexpectedSource {
          * 
          * After the log interval has elapsed, the logging for a source will be enabled again. 
          */
-        private static final long LOG_INTERVAL = 60 * 60 * 1000;
+        private static final long LOG_INTERVAL = (long)60 * 60 * 1000;
 
         /**
          * A count of number of log messages about the unexpected source.
