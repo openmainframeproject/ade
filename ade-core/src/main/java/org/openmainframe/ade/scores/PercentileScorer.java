@@ -147,7 +147,7 @@ public class PercentileScorer implements IScorer<Double, Double> {
         }
         final Entry<Double, Integer> succEntry = m_percentiles.ceilingEntry(value);
         if (succEntry == null) {
-            return m_percentiles.lastEntry().getValue() + 1;
+            return (double)m_percentiles.lastEntry().getValue() + 1;
         }
         final double succVal = succEntry.getKey();
         return (pred + (value - predVal) / (succVal - predVal)) * percentileStepSize * SCORE_FACTOR;

@@ -838,11 +838,9 @@ public final class ExtDataStoreUtils {
 
         t = t.getCause();
 
-        if (t != null) {
-            if (t instanceof SQLException) {
-                logger.error("Caused by SQLException(s):");
-                surfaceSqlException((SQLException) t);
-            }
+        if (t != null && t instanceof SQLException) {
+            logger.error("Caused by SQLException(s):");
+            surfaceSqlException((SQLException) t);
             // We've already logged the entired caused by stack trace above    
         }
 

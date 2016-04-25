@@ -150,11 +150,9 @@ public class MessageSummaryBuilder implements IStreamTarget<IMessageInstance> {
         m_messageSummary.setMessageCounter(m_messageSummary.getNumMessageInstances() + other.getNumMessageInstances());
         m_messageSummary.setMessageFailedCounter(m_messageSummary.getNumFailedMessageInstances() + other.getNumFailedMessageInstances());
 
-        if (m_sumProps.m_calculateCriticalWordsScore) {
-            if (other.getCriticalWordsScore() > m_messageSummary.getCriticalWordsScore()) {
-                m_messageSummary.setCriticalWordsScore(other.getCriticalWordsScore());
-                m_messageSummary.setTextSample(other.getTextSample());
-            }
+        if (m_sumProps.m_calculateCriticalWordsScore && other.getCriticalWordsScore() > m_messageSummary.getCriticalWordsScore()) {
+            m_messageSummary.setCriticalWordsScore(other.getCriticalWordsScore());
+            m_messageSummary.setTextSample(other.getTextSample());
         }
         if (m_messageSummary.getTextSample() == null) {
             m_messageSummary.setTextSample(other.getTextSample());
