@@ -65,11 +65,9 @@ public class ClusteringUniquifyScore extends AbstractClusteringScorer {
                 clusterId = -1;
             } else {
                 spike = m_contextGoodClusters.contains(clusterId);
-                if (spike) {
-                    if (!m_goodClustersRepresentative.contains(clusterId)) {
-                        m_goodClustersRepresentative.add(clusterId);
-                        representatitve = true;
-                    }
+                if (spike && !m_goodClustersRepresentative.contains(clusterId)) {
+                    m_goodClustersRepresentative.add(clusterId);
+                    representatitve = true;
                 }
             }
             sc.setStat(CLUSTER_ID, clusterId);
