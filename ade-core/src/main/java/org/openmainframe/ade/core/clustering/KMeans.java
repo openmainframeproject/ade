@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 import java.util.TreeSet;
 
 import org.openmainframe.ade.core.exceptions.AdeCoreIllegalArgumentException;
@@ -255,7 +256,7 @@ public class KMeans implements IClusteringAlgorithm, Serializable {
         }
 
         @Override
-        public TreeSet<Integer> getClusterElements(int clusterNumber) {
+        public Set<Integer> getClusterElements(int clusterNumber) {
             if (clusterNumber < 0 || clusterNumber >= mNumClusters) {
                 return null;
             }

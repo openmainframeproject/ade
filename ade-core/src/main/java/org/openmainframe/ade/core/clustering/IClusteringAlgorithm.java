@@ -21,7 +21,7 @@ package org.openmainframe.ade.core.clustering;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.TreeSet;
+import java.util.Set;
 
 /**
  * 
@@ -51,7 +51,7 @@ public interface IClusteringAlgorithm {
         int getNumOfElementsInCluster(int clusterIndex);
 
         /** Returns a collection of the elements in a cluster */
-        TreeSet<Integer> getClusterElements(int clusterNumber);
+        Set<Integer> getClusterElements(int clusterNumber);
 
         /** Returns an array of the cluster's index of each element */
         int[] getClusterIndices();

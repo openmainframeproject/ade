@@ -24,6 +24,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -45,7 +46,7 @@ public class ResultBrowserImpl extends ResultBrowser {
     }
 
     @Override
-    public final ArrayList<IAnalyzedInterval> getAnalyzedIntervals(int sourceInternalId, Date date, FramingFlowType framingFlowType) throws AdeException {
+    public final List<IAnalyzedInterval> getAnalyzedIntervals(int sourceInternalId, Date date, FramingFlowType framingFlowType) throws AdeException {
         final int periodInternalId = PeriodIdFinder.getPeriodInternalIdByStartTime(sourceInternalId, date, framingFlowType, m_connection);
         if (periodInternalId < 0) {
             return new ArrayList<IAnalyzedInterval>();
