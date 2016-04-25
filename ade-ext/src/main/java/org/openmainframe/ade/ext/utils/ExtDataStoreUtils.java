@@ -954,8 +954,7 @@ public final class ExtDataStoreUtils {
         if (t instanceof AdeException) {
             return (AdeException) t;
         } else {
-            final AdeInternalException m = new AdeInternalException("adeExceptionOf( " + t.getMessage() + " )", t);
-            return m;
+            return new AdeInternalException("adeExceptionOf( " + t.getMessage() + " )", t);
         }
 
     } 

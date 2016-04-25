@@ -185,8 +185,7 @@ public class IClustExp implements IClusteringAlgorithm {
             }
 
             public String toStringSimple() {
-                String res = "  " + mMembers + " score=" + scoreContribution();
-                return res;
+                return "  " + mMembers + " score=" + scoreContribution();
             }
 
             public double calculateSimilarityGainForMember(int element) {
