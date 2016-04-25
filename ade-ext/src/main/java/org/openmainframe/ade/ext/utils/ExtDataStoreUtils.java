@@ -26,6 +26,7 @@ import java.sql.SQLException;
 import java.sql.SQLNonTransientConnectionException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import org.openmainframe.ade.Ade;
@@ -420,7 +421,7 @@ public final class ExtDataStoreUtils {
      * @return - ArrayList of String(s)
      * @throws AdeException
      */
-    public static ArrayList<String> getStringColList(String sqlQuery,
+    public static List<String> getStringColList(String sqlQuery,
             String colName)
                     throws AdeException {
         final ArrayList<String> colList = new ArrayList<String>();
@@ -458,7 +459,7 @@ public final class ExtDataStoreUtils {
      * @return - ArrayList of String(s)
      * @throws AdeException
      */
-    public static <T> ArrayList<T> getCustomList(String sqlQuery,
+    public static <T> List<T> getCustomList(String sqlQuery,
             IDbResultParser<T> resultParser)
                     throws AdeException {
         final ArrayList<T> colList = new ArrayList<T>();
@@ -581,7 +582,7 @@ public final class ExtDataStoreUtils {
      *           of the input SQL statement(s) did not raise
      *           any exceptions, false to indicate that it did.
      */
-    public static synchronized boolean executeBatch(ArrayList<String> sqlStatement) { 
+    public static synchronized boolean executeBatch(List<String> sqlStatement) { 
 
         boolean batchOk = false;
         logger.trace("executeBatch() -->entry");

@@ -25,6 +25,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.openmainframe.ade.Ade;
 import org.openmainframe.ade.exceptions.AdeException;
@@ -96,9 +97,9 @@ public class SimpleQueries {
      * @return Result of query or null if query returned no results.
      * @throws AdeException
      */
-    public final ArrayList<String> executeStringListQuery(String sql) throws AdeException {
-        final ArrayList<String[]> temp = executeStringListQuery2d(sql);
-        final ArrayList<String> res = new ArrayList<String>(temp.size());
+    public final List<String> executeStringListQuery(String sql) throws AdeException {
+        final List<String[]> temp = executeStringListQuery2d(sql);
+        final List<String> res = new ArrayList<String>(temp.size());
         for (int i = 0; i < temp.size(); ++i) {
             final String[] row = temp.get(i);
             if (row.length != 1) {
@@ -117,7 +118,7 @@ public class SimpleQueries {
      * @return Result of query or null if query returned no results.
      * @throws AdeException
      */
-    public final ArrayList<String[]> executeStringListQuery2d(String sql) throws AdeException {
+    public final List<String[]> executeStringListQuery2d(String sql) throws AdeException {
         final ConnectionWrapper cw = new ConnectionWrapper(m_connection);
         final ArrayList<String[]> result = new ArrayList<String[]>();
         try {
@@ -147,7 +148,7 @@ public class SimpleQueries {
      * @throws AdeException
      */
 
-    public final ArrayList<Integer> executeIntListQuery(String sql) throws AdeException {
+    public final List<Integer> executeIntListQuery(String sql) throws AdeException {
         return SpecialSqlQueries.executeIntListQuery(sql, m_connection);
     }
 

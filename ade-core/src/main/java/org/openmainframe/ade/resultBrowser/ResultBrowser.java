@@ -20,8 +20,8 @@
 package org.openmainframe.ade.resultBrowser;
 
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import org.openmainframe.ade.data.IAnalyzedInterval;
@@ -45,7 +45,7 @@ public abstract class ResultBrowser {
     abstract public Date getLastPeriodForSource(int sourceInternalId) throws AdeException;
 
     /** @return the analysis results for a period with the given start time and the given source */
-    abstract public ArrayList<IAnalyzedInterval> getAnalyzedIntervals(int sourceInternalId, Date date, FramingFlowType framingFlowType) throws AdeException;
+    abstract public List<IAnalyzedInterval> getAnalyzedIntervals(int sourceInternalId, Date date, FramingFlowType framingFlowType) throws AdeException;
 
     abstract public Set<String> getAllAnalyzedSources() throws AdeException;
 
