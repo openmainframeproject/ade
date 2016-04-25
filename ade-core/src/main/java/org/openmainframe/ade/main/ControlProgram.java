@@ -140,8 +140,7 @@ public abstract class ControlProgram {
             return false;
         }
        
-        final boolean success = execute();
-        return success;
+        return execute();
     }
 
     public void runMain(String[] args) throws AdeException {

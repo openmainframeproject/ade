@@ -129,9 +129,7 @@ public class MaxInformation1ContextScore extends MessageScorer {
         public double calcConditionalEntropy(String otherKey) {
 
             double entropy = m_data.get(otherKey).getEntropy();
-            double h = calcJoinedEntropy(otherKey) - entropy;
-
-            return h;
+            return calcJoinedEntropy(otherKey) - entropy;
         }
 
         private double getEntropy() {

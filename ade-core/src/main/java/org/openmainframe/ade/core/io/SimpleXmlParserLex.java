@@ -53,8 +53,7 @@ class SimpleXmlParserLex {
         int mLineNumber;
 
         public String toString() {
-            final String res = mType + " '" + mContent + "' open=" + mOpen + " closed=" + mClose;
-            return res;
+            return mType + " '" + mContent + "' open=" + mOpen + " closed=" + mClose;
         }
 
         public boolean isTag() {

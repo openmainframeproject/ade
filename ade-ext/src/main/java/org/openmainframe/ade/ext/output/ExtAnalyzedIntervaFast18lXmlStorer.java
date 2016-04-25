@@ -195,9 +195,7 @@ public class ExtAnalyzedIntervaFast18lXmlStorer extends AnalyzedIntervalOutputer
     private File getInterval18XMLFile(IAnalyzedInterval analyzedInterval) throws AdeException {
         ExtOutputFilenameGenerator outputFilenameGenerator = (ExtOutputFilenameGenerator) Ade.getAde().getConfigProperties().getOutputFilenameGenerator();
 
-        File outFile = outputFilenameGenerator.getIntervalXmlV1File(analyzedInterval, m_framingFlowType);
-
-        return outFile;
+        return outputFilenameGenerator.getIntervalXmlV1File(analyzedInterval, m_framingFlowType);
     }
 
 }
