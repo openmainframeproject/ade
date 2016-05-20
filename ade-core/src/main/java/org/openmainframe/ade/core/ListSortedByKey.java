@@ -248,7 +248,7 @@ public class ListSortedByKey<K, V> {
         @Override
         public int compareTo(Item other) {
             // The comparison result
-            int res = 0;
+            int res;
 
             // First order by keys, either by a user-defined comparator or by natural ordering
             res = getKeyComparisonResult(other.mKey);

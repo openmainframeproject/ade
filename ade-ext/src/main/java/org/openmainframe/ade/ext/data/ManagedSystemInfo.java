@@ -226,8 +226,8 @@ public class ManagedSystemInfo {
             final String MANAGED_QUERY = String.format("SELECT * FROM MANAGED_SYSTEMS WHERE SOURCE_INTERNAL_ID=%s",
                     S.getSourceInternalId());
             ResultSet R = null;
-            String osName = null;
-            int gmtOffset = 0;
+            String osName;
+            int gmtOffset;
 
             logger.trace(String.format("lookupManagedSystemInfo(%s) -->entry",
                     S.getSourceId())); 
@@ -304,7 +304,7 @@ public class ManagedSystemInfo {
 
             logger.trace(String.format("addManagedSystem(%s) -->entry",
                     S.getSourceId())); 
-            boolean addOk = false;
+            boolean addOk;
 
             try {
                 logger.info(String.format("addManagedSystem(%s) -->executeBatch",
@@ -342,7 +342,7 @@ public class ManagedSystemInfo {
 
             logger.trace(String.format("updateManagedSystem(%s) -->entry",
                     S.getSourceId())); 
-            boolean updateOk = false;
+            boolean updateOk;
             try {
                 logger.info(String.format("updateManagedSystem(%s) -->executeBatch",
                         S.getSourceId()));

@@ -192,7 +192,7 @@ abstract class Train extends ControlProgram {
         options.addOption(startDateOpt);
 
         final CommandLineParser parser = new GnuParser();
-        CommandLine line = null;
+        CommandLine line;
 
         try {
             // parse the command line arguments

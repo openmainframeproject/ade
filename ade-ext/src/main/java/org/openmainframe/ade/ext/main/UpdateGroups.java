@@ -117,7 +117,7 @@ public class UpdateGroups extends ExtControlProgram{
      * @throws AdeUsageException
      */
     private CommandLine parseLine(CommandLineParser parser, Options options, String[] args) throws AdeUsageException {
-        CommandLine line = null;
+        CommandLine line;
         try {
             line = parser.parse(options, args);
         } catch (ParseException exp) {

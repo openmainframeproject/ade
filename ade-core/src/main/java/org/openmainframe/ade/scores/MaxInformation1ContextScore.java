@@ -310,7 +310,7 @@ public class MaxInformation1ContextScore extends MessageScorer {
 
     @Override
     public void printMessageUserData(IStructuredOutputWriter out, String msgId) throws Exception {
-        MsgData data = null;
+        MsgData data;
         data = m_data.get(msgId);
         if (data == null) {
             return;

@@ -245,7 +245,7 @@ abstract public class UploadOrAnalyze extends ExtControlProgram {
      * @throws AdeException 
      */
     private CommandLine parseLine(CommandLineParser parser, String[] args) throws AdeException {
-        CommandLine line = null;
+        CommandLine line;
         try {
             line = parser.parse(options, args);
         } catch (ParseException exp) {

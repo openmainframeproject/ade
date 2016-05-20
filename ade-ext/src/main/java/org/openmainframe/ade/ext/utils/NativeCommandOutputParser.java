@@ -57,7 +57,7 @@ public class NativeCommandOutputParser extends Thread {
         try {
             final BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 
-            String line = null;
+            String line;
             while ((line = br.readLine()) != null) {
                 synchronized (outputFromExternalProgram) {
                     outputFromExternalProgram.append(line);

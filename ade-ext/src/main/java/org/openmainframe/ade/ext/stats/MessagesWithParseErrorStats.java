@@ -195,7 +195,7 @@ public class MessagesWithParseErrorStats {
         final String stringWanted = " ";
 
         String line = origLine;
-        String ret = "";
+        String ret;
         boolean matchedRFC3164Time = false;
         boolean matchedRFC5424Time = false;
 

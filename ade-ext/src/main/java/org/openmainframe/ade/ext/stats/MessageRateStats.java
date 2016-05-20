@@ -136,7 +136,7 @@ public class MessageRateStats {
 
         @Override
         public String toString() {
-            String str = "";
+            String str;
             switch (this) {
                 case DAYS:
                     str = this.name() + "(" + getDays() + ")";

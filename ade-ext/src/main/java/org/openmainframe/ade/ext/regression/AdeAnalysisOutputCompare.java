@@ -142,7 +142,7 @@ public class AdeAnalysisOutputCompare {
     private void parseArgs(String[] args) throws ParseException {
         final Options options = getCmdLineOptions();
         final CommandLineParser parser = new BasicParser();
-        CommandLine cmd = null;
+        CommandLine cmd;
 
         /*
          * Parse the args according to the options definition. Will throw

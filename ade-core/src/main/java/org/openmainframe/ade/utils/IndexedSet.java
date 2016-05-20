@@ -130,7 +130,7 @@ public class IndexedSet<K> implements Set<K> {
     @Override
     public boolean retainAll(Collection<?> collection) {
         Iterator<Entry<K, Integer>> it = mMembersMap.entrySet().iterator();
-        Entry<K, Integer> entry = null;
+        Entry<K, Integer> entry;
         boolean flag = false;
         while (it.hasNext()) {
             entry = it.next();
