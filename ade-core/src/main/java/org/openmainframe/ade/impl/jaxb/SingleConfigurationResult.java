@@ -189,7 +189,7 @@ public class SingleConfigurationResult {
      */
     public List<ModelNodeStatsType> getModelNodeStats() {
         if (modelNodeStats == null) {
-            modelNodeStats = new ArrayList<ModelNodeStatsType>();
+            modelNodeStats = new ArrayList<>();
         }
         return this.modelNodeStats;
     }

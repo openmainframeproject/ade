@@ -50,8 +50,8 @@ public class TrainLogs extends Train {
     public static void trainLogs(int analysisGroup, DateTime startDate, DateTime endDate) throws AdeFlowException, AdeException {
         final List<IPeriod> analysisGroupPeriods = getAnalysisGroupPeriods(analysisGroup, startDate, endDate);
 
-        final List<IPeriod> includedPeriods = new ArrayList<IPeriod>();
-        final List<IPeriod> excludedPeriods = new ArrayList<IPeriod>();
+        final List<IPeriod> includedPeriods = new ArrayList<>();
+        final List<IPeriod> excludedPeriods = new ArrayList<>();
         for (IPeriod period : analysisGroupPeriods) {
             if (period.getExcludeFromTraining()) {
                 excludedPeriods.add(period);
@@ -96,7 +96,7 @@ public class TrainLogs extends Train {
     }
 
     public static List<IPeriod> getAnalysisGroupPeriods(int analysisGroup, DateTime startDate, DateTime endDate) throws AdeException {
-        final List<IPeriod> analysisGroupPeriods = new ArrayList<IPeriod>();
+        final List<IPeriod> analysisGroupPeriods = new ArrayList<>();
 
         // get all of the periods of the analysis group and fill analysisGroupPeriods
         for (ISource source : Ade.getAde().getDataStore().sources().getSourcesForAnalysisGroup(analysisGroup)) {

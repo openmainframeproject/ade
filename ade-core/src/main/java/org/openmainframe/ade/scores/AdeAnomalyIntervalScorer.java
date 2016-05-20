@@ -106,7 +106,7 @@ public class AdeAnomalyIntervalScorer extends IntervalAnomalyScorer {
         if (m_trained) {
             throw new AdeInternalException("Already trained");
         }
-        m_rawScores = new ArrayList<Double>();
+        m_rawScores = new ArrayList<>();
         m_intervalCount = 0;
     }
 

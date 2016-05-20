@@ -41,7 +41,7 @@ public abstract class HubFramingSource<T, U> extends HubStreamSource<T> implemen
     /**
      * This set holds the {@link IFrameableTarget} targets that can receive separators.
      */
-    protected Set<IFrameableTarget<T, U>> m_frameableTargets = new HashSet<IFrameableTarget<T, U>>();
+    protected Set<IFrameableTarget<T, U>> m_frameableTargets = new HashSet<>();
 
     /**
     * Add target for the framing operators. Note that the {@link IFrameableTarget} does not have to be the same as

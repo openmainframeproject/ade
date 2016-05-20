@@ -57,11 +57,11 @@ public class TestTimelineEncoding extends AdeTest {
                 short[] decodedTimeline = SummarizationProperties.decodeTimeLine(encodedTimeline);
 
                 // create sets of timeline original and decoded elements
-                Set<Short> timelineSet = new TreeSet<Short>();
+                Set<Short> timelineSet = new TreeSet<>();
                 for (short t : timeline) {
                     timelineSet.add(t);
                 }
-                Set<Short> decodedTimelineSet = new TreeSet<Short>();
+                Set<Short> decodedTimelineSet = new TreeSet<>();
                 for (short t : decodedTimeline) {
                     decodedTimelineSet.add(t);
                 }

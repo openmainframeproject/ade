@@ -122,7 +122,7 @@ public class KMeans implements IClusteringAlgorithm, Serializable {
         }
 
         public void initialRandomCentroids() {
-            final ArrayList<Integer> pickingCentroids = new ArrayList<Integer>();
+            final ArrayList<Integer> pickingCentroids = new ArrayList<>();
             for (int i = 0; i < mProblemInput.getRowNum(); i++) {
                 pickingCentroids.add(i);
             }
@@ -259,7 +259,7 @@ public class KMeans implements IClusteringAlgorithm, Serializable {
             if (clusterNumber < 0 || clusterNumber >= mNumClusters) {
                 return null;
             }
-            final TreeSet<Integer> clusterElements = new TreeSet<Integer>();
+            final TreeSet<Integer> clusterElements = new TreeSet<>();
             for (int i = 0; i < mClusterIndices.length; i++) {
                 if (mClusterIndices[i] == clusterNumber) {
                     clusterElements.add(i);
@@ -301,7 +301,7 @@ public class KMeans implements IClusteringAlgorithm, Serializable {
             mNumClusters = (int) Math.round(Math.sqrt(input.getRowNum()));
         }
 
-        mRunSummary = new ArrayList<RunSummary>();
+        mRunSummary = new ArrayList<>();
 
         KMeansPartition minPartition = null;
         double minScore = Double.MAX_VALUE;

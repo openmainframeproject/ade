@@ -29,7 +29,7 @@ public class MathUtils {
     private int m_maxFactComputed;
 
     public MathUtils() {
-        m_logFactTbl = new ArrayList<Double>(INIT_TBL_CAPACITY);
+        m_logFactTbl = new ArrayList<>(INIT_TBL_CAPACITY);
         m_logFactTbl.add(0, new Double(0));
         m_maxFactComputed = 0;
     }

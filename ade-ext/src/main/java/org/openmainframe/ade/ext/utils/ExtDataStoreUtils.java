@@ -423,7 +423,7 @@ public final class ExtDataStoreUtils {
     public static ArrayList<String> getStringColList(String sqlQuery,
             String colName)
                     throws AdeException {
-        final ArrayList<String> colList = new ArrayList<String>();
+        final ArrayList<String> colList = new ArrayList<>();
         ResultSet R = null;
 
         logger.trace(String.format("getStringColList( %s ) -->entry", colName));
@@ -461,7 +461,7 @@ public final class ExtDataStoreUtils {
     public static <T> ArrayList<T> getCustomList(String sqlQuery,
             IDbResultParser<T> resultParser)
                     throws AdeException {
-        final ArrayList<T> colList = new ArrayList<T>();
+        final ArrayList<T> colList = new ArrayList<>();
         ResultSet R = null;
 
         logger.trace(String.format("getCustomList( %s ) -->entry", sqlQuery));

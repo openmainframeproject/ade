@@ -155,7 +155,7 @@ public final class SpecialSqlQueries {
     }
 
     private static class IntListQueryExecuter extends QueryStatementExecuter {
-        public ArrayList<Integer> m_result = new ArrayList<Integer>();
+        public ArrayList<Integer> m_result = new ArrayList<>();
 
         public IntListQueryExecuter(String sql, Connection con) {
             super(sql, con);

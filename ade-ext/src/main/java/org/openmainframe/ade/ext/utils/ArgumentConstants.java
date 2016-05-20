@@ -81,7 +81,7 @@ public class ArgumentConstants {
             reportInvalidSysId("'all' not allowed here. Please specifiy a system id.");
         }
 
-        final ArrayList<ISource> result = new ArrayList<ISource>();
+        final ArrayList<ISource> result = new ArrayList<>();
         final ISource res = dataStoreSources.getSource(sysId);
         if (res != null) {
             result.add(res);

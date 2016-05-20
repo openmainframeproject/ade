@@ -132,7 +132,7 @@ public class ScoringSchemaType {
      */
     public List<PropertyType> getScorerProperty() {
         if (scorerProperty == null) {
-            scorerProperty = new ArrayList<PropertyType>();
+            scorerProperty = new ArrayList<>();
         }
         return this.scorerProperty;
     }
@@ -161,7 +161,7 @@ public class ScoringSchemaType {
      */
     public List<LinkType> getLinkedScorer() {
         if (linkedScorer == null) {
-            linkedScorer = new ArrayList<LinkType>();
+            linkedScorer = new ArrayList<>();
         }
         return this.linkedScorer;
     }
@@ -214,7 +214,7 @@ public class ScoringSchemaType {
      */
     public List<String> getDependsOn() {
         if (dependsOn == null) {
-            dependsOn = new ArrayList<String>();
+            dependsOn = new ArrayList<>();
         }
         return this.dependsOn;
     }

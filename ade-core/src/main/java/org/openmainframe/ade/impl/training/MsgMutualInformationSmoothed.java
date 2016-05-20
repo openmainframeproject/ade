@@ -55,8 +55,8 @@ public class MsgMutualInformationSmoothed extends MsgMutualInformation {
             return;
         }
 
-        final Map<Integer, Short> msgIdsLast = new TreeMap<Integer, Short>();
-        final Map<Integer, Short> msgIdsFirst = new TreeMap<Integer, Short>();
+        final Map<Integer, Short> msgIdsLast = new TreeMap<>();
+        final Map<Integer, Short> msgIdsFirst = new TreeMap<>();
 
         fillMissingValues(msgIdsFirst, m_lastInterval, (short) SummarizationProperties.TIMELINE_RESOLUTION);
         fillMissingValues(msgIdsLast, interval, (short) 0);
@@ -112,7 +112,7 @@ public class MsgMutualInformationSmoothed extends MsgMutualInformation {
             Map<Integer, Short> msgIdsFirst) throws AdeInternalException {
         // used ArrayList in order to doubly iterate on the message summaries without repeats in the
         // internal loop
-        final ArrayList<Integer> msgIds = new ArrayList<Integer>(msgIdsLast.keySet());
+        final ArrayList<Integer> msgIds = new ArrayList<>(msgIdsLast.keySet());
 
         for (int i = 0; i < msgIds.size(); i++) {
             final int msg1Id = msgIds.get(i);

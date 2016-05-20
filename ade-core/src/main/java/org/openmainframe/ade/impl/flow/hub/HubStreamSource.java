@@ -40,7 +40,7 @@ public abstract class HubStreamSource<T> implements IStreamSource<T> {
     /**
      * The list of added targets is kept in a Set as we do not allow target duplication.
      */
-    protected Set<IStreamTarget<T>> m_targets = new HashSet<IStreamTarget<T>>();
+    protected Set<IStreamTarget<T>> m_targets = new HashSet<>();
 
     /**
      * Add a target for this object that will receive objects of type T once they are generated. 

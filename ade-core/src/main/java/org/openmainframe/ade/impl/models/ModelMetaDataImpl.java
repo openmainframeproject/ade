@@ -48,7 +48,7 @@ public class ModelMetaDataImpl implements IModelMetaData {
     private final Date m_creationDate;
     private final int m_analysisGroupId;
     private final String m_groupName;
-    private ArrayList<IPeriod> m_excludedPeriods = new ArrayList<IPeriod>();
+    private ArrayList<IPeriod> m_excludedPeriods = new ArrayList<>();
     private File m_externalFileName;
     private final String[] m_commandLineArguments;
     private Date m_requestedStartTime;
@@ -153,7 +153,7 @@ public class ModelMetaDataImpl implements IModelMetaData {
             throw new IllegalStateException("either start time or end time not set!");
         }
 
-        final Collection<IPeriod> includedPeriods = new ArrayList<IPeriod>();
+        final Collection<IPeriod> includedPeriods = new ArrayList<>();
 
         final Date milliBeforeEndDate = new Date(m_endTime.getTime() - 1L);
 

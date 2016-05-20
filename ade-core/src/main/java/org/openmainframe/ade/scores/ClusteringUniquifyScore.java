@@ -121,8 +121,8 @@ public class ClusteringUniquifyScore extends AbstractClusteringScorer {
                 }
             }
 
-            m_contextGoodClusters = new TreeSet<Integer>();
-            m_goodClustersRepresentative = new TreeSet<Integer>();
+            m_contextGoodClusters = new TreeSet<>();
+            m_goodClustersRepresentative = new TreeSet<>();
             // second pass: find spiking clusters    
             for (int i = 0; i < m_model.m_actualClusters; ++i) {
                 m_contextGoodClusters.add(i);

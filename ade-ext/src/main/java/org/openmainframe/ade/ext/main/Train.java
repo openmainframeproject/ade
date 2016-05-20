@@ -80,11 +80,11 @@ public class Train extends TrainLogs {
      */
     public final ArrayList<String> parseAdeExtArgs(String[] args) throws AdeException {
         ArrayList<String> adeArgs;
-        adeArgs = new ArrayList<String>();
+        adeArgs = new ArrayList<>();
 
         if (args.length == 0) {
             usageError("Expecting at least one argument");
-            return new ArrayList<String>(0);
+            return new ArrayList<>(0);
         }
         if (args.length > 3) {
             usageError("Too many arguments");

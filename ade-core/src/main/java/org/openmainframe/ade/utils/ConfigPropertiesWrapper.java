@@ -229,7 +229,7 @@ public class ConfigPropertiesWrapper implements Map<String, String> {
 
     private String m_parameterPrefix;
 
-    private Map<String, InternalProperty> m_rawProperties = new TreeMap<String, InternalProperty>();
+    private Map<String, InternalProperty> m_rawProperties = new TreeMap<>();
 
     private static class InternalProperty {
         String m_name;

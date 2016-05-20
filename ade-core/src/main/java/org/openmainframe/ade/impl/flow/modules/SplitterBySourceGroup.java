@@ -88,7 +88,7 @@ public class SplitterBySourceGroup extends
 
     protected Set<IFrameableTarget<IMessageInstance, TimeSeparator>> getFrameableTargets(String key)
             throws AdeException {
-        final Set<IFrameableTarget<IMessageInstance, TimeSeparator>> frameableTargets = new HashSet<IFrameableTarget<IMessageInstance, TimeSeparator>>();
+        final Set<IFrameableTarget<IMessageInstance, TimeSeparator>> frameableTargets = new HashSet<>();
 
         switch (m_action) {
             case MESSAGE_INSTANCE_STATISTICS:

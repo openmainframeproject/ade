@@ -193,13 +193,13 @@ class MessageInstanceStatsCollector extends HubFrameableFramingBlock<IMessageIns
             if (m_uniqueMsgIds != null) {
                 addStat(m_uniqueMsgIds.size());
             }
-            m_uniqueMsgIds = new TreeSet<String>();
+            m_uniqueMsgIds = new TreeSet<>();
         }
     }
 
     private static class TotalNumMsgIdsStats extends MessageInstanceStatManager {
 
-        private Set<String> m_msgIds = new TreeSet<String>();
+        private Set<String> m_msgIds = new TreeSet<>();
 
         TotalNumMsgIdsStats(File dir) throws AdeInternalException {
             super(new File(dir, "totalNumMsgIds.txt"), "The total number of unique message IDs encountered");
@@ -282,7 +282,7 @@ class MessageInstanceStatsCollector extends HubFrameableFramingBlock<IMessageIns
         /**
          * Maps a component to [a map from message ID to messages text]
          */
-        private Map<String, Map<String, Set<String>>> m_msgsPerComponentPerMsgId = new TreeMap<String, Map<String, Set<String>>>();
+        private Map<String, Map<String, Set<String>>> m_msgsPerComponentPerMsgId = new TreeMap<>();
 
         protected SortedMessageIdGenerationStats(File dir) throws AdeInternalException {
             super(new File(dir, "sortedMsgIdGeneration.txt"), "Generated message ID clusters collected per component");
@@ -295,13 +295,13 @@ class MessageInstanceStatsCollector extends HubFrameableFramingBlock<IMessageIns
             if (componentId != null) {
                 Map<String, Set<String>> msgsPerMsgId = m_msgsPerComponentPerMsgId.get(componentId);
                 if (msgsPerMsgId == null) {
-                    msgsPerMsgId = new TreeMap<String, Set<String>>();
+                    msgsPerMsgId = new TreeMap<>();
                     m_msgsPerComponentPerMsgId.put(componentId, msgsPerMsgId);
                 }
                 final String msgId = mi.getMessageId();
                 Set<String> msgs = msgsPerMsgId.get(msgId);
                 if (msgs == null) {
-                    msgs = new TreeSet<String>();
+                    msgs = new TreeSet<>();
                     msgsPerMsgId.put(msgId, msgs);
                 }
                 msgs.add(mi.getText());

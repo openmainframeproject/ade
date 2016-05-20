@@ -85,7 +85,7 @@ public class TimeLineType {
      */
     public List<Float> getOccurrence() {
         if (occurrence == null) {
-            occurrence = new ArrayList<Float>();
+            occurrence = new ArrayList<>();
         }
         return this.occurrence;
     }

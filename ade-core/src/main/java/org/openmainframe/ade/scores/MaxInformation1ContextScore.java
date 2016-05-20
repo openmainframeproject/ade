@@ -51,7 +51,7 @@ public class MaxInformation1ContextScore extends MessageScorer {
         public MsgData(String key) {
             super();
             m_key = key;
-            m_coOccurance = new HashMap<String, Integer>();
+            m_coOccurance = new HashMap<>();
             m_probsWithPair = new Double[2];
             m_probsWithoutPair = new Double[2];
             m_totalCount = 0;
@@ -233,7 +233,7 @@ public class MaxInformation1ContextScore extends MessageScorer {
 
     @Override
     public void startIteration() throws AdeException {
-        m_data = new HashMap<String, MsgData>();
+        m_data = new HashMap<>();
     }
 
     @Override

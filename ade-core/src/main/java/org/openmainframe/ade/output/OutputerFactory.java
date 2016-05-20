@@ -53,7 +53,7 @@ public final class OutputerFactory {
             throw new AdeUsageException("Failed instansiating outputer class " + name, e);
         }
         AnalyzedIntervalOutputer outputer = (AnalyzedIntervalOutputer) temp;
-        Map<String, Object> props = new TreeMap<String, Object>();
+        Map<String, Object> props = new TreeMap<>();
         for (PropertyType arg : outputerSchema.getOutputerProperty()) {
             props.put(arg.getKey(), arg.getValue());
         }

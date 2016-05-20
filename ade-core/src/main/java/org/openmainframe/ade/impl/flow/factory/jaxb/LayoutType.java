@@ -89,7 +89,7 @@ public class LayoutType {
      */
     public List<FramingFlowType> getFramingFlow() {
         if (framingFlow == null) {
-            framingFlow = new ArrayList<FramingFlowType>();
+            framingFlow = new ArrayList<>();
         }
         return this.framingFlow;
     }
@@ -118,7 +118,7 @@ public class LayoutType {
      */
     public List<AnalysisGroupFlowType> getAnalysisGroupFlow() {
         if (analysisGroupFlow == null) {
-            analysisGroupFlow = new ArrayList<AnalysisGroupFlowType>();
+            analysisGroupFlow = new ArrayList<>();
         }
         return this.analysisGroupFlow;
     }

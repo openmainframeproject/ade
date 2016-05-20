@@ -79,7 +79,7 @@ public class BernoulliScore extends MessageScorer {
         if (m_trained) {
             throw new AdeInternalException("Already trained");
         }
-        m_msgData = new TreeMap<String, MsgData>();
+        m_msgData = new TreeMap<>();
         m_totalIntervalCount = 0;
     }
 
@@ -170,7 +170,7 @@ public class BernoulliScore extends MessageScorer {
 
     public void addRec(String msgId, int count, double prob, double score) {
         if (m_msgData == null) {
-            m_msgData = new TreeMap<String, MsgData>();
+            m_msgData = new TreeMap<>();
         }
         m_trained = true;
         final MsgData data = new MsgData();

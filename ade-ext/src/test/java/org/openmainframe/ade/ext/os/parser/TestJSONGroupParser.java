@@ -188,14 +188,14 @@ public class TestJSONGroupParser {
      */
     @Test
     public void testGroupsAndRulesCorrectlyParsed() throws JSONException, IOException, AdeException {
-        List<Group> modelGroups = new ArrayList<Group>();
+        List<Group> modelGroups = new ArrayList<>();
         modelGroups.add(new Group("ModelGName1", GroupType.getGroupType(1), DataType.getDataType((short)1), 3, "prefixRule"));
         modelGroups.add(new Group("ModelGName2", GroupType.getGroupType(1), DataType.getDataType((short)1), 1, "postfixRule"));
         modelGroups.add(new Group("ModelGName3", GroupType.getGroupType(1), DataType.getDataType((short)1), 2, "SYS1Rule"));
         JSONObject modelGroup1 = createGroupFromList(modelGroups.get(0));
         JSONObject modelGroup2 = createGroupFromList(modelGroups.get(1));
         JSONObject modelGroup3 = createGroupFromList(modelGroups.get(2));
-        List<Rule> rules = new ArrayList<Rule>();
+        List<Rule> rules = new ArrayList<>();
         rules.add(new Rule("prefixRule", "PREFIX*", "Matches systems that start with PREFIX"));
         rules.add(new Rule("postfixRule", "*POSTFIX", "Matches systems that end with POSTFIX"));
         rules.add(new Rule("SYS1Rule", "SYS1", "Matches systems named SYS1"));

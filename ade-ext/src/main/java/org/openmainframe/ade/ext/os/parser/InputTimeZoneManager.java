@@ -36,7 +36,7 @@ public final class InputTimeZoneManager {
     /**
      * A map from the source ID to dateTime object.
      */
-    private static HashMap<String, DateTime> s_sourceToTimeZoneMap = new HashMap<String, DateTime>();
+    private static HashMap<String, DateTime> s_sourceToTimeZoneMap = new HashMap<>();
 
     /**
      * The default GMT Offset from setup.props.

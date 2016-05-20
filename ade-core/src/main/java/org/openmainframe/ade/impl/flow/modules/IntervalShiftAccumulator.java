@@ -50,7 +50,7 @@ public class IntervalShiftAccumulator extends HubFrameableFramingBlock<IInterval
     public IntervalShiftAccumulator(FramingFlowType framingFlowType, boolean isDestFlow, int shiftDevider,
             boolean isSlidingWindow) throws AdeException {
         m_shiftDevider = shiftDevider;
-        m_intervals = new Vector<IInterval>(m_shiftDevider);
+        m_intervals = new Vector<>(m_shiftDevider);
         m_isSlidingWindow = isSlidingWindow;
         final FlowFactory flowFactory = Ade.getAde().getFlowFactory();
         if (isDestFlow) {

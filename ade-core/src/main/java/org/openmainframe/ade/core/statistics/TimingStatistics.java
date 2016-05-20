@@ -121,22 +121,22 @@ public class TimingStatistics {
         }
     }
 
-    private HashMap<String, Measure> mMeasures = new HashMap<String, Measure>();
-    private HashMap<Pair<Long, String>, Long> mThreadMeasures = new HashMap<Pair<Long, String>, Long>();
-    private List<Measure> mOrderedMeasures = new ArrayList<Measure>();
-    private Set<String> mDuplicateStarts = new HashSet<String>();
-    private Set<String> mEndsWithoutStarts = new HashSet<String>();
+    private HashMap<String, Measure> mMeasures = new HashMap<>();
+    private HashMap<Pair<Long, String>, Long> mThreadMeasures = new HashMap<>();
+    private List<Measure> mOrderedMeasures = new ArrayList<>();
+    private Set<String> mDuplicateStarts = new HashSet<>();
+    private Set<String> mEndsWithoutStarts = new HashSet<>();
 
     private static TimingStatistics mInstance = new TimingStatistics();
 
     private static ThreadLocal<List<String>> mPrefixes = new ThreadLocal<List<String>>() {
         @Override
         protected List<String> initialValue() {
-            return new ArrayList<String>();
+            return new ArrayList<>();
         }
     };
 
-    private static ThreadLocal<String> mFinalPrefix = new ThreadLocal<String>();
+    private static ThreadLocal<String> mFinalPrefix = new ThreadLocal<>();
 
     private static HashMap<String, Measure> getMeasures() {
         return mInstance.mMeasures;
@@ -225,7 +225,7 @@ public class TimingStatistics {
     }
 
     private static List<Measure> getSortedMeasures() {
-        final List<Measure> sortedMeasures = new ArrayList<Measure>(mInstance.mOrderedMeasures);
+        final List<Measure> sortedMeasures = new ArrayList<>(mInstance.mOrderedMeasures);
         final Comparator<Measure> comparator = new Comparator<Measure>() {
             public int compare(Measure m1, Measure m2) {
                 return Long_compare(m1.mSum, m2.mSum);
@@ -245,7 +245,7 @@ public class TimingStatistics {
         if (mFinalPrefix.get() != null) {
             name = mFinalPrefix.get() + name;
         }
-        final Pair<Long, String> key = new Pair<Long, String>(Thread.currentThread().getId(), name);
+        final Pair<Long, String> key = new Pair<>(Thread.currentThread().getId(), name);
         final Long old = mInstance.mThreadMeasures.put(key, System.currentTimeMillis());
         if (old != null) {
             mInstance.mDuplicateStarts.add(name);
@@ -269,7 +269,7 @@ public class TimingStatistics {
         if (mFinalPrefix.get() != null) {
             name = mFinalPrefix.get() + name;
         }
-        final Pair<Long, String> key = new Pair<Long, String>(Thread.currentThread().getId(), name);
+        final Pair<Long, String> key = new Pair<>(Thread.currentThread().getId(), name);
         final Long lastTime = mInstance.mThreadMeasures.remove(key);
         if (lastTime == null) {
             mInstance.mEndsWithoutStarts.add(name);

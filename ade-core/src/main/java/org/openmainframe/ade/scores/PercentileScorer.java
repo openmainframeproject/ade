@@ -101,7 +101,7 @@ public class PercentileScorer implements IScorer<Double, Double> {
 
     public PercentileScorer() {
         m_name = PercentileScorer.class.getSimpleName();
-        m_observations = new ArrayList<Double>();
+        m_observations = new ArrayList<>();
     }
 
     /**
@@ -112,7 +112,7 @@ public class PercentileScorer implements IScorer<Double, Double> {
      *  entry number 0 represents the XXXXXXX  
      */
     public ArrayList<Double> getPercentiles() {
-        final ArrayList<Double> res = new ArrayList<Double>();
+        final ArrayList<Double> res = new ArrayList<>();
         int lastPercIndex = -1;
         for (Entry<Double, Integer> percentileEntry : m_percentiles.entrySet()) {
             final int currPercIndex = percentileEntry.getValue();
@@ -184,7 +184,7 @@ public class PercentileScorer implements IScorer<Double, Double> {
         java.util.Collections.sort(m_observations);
 
         final GetVecMemberFromFullIndex vec = new GetVecMemberFromFullIndex(m_observations, m_totalNumObservations);
-        m_percentiles = new TreeMap<Double, Integer>();
+        m_percentiles = new TreeMap<>();
         final double step = ((double) m_totalNumObservations + 1.0) / (NUM_PERCENTILE_BINS);
         for (int i = 0; i < NUM_PERCENTILE_BINS; ++i) {
             double tmp_score = 0.0;

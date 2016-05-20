@@ -42,7 +42,7 @@ public enum DataType {
     /**
      * A map between the data type short value and its enum type. 
      */
-    private static final Map<Short,DataType> shortToDataType = new HashMap<Short,DataType>();
+    private static final Map<Short,DataType> shortToDataType = new HashMap<>();
     
     static {
         for (DataType type : DataType.values()) {

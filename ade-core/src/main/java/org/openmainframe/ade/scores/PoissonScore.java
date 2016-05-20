@@ -90,7 +90,7 @@ public class PoissonScore extends MessageScorer {
         if (m_trained) {
             throw new AdeInternalException("Already trained");
         }
-        m_msgData = new TreeMap<String, MsgData>();
+        m_msgData = new TreeMap<>();
         m_totalIntervalCount = 0;
         m_minLambda = 1;
     }
@@ -256,7 +256,7 @@ public class PoissonScore extends MessageScorer {
 
     public void addRecord(String messageId, int i, double d) {
         if (m_msgData == null) {
-            m_msgData = new TreeMap<String, PoissonScore.MsgData>();
+            m_msgData = new TreeMap<>();
             m_minLambda = 1;
         }
         final MsgData data = new MsgData();

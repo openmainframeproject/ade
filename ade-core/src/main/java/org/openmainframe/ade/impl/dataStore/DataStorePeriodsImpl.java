@@ -172,7 +172,7 @@ public class DataStorePeriodsImpl implements IDataStorePeriods {
     @Override
     public IAdeIterator<IInterval> getPeriodIntervals(IPeriod period, FramingFlowType framingFlowType, boolean verbose) 
             throws AdeException {
-        final ArrayList<IPeriod> periods = new ArrayList<IPeriod>();
+        final ArrayList<IPeriod> periods = new ArrayList<>();
         periods.add(period);
         final IAdeIterator<IntervalImpl> res = 
                 new IntervalByPeriodsAndFramingFlowTypeDbIterator(periods, framingFlowType, verbose);
@@ -232,7 +232,7 @@ public class DataStorePeriodsImpl implements IDataStorePeriods {
 
     private static class PeriodLoader extends QueryPreparedStatementExecuter {
 
-        private ArrayList<PeriodImpl> m_result = new ArrayList<PeriodImpl>();
+        private ArrayList<PeriodImpl> m_result = new ArrayList<>();
         private ISource m_source;
         private Date m_end;
         private Date m_start;
@@ -292,7 +292,7 @@ public class DataStorePeriodsImpl implements IDataStorePeriods {
 
     private static class PeriodLister extends QueryPreparedStatementExecuter {
 
-        private List<PeriodImpl> m_result = new ArrayList<PeriodImpl>();
+        private List<PeriodImpl> m_result = new ArrayList<>();
         private ISource m_source;
         private Date m_max;
         private Date m_min;

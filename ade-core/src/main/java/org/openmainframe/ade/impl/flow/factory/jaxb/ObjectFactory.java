@@ -119,7 +119,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://flow.impl.ade.openmainframe.org/factory", name = "Layout")
     public JAXBElement<LayoutType> createLayout(LayoutType value) {
-        return new JAXBElement<LayoutType>(_Layout_QNAME, LayoutType.class, null, value);
+        return new JAXBElement<>(_Layout_QNAME, LayoutType.class, null, value);
     }
 
 }

@@ -368,7 +368,7 @@ public class Interval {
      */
     public final List<IntervalMessageType> getIntervalMessage() {
         if (intervalMessage == null) {
-            intervalMessage = new ArrayList<IntervalMessageType>();
+            intervalMessage = new ArrayList<>();
         }
         return this.intervalMessage;
     }

@@ -98,7 +98,7 @@ public class SimpleQueries {
      */
     public final ArrayList<String> executeStringListQuery(String sql) throws AdeException {
         final ArrayList<String[]> temp = executeStringListQuery2d(sql);
-        final ArrayList<String> res = new ArrayList<String>(temp.size());
+        final ArrayList<String> res = new ArrayList<>(temp.size());
         for (int i = 0; i < temp.size(); ++i) {
             final String[] row = temp.get(i);
             if (row.length != 1) {
@@ -119,7 +119,7 @@ public class SimpleQueries {
      */
     public final ArrayList<String[]> executeStringListQuery2d(String sql) throws AdeException {
         final ConnectionWrapper cw = new ConnectionWrapper(m_connection);
-        final ArrayList<String[]> result = new ArrayList<String[]>();
+        final ArrayList<String[]> result = new ArrayList<>();
         try {
             final PreparedStatement ps = cw.preparedStatement(sql).getPreparedStatement();
             final ResultSet rs = ps.executeQuery();

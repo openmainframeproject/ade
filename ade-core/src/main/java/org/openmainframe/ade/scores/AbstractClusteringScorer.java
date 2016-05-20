@@ -301,7 +301,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
         private int m_clustersBeforeFiltering;
         private int m_totalIntervalCount;
         private int m_clusteredMsgCount;
-        protected SortedMap<String, Integer> m_seenMsgIds = new TreeMap<String, Integer>();;
+        protected SortedMap<String, Integer> m_seenMsgIds = new TreeMap<>();;
         private int m_msgCountAboveThreshold;
         private int m_msgAppearThreshold;
         private boolean m_converged;
@@ -331,7 +331,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
                 int msgAppearThreshold, int msgCountAboveThreshold,
                 boolean converged) {
             final List<IClustRunSummary> runsSummary = iclust.getRunsSummary();
-            m_runsSummary = new ArrayList<String>();
+            m_runsSummary = new ArrayList<>();
             for (int i = 0; i < runsSummary.size(); ++i) {
                 m_runsSummary.add(runsSummary.get(i).toString());
             }
@@ -460,7 +460,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
      */
     class MessageIdCounterTrainer implements IFrameableTarget<IInterval, TimeSeparator> {
 
-        MapCounter<Integer> mCounter = new MapCounter<Integer>();
+        MapCounter<Integer> mCounter = new MapCounter<>();
 
         /**
          * Constructor - use reset() instead of constructor.
@@ -471,8 +471,8 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
 
         @Override
         public final void incomingObject(IInterval interval) throws AdeException {
-            final ArrayList<IMessageSummary> msgSummaries = 
-                    new ArrayList<IMessageSummary>(interval.getMessageSummaries());
+            final ArrayList<IMessageSummary> msgSummaries =
+                    new ArrayList<>(interval.getMessageSummaries());
             for (IMessageSummary messageSummary : msgSummaries) {
                 mCounter.add(messageSummary.getMessageInternalId());
             }
@@ -583,7 +583,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
             // if less than three message Ids, put all in one cluster
             if (numUniqueMsgIds < 3) { 
                 logger.info("Fewer than 3 messages: setting one cluster per msg-id");
-                final SortedMap<Integer, Integer> clustersPerItem = new TreeMap<Integer, Integer>();
+                final SortedMap<Integer, Integer> clustersPerItem = new TreeMap<>();
                 for (int msgId : m_mutualInformationMatrixBuilder.getMatIndexToMsgInternalId()) {
                     clustersPerItem.put(msgId, 0);
                 }
@@ -638,8 +638,8 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
             clusterData = calcClusterData(clusterPartition);
             //generate a mapping from msgIDs to their cluster
             int goodClusters = 0;
-            final HashMap<Integer, Integer> msgId2Cluster = new HashMap<Integer, Integer>();
-            final Map<Integer, String> clusterNames = new HashMap<Integer, String>();
+            final HashMap<Integer, Integer> msgId2Cluster = new HashMap<>();
+            final Map<Integer, String> clusterNames = new HashMap<>();
 
             int clusteredMsgCount = 0;
             for (int i = 0; i < clusterData.size(); ++i) {
@@ -697,7 +697,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
                 out.printf("Mean information in similarity matrix: %f%n", m_model.m_meanInfo);
             }
             out.println("Clusters:");
-            final ListSortedByKey<Double, ClusterData> clusterList = new ListSortedByKey<Double, ClusterData>();
+            final ListSortedByKey<Double, ClusterData> clusterList = new ListSortedByKey<>();
             for (ClusterData cd : clusterData) {
                 final double sm = m_mutualInformationMatrixBuilder.calcSimilaritySum(cd.m_cluster);
                 clusterList.add(sm, cd);
@@ -726,7 +726,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
         }
 
         private ArrayList<ClusterData> calcClusterData(Partition partition) throws AdeInternalException {
-            final ArrayList<ClusterData> clusterData = new ArrayList<ClusterData>(partition.getNumClusters());
+            final ArrayList<ClusterData> clusterData = new ArrayList<>(partition.getNumClusters());
 
             calcMeanInfo();
 

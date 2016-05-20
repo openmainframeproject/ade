@@ -45,7 +45,7 @@ public class IntervalByPeriodsAndFramingFlowTypeDbIterator implements IAdeIterat
 
     public IntervalByPeriodsAndFramingFlowTypeDbIterator(Collection<IPeriod> periods, FramingFlowType framingFlowType, 
             boolean verbose) throws AdeException {
-        m_periods = new ArrayList<IPeriod>();
+        m_periods = new ArrayList<>();
         m_periods.addAll(periods);
         m_framingFlowType = framingFlowType;
         m_verbose = verbose;

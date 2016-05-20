@@ -80,7 +80,7 @@ public class LastSeenLoggingScorerContinuous extends FixedMessageScorer {
     /**
      * Maps message ID to the end time of the last interval it appeared in and the last tick in that interval. 
      */
-    private transient Map<String, TreeSet<Long>> m_prevIntervalTimelineMap = new TreeMap<String, TreeSet<Long>>();
+    private transient Map<String, TreeSet<Long>> m_prevIntervalTimelineMap = new TreeMap<>();
 
     @Property(key = "verbose", help = "print diffs to stdout", required = false)
     private boolean m_verbose = false;
@@ -160,7 +160,7 @@ public class LastSeenLoggingScorerContinuous extends FixedMessageScorer {
             if (tmp instanceof Map<?, ?>) {
                 m_prevIntervalTimelineMap = (Map<String, TreeSet<Long>>) tmp;
             } else {
-                m_prevIntervalTimelineMap = new TreeMap<String, TreeSet<Long>>();
+                m_prevIntervalTimelineMap = new TreeMap<>();
                 Ade.getAde().getDataStore().models().setModelDataObject(dataObjectName, m_prevIntervalTimelineMap);
             }
             
@@ -170,7 +170,7 @@ public class LastSeenLoggingScorerContinuous extends FixedMessageScorer {
                 m_alreadySeen = (HashSet<String>) tmp;
             } else {
                 final DbDictionary dict = AdeInternal.getAdeImpl().getDictionaries().getMessageIdDictionary();
-                m_alreadySeen = new HashSet<String>(dict.getWords());
+                m_alreadySeen = new HashSet<>(dict.getWords());
                 Ade.getAde().getDataStore().models().setModelDataObject(dataObjectName, m_alreadySeen);
             }             
         }         
@@ -230,7 +230,7 @@ public class LastSeenLoggingScorerContinuous extends FixedMessageScorer {
        
         processFirstMessage(contextElement,timeLine);
 
-        final TreeSet<Long> timeLineSet = new TreeSet<Long>();
+        final TreeSet<Long> timeLineSet = new TreeSet<>();
         
         processPrevTimeLine(messageID, contextElement, sc, timeLineSet);
 
@@ -272,7 +272,7 @@ public class LastSeenLoggingScorerContinuous extends FixedMessageScorer {
         if (hasTimeline) {
             m_firstMsgTime = contextElement.getIntervalStartTime() + timeLine[0] * millisPerTick;
             m_mainStat = MainStatVal.REGULAR;
-            m_deltasInSeconds = new ArrayList<Long>(timeLine.length);
+            m_deltasInSeconds = new ArrayList<>(timeLine.length);
         } else {
             /**
              * If time line is not available, assume first message occurred in the middle of the
@@ -281,7 +281,7 @@ public class LastSeenLoggingScorerContinuous extends FixedMessageScorer {
             m_firstMsgTime = contextElement.getIntervalStartTime() + 
                     (SummarizationProperties.TIMELINE_RESOLUTION / SPLIT_TIMELINE_FACTOR) * millisPerTick;
             m_mainStat = MainStatVal.NO_TIMELINE;
-            m_deltasInSeconds = new ArrayList<Long>(1);
+            m_deltasInSeconds = new ArrayList<>(1);
         }
     }
     /**

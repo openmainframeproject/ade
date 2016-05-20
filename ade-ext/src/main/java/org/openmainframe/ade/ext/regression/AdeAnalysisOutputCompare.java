@@ -310,7 +310,7 @@ public class AdeAnalysisOutputCompare {
      * @return ArrayList<File>  list of File objects
      */
     private static List<File> locateBaselineOutputFiles(String dirName,String fileExtension) {
-        List<File> outputFiles = new ArrayList<File>();
+        List<File> outputFiles = new ArrayList<>();
         
         final File dir = new File(dirName);
         final File[] dirContent = dir.listFiles();
@@ -403,18 +403,18 @@ public class AdeAnalysisOutputCompare {
     }
 
     private enum IgnoreXpaths {
-        INDEX(new ArrayList<String> (Arrays.asList(
+        INDEX(new ArrayList<>(Arrays.asList(
                 "/systems[1]/model_info[1]/@analysis_group",
                 "/systems[1]/model_info[1]/@model_creation_date")
-                )), 
-        INTERVAL(new ArrayList<String> (Arrays.asList(
+        )), 
+        INTERVAL(new ArrayList<>(Arrays.asList(
                 "/interval[1]/model_internal_id[1]/text()[1]",
                 "/interval[1]/model_info[1]/@model_creation_date",
                 "/interval[1]/model_info[1]/@analysis_group")
-                )), 
-        INTERVAL_DEBUG(new ArrayList<String> (Arrays.asList(
+        )), 
+        INTERVAL_DEBUG(new ArrayList<>(Arrays.asList(
                 "/AnalyzedInterval[1]/ModelId[1]/text()[1]")
-                ));
+        ));
         
         private List<String> ignore_xpaths;
         

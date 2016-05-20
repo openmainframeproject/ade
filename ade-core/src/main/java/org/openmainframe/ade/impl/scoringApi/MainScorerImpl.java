@@ -144,12 +144,12 @@ public class MainScorerImpl extends AbstractTrainer<IInterval> implements IMainS
         m_finalIntervalAnomalyScorer = finalIntervalAnomalyScorer;
         m_finalMessageAnomalyScorer = finalMessageAnomalyScorer;
 
-        m_trainedScorersMap = new TreeMap<String, IScorer<?, IAnalyzedInterval>>();
-        m_scorersByOrder = new Vector<String>();
-        m_omitFromAnalysis = new TreeSet<String>();
-        m_currentIterationScorerIds = new TreeSet<String>();
+        m_trainedScorersMap = new TreeMap<>();
+        m_scorersByOrder = new Vector<>();
+        m_omitFromAnalysis = new TreeSet<>();
+        m_currentIterationScorerIds = new TreeSet<>();
         m_modelMetaData = new ModelMetaDataImpl(analysisGroup);
-        m_currentIterationScorers = new TreeMap<String, Map<String, IScorer<?, IAnalyzedInterval>>>();
+        m_currentIterationScorers = new TreeMap<>();
         m_flowName = flowName;
         m_intervalDispenser = new IntervalDispenser();
 
@@ -184,11 +184,11 @@ public class MainScorerImpl extends AbstractTrainer<IInterval> implements IMainS
         }
 
         m_modelMetaData = new ModelMetaDataImpl(analysisGroup);
-        m_scorersByOrder = new Vector<String>();
-        m_trainedScorersMap = new TreeMap<String, IScorer<?, IAnalyzedInterval>>();
-        m_omitFromAnalysis = new TreeSet<String>();
-        m_currentIterationScorerIds = new TreeSet<String>();
-        m_currentIterationScorers = new TreeMap<String, Map<String, IScorer<?, IAnalyzedInterval>>>();
+        m_scorersByOrder = new Vector<>();
+        m_trainedScorersMap = new TreeMap<>();
+        m_omitFromAnalysis = new TreeSet<>();
+        m_currentIterationScorerIds = new TreeSet<>();
+        m_currentIterationScorers = new TreeMap<>();
         m_scorerSchemas = null;
 
         for (IScorer<?, IAnalyzedInterval> scorer : scorers) {
@@ -217,7 +217,7 @@ public class MainScorerImpl extends AbstractTrainer<IInterval> implements IMainS
             throw new AdeInternalException("Scorer " + finalIntScorer.getId() + " should be an interval scorer");
         }
 
-        m_omitFromAnalysis = new TreeSet<String>();
+        m_omitFromAnalysis = new TreeSet<>();
         m_finalMessageAnomalyScorer = finalMessageScorer.getId();
         m_finalIntervalAnomalyScorer = finalIntScorer.getId();
         m_flowName = flowName;
@@ -312,7 +312,7 @@ public class MainScorerImpl extends AbstractTrainer<IInterval> implements IMainS
                         m_currentIterationScorers.get(currentFramingFlowId);
 
                 if (currentIterationScorersForFlow == null) {
-                    currentIterationScorersForFlow = new TreeMap<String, IScorer<?, IAnalyzedInterval>>();
+                    currentIterationScorersForFlow = new TreeMap<>();
                     m_currentIterationScorers.put(currentFramingFlowId, currentIterationScorersForFlow);
                 }
                 currentIterationScorersForFlow.put(scorerSchema.getId(), emptyScorer);
@@ -351,7 +351,7 @@ public class MainScorerImpl extends AbstractTrainer<IInterval> implements IMainS
                     + scorerEntry.getValue().getName());
             scorerEntry.getValue().startIteration();
         }
-        m_allMsgIds = new TreeSet<String>();
+        m_allMsgIds = new TreeSet<>();
 
     }
 
@@ -532,7 +532,7 @@ public class MainScorerImpl extends AbstractTrainer<IInterval> implements IMainS
 
     @Override
     protected final void reset() throws AdeException {
-        m_allMsgIds = new TreeSet<String>();
+        m_allMsgIds = new TreeSet<>();
         setCurrentIterationScorers();
         if (!needsAnotherIteration()) {
             m_target = m_intervalDispenser;
@@ -557,7 +557,7 @@ public class MainScorerImpl extends AbstractTrainer<IInterval> implements IMainS
 
     @Override
     public final List<MessageScorer> getMessageScorers() throws AdeException {
-        final List<MessageScorer> messageScorerList = new ArrayList<MessageScorer>();
+        final List<MessageScorer> messageScorerList = new ArrayList<>();
         for (Entry<String, IScorer<?, IAnalyzedInterval>> pair : m_trainedScorersMap.entrySet()) {
             final IScorer<?, IAnalyzedInterval> scorer = pair.getValue();
             final String scorerId = pair.getKey();

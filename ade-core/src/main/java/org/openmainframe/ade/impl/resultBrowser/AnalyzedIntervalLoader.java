@@ -51,7 +51,7 @@ public final class AnalyzedIntervalLoader {
 
         private FramingFlowType m_framingFlowType;
 
-        private ArrayList<IAnalyzedInterval> m_result = new ArrayList<IAnalyzedInterval>();
+        private ArrayList<IAnalyzedInterval> m_result = new ArrayList<>();
 
         public ByPeriod(int periodInternalId, FramingFlowType framingFlowType, Connection con) {
             super("select START_TIME, INTERVAL_SCORE, INTERVAL_SERIAL_NUM, NUM_UNIQUE_MESSAGE_IDS, "

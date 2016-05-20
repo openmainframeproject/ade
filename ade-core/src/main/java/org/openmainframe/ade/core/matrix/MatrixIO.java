@@ -81,7 +81,7 @@ public final class MatrixIO {
 
     public static IDoubleMatrix readMatrixFromFile(final String fileName) throws IOException {
         final NumberFileParser fp = new NumberFileParser(fileName);
-        final ArrayList<Double> res = new ArrayList<Double>();
+        final ArrayList<Double> res = new ArrayList<>();
         int firstRowNumColumns = -1;
         int tmpNumColumns = -1;
         int prevResSize = 0;

@@ -58,7 +58,7 @@ public class DerbyDatabase extends Database {
 
     @Override
     public List<String> listTables() throws SQLException {
-        List<String> tables = new ArrayList<String>();
+        List<String> tables = new ArrayList<>();
         Connection conn = DriverManager.getConnection(getUrl());
         try {
             Statement stmt = conn.createStatement();

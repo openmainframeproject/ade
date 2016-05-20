@@ -56,7 +56,7 @@ public class AnalyzedIntervalImpl implements IAnalyzedInterval {
         m_numUniqueIds = interval.getNumUniqueMessages();
         a_adeVersion = interval.getAdeVersion();
         m_modelInternalId = modelInternalId;
-        m_messages = new ArrayList<IAnalyzedMessageSummary>();
+        m_messages = new ArrayList<>();
         for (IMessageSummary ms : interval.getMessageSummaries()) {
             final AnalyzedMessageSummaryImpl ams = new AnalyzedMessageSummaryImpl(ms);
             addMessage(ams);
@@ -77,7 +77,7 @@ public class AnalyzedIntervalImpl implements IAnalyzedInterval {
         }
         m_numUniqueIds = uniqueMessageIds;
 
-        m_messages = new ArrayList<IAnalyzedMessageSummary>();
+        m_messages = new ArrayList<>();
         m_serialNum = serialNum;
         m_modelInternalId = modelInternalId;
         a_adeVersion = adeVersion;

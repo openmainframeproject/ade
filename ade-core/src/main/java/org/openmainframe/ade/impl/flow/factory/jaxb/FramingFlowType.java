@@ -126,7 +126,7 @@ public class FramingFlowType {
      */
     public List<PropertyType> getFramerProperty() {
         if (framerProperty == null) {
-            framerProperty = new ArrayList<PropertyType>();
+            framerProperty = new ArrayList<>();
         }
         return this.framerProperty;
     }

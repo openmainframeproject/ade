@@ -82,7 +82,7 @@ public class IntervalByPeriodSummaryDbIterator implements IAdeIterator<IntervalI
 
     }
 
-    private ArrayList<IntervalData> m_intervalData = new ArrayList<IntervalData>();
+    private ArrayList<IntervalData> m_intervalData = new ArrayList<>();
 
     private QueryStatementIterator m_queryIterator;
 

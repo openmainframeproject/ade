@@ -57,7 +57,7 @@ public class MessageSummaryBuilder implements IStreamTarget<IMessageInstance> {
         m_sumProps = sumProps;
         m_messageSummary = new MessageSummaryImpl(msgId, severity);
         if (sumProps.m_summarizeTimeLine) {
-            m_timeLine = new TreeSet<Short>();
+            m_timeLine = new TreeSet<>();
         }
         if (sumProps.m_calculateCriticalWordsScore) {
             m_textScore = AdeInternal.getAdeImpl().getUserSpecifications().getCriticalWordsScorer();

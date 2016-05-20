@@ -42,7 +42,7 @@ public abstract class AbstractSplittingSource<O, K extends Comparable<?>> implem
     /**
      * Mapping a key to it's targets.
      */
-    private Map<K, Set<IStreamTarget<O>>> m_targetMap = new TreeMap<K, Set<IStreamTarget<O>>>();
+    private Map<K, Set<IStreamTarget<O>>> m_targetMap = new TreeMap<>();
 
     /**
      * Return the set of all targets.
@@ -50,7 +50,7 @@ public abstract class AbstractSplittingSource<O, K extends Comparable<?>> implem
      * @return the set of all targets (union of sets)
      */
     protected final Set<IStreamTarget<O>> getAllTargets() {
-        final Set<IStreamTarget<O>> allTargets = new HashSet<IStreamTarget<O>>();
+        final Set<IStreamTarget<O>> allTargets = new HashSet<>();
         for (Set<IStreamTarget<O>> targets : m_targetMap.values()) {
             allTargets.addAll(targets);
         }
@@ -61,7 +61,7 @@ public abstract class AbstractSplittingSource<O, K extends Comparable<?>> implem
      * Utility method. Add target to input key targets (either existing key targets or not)
      */
     protected final void addTarget(IStreamTarget<O> target, K key) throws AdeException {
-        final Set<IStreamTarget<O>> set = new HashSet<IStreamTarget<O>>(1);
+        final Set<IStreamTarget<O>> set = new HashSet<>(1);
         set.add(target);
         addTargets(set, key);
     }
@@ -74,7 +74,7 @@ public abstract class AbstractSplittingSource<O, K extends Comparable<?>> implem
         synchronized (m_targetMap) {
             Set<IStreamTarget<O>> targets = m_targetMap.get(key);
             if (targets == null) {
-                targets = new HashSet<IStreamTarget<O>>();
+                targets = new HashSet<>();
                 m_targetMap.put(key, targets);
             }
             targets.addAll(addedTargets);

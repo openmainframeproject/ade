@@ -38,7 +38,7 @@ public enum GroupType {
     /**
      * A map between the group type short value and its enum type. 
      */
-    private static final Map<Integer,GroupType> intToGroupType = new HashMap<Integer,GroupType>(1,1.01f);
+    private static final Map<Integer,GroupType> intToGroupType = new HashMap<>(1, 1.01f);
     
     static {
         for (GroupType type : GroupType.values()) {

@@ -160,7 +160,7 @@ public final class GroupsQueryImpl {
         protected List<Group> getGroupListAtomic() throws SQLException, AdeInternalException {
             final PreparedStatement groupListStatement = prepareStatement("SELECT * FROM " + GROUPS_TABLE);
             final ResultSet groupListResultSet = groupListStatement.executeQuery();
-            final List<Group> currentModelGroups = new ArrayList<Group>();
+            final List<Group> currentModelGroups = new ArrayList<>();
 
             // For each of the database rows; parse the ModelGroup from it
             if (groupListResultSet != null) {
@@ -253,7 +253,7 @@ public final class GroupsQueryImpl {
             Collections.sort(groups, new GroupComparator());
 
             final List<Pattern> patternList = getPatternList(groups);
-            List<Short> unassignedSourcesId = new ArrayList<Short>();
+            List<Short> unassignedSourcesId = new ArrayList<>();
           
             while (sourcesResult.next()) {
                 boolean foundMatch = false;
@@ -395,7 +395,7 @@ public final class GroupsQueryImpl {
          * @throws SQLException
          */
         private ArrayList<Pattern> getPatternList(List<Group> groups) throws SQLException{
-            final ArrayList<Pattern> patternList = new ArrayList<Pattern>();
+            final ArrayList<Pattern> patternList = new ArrayList<>();
             PreparedStatement ruleStatement = null;
             ResultSet ruleResult = null;
             for (Group group : groups) { 
@@ -480,7 +480,7 @@ public final class GroupsQueryImpl {
                                 ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
                 final ResultSet sourcesResult = sourceListStatement.executeQuery();
 
-                final List<String> batchList = new ArrayList<String>();
+                final List<String> batchList = new ArrayList<>();
                 this.updateGroupSources(groups, sourcesResult, batchList);
                 this.executeBatch(batchList);
                 sourceListStatement.close();
@@ -570,7 +570,7 @@ public final class GroupsQueryImpl {
                 List<Group> groupsToDelete = getGroupsToDelete(currentGroups);
                 List<Group> groupsToUpdate = getGroupsToUpdate(currentGroups, groupsToAdd);
 
-                List<String> batchList = new ArrayList<String>();
+                List<String> batchList = new ArrayList<>();
                 deleteGroups(batchList, groupsToDelete);
                 addGroups(batchList, groupsToAdd);
                 updateGroups(batchList, groupsToUpdate);
@@ -616,7 +616,7 @@ public final class GroupsQueryImpl {
          * @return The list of groups to add to the database. 
          */
         private List<Group> getGroupsToAdd(List<Group> currentGroups){
-            List<Group> groupsToAdd = new ArrayList<Group>(groups);
+            List<Group> groupsToAdd = new ArrayList<>(groups);
             groupsToAdd.removeAll(currentGroups);
             return groupsToAdd;
         }
@@ -628,7 +628,7 @@ public final class GroupsQueryImpl {
          * @return The list of groups to delete from the database. 
          */
         private List<Group> getGroupsToDelete(List<Group> currentGroups){
-            List<Group> groupsToDelete = new ArrayList<Group>(currentGroups);
+            List<Group> groupsToDelete = new ArrayList<>(currentGroups);
             groupsToDelete.removeAll(groups);
             return groupsToDelete;
         }
@@ -641,7 +641,7 @@ public final class GroupsQueryImpl {
          * @return the list of groups to be updated.
          */
         private List<Group> getGroupsToUpdate(List<Group> currentGroups, List<Group> groupsToAdd){
-            List<Group> groupsToUpdate = new ArrayList<Group>();
+            List<Group> groupsToUpdate = new ArrayList<>();
             for (Group group : groups){
                 Group copiedGroup = new Group(group);
                 groupsToUpdate.add(copiedGroup);

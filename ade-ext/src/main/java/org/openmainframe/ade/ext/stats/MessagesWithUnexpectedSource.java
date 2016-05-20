@@ -42,7 +42,7 @@ public final class MessagesWithUnexpectedSource {
     /**
      * Map from source name to the SourceStatisticsForMessage object
      */
-    private static HashMap<String, SourceStatisticsForMessage> sourceToStatisticsMap = new HashMap<String, MessagesWithUnexpectedSource.SourceStatisticsForMessage>();
+    private static HashMap<String, SourceStatisticsForMessage> sourceToStatisticsMap = new HashMap<>();
 
     /**
      * Add a message that belongs to an unexpected source.

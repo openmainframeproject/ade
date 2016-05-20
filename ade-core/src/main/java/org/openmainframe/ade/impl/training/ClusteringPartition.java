@@ -85,7 +85,7 @@ public class ClusteringPartition implements Serializable {
         // init:
         m_clusterSimilarityLevel = clusterSimilarityLevel;
         m_numClusters = numClusters;
-        m_clusteringDetails = new ArrayList<String>();
+        m_clusteringDetails = new ArrayList<>();
     }
 
     /**
@@ -99,7 +99,7 @@ public class ClusteringPartition implements Serializable {
             int numUniqueMsgIds) {
 
         m_initialPartitionFileName = null;
-        final Set<Integer> uniqNumOccurances = new HashSet<Integer>();
+        final Set<Integer> uniqNumOccurances = new HashSet<>();
         final Collection<Integer> integers = messageCounter.getMap().values();
         uniqNumOccurances.addAll(integers);
         if (uniqNumOccurances.size() >= minNumClusters) {
@@ -131,7 +131,7 @@ public class ClusteringPartition implements Serializable {
         Arrays.fill(initialPartition, defaultVal);
         int clusterIndex = -1;
         int numClusters = m_numClusters;
-        m_initialClusters = new HashMap<String, ArrayList<Integer>>();
+        m_initialClusters = new HashMap<>();
         BufferedReader br = null;
         try {
             br = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));
@@ -140,7 +140,7 @@ public class ClusteringPartition implements Serializable {
             while ((nextLine = br.readLine()) != null) {
                 clusterIndex++;
                 final String[] path = nextLine.split("\t");
-                final ArrayList<Integer> members = new ArrayList<Integer>();
+                final ArrayList<Integer> members = new ArrayList<>();
                 for (int i = 1; i < path.length; i++) {
                     final int id = Integer.parseInt(path[i]);
                     final int index = mutualInformationMatrixHolder.getIndexOfMsgId(id);
@@ -174,7 +174,7 @@ public class ClusteringPartition implements Serializable {
             numClusters = clusterIndex + 2;
             logger.info("Number of cluster set to be " + numClusters);
         }
-        final ArrayList<Integer> indices = new ArrayList<Integer>();
+        final ArrayList<Integer> indices = new ArrayList<>();
         int numOfUnclusteredElements = 0;
         for (int i = 0; i < numUniqueMsgIds; ++i) {
             if (initialPartition[i] == defaultVal) {
@@ -231,10 +231,10 @@ public class ClusteringPartition implements Serializable {
     public final void updateClusters(
             List<ClusterData> clusterData, int[] matIndexToMsgInternalId) {
 
-        final Map<String, Collection<Integer>> names = new HashMap<String, Collection<Integer>>();
+        final Map<String, Collection<Integer>> names = new HashMap<>();
         int count = 0;
         String cName = null;
-        m_finalClusterNames = new HashMap<Integer, String>();
+        m_finalClusterNames = new HashMap<>();
 
         for (int i = 0; i < clusterData.size(); ++i) {
             final ClusterData cd = clusterData.get(i);
@@ -395,7 +395,7 @@ public class ClusteringPartition implements Serializable {
             out.printf("%s %s ", name, members);
             int countC = 0;
             boolean splitFlag = true;
-            final ArrayList<String> names = new ArrayList<String>();
+            final ArrayList<String> names = new ArrayList<>();
             for (Map.Entry<String, Collection<Integer>> newEntry : m_finalClusters.entrySet()) {
                 final Collection<Integer> newMembers = newEntry.getValue();
                 final String newName = newEntry.getKey();

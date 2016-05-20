@@ -62,7 +62,7 @@ public class DataStoreModelsImpl<T extends IModel> implements IDataStoreModels<T
         m_modelMetaDataLoader = new ModelMetaDataLoader(modelsTable);
         m_modelFileHandler = modelFileHandler;
         m_modelsCache = Collections.synchronizedMap(new LruCachedMap<String, T>(modelsCacheSize));
-        m_modelDataObject = new TreeMap<String, Object>();
+        m_modelDataObject = new TreeMap<>();
     }
 
     /**

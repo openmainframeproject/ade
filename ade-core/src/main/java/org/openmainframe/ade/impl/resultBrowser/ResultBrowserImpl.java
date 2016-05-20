@@ -48,7 +48,7 @@ public class ResultBrowserImpl extends ResultBrowser {
     public final ArrayList<IAnalyzedInterval> getAnalyzedIntervals(int sourceInternalId, Date date, FramingFlowType framingFlowType) throws AdeException {
         final int periodInternalId = PeriodIdFinder.getPeriodInternalIdByStartTime(sourceInternalId, date, framingFlowType, m_connection);
         if (periodInternalId < 0) {
-            return new ArrayList<IAnalyzedInterval>();
+            return new ArrayList<>();
         }
         return AnalyzedIntervalLoader.loadAnalyzedIntervalsByPeriod(periodInternalId, framingFlowType, m_connection);
     }
@@ -68,7 +68,7 @@ public class ResultBrowserImpl extends ResultBrowser {
     }
 
     private static class AnalyzedSourcesGetter extends QueryStatementExecuter {
-        private Set<String> m_analyzedSources = new TreeSet<String>();
+        private Set<String> m_analyzedSources = new TreeSet<>();
 
         private AnalyzedSourcesGetter(Connection conn) {
             super("select " + SQL.SOURCES + ".SOURCE_ID from " + SQL.ANALYSIS_RESULTS 

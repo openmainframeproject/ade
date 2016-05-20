@@ -75,7 +75,7 @@ public class ConsecutiveIntervalBuilder extends IntervalBuilder {
      */
     @Override
     public final void init() throws AdeException {
-        m_messageSummaryBuildersMap = new TreeMap<Integer, MessageSummaryBuilder>();
+        m_messageSummaryBuildersMap = new TreeMap<>();
         m_dictionaries = AdeInternal.getAdeImpl().getDictionaries();
     }
 

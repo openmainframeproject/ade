@@ -378,7 +378,7 @@ public class ManagedSystemInfo {
 
             logger.trace("getSqlForAdd() -->entry");
 
-            final ArrayList<String> addList = new ArrayList<String>();
+            final ArrayList<String> addList = new ArrayList<>();
 
             final String MANAGED_COLUMNS = String.format("%s, %s, %s",
                     "SOURCE_INTERNAL_ID", 
@@ -412,9 +412,9 @@ public class ManagedSystemInfo {
          */
         private ArrayList<String> getSqlForUpdate(ISource S) {
 
-            final List<String> msSets = new ArrayList<String>();
+            final List<String> msSets = new ArrayList<>();
             String SET_STRING, WHERE_STRING, UPDATE_STRING;
-            final ArrayList<String> updates = new ArrayList<String>();
+            final ArrayList<String> updates = new ArrayList<>();
 
             logger.trace("getSqlForUpdate() --> entry");
             /************************************************************************
