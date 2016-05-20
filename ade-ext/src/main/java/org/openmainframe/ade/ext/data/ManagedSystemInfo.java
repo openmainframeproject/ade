@@ -374,7 +374,7 @@ public class ManagedSystemInfo {
          * @param ISource - datastore object which is associated with a SOURCES Table row
          * @return ArrayList<String> as described above
          */
-        private ArrayList<String> getSqlForAdd(ISource S) {
+        private List<String> getSqlForAdd(ISource S) {
 
             logger.trace("getSqlForAdd() -->entry");
 
@@ -410,7 +410,7 @@ public class ManagedSystemInfo {
          *                 and also wth a MANAGED_SYSTEMS Table row
          * @return ArrayList<String> as described above
          */
-        private ArrayList<String> getSqlForUpdate(ISource S) {
+        private List<String> getSqlForUpdate(ISource S) {
 
             final List<String> msSets = new ArrayList<String>();
             String SET_STRING, WHERE_STRING, UPDATE_STRING;

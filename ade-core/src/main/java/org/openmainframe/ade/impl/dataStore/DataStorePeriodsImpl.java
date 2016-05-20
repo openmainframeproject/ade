@@ -232,7 +232,7 @@ public class DataStorePeriodsImpl implements IDataStorePeriods {
 
     private static class PeriodLoader extends QueryPreparedStatementExecuter {
 
-        private ArrayList<PeriodImpl> m_result = new ArrayList<PeriodImpl>();
+        private List<PeriodImpl> m_result = new ArrayList<PeriodImpl>();
         private ISource m_source;
         private Date m_end;
         private Date m_start;
