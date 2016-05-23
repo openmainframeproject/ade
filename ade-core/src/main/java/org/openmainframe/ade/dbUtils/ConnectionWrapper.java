@@ -96,7 +96,7 @@ public class ConnectionWrapper {
     public PreparedStatementWrapper preparedStatement(String sql) throws SQLException {
         final PreparedStatementWrapper psw = new PreparedStatementWrapper(m_connection, sql);
         if (m_preparedStatements == null) {
-            m_preparedStatements = new ArrayList<PreparedStatementWrapper>();
+            m_preparedStatements = new ArrayList<>();
         }
         m_preparedStatements.add(psw);
         return psw;
@@ -112,7 +112,7 @@ public class ConnectionWrapper {
     public PreparedStatementWrapper preparedStatement(String sql, String[] columnNames) throws SQLException {
         final PreparedStatementWrapper psw = new PreparedStatementWrapper(m_connection, sql,columnNames);
         if (m_preparedStatements == null) {
-            m_preparedStatements = new ArrayList<PreparedStatementWrapper>();
+            m_preparedStatements = new ArrayList<>();
         }
         m_preparedStatements.add(psw);
         return psw;

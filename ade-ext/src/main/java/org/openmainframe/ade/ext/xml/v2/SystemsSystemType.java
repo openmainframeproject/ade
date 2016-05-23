@@ -92,7 +92,7 @@ public class SystemsSystemType {
      */
     public final List<SystemsIntervalType> getInterval() {
         if (interval == null) {
-            interval = new ArrayList<SystemsIntervalType>();
+            interval = new ArrayList<>();
         }
         return this.interval;
     }

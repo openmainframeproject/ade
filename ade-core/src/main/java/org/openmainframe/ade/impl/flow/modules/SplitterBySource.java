@@ -63,7 +63,7 @@ public class SplitterBySource extends SplitterBySourceGroup {
     protected final Set<IFrameableTarget<IMessageInstance, TimeSeparator>> getFrameableTargets(String key)
             throws AdeException {
         final ISource src = Ade.getAde().getDataStore().sources().getSource(key);
-        final Set<IFrameableTarget<IMessageInstance, TimeSeparator>> frameableTargets = new HashSet<IFrameableTarget<IMessageInstance, TimeSeparator>>();
+        final Set<IFrameableTarget<IMessageInstance, TimeSeparator>> frameableTargets = new HashSet<>();
         frameableTargets.add(new HubToIntervalFramers(m_sourceGroup, src, m_action));
         return frameableTargets;
     }

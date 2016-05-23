@@ -62,7 +62,7 @@ public final class ScorerFactory {
             throw new AdeUsageException("Given class " + name + " is not a scorer");
         }
         final IScorer<?, IAnalyzedInterval> scorer = (IScorer<?, IAnalyzedInterval>) temp;
-        final Map<String, Object> props = new TreeMap<String, Object>();
+        final Map<String, Object> props = new TreeMap<>();
         for (PropertyType arg : scorerSchema.getScorerProperty()) {
             props.put(arg.getKey(), arg.getValue());
         }

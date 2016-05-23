@@ -84,7 +84,7 @@ public final class ModelRead {
      * @return res           list of model meta data
      */
     public static List<IModelMetaData> readNonDefault(SQL table, String analysisGroup) throws AdeException {
-        final List<IModelMetaData> res = new ArrayList<IModelMetaData>();
+        final List<IModelMetaData> res = new ArrayList<>();
         final ConnectionWrapper cw = new ConnectionWrapper(AdeInternal.getDefaultConnection());
         try {
             final PreparedStatementWrapper psw = cw.preparedStatement("select MODEL_INTERNAL_ID from " 
@@ -123,7 +123,7 @@ public final class ModelRead {
      */
     public static IModelMetaData readDefault(SQL table, String analysisGroup) throws AdeException {
         final ConnectionWrapper cw = new ConnectionWrapper(AdeInternal.getDefaultConnection());
-        final ArrayList<Integer> ids = new ArrayList<Integer>();
+        final ArrayList<Integer> ids = new ArrayList<>();
         try {
             final int groupId = GroupRead.getAnalysisGroupId(analysisGroup);
             final PreparedStatementWrapper psw = cw.preparedStatement("select MODEL_INTERNAL_ID from " 

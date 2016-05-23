@@ -85,7 +85,7 @@ public class IntervalTimeVectorType {
      */
     public final List<Integer> getOcc() {
         if (occ == null) {
-            occ = new ArrayList<Integer>();
+            occ = new ArrayList<>();
         }
         return this.occ;
     }

@@ -118,8 +118,8 @@ public class TestMultiLogTracker extends TestCase {
             }
         }
 
-        PriorityQueue<Generator> m_generators = new PriorityQueue<Generator>();
-        Deque<String> m_waitingLines = new ArrayDeque<String>();
+        PriorityQueue<Generator> m_generators = new PriorityQueue<>();
+        Deque<String> m_waitingLines = new ArrayDeque<>();
 
         public DummyReader() {
             for (int i = 0; i < m_numberOfSources; ++i)
@@ -237,7 +237,7 @@ public class TestMultiLogTracker extends TestCase {
 
         private int m_curLen;
 
-        ArrayList<Message> m_messages = new ArrayList<Message>();
+        ArrayList<Message> m_messages = new ArrayList<>();
         Message m_lastMessage;
 
         public DummyProcessor(String name) {

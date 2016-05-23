@@ -45,7 +45,7 @@ public class SeverityScore extends FixedMessageScorer {
     /**
      * Mapping from severity to weight.
      */
-    private Map<Severity, Double> m_severityScore = new HashMap<Severity, Double>();
+    private Map<Severity, Double> m_severityScore = new HashMap<>();
 
     @Property(key="weight_UNKNOWN",help= "Weight for 'unknown' sevirity",required=false)
     transient private Double m_weight_UNKNOWN=null;

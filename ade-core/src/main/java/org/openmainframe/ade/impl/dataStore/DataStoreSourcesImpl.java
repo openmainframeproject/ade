@@ -141,7 +141,7 @@ public class DataStoreSourcesImpl implements IDataStoreSources {
     public final Collection<ISource> getAllSources() throws AdeException {
         m_dictionary.refresh();
         m_src2AnalysisGrpMap.clear();
-        final List<ISource> result = new ArrayList<ISource>();
+        final List<ISource> result = new ArrayList<>();
         for (int id : m_dictionary.getIds()) {
             result.add(new SourceImpl(id));
         }
@@ -384,7 +384,7 @@ public class DataStoreSourcesImpl implements IDataStoreSources {
      */
     @Override
     public final Set<Integer> getAllAnalysisGroups() throws AdeException {
-        final Set<Integer> analysisGroups = new TreeSet<Integer>();
+        final Set<Integer> analysisGroups = new TreeSet<>();
 
         new QueryStatementExecuter("select distinct ANALYSIS_GROUP from " + SQL.SOURCES) {
 
@@ -407,7 +407,7 @@ public class DataStoreSourcesImpl implements IDataStoreSources {
      */
     @Override
     public final Set<ISource> getSourcesForAnalysisGroup(int analysisGroup) throws AdeException {
-        final Set<ISource> sources = new TreeSet<ISource>();
+        final Set<ISource> sources = new TreeSet<>();
 
         new QueryStatementExecuter("select distinct SOURCE_INTERNAL_ID from " + SQL.SOURCES
                 + " where ANALYSIS_GROUP=" + analysisGroup) {

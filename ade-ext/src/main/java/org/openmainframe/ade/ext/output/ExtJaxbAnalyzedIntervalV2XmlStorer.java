@@ -161,7 +161,7 @@ public class ExtJaxbAnalyzedIntervalV2XmlStorer extends ExtendedAnalyzedInterval
     @Override
     protected String[] getXSLResources() {
         if (s_xslResources == null) {
-            HashSet<String> allXSLResourcesSet = new HashSet<String>();
+            HashSet<String> allXSLResourcesSet = new HashSet<>();
             List<String> thisXSLResourcesList = Arrays.asList(s_thisXSLResources);
 
             allXSLResourcesSet.addAll(thisXSLResourcesList);

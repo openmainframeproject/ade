@@ -90,7 +90,7 @@ public class MsgMutualInformation implements IFrameableTarget<IInterval, TimeSep
      * to message IDs and vice versa.
      */
     private int[] m_msgIndices2msgIdMap;
-    private IndexedSet<Integer> m_msgId2msgIndicesMap = new IndexedSet<Integer>();
+    private IndexedSet<Integer> m_msgId2msgIndicesMap = new IndexedSet<>();
 
     /**
      * A set holding all the legal message id's, all other 
@@ -122,7 +122,7 @@ public class MsgMutualInformation implements IFrameableTarget<IInterval, TimeSep
 
         m_totalNumIntervals += m_intervalFactor;
 
-        final ArrayList<Integer> msgIds = new ArrayList<Integer>(interval.getMessageSummaries().size());
+        final ArrayList<Integer> msgIds = new ArrayList<>(interval.getMessageSummaries().size());
         for (IMessageSummary ms : interval.getMessageSummaries()) {
             msgIds.add(ms.getMessageInternalId());
         }
@@ -366,7 +366,7 @@ public class MsgMutualInformation implements IFrameableTarget<IInterval, TimeSep
             TreeSet<Integer> cluster) throws AdeException {
         out.printf("%-15s:\n", memberStr(member));
 
-        final ListSortedByKey<Double, String> list = new ListSortedByKey<Double, String>();
+        final ListSortedByKey<Double, String> list = new ListSortedByKey<>();
         list.setValueNaturalOrder();
         for (int i : cluster) {
             double info;

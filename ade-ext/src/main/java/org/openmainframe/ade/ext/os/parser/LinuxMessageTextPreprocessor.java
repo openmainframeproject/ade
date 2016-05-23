@@ -263,7 +263,7 @@ public class LinuxMessageTextPreprocessor implements IMessageTextPreprprocessor 
                 component = component + ":" + group;
             }
         }
-        return new Pair<String, IThresholdSetter>(component, thresholdSetter);
+        return new Pair<>(component, thresholdSetter);
     }
 
     /**

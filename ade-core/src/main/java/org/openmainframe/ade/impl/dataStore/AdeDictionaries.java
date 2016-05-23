@@ -39,7 +39,7 @@ public class AdeDictionaries {
     private DbDictionary m_messageIds;
     private DbDictionary m_componentIds;
     private DbDictionary m_sourceIds;
-    private Map<String, String> m_src2AnalysisGrpMap = new TreeMap<String, String>();
+    private Map<String, String> m_src2AnalysisGrpMap = new TreeMap<>();
 
     /**
      * Constructor to create a AdeDictionaries that contains the specified dictionaries.

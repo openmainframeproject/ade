@@ -46,13 +46,13 @@ public class LinuxOptions extends AdeExtOptions{
     public boolean readOptions(CommandLine line, AdeExtProperties linuxProperties){
         boolean readOptionsSuccessful = true;
         /* All the required parameters for Linux */
-        ArrayList<String> requiredParameterList = new ArrayList<String>();
+        ArrayList<String> requiredParameterList = new ArrayList<>();
         requiredParameterList.add(AdeExtOptions.OPTION_GMT_OFFSET);
 
-        ArrayList<String> optionalParameterList = new ArrayList<String>();
+        ArrayList<String> optionalParameterList = new ArrayList<>();
         optionalParameterList.add(OPTION_YEAR);
 
-        ArrayList<String> allParameterList = new ArrayList<String>();
+        ArrayList<String> allParameterList = new ArrayList<>();
         allParameterList.addAll(optionalParameterList);
         allParameterList.addAll(requiredParameterList);
 

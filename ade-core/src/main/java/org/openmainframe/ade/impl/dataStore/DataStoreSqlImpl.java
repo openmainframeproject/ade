@@ -99,7 +99,7 @@ public class DataStoreSqlImpl implements IDataStore {
         m_dataStoreGroups = new DataStoreGroupsImpl();
         m_dataStoreRules = new DataStoreRulesImpl();
         m_dataStorePeriodSummaries = new DataStorePeriodSummaries(m_dataStorePeriods);
-        m_dataStoreModels = new DataStoreModelsImpl<IMainScorer>(SQL.MODELS, new MainScorerImpl.FileHandler());
+        m_dataStoreModels = new DataStoreModelsImpl<>(SQL.MODELS, new MainScorerImpl.FileHandler());
         m_dataStoreUser = new DataStoreUserImpl();
         m_dataStoreSources = new DataStoreSourcesImpl(getAdeDictionaries());
         m_dataStoreTextClustering = new DataStoreTextClusteringModelsImpl();
@@ -118,7 +118,7 @@ public class DataStoreSqlImpl implements IDataStore {
         m_dataStoreGroups = new DataStoreGroupsImpl();
         m_dataStoreRules = new DataStoreRulesImpl();
         m_dataStorePeriodSummaries = new DataStorePeriodSummaries(m_dataStorePeriods);
-        m_dataStoreModels = new DataStoreModelsImpl<IMainScorer>(SQL.MODELS, new MainScorerImpl.FileHandler());
+        m_dataStoreModels = new DataStoreModelsImpl<>(SQL.MODELS, new MainScorerImpl.FileHandler());
         m_dataStoreUser = new DataStoreUserImpl();
         m_dataStoreSources = new DataStoreSourcesImpl(getAdeDictionaries());
         m_dataStoreTextClustering = new DataStoreTextClusteringModelsImpl();

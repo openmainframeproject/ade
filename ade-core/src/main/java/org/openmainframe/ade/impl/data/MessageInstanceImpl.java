@@ -230,7 +230,7 @@ public class MessageInstanceImpl implements IMessageInstance {
             return;
         }
         if (m_properties == null) {
-            m_properties = new HashMap<String, String>();
+            m_properties = new HashMap<>();
         }
         m_properties.put(propertyName, propertyValue);
     }

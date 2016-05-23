@@ -44,7 +44,7 @@ public class DataStoreDictionaryApiImpl implements IDataStoreDictionaryApi {
         if (refresh) {
             m_dictionary.refresh();
         }
-        return new TreeSet<String>(m_dictionary.getWords());
+        return new TreeSet<>(m_dictionary.getWords());
     }
 
     @Override

@@ -56,7 +56,7 @@ public class MultiLogStreamProcessorImpl implements IMultiLogStreamProcessor {
      */
     private long m_longWaitTime;
     /** Map of targets that wait for lines. The keys are log names */
-    private Map<String, Target> m_targets = new TreeMap<String, Target>();
+    private Map<String, Target> m_targets = new TreeMap<>();
     /** Target matching m_lastLogName */
     private Target m_currentTarget;
     /** Next time in which flush will be checked.

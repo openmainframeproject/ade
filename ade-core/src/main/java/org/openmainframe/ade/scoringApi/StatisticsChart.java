@@ -50,7 +50,7 @@ public class StatisticsChart {
      */
     public void setStat(String name, double val) throws AdeInternalException {
         if (m_doubleStats == null) {
-            m_doubleStats = new TreeMap<String, Double>();
+            m_doubleStats = new TreeMap<>();
         }
         verifyLegal(name);
         m_doubleStats.put(name, val);
@@ -67,7 +67,7 @@ public class StatisticsChart {
             throw new AdeInternalException("Null values not allowed");
         }
         if (m_stringStats == null) {
-            m_stringStats = new TreeMap<String, String>();
+            m_stringStats = new TreeMap<>();
         }
         verifyLegal(name);
         m_stringStats.put(name, val);
@@ -147,7 +147,7 @@ public class StatisticsChart {
      * Double values are converted to strings using String.valueOf()
      */
     public SortedMap<String, String> getAllStatisticsSorted() {
-        final SortedMap<String, String> res = new TreeMap<String, String>();
+        final SortedMap<String, String> res = new TreeMap<>();
 
         if (m_stringStats != null) {
             res.putAll(m_stringStats);
@@ -164,7 +164,7 @@ public class StatisticsChart {
      * The Object values can be either Double or String
      */
     public SortedMap<String, Object> getAllStatisticsAsObjectsSorted() {
-        final SortedMap<String, Object> res = new TreeMap<String, Object>();
+        final SortedMap<String, Object> res = new TreeMap<>();
 
         if (m_stringStats != null) {
             res.putAll(m_stringStats);
@@ -178,7 +178,7 @@ public class StatisticsChart {
     /** Verify if the given statistic name does not already exists */
     private void verifyLegal(String name) throws AdeInternalException {
         if (m_allKeys == null) {
-            m_allKeys = new TreeSet<String>();
+            m_allKeys = new TreeSet<>();
         }
         if (m_allKeys.contains(name)) {
             throw new AdeInternalException("Duplicate statistic " + name);
@@ -288,7 +288,7 @@ public class StatisticsChart {
         if (src == null) {
             return null;
         }
-        final TreeMap<String, T> result = new TreeMap<String, T>();
+        final TreeMap<String, T> result = new TreeMap<>();
         for (SortedMap.Entry<String, T> entry : src.entrySet()) {
             final String newName = mapping.get(entry.getKey());
             if (newName != null) {

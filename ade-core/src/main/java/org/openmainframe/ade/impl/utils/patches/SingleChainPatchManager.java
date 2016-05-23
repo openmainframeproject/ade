@@ -55,7 +55,7 @@ public class SingleChainPatchManager implements IPatchManager {
      *	except the earliest and latest {@link IPatch}es. 
      */
     public SingleChainPatchManager(IPatch... patches) {
-        m_patches = new LinkedList<IPatch>();
+        m_patches = new LinkedList<>();
 
         final IPatch[] copy = Arrays.copyOf(patches, patches.length);
         Arrays.sort(copy, new PatchFromVersionCompare());
@@ -130,7 +130,7 @@ public class SingleChainPatchManager implements IPatchManager {
 
     @Override
     public final Set<IPatch> getPatchesFromVersion(Version fromVersion) {
-        final Set<IPatch> res = new TreeSet<IPatch>();
+        final Set<IPatch> res = new TreeSet<>();
         for (IPatch patch : m_patches) {
             final int fromVerComp = patch.fromVersion().compareTo(fromVersion);
             if (fromVerComp == 0) {
@@ -161,7 +161,7 @@ public class SingleChainPatchManager implements IPatchManager {
                 final int fromVerComp = patch.fromVersion().compareTo(fromVersion);
                 if (fromVerComp == 0) {
                     fromVersionMatched = true;
-                    res = new ArrayList<IPatch>();
+                    res = new ArrayList<>();
                     res.add(patch);
                 } else if (fromVerComp > 1) {
                     // no more chance to find the first patch as we passed 

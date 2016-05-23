@@ -77,7 +77,7 @@ public final class RulesQueryImpl {
         protected List<Rule> getRuleListAtomic() throws SQLException {
             final PreparedStatement ruleListStatement = prepareStatement("SELECT * FROM " + RULES_TABLE);
             final ResultSet ruleListResultSet = ruleListStatement.executeQuery();
-            final List<Rule> currentRules = new ArrayList<Rule>();
+            final List<Rule> currentRules = new ArrayList<>();
             
             if (ruleListResultSet != null) {
                 while (ruleListResultSet.next()){
@@ -134,7 +134,7 @@ public final class RulesQueryImpl {
                 List<Rule> rulesToDelete = getRulesToDelete(currentRules);
                 List<Rule> rulesToUpdate = getRulesToUpdate(currentRules, rulesToDelete);
                 
-                ArrayList<String> batchList = new ArrayList<String>();
+                ArrayList<String> batchList = new ArrayList<>();
                 deleteRules(batchList, rulesToDelete);
                 addRules(batchList, rulesToAdd);
                 updateRules(batchList, rulesToUpdate);
@@ -153,7 +153,7 @@ public final class RulesQueryImpl {
          * @return the list of rules to be added. 
          */
         private List<Rule> getRulesToAdd(List<Rule> currentRules){
-            List<Rule> rulesToAdd = new ArrayList<Rule>(rules);
+            List<Rule> rulesToAdd = new ArrayList<>(rules);
             rulesToAdd.removeAll(currentRules);
             return rulesToAdd;
         }
@@ -164,7 +164,7 @@ public final class RulesQueryImpl {
          * @return the list of rules to be deleted.
          */
         private List<Rule> getRulesToDelete(List<Rule> currentRules){
-            List<Rule> rulesToDelete = new ArrayList<Rule>(currentRules);            
+            List<Rule> rulesToDelete = new ArrayList<>(currentRules);            
             rulesToDelete.removeAll(rules); 
             return rulesToDelete;
         }
@@ -177,7 +177,7 @@ public final class RulesQueryImpl {
          * @return the list of rules to be updated.
          */
         private List<Rule> getRulesToUpdate(List<Rule> currentRules, List<Rule> rulesToAdd){
-            List<Rule> rulesToUpdate = new ArrayList<Rule>();
+            List<Rule> rulesToUpdate = new ArrayList<>();
             for (Rule rule : rules){
                 Rule copiedRule = new Rule(rule);
                 rulesToUpdate.add(copiedRule);

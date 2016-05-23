@@ -46,13 +46,13 @@ class ModelMetaDataLoader {
     }
 
     List<IModelMetaData> loadAll(String sourceGroup, Date startTime, Date endTime) throws AdeException {
-        final List<IModelMetaData> res = new ArrayList<IModelMetaData>();
+        final List<IModelMetaData> res = new ArrayList<>();
         res.addAll(loadAllImpl(sourceGroup, startTime, endTime));
         return res;
     }
 
     ArrayList<IModelMetaData> loadAll() throws AdeException {
-        final ArrayList<IModelMetaData> res = new ArrayList<IModelMetaData>();
+        final ArrayList<IModelMetaData> res = new ArrayList<>();
         res.addAll(loadAllImpl());
         return res;
     }
@@ -129,7 +129,7 @@ class ModelMetaDataLoader {
     }
 
     private static List<ModelMetaDataImpl> load(ResultSet rs) throws SQLException, AdeException {
-        final List<ModelMetaDataImpl> res = new ArrayList<ModelMetaDataImpl>();
+        final List<ModelMetaDataImpl> res = new ArrayList<>();
         while (rs.next()) {
             res.add(createFromRs(rs));
         }

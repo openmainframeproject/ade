@@ -388,7 +388,7 @@ public class AdeConfigPropertiesImpl implements IAdeConfigProperties {
         @Override
         public SortedMap<String, String> create(String propVal) {
             final String[] parts = propVal.trim().split(",");
-            final TreeMap<String, String> res = new TreeMap<String, String>();
+            final TreeMap<String, String> res = new TreeMap<>();
 
             if (parts == null || parts.length == 0) {
                 return res;

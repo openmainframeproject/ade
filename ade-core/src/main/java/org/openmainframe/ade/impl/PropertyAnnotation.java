@@ -98,7 +98,7 @@ public class PropertyAnnotation {
     }
 
     static public Map<String, String> propsToMap(Properties props) {
-        final Map<String, String> map = new TreeMap<String, String>();
+        final Map<String, String> map = new TreeMap<>();
         for (Entry<Object, Object> entry : props.entrySet()) {
             final String key = (String) entry.getKey();
             final String value = (String) entry.getValue();
@@ -111,7 +111,7 @@ public class PropertyAnnotation {
     @SuppressWarnings({ "unchecked" })
     static private void setProps(Object obj, Map<String, ? extends Object> props, Pattern filter, boolean safe) throws MissingPropertyException, IllegalArgumentException {
         final Class<?> annotatedClass = obj.getClass();
-        final Set<String> keyset = new TreeSet<String>(props.keySet());
+        final Set<String> keyset = new TreeSet<>(props.keySet());
 
         for (Field field : annotatedClass.getDeclaredFields()) {
             final Property annos = field.getAnnotation(Property.class);
@@ -303,14 +303,14 @@ public class PropertyAnnotation {
             actualArgs = offspring.getTypeParameters();
         }
         // map generic parameters into the actual types
-        final Map<String, Type> genericVariables = new TreeMap<String, Type>();
+        final Map<String, Type> genericVariables = new TreeMap<>();
         for (int i = 0; i < actualArgs.length; i++) {
             final TypeVariable<?> typeVariable = (TypeVariable<?>) offspring.getTypeParameters()[i];
             genericVariables.put(typeVariable.getName(), actualArgs[i]);
         }
 
         // Find direct ancestors (superclass, interfaces)
-        final List<Type> ancestors = new LinkedList<Type>();
+        final List<Type> ancestors = new LinkedList<>();
         if (offspring.getGenericSuperclass() != null) {
             ancestors.add(offspring.getGenericSuperclass());
         }
@@ -339,7 +339,7 @@ public class PropertyAnnotation {
                     if (base.isAssignableFrom(rawTypeClass)) {
 
                         // loop through all type arguments and replace type variables with the actually known types
-                        final List<Type> resolvedTypes = new LinkedList<Type>();
+                        final List<Type> resolvedTypes = new LinkedList<>();
                         for (Type t : parameterizedType.getActualTypeArguments()) {
                             if (t instanceof TypeVariable<?>) {
                                 final Type resolvedType = genericVariables.get(((TypeVariable<?>) t).getName());

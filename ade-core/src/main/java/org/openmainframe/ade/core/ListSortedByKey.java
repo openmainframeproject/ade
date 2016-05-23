@@ -48,7 +48,7 @@ public class ListSortedByKey<K, V> {
     /**
      * Internal list of items (=key value pair).
      */
-    private ArrayList<Item> mItems = new ArrayList<Item>();
+    private ArrayList<Item> mItems = new ArrayList<>();
     /**
      * Is list sorted (sorting is performed lazily).
      */

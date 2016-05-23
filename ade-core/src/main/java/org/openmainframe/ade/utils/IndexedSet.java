@@ -36,7 +36,7 @@ import java.util.Set;
  */
 public class IndexedSet<K> implements Set<K> {
 
-    private Map<K, Integer> mMembersMap = new HashMap<K, Integer>();
+    private Map<K, Integer> mMembersMap = new HashMap<>();
     private int counter = -1;
 
     /**
@@ -56,7 +56,7 @@ public class IndexedSet<K> implements Set<K> {
      * value/index to key.
      */
     public Map<Integer, K> getReverseTranslationMap() {
-        Map<Integer, K> transMap = new HashMap<Integer, K>();
+        Map<Integer, K> transMap = new HashMap<>();
 
         for (Entry<K, Integer> entry : mMembersMap.entrySet()) {
             transMap.put(entry.getValue(), entry.getKey());

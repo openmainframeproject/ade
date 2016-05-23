@@ -185,7 +185,7 @@ public class AnalysisGroupFlowType {
      */
     public List<ScoringSchemaType> getScoringSchema() {
         if (scoringSchema == null) {
-            scoringSchema = new ArrayList<ScoringSchemaType>();
+            scoringSchema = new ArrayList<>();
         }
         return this.scoringSchema;
     }
@@ -214,7 +214,7 @@ public class AnalysisGroupFlowType {
      */
     public List<OutputerType> getOutputer() {
         if (outputer == null) {
-            outputer = new ArrayList<OutputerType>();
+            outputer = new ArrayList<>();
         }
         return this.outputer;
     }

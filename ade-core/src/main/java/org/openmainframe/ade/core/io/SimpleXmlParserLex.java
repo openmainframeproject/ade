@@ -81,7 +81,7 @@ class SimpleXmlParserLex {
             return mType == TokenType.EOF;
         }
 
-        Map<String, String> mAttributes = new TreeMap<String, String>();
+        Map<String, String> mAttributes = new TreeMap<>();
 
         void clear() {
             mOpen = false;

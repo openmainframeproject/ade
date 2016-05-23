@@ -149,7 +149,7 @@ public class DataStorePeriodSummaries {
      */
     private class PeriodSummaryFinder extends QueryPreparedStatementExecuter {
 
-        private ArrayList<PeriodSummary> m_result = new ArrayList<PeriodSummary>();
+        private ArrayList<PeriodSummary> m_result = new ArrayList<>();
         private PeriodImpl m_period;
         private FramingFlowType m_framingFlowType;
 

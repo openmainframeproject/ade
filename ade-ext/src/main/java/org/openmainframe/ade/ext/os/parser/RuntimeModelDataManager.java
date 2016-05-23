@@ -329,7 +329,7 @@ public class RuntimeModelDataManager {
         DataInputStream dis = null;
         FileInputStream fis;
         String timeSinceLastRuntimeModelDataWriting = "-1";
-        final ArrayList<Entry<String, Object>> tmpModelData = new ArrayList<Map.Entry<String, Object>>();
+        final ArrayList<Entry<String, Object>> tmpModelData = new ArrayList<>();
         try {
             fis = new FileInputStream(file);
             dis = new DataInputStream(fis);
@@ -381,7 +381,7 @@ public class RuntimeModelDataManager {
                     final ObjectInputStream ois = new ObjectInputStream(bais);
                     final Object data = ois.readObject();
 
-                    final Entry<String, Object> entry = new SimpleEntry<String, Object>(modelObjectKey, data);
+                    final Entry<String, Object> entry = new SimpleEntry<>(modelObjectKey, data);
                     tmpModelData.add(entry);
                 } catch (Exception e) {
                     throw new AdeUsageException("Reading RuntimeModelData: Error reading model object for: " + modelObjectKey

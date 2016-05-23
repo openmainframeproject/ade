@@ -87,7 +87,7 @@ public class ConfigurationResults {
      */
     public List<SingleConfigurationResult> getConfigurationResult() {
         if (configurationResult == null) {
-            configurationResult = new ArrayList<SingleConfigurationResult>();
+            configurationResult = new ArrayList<>();
         }
         return this.configurationResult;
     }

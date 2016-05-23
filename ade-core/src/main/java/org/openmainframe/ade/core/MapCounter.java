@@ -39,7 +39,7 @@ public class MapCounter<K> implements IObjectCounter<K> {
      * the same instance of given object will be counted.
      */
     public MapCounter() {
-        mCount = new HashMap<K, Integer>();
+        mCount = new HashMap<>();
     }
 
     /**

@@ -46,7 +46,7 @@ public abstract class AbstractSplittingFramingBlock<T, U, V extends Comparable<?
     /**
      * Mapping a key to it's frameables.
      */
-    private Map<V, Set<IFrameable<U>>> m_frameablesMap = new TreeMap<V, Set<IFrameable<U>>>();
+    private Map<V, Set<IFrameable<U>>> m_frameablesMap = new TreeMap<>();
 
     /**
      * Return the set of all frameables.
@@ -54,7 +54,7 @@ public abstract class AbstractSplittingFramingBlock<T, U, V extends Comparable<?
      * @return the set of all frameables (union of sets)
      */
     protected final Set<IFrameable<U>> getAllFrameables() {
-        final Set<IFrameable<U>> allFrameables = new HashSet<IFrameable<U>>();
+        final Set<IFrameable<U>> allFrameables = new HashSet<>();
         for (Set<IFrameable<U>> targets : m_frameablesMap.values()) {
             allFrameables.addAll(targets);
         }
@@ -66,7 +66,7 @@ public abstract class AbstractSplittingFramingBlock<T, U, V extends Comparable<?
      */
     protected final void addFrameableTarget(IFrameableTarget<T, U> frameableTarget, V key)
             throws AdeException {
-        final Set<IFrameableTarget<T, U>> set = new HashSet<IFrameableTarget<T, U>>(1);
+        final Set<IFrameableTarget<T, U>> set = new HashSet<>(1);
         set.add(frameableTarget);
         addFrameableTargets(set, key);
     }
@@ -80,7 +80,7 @@ public abstract class AbstractSplittingFramingBlock<T, U, V extends Comparable<?
         synchronized (m_frameablesMap) {
             Set<IFrameable<U>> frameables = m_frameablesMap.get(key);
             if (frameables == null) {
-                frameables = new HashSet<IFrameable<U>>();
+                frameables = new HashSet<>();
                 m_frameablesMap.put(key, frameables);
             }
             frameables.addAll(frameableTargets);

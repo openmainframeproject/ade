@@ -40,13 +40,13 @@ import org.openmainframe.ade.impl.flow.hub.HubStreamBlock;
 
 class IntervalStatsCollector extends HubStreamBlock<IInterval, IInterval> {
 
-    private static Map<String, Map<String, IntervalStatsCollector>> s_intervalStatCollectorsPerAnalysisGroup = new TreeMap<String, Map<String, IntervalStatsCollector>>();
+    private static Map<String, Map<String, IntervalStatsCollector>> s_intervalStatCollectorsPerAnalysisGroup = new TreeMap<>();
 
     static IntervalStatsCollector getIntervalStatCollector(String analysisGroup, FramingFlowType framingFlowType) throws AdeException {
         IntervalStatsCollector intervalStatsCollector;
         Map<String, IntervalStatsCollector> innerMap = s_intervalStatCollectorsPerAnalysisGroup.get(analysisGroup);
         if (innerMap == null) {
-            innerMap = new HashMap<String, IntervalStatsCollector>();
+            innerMap = new HashMap<>();
             intervalStatsCollector = new IntervalStatsCollector(analysisGroup, framingFlowType);
 
             innerMap.put(framingFlowType.getName(), intervalStatsCollector);
@@ -144,7 +144,7 @@ class IntervalStatsCollector extends HubStreamBlock<IInterval, IInterval> {
 
         protected MsgsNameAndInternalIdIntervalStat(File dir) throws AdeInternalException {
             super(new File(dir, "msgsNameAndinternalIdInterval.txt"), "Message ID and internal message id");
-            seenMessages = new TreeSet<Integer>();
+            seenMessages = new TreeSet<>();
         }
 
         @Override
@@ -182,7 +182,7 @@ class IntervalStatsCollector extends HubStreamBlock<IInterval, IInterval> {
 
     private static class NumNewMsgIdsInIntervalStat extends IntervalStatManager {
 
-        static HashSet<String> oldMessageIds = new HashSet<String>();
+        static HashSet<String> oldMessageIds = new HashSet<>();
 
         protected NumNewMsgIdsInIntervalStat(File dir) throws AdeInternalException {
             super(new File(dir, "numNewMsgIdsInInterval.txt"), "The number of new message IDs in an interval (per interval)");

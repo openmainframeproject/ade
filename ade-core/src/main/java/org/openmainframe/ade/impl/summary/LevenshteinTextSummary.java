@@ -129,7 +129,7 @@ public final class LevenshteinTextSummary {
             return new Word[0];
         }
 
-        final ArrayList<Word> strWithDelim = new ArrayList<Word>();
+        final ArrayList<Word> strWithDelim = new ArrayList<>();
 
         splitWordBySpace(str, strWithDelim);
 
@@ -302,7 +302,7 @@ public final class LevenshteinTextSummary {
     private static ArrayList<Word> summarizeStrings(Word[] reference, String newStr) {
 
         if (reference == null || newStr == null) {
-            return new ArrayList<Word>();
+            return new ArrayList<>();
         }
 
         final Word[] newStrVec = prepareString(newStr);
@@ -313,7 +313,7 @@ public final class LevenshteinTextSummary {
         assert lenB <= MAX_NUM_WORDS + 1;
 
         if (Math.abs(lenA - lenB) > threshold) {
-            final ArrayList<Word> toRet = new ArrayList<Word>();
+            final ArrayList<Word> toRet = new ArrayList<>();
             toRet.add(new Word(ASTERISK, false));
             return toRet;
         }
@@ -322,7 +322,7 @@ public final class LevenshteinTextSummary {
 
         // 2. Calculate the matrix body.
         if (!calcScoreMat(lenA, lenB, reference, newStrVec)) {
-            final ArrayList<Word> toRet = new ArrayList<Word>();
+            final ArrayList<Word> toRet = new ArrayList<>();
             toRet.add(new Word(ASTERISK, false));
             return toRet;
         }
@@ -457,7 +457,7 @@ public final class LevenshteinTextSummary {
     private static ArrayList<Word> createAlignment(int lenA, int lenB,
             Word[] one, Word[] two) {
 
-        final ArrayList<Word> merge = new ArrayList<Word>();
+        final ArrayList<Word> merge = new ArrayList<>();
         int i = lenA - 1;
         int j = lenB - 1;
         while (i > 0 && j > 0) {
@@ -507,10 +507,10 @@ public final class LevenshteinTextSummary {
      *          - original alignment before reversing
      */
     private static ArrayList<Word> reverseAlignment(List<Word> merge) {
-        final ArrayList<Word> toRet = new ArrayList<Word>();
+        final ArrayList<Word> toRet = new ArrayList<>();
 
         if (merge.isEmpty()) {
-            return new ArrayList<Word>();
+            return new ArrayList<>();
         }
 
         // Last symbol, insert as is.
@@ -567,7 +567,7 @@ public final class LevenshteinTextSummary {
      */
     private static Word[] splitWordByDelimiters(StringTokenizer tokenizer) {
         String currWord;
-        final ArrayList<Word> strWithDelim = new ArrayList<Word>();
+        final ArrayList<Word> strWithDelim = new ArrayList<>();
         boolean isFirstWord = true;
         while (tokenizer.hasMoreTokens()) {
             currWord = tokenizer.nextToken();

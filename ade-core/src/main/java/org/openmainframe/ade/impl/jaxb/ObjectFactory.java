@@ -129,7 +129,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "Score")
     public JAXBElement<ScoreType> createScore(ScoreType value) {
-        return new JAXBElement<ScoreType>(_Score_QNAME, ScoreType.class, null, value);
+        return new JAXBElement<>(_Score_QNAME, ScoreType.class, null, value);
     }
 
     /**
@@ -138,7 +138,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "Attribute")
     public JAXBElement<ScoreAttributeType> createAttribute(ScoreAttributeType value) {
-        return new JAXBElement<ScoreAttributeType>(_Attribute_QNAME, ScoreAttributeType.class, null, value);
+        return new JAXBElement<>(_Attribute_QNAME, ScoreAttributeType.class, null, value);
     }
 
     /**
@@ -147,7 +147,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "", name = "AnalyzedInterval")
     public JAXBElement<AnalyzedIntervalType> createAnalyzedInterval(AnalyzedIntervalType value) {
-        return new JAXBElement<AnalyzedIntervalType>(_AnalyzedInterval_QNAME, AnalyzedIntervalType.class, null, value);
+        return new JAXBElement<>(_AnalyzedInterval_QNAME, AnalyzedIntervalType.class, null, value);
     }
 
     /**

@@ -112,7 +112,7 @@ public class MessagesWithParseErrorStats {
      * @throws AdeException 
      */
     private MessagesWithParseErrorStats() throws AdeException {
-        m_msgRepToMsgStatsMap = new HashMap<String, MessagesWithParseErrorStats.MessageStats>();
+        m_msgRepToMsgStatsMap = new HashMap<>();
 
         /* Set the numberOfParseErrorToKeep */
         m_numberOfParseErrorToKeepMax = AdeExt.getAdeExt().getConfigProperties().getParseErrorsToKeep();
@@ -171,7 +171,7 @@ public class MessagesWithParseErrorStats {
             writeToLog();
 
             /* Perform cleanup */
-            final ArrayList<MessageStats> statsArray = new ArrayList<MessageStats>(m_msgRepToMsgStatsMap.values());
+            final ArrayList<MessageStats> statsArray = new ArrayList<>(m_msgRepToMsgStatsMap.values());
             Collections.sort(statsArray);
 
             /* Remove the first few Stats from the beginning of the list, until we reach the max */
@@ -257,7 +257,7 @@ public class MessagesWithParseErrorStats {
             } else {
                 /* Only output this if there are new errors */
 
-                final ArrayList<MessageStats> statsArray = new ArrayList<MessageStats>(m_msgRepToMsgStatsMap.values());
+                final ArrayList<MessageStats> statsArray = new ArrayList<>(m_msgRepToMsgStatsMap.values());
                 Collections.sort(statsArray);
 
                 statslogger.info("Parser Errors as of: " + s_dateTimeFormatter.print(DateTime.now()));

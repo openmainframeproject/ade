@@ -90,7 +90,7 @@ public class CodeTableSqlStatements {
     private class WordIdReader extends QueryPreparedStatementExecuter {
 
         private String m_word;
-        private ArrayList<Integer> m_ids = new ArrayList<Integer>();
+        private ArrayList<Integer> m_ids = new ArrayList<>();
 
         WordIdReader(String word) {
             super(String.format("select %s from %s where %s=?",
@@ -114,7 +114,7 @@ public class CodeTableSqlStatements {
     private class WordReader extends QueryPreparedStatementExecuter {
 
         private int m_id;
-        private ArrayList<String> m_words = new ArrayList<String>();
+        private ArrayList<String> m_words = new ArrayList<>();
 
         WordReader(int id) {
             super(String.format("select %s from %s where %s=?",
@@ -158,7 +158,7 @@ public class CodeTableSqlStatements {
 
         public ReadAllWords() {
             super(String.format("select %s,%s from %s", m_idColumn, m_wordColumn, m_tableName));
-            valueMap = new TreeMap<Integer, String>();
+            valueMap = new TreeMap<>();
         }
 
         @Override

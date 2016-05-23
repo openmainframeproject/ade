@@ -224,7 +224,7 @@ abstract class Train extends ControlProgram {
                 final Set<Integer> unselectedAnalysisGroups = parseAnalysisGroups(allAnalysisGroups, line.getOptionValues(UNSELECT_OPT));
                 final Set<String> unselectedGroupNames = getGroupNames(unselectedAnalysisGroups);
                 System.out.println("Omitting analysis groups: " + unselectedGroupNames.toString());
-                m_analysisGroups = new TreeSet<Integer>(allAnalysisGroups);
+                m_analysisGroups = new TreeSet<>(allAnalysisGroups);
                 m_analysisGroups.removeAll(unselectedAnalysisGroups);
             }
         } else if (line.hasOption(GROUPS_OPT)) {
@@ -286,12 +286,12 @@ abstract class Train extends ControlProgram {
     }
 
     private static Set<Integer> parseAnalysisGroups(final Set<Integer> allAnalysisGroups, String[] rawAnalysisGroups) throws AdeException {
-        final Map<Integer, String> groupIdToNameMap = new HashMap<Integer,String>();
+        final Map<Integer, String> groupIdToNameMap = new HashMap<>();
         for (int groupId : allAnalysisGroups){
             String groupName = GroupRead.getAnalysisGroupName(groupId);
             groupIdToNameMap.put(groupId, groupName);
         }
-        final Set<Integer> analysisGroupsId = new TreeSet<Integer>();
+        final Set<Integer> analysisGroupsId = new TreeSet<>();
         for (String analysisGroup : rawAnalysisGroups){
             boolean containsAnalysisGroup = false;
             for (Map.Entry<Integer,String> IdAndName : groupIdToNameMap.entrySet()){
@@ -315,7 +315,7 @@ abstract class Train extends ControlProgram {
      * @throws AdeException
      */
     private Set<String> getGroupNames(Set<Integer> groupIds) throws AdeException{
-        final Set<String> groupNames = new TreeSet<String>();
+        final Set<String> groupNames = new TreeSet<>();
         for (int groupId : groupIds){
             String groupName = GroupRead.getAnalysisGroupName(groupId);
             groupNames.add(groupName);

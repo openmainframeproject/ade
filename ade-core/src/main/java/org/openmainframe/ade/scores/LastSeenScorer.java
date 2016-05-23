@@ -121,7 +121,7 @@ public class LastSeenScorer extends MessageScorer {
         public PerodicityBounder() {
             mMinimalPointsPerCluster = 10;
             mTrained = false;
-            mPointDifferences = new TreeMap<Integer, Integer>();
+            mPointDifferences = new TreeMap<>();
             m_pointScores = null;
             mPoints = 0;
         }
@@ -180,7 +180,7 @@ public class LastSeenScorer extends MessageScorer {
             m_llMax = -Math.log((double) max / mPoints);
             if (max > m_minimalMax
                     && ((double) mPoints) / mPointDifferences.size() > m_minimalConcentration) {
-                m_pointScores = new TreeMap<Integer, Double>();
+                m_pointScores = new TreeMap<>();
                 for (Entry<Integer, Integer> entry : mPointDifferences
                         .entrySet()) {
                     final Integer v = entry.getValue();
@@ -364,7 +364,7 @@ public class LastSeenScorer extends MessageScorer {
     @Override
     public void startIteration() throws AdeException {
         m_trained = false;
-        m_lastSeen = new TreeMap<String, PerodicityBounder>();
+        m_lastSeen = new TreeMap<>();
     }
 
     @Override

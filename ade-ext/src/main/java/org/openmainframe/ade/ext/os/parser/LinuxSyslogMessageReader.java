@@ -189,7 +189,7 @@ public class LinuxSyslogMessageReader extends AdeMessageReader {
     /**
      * Hashmap mapping SysId to Source ID.
      */
-    private HashMap<String, String> sourceToSourceIdMap = new HashMap<String, String>();
+    private HashMap<String, String> sourceToSourceIdMap = new HashMap<>();
 
     /**
      * The Linux specific properties to be used containing configurations from start of AdeExt main class.

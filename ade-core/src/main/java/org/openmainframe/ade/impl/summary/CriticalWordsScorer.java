@@ -41,7 +41,7 @@ public class CriticalWordsScorer {
 
     public CriticalWordsScorer(String criticalWordsFile) throws AdeInternalException {
         m_criticalWordsFile = new File(criticalWordsFile);
-        m_criticalWordsSet = new HashSet<String>(INIT_SIZE);
+        m_criticalWordsSet = new HashSet<>(INIT_SIZE);
         init();
     }
 

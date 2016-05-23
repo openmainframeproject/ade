@@ -64,14 +64,14 @@ public class FlowFactory {
     private AnalysisGroupToFlowNameMapper mAnalysisGroupToFlowNameMapper = null;
 
     private Map<String, FramingFlowType> m_framingFlows;
-    private Map<String, FramingFlowType> m_splitFramingFlowTypesMap = new TreeMap<String, FramingFlowType>();;
+    private Map<String, FramingFlowType> m_splitFramingFlowTypesMap = new TreeMap<>();;
 
     private Map<String, FlowTemplateFactory> m_flowTemplateFactories;
 
     public static final String FLOW_LAYOUT_XSD_RESOURCE_PATH = "conf/xml/FlowLayout.xsd";
 
     public FlowFactory() throws AdeException {
-        m_flowTemplateFactories = new TreeMap<String, FlowFactory.FlowTemplateFactory>();
+        m_flowTemplateFactories = new TreeMap<>();
 
         JAXBContext jaxbContext;
         try {
@@ -90,11 +90,11 @@ public class FlowFactory {
                     getFlowLayoutXmlFile());
             final LayoutType layout = layoutElement.getValue();
 
-            m_framingFlows = new TreeMap<String, FramingFlowType>();
+            m_framingFlows = new TreeMap<>();
             for (FramingFlowType fft : layout.getFramingFlow()) {
                 m_framingFlows.put(fft.getName(), fft);
             }
-            m_splitFramingFlowTypesMap = new TreeMap<String, FramingFlowType>();
+            m_splitFramingFlowTypesMap = new TreeMap<>();
             final List<AnalysisGroupFlowType> flows = layout.getAnalysisGroupFlow();
 
             for (AnalysisGroupFlowType flow : flows) {
@@ -215,7 +215,7 @@ public class FlowFactory {
             m_flowName = flow.getName();
             m_uploadFramer = flow.getUploadFramingFlow();
             m_analysisFramer = flow.getAnalysisFramingFlow();
-            m_scoringSchemas = new TreeMap<String, ScoringSchemaType>();
+            m_scoringSchemas = new TreeMap<>();
 
             if (m_uploadFramer == null && m_analysisFramer == null) {
                 throw new AdeUsageException("No framers define in the flow \"" 
@@ -252,7 +252,7 @@ public class FlowFactory {
         }
 
         public final Collection<IntervalFramer> getAllIntervalFramers() throws AdeException {
-            final Set<String> allIds = new TreeSet<String>();
+            final Set<String> allIds = new TreeSet<>();
             allIds.add(m_analysisFramer);
             allIds.add(m_uploadFramer);
             return getIntervalFramers(allIds);
@@ -271,7 +271,7 @@ public class FlowFactory {
         }
 
         private Collection<IntervalFramer> getIntervalFramers(Collection<String> framingFlows) throws AdeException {
-            final Collection<IntervalFramer> framers = new ArrayList<IntervalFramer>();
+            final Collection<IntervalFramer> framers = new ArrayList<>();
 
             for (String flowId : framingFlows) {
                 framers.add(getIntervalFramer(flowId));
@@ -342,7 +342,7 @@ public class FlowFactory {
         }
 
         public final Map<String, FramingFlowType> getMyFramingFlows() {
-            final Map<String, FramingFlowType> res = new TreeMap<String, FramingFlowType>();
+            final Map<String, FramingFlowType> res = new TreeMap<>();
             res.put(m_uploadFramer, m_framingFlows.get(m_uploadFramer));
             res.put(m_analysisFramer, m_framingFlows.get(m_analysisFramer));
             return res;

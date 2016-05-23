@@ -314,7 +314,7 @@ public class MessageSummaryImpl implements IMessageSummary {
 
         if (otherExactTimeLine != null) {
             if (m_exactTimeLine == null) {
-                m_exactTimeLine = new TreeSet<Long>();
+                m_exactTimeLine = new TreeSet<>();
             }
             m_exactTimeLine.addAll(otherExactTimeLine);
         }
@@ -325,7 +325,7 @@ public class MessageSummaryImpl implements IMessageSummary {
         if (m_timeLine == null && timeLine == null) {
             return;
         }
-        final Set<Short> set = new TreeSet<Short>();
+        final Set<Short> set = new TreeSet<>();
         if (m_timeLine != null) {
             for (short i : m_timeLine) {
                 set.add(i);
@@ -345,12 +345,12 @@ public class MessageSummaryImpl implements IMessageSummary {
 
     private Set<Long> getExactTimeLine(long intervalStartTime, long intervalSize) {
         maybeFillExactTimeLine(intervalStartTime, intervalSize);
-        return new TreeSet<Long>(m_exactTimeLine);
+        return new TreeSet<>(m_exactTimeLine);
     }
 
     private void maybeFillExactTimeLine(long intervalStartTime, long intervalSize) {
         if (m_exactTimeLine == null && m_timeLine != null) {
-            m_exactTimeLine = new TreeSet<Long>();
+            m_exactTimeLine = new TreeSet<>();
             for (short i : m_timeLine) {
                 m_exactTimeLine.add(MessageSummaryBuilder.indexToTime(i, intervalStartTime, intervalSize));
             }
@@ -358,7 +358,7 @@ public class MessageSummaryImpl implements IMessageSummary {
     }
 
     private void rebuildTimelineFromExactTimeline(long intervalStartTime, long intervalSize) {
-        final ArrayList<Short> newTimeLine = new ArrayList<Short>(m_exactTimeLine.size());
+        final ArrayList<Short> newTimeLine = new ArrayList<>(m_exactTimeLine.size());
         int pos = 0;
         short lastIndex = Short.MIN_VALUE;
         for (Long time : m_exactTimeLine) {
@@ -402,7 +402,7 @@ public class MessageSummaryImpl implements IMessageSummary {
             res.setTimeLine(Arrays.copyOf(timeLine, timeLine.length));
         }
         if (m_exactTimeLine != null) {
-            res.m_exactTimeLine = new TreeSet<Long>(m_exactTimeLine);
+            res.m_exactTimeLine = new TreeSet<>(m_exactTimeLine);
         }
         return res;
     }

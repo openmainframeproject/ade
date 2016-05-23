@@ -276,7 +276,7 @@ public class VerifyLinuxTraining extends ExtControlProgram {
     private static MessageMetrics computeMessageMetrics(Ade ade, Set<ISource> sourceSet, Date start, Date end) throws AdeException {
         int numIntervals = 0;
         int numIntervalsWithMessages = 0;
-        final Map<Integer, Integer> occurrence = new HashMap<Integer, Integer>();
+        final Map<Integer, Integer> occurrence = new HashMap<>();
 
         System.out.println("Start computeMessageMetrics ");
 
@@ -285,7 +285,7 @@ public class VerifyLinuxTraining extends ExtControlProgram {
          *
          * get list of periods from start date to end date for each source
          */
-        final Collection<IPeriod> periods = new ArrayList<IPeriod>();
+        final Collection<IPeriod> periods = new ArrayList<>();
         for (ISource source : sourceSet) {
             periods.addAll(Ade.getAde().getDataStore().periods().getAllPeriods(source, start, end));
         }
@@ -296,7 +296,7 @@ public class VerifyLinuxTraining extends ExtControlProgram {
         }
 
         /* extract data from the database for each period */
-        final List<IInterval> curIntervals = new ArrayList<IInterval>();
+        final List<IInterval> curIntervals = new ArrayList<>();
         final Comparator<IInterval> intervalComparator = new Comparator<IInterval>() {
             @Override
             public int compare(IInterval int1, IInterval int2) {

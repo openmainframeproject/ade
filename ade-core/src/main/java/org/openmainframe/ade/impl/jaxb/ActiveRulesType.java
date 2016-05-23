@@ -85,7 +85,7 @@ public class ActiveRulesType {
      */
     public List<RuleType> getRule() {
         if (rule == null) {
-            rule = new ArrayList<RuleType>();
+            rule = new ArrayList<>();
         }
         return this.rule;
     }

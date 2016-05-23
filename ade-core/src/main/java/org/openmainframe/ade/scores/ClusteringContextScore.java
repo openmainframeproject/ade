@@ -190,7 +190,7 @@ public class ClusteringContextScore extends AbstractClusteringScorer {
                 }
             }
 
-            m_contextGoodClusters = new TreeSet<Integer>();
+            m_contextGoodClusters = new TreeSet<>();
             // second pass: find spiking clusters    
             for (int i = 0; i < m_model.m_actualClusters; ++i) {
                 if (clusterSizeInInterval[i] > 1) {

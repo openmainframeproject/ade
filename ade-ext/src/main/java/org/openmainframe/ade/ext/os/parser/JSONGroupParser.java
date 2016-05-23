@@ -57,8 +57,8 @@ public class JSONGroupParser {
      * Constructor for initializing the rules and groups member variables.
      */
     public JSONGroupParser(){
-        parsedGroupsByType = new HashMap<Integer, List<Group>>();
-        parsedRules = new ArrayList<Rule>();
+        parsedGroupsByType = new HashMap<>();
+        parsedRules = new ArrayList<>();
     }
     
     /**
@@ -75,7 +75,7 @@ public class JSONGroupParser {
             JSONObject jsonData = new JSONObject(jsonInputStream);
             JSONObject groups = jsonData.getJSONObject("groups");
             for (GroupType group : GroupType.values()){
-                List<Group> parsedGroups = new ArrayList<Group>();
+                List<Group> parsedGroups = new ArrayList<>();
                 JSONArray groupsArray = groups.getJSONArray(group.name().toLowerCase());
                 parsedGroups = parseGroups(groupsArray, group.name());    
                 parsedGroupsByType.put(group.getValue(),parsedGroups);
@@ -105,7 +105,7 @@ public class JSONGroupParser {
      */
     private List<Group> parseGroups(JSONArray groups, String groupType) throws JSONException, AdeUsageException{
         if (groups.length() == 0) throw new AdeUsageException("No groups specified for group of type " + groupType);
-        List<Group> currentGroups = new ArrayList<Group>();
+        List<Group> currentGroups = new ArrayList<>();
         for (int i = 0; i < groups.length(); i++){
             JSONObject group = groups.getJSONObject(i);
             String name = group.getString("name");
@@ -136,7 +136,7 @@ public class JSONGroupParser {
      */
     private List<Rule> parseRules(JSONArray rules) throws AdeUsageException, JSONException{
         if (rules.length() == 0) throw new AdeUsageException("No rules specified");
-        List<Rule> currentRules = new ArrayList<Rule>();
+        List<Rule> currentRules = new ArrayList<>();
         for (int i = 0; i < rules.length(); i++){
             JSONObject rule = rules.getJSONObject(i);
             String name = rule.getString("name");
@@ -164,8 +164,8 @@ public class JSONGroupParser {
      */
     private void validateEvaluationOrderAndName(List<Group> groups) throws AdeUsageException{
         int maxEvalOrder = 0;
-        HashSet<Integer> evalOrders = new HashSet<Integer>();
-        HashSet<String> usedNames = new HashSet<String>();
+        HashSet<Integer> evalOrders = new HashSet<>();
+        HashSet<String> usedNames = new HashSet<>();
         for (Group group : groups){
             if (group.getEvaluationOrder() > maxEvalOrder){
                 maxEvalOrder = group.getEvaluationOrder();
@@ -189,7 +189,7 @@ public class JSONGroupParser {
      * @throws AdeUsageException
      */
     private void validateRuleNames(List<Rule> rules) throws AdeUsageException{
-        HashSet<String> ruleNames = new HashSet<String>();
+        HashSet<String> ruleNames = new HashSet<>();
         for (Rule rule : rules){
             if (!ruleNames.add(rule.getName().toUpperCase())){
                 throw new AdeUsageException("Attempted to add/update rule table with duplicate names");
@@ -207,8 +207,8 @@ public class JSONGroupParser {
      * @throws AdeUsageException
      */
     private void validateGroupRules(HashMap<Integer, List<Group>> groupsByType, List<Rule> rules) throws AdeUsageException{
-        HashSet<String> ruleNames = new HashSet<String>();
-        HashSet<String> usedRules = new HashSet<String>();
+        HashSet<String> ruleNames = new HashSet<>();
+        HashSet<String> usedRules = new HashSet<>();
         for (Rule rule: rules){
             ruleNames.add(rule.getName().toUpperCase());
         }      

@@ -91,7 +91,7 @@ public class RarityScore extends MessageScorer {
         if (m_trained) {
             throw new AdeInternalException("Already trained");
         }
-        m_msgData = new TreeMap<String, MsgData>();
+        m_msgData = new TreeMap<>();
         m_totalIntervalCount = 0;
     }
 

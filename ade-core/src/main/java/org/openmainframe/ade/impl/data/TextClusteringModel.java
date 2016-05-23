@@ -95,7 +95,7 @@ public class TextClusteringModel {
 
         m_updateDataStore = updateDataStore;
 
-        m_clustersData = new LinkedList<TextClusterData>();
+        m_clustersData = new LinkedList<>();
         m_parentModel = textClusteringComponentModel;
         m_dsTextClustering = AdeInternal.getAdeImpl().getDataStore().textClustering();
         m_maxClusterId = m_dsTextClustering.refreshClustersFromDataStore(m_componentId, m_maxClusterId, m_clustersData);
@@ -333,8 +333,8 @@ public class TextClusteringModel {
         if (m_messageTextPreprocessor == null) {
             return true;
         }
-        final List<String> magicA = new ArrayList<String>();
-        final List<String> magicB = new ArrayList<String>();
+        final List<String> magicA = new ArrayList<>();
+        final List<String> magicB = new ArrayList<>();
         for (int i = 0; i < wordsA.length; ++i) {
             if (m_messageTextPreprocessor.isMagicWord(wordsA[i].getStr())) {
                 magicA.add(wordsA[i].getStr());

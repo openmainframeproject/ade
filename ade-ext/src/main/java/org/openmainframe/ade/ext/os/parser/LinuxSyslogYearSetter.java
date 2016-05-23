@@ -42,7 +42,7 @@ public class LinuxSyslogYearSetter {
     /**
      * The Hashmap that maps source to yearSetter. Each source has its own yearSetter.
      */
-    static private Map<String, LinuxSyslogYearSetter> map = new HashMap<String, LinuxSyslogYearSetter>();
+    static private Map<String, LinuxSyslogYearSetter> map = new HashMap<>();
 
     /**
      * The date of the last seen message.

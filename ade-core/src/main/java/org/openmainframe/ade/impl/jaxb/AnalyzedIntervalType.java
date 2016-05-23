@@ -277,7 +277,7 @@ public class AnalyzedIntervalType {
      */
     public List<AnalyzedMessageSummaryType> getAnalyzedMessageSummary() {
         if (analyzedMessageSummary == null) {
-            analyzedMessageSummary = new ArrayList<AnalyzedMessageSummaryType>();
+            analyzedMessageSummary = new ArrayList<>();
         }
         return this.analyzedMessageSummary;
     }

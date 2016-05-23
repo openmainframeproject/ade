@@ -71,7 +71,7 @@ public abstract class AtomicTransaction {
      */
     public final boolean beginAtomicTransaction(Connection connection) throws AdeException {
         this.connection = connection;
-        createdStatements = new ArrayList<Statement>();
+        createdStatements = new ArrayList<>();
         final boolean result = performAtomicTransaction();
         for (Statement s : createdStatements) {
             try {

@@ -64,7 +64,7 @@ public class TextClusteringComponentModel {
      */
     public TextClusteringComponentModel(boolean updateDataStore) {
         m_updateDataStore = updateDataStore;
-        m_clusteringMap = new HashMap<String, TextClusteringModel>();
+        m_clusteringMap = new HashMap<>();
     }
 
     /**

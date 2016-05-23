@@ -52,7 +52,7 @@ public abstract class AbstractTrainer<T> implements ILearner<T> {
     /** Environment variables for scorer */
     protected ScorerEnvironment m_scorerEnvironment;
 
-    transient private Map<String, AllowedProperties> m_reqProps = new TreeMap<String, AllowedProperties>();
+    transient private Map<String, AllowedProperties> m_reqProps = new TreeMap<>();
 
     @Override
     public String getName() {

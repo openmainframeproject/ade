@@ -101,7 +101,7 @@ public class IClustExp implements IClusteringAlgorithm {
         public class Cluster {
 
             public int mIndex;
-            public TreeSet<Integer> mMembers = new TreeSet<Integer>();
+            public TreeSet<Integer> mMembers = new TreeSet<>();
             public int mSize = 0;
 
             public double mSimilaritySum = 0;
@@ -126,8 +126,8 @@ public class IClustExp implements IClusteringAlgorithm {
                 mTotalScore += scoreContribution();
 
                 // Stores intermediate results of the function calcCandidateExtraTerm()
-                mCandidateCalculatedExtraTermSum = new HashMap<Integer, Double>();
-                mCandidateCalculatedExtraTermSumN = new HashMap<Integer, Integer>();
+                mCandidateCalculatedExtraTermSum = new HashMap<>();
+                mCandidateCalculatedExtraTermSumN = new HashMap<>();
             }
 
             public double checkCandidate(int candidate) {
@@ -336,10 +336,10 @@ public class IClustExp implements IClusteringAlgorithm {
 
         }
 
-        private ArrayList<Cluster> mClusters = new ArrayList<Cluster>();
+        private ArrayList<Cluster> mClusters = new ArrayList<>();
 
         public Partition() {
-            ArrayList<Integer> indices = new ArrayList<Integer>();
+            ArrayList<Integer> indices = new ArrayList<>();
             for (int i = 0; i < mNumElements; ++i) {
                 indices.add(i);
             }
@@ -347,7 +347,7 @@ public class IClustExp implements IClusteringAlgorithm {
 
             mClusterIndices = new int[mNumElements];
 
-            ArrayList<Integer> members = new ArrayList<Integer>();
+            ArrayList<Integer> members = new ArrayList<>();
             members.ensureCapacity(mNumElements / mClusterNum + 1);
             for (int i = 0; i < mClusterNum; ++i) {
                 members.clear();
@@ -360,8 +360,8 @@ public class IClustExp implements IClusteringAlgorithm {
         }
 
         public Partition(int[] initialPartition) {
-            HashMap<Integer, Integer> clusterIdx = new HashMap<Integer, Integer>();
-            HashMap<Integer, ArrayList<Integer>> clusters = new HashMap<Integer, ArrayList<Integer>>();
+            HashMap<Integer, Integer> clusterIdx = new HashMap<>();
+            HashMap<Integer, ArrayList<Integer>> clusters = new HashMap<>();
             mClusterIndices = initialPartition.clone();
             int k = 0;
             for (int i = 0; i < initialPartition.length; ++i) {
@@ -500,7 +500,7 @@ public class IClustExp implements IClusteringAlgorithm {
         @Override
         public TreeSet<Integer> getClusterElements(int clusterIndex) {
             if (clusterIndex < 0 || clusterIndex >= mClusters.size()) {
-                return new TreeSet<Integer>();
+                return new TreeSet<>();
             }
             return mClusters.get(clusterIndex).mMembers;
 
@@ -609,7 +609,7 @@ public class IClustExp implements IClusteringAlgorithm {
     }
 
     public void collectRunsSummary() {
-        mRunsSummary = new ArrayList<IClustExp.IClustRunSummary>();
+        mRunsSummary = new ArrayList<>();
     }
 
     /** Checks whether last call to run() gave a converged result.

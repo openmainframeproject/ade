@@ -89,7 +89,7 @@ public class ScoreSetType {
      */
     public List<ScoreType> getScore() {
         if (score == null) {
-            score = new ArrayList<ScoreType>();
+            score = new ArrayList<>();
         }
         return this.score;
     }
@@ -118,7 +118,7 @@ public class ScoreSetType {
      */
     public List<ScoreAttributeType> getAttribute() {
         if (attribute == null) {
-            attribute = new ArrayList<ScoreAttributeType>();
+            attribute = new ArrayList<>();
         }
         return this.attribute;
     }

@@ -125,7 +125,7 @@ public class OutputerType {
      */
     public List<PropertyType> getOutputerProperty() {
         if (outputerProperty == null) {
-            outputerProperty = new ArrayList<PropertyType>();
+            outputerProperty = new ArrayList<>();
         }
         return this.outputerProperty;
     }
@@ -154,7 +154,7 @@ public class OutputerType {
      */
     public List<LinkType> getLinkedScorer() {
         if (linkedScorer == null) {
-            linkedScorer = new ArrayList<LinkType>();
+            linkedScorer = new ArrayList<>();
         }
         return this.linkedScorer;
     }

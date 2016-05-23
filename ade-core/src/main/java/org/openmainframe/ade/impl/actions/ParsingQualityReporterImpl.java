@@ -117,7 +117,7 @@ public class ParsingQualityReporterImpl implements IParsingQualityReporter {
 
     static class WordCounts {
         private static final Logger logger = LoggerFactory.getLogger(WordCounts.class);
-        private Map<String, Integer> m_wordToCount = new TreeMap<String, Integer>();
+        private Map<String, Integer> m_wordToCount = new TreeMap<>();
         
         public WordCounts() { 
         }

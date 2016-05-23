@@ -100,7 +100,7 @@ public class IntervalImpl implements IInterval, Comparable<IInterval> {
         if (m_intervalClassification == null) {
             m_intervalClassification = IntervalClassificationEnum.REGULAR;
         }
-        m_messageSummaryMap = new TreeMap<Integer, IMessageSummary>();
+        m_messageSummaryMap = new TreeMap<>();
         m_endIntervalTime = m_startIntervalTime + m_framingFlowType.getDuration();
         m_source = source;
 

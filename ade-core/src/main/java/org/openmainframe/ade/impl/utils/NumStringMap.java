@@ -37,8 +37,8 @@ public class NumStringMap {
 
     public NumStringMap() {
         super();
-        m_numToStringMap = new TreeMap<Integer, String>();
-        m_stringToNumMap = new HashMap<String, Integer>();
+        m_numToStringMap = new TreeMap<>();
+        m_stringToNumMap = new HashMap<>();
     }
 
     public NumStringMap(Set<Entry<Integer, String>> entrySet) {
