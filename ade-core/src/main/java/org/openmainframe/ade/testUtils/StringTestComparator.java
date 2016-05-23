@@ -128,7 +128,7 @@ public class StringTestComparator {
     private void printStringWithLineNumbers(String title, String val) throws IOException {
         System.out.printf("Content of %s\n", title);
         LineNumberReader reader = new LineNumberReader(new StringReader(val));
-        String line = null;
+        String line;
         while ((line = reader.readLine()) != null) {
             if (m_printWithLineNumbers) {
                 System.out.printf("%3d: %s\n", reader.getLineNumber(), line);

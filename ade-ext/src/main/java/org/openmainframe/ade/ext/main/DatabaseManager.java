@@ -246,7 +246,7 @@ public class DatabaseManager {
      * @return the DB name
      */
     private String parseDBName() {
-        String dbname = null;
+        String dbname;
 
         final int dbnameStartPosition = dbURL.lastIndexOf(File.separator);
         final int dburlLength = dbURL.length();
@@ -381,7 +381,7 @@ public class DatabaseManager {
 
         mLogger.info("Connecting to database " + connectionUrl + " to restore from backup.");
 
-        Connection con = null;
+        Connection con;
         try {
 
             if (dbUserName == null || dbUserPassword == null) {
@@ -441,7 +441,7 @@ public class DatabaseManager {
 
         mLogger.info("Connecting to database " + connectionUrl + " in location " + dbLocation + " to restore from backup.");
 
-        Connection con = null;
+        Connection con;
         try {
             con = DriverManager.getConnection(connectionUrl);
 
@@ -473,7 +473,7 @@ public class DatabaseManager {
     private static Connection getEmbeddedDBConnection(String dirName) throws AdeException {
         final Properties p = System.getProperties();
         p.put("derby.system.home", dirName);
-        Connection con = null;
+        Connection con;
 
         try {
             Class.forName(DRIVER);

@@ -121,7 +121,7 @@ public class HubToIntervalFramers extends
     public final void addStatisticsFlow() throws AdeException {
         for (IntervalFramer intervalFramer : Ade.getAde().getFlowFactory().getFlowBySourceId(m_source.getSourceId()).getAllIntervalFramers()) {
             final FramingFlowType framingFlowType = intervalFramer.getFramingFlowType();
-            IntervalBuilder intervalBuilder = null;
+            IntervalBuilder intervalBuilder;
             intervalBuilder = intervalFramer.getIntervalBuilder(
                     m_source, uploadSumProps, framingFlowType, IntervalClassificationEnum.REGULAR, m_action);
             intervalBuilder.addTarget(StatsCollectorFactory.newIntervalStatsCollector(m_sourceGroup, framingFlowType));

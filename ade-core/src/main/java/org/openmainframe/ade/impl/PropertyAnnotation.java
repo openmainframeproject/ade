@@ -268,7 +268,7 @@ public class PropertyAnnotation {
 
         @Override
         public final Class<? extends T> create(String propVal) {
-            Class<?> rawClass = null;
+            Class<?> rawClass;
             try {
                 rawClass = Class.forName((String) propVal);
             } catch (ClassNotFoundException e) {

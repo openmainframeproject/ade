@@ -75,7 +75,7 @@ public class JSONGroupParser {
             JSONObject jsonData = new JSONObject(jsonInputStream);
             JSONObject groups = jsonData.getJSONObject("groups");
             for (GroupType group : GroupType.values()){
-                List<Group> parsedGroups = new ArrayList<Group>();
+                List<Group> parsedGroups;
                 JSONArray groupsArray = groups.getJSONArray(group.name().toLowerCase());
                 parsedGroups = parseGroups(groupsArray, group.name());    
                 parsedGroupsByType.put(group.getValue(),parsedGroups);

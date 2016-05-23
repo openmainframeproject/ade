@@ -101,7 +101,7 @@ public class LinuxSyslogYearSetter {
      * @return the year of the message.
      */
     public final int getDesiredYear(DateTime currentMessageDate) {
-        int yearToReturn = 10;
+        int yearToReturn;
         DateTime curMessageDate = new DateTime(currentMessageDate);
         curMessageDate = curMessageDate.withYear(m_currentYear);
         if (m_lastSeenMessageDate == null) {

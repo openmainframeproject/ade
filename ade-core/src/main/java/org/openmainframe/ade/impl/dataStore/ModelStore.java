@@ -66,7 +66,7 @@ public final class ModelStore {
      */
     static void setAsDefault(SQL table, int modelInternalId) throws AdeException {
         final ConnectionWrapper cw = new ConnectionWrapper(AdeInternal.getDefaultConnection());
-        int analysisGroupId = 0;
+        int analysisGroupId;
         try {
             cw.startTransaction();
             cw.lockTableExclusive(table);

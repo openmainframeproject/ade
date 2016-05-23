@@ -47,7 +47,7 @@ public class CriticalWordsScorer {
 
     private void init() throws AdeInternalException {
         BufferedReader br = null;
-        String line = null;
+        String line;
         try {
             br = new BufferedReader(new InputStreamReader(
                     new FileInputStream(m_criticalWordsFile), StandardCharsets.UTF_8));

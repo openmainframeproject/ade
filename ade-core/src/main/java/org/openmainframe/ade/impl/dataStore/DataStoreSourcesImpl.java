@@ -308,7 +308,7 @@ public class DataStoreSourcesImpl implements IDataStoreSources {
     @Override
     public final void setAnalysisGroup(String source, int analysisGroup) throws AdeException {
         String curAnalysisGroup = null;
-        String groupName = null;        
+        String groupName;        
         final ConnectionWrapper cw = new ConnectionWrapper(AdeInternal.getDefaultConnection());
         try {
             cw.startTransaction();

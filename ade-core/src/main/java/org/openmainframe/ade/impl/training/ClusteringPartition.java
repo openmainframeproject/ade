@@ -135,7 +135,7 @@ public class ClusteringPartition implements Serializable {
         BufferedReader br = null;
         try {
             br = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));
-            String nextLine = null;
+            String nextLine;
 
             while ((nextLine = br.readLine()) != null) {
                 clusterIndex++;
