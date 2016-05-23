@@ -127,7 +127,7 @@ public class AnalyzedIntervalDbStorer extends AnalyzedIntervalOutputer {
 
     private void setCachedPeriod(PeriodImpl period, IBasicInterval ai) throws AdeException {
         //replace period
-        if (!(period.equals(m_cachedPeriod))) {
+        if (!period.equals(m_cachedPeriod)) {
             m_cachedPeriod = period;
 
             readAnalyzedIntervals();

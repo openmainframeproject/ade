@@ -194,7 +194,7 @@ public abstract class PeriodicStats {
      * @return String timestamp representation
      */
     protected final String currentTimeStamp() {
-        return dateFormatter.format((new Date()).getTime());
+        return dateFormatter.format(new Date().getTime());
     }
 
     /**
