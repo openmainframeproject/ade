@@ -26,6 +26,7 @@ import java.sql.SQLException;
 import java.sql.SQLNonTransientConnectionException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import org.openmainframe.ade.Ade;
@@ -581,7 +582,7 @@ public final class ExtDataStoreUtils {
      *           of the input SQL statement(s) did not raise
      *           any exceptions, false to indicate that it did.
      */
-    public static synchronized boolean executeBatch(ArrayList<String> sqlStatement) { 
+    public static synchronized boolean executeBatch(List<String> sqlStatement) { 
 
         boolean batchOk = false;
         logger.trace("executeBatch() -->entry");

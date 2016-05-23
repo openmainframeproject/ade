@@ -293,7 +293,7 @@ public class LastSeenLoggingScorerContinuous extends FixedMessageScorer {
      * @throws AdeInternalException
      */
     public void processPrevTimeLine(String messageID, IAnalyzedInterval contextElement, StatisticsChart sc,
-            TreeSet<Long> timeLineSet) throws AdeInternalException{ 
+            Set<Long> timeLineSet) throws AdeInternalException{ 
         final TreeSet<Long> prevTimeLine = m_prevIntervalTimelineMap.get(messageID);
         if (prevTimeLine == null) {
             m_mainStat = MainStatVal.NEW;
@@ -317,7 +317,7 @@ public class LastSeenLoggingScorerContinuous extends FixedMessageScorer {
      * @param contextElement AnalyzedInterval object that contains summary results of interval.
      * @param millisPerTick Long value with number of milliseconds per tick. 
      */
-    public void processCurrentTimeLine(short[] timeLine,TreeSet<Long> timeLineSet,IAnalyzedInterval contextElement){
+    public void processCurrentTimeLine(short[] timeLine, Set<Long> timeLineSet, IAnalyzedInterval contextElement){
         final boolean hasTimeline = !ArrayUtils.isEmpty(timeLine);
         final long millisPerTick = contextElement.getInterval().getIntervalSize() / 
                 SummarizationProperties.TIMELINE_RESOLUTION;

@@ -31,6 +31,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.math3.util.Pair;
@@ -122,7 +123,7 @@ public class TimingStatistics {
     }
 
     private HashMap<String, Measure> mMeasures = new HashMap<String, Measure>();
-    private HashMap<Pair<Long, String>, Long> mThreadMeasures = new HashMap<Pair<Long, String>, Long>();
+    private Map<Pair<Long, String>, Long> mThreadMeasures = new HashMap<Pair<Long, String>, Long>();
     private List<Measure> mOrderedMeasures = new ArrayList<Measure>();
     private Set<String> mDuplicateStarts = new HashSet<String>();
     private Set<String> mEndsWithoutStarts = new HashSet<String>();
@@ -138,7 +139,7 @@ public class TimingStatistics {
 
     private static ThreadLocal<String> mFinalPrefix = new ThreadLocal<String>();
 
-    private static HashMap<String, Measure> getMeasures() {
+    private static Map<String, Measure> getMeasures() {
         return mInstance.mMeasures;
     }
 

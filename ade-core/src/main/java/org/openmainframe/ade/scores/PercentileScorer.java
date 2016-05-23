@@ -21,6 +21,7 @@ package org.openmainframe.ade.scores;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.NavigableMap;
@@ -62,7 +63,7 @@ public class PercentileScorer implements IScorer<Double, Double> {
     public static final int NUM_PERCENTILE_BINS = 100;
 
     private class GetVecMemberFromFullIndex {
-        ArrayList<Double> m_vec;
+        List<Double> m_vec;
         int m_totalNumIntervals;
         int m_numIntervalsWithZeroOccurrences;
 

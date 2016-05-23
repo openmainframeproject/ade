@@ -56,9 +56,9 @@ public class ClusteringPartition implements Serializable {
     /**
      * A map for storing an initial clustering partition.
      */
-    private HashMap<String, ArrayList<Integer>> m_initialClusters = null;
+    private Map<String, ArrayList<Integer>> m_initialClusters = null;
 
-    private HashMap<String, Collection<Integer>> m_finalClusters = null;
+    private Map<String, Collection<Integer>> m_finalClusters = null;
     private transient Map<Integer, String> m_finalClusterNames = null;
 
     private int[] m_initialPartition = null;
@@ -277,7 +277,7 @@ public class ClusteringPartition implements Serializable {
 
         for (Map.Entry<String, ArrayList<Integer>> entry : m_initialClusters.entrySet()) {
             final String n = entry.getKey();
-            final ArrayList<Integer> members = entry.getValue();
+            final List<Integer> members = entry.getValue();
             int intersectionCount = 0;
             int unionCount = members.size();
 
