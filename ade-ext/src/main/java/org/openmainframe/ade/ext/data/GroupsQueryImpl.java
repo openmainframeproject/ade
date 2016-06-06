@@ -191,7 +191,7 @@ public final class GroupsQueryImpl {
             short evaluationOrder = resultSet.getShort("EVALUATION_ORDER");
             int rid = resultSet.getInt("RULE_INTERNAL_ID");
             String ruleName = getRuleName(rid);
-            return (new Group(uid,name,groupType,dataType,evaluationOrder,ruleName));            
+            return new Group(uid,name,groupType,dataType,evaluationOrder,ruleName);            
         }
         /**
          * Retrieves the rule name by selecting the row with the given unique rule id. 
@@ -848,8 +848,8 @@ public final class GroupsQueryImpl {
          */
         private boolean unassignedIsInGroups(List<Group> groups, int groupId){
             for (Group group : groups){
-                if (group != null && (group.getUid() == groupId) && 
-                        (group.getName().equalsIgnoreCase(UNASSIGNED_GROUP))){
+                if (group != null && (group.getUid() == groupId) &&
+                        group.getName().equalsIgnoreCase(UNASSIGNED_GROUP)){
                     return true;
                 }
             }

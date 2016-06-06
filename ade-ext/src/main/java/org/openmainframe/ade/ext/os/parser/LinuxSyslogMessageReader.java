@@ -413,7 +413,7 @@ public class LinuxSyslogMessageReader extends AdeMessageReader {
      */
     private DateTime handleDateTime(LinuxSyslogLineParser lineParser){
         final DateTime dateTime = lineParser.getLastDeterminedDateTime();
-        if (dateTime != null && !(m_adeExtProperties.isGmtOffsetDefined())) {
+        if (dateTime != null && !m_adeExtProperties.isGmtOffsetDefined()) {
             updateGmtOffset(dateTime);
         }
         return dateTime;
