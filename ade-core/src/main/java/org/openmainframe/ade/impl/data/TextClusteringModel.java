@@ -359,7 +359,7 @@ public class TextClusteringModel {
             int i;
             String missing = null;
             for (i = 0; i < shorter.size(); ++i) {
-                if (!(shorter.get(i).equals(longer.get(i)))) {
+                if (!shorter.get(i).equals(longer.get(i))) {
                     missing = longer.get(i);
                     break;
                 }
