@@ -21,6 +21,7 @@ package org.openmainframe.ade.ext.output;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
@@ -108,8 +109,8 @@ public class ExtAnalyzedIntervaFast18lXmlStorer extends AnalyzedIntervalOutputer
             File parentdir = m_outFile.getParentFile();
             parentdir.mkdirs();
 
-            m_outStream = new PrintStream(m_outFile);
-        } catch (FileNotFoundException e) {
+            m_outStream = new PrintStream(m_outFile, "UTF-8");
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
