@@ -126,7 +126,7 @@ public final class ExtDataStoreUtils {
      */
     public static IAdeConfigProperties getAdeConfigProperties() {
 
-        IAdeConfigProperties configProperties = null;
+        IAdeConfigProperties configProperties;
 
         try {
             initAde();
@@ -249,7 +249,7 @@ public final class ExtDataStoreUtils {
      */
     private static synchronized Connection getConnection() {
 
-        Connection C = null;
+        Connection C;
         final IAdeConfigProperties config = getAdeConfigProperties(); 
         final String databaseUrl = getDatabaseUrl(config); 
         final String connectionUserid = getDbConnectionUserid(config); 
@@ -1079,7 +1079,7 @@ public final class ExtDataStoreUtils {
      */
     public static boolean isConnectionException(SQLException e) throws AdeInternalException {
 
-        boolean isSessionSeverity = false;
+        boolean isSessionSeverity;
         logger.trace("isConnectionException()  --> entry");
         final String connectionUrl = getDatabaseUrl();
 
@@ -1101,7 +1101,7 @@ public final class ExtDataStoreUtils {
 
     public static boolean isDbNotFoundException(SQLException e) throws AdeInternalException {
 
-        boolean isNotFound = false;
+        boolean isNotFound;
         logger.trace("isDbNotFoundException()  --> entry");
 
         final String sqlState = e.getSQLState();

@@ -636,7 +636,7 @@ public class IClustExp implements IClusteringAlgorithm {
             throw new AdeCoreInvalidInitialStateException("Cluster number must be smaller than elements number");
         }
 
-        Partition partition = null;
+        Partition partition;
         if (mInitialPartition != null) {
             partition = new Partition(mInitialPartition);
         } else {

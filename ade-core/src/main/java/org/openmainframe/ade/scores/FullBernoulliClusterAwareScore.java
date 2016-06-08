@@ -185,8 +185,8 @@ public class FullBernoulliClusterAwareScore extends BernoulliScore {
     public StatisticsChart getScore(IAnalyzedMessageSummary ams, IAnalyzedInterval interval) throws AdeException {
         final StatisticsChart sc = new StatisticsChart();
         final FullBernoulliMsgData data = (FullBernoulliMsgData) m_msgData.get(ams.getMessageId());
-        double prob = 1.0;
-        double finalProb = 0;
+        double prob;
+        double finalProb;
         if (data == null) {
             prob = 0.5 / m_totalIntervalCount;
             if (fullProbability) {

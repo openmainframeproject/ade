@@ -156,7 +156,7 @@ public final class LevenshteinTextSummary {
     }
 
     private static void splitWordByDirectory(String str, ArrayList<Word> strWithDelim) {
-        boolean isFirstToken = true;
+        boolean isFirstToken;
         boolean isFirstWord = true;
         final Matcher dirMatcher = directoryPatternSplitter.matcher(str);
         final String currWord = str;

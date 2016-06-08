@@ -45,7 +45,7 @@ public final class OutputerFactory {
         if (!name.contains(".")) {
             name = DEFAULT_PACKAGE + name;
         }
-        AnalyzedIntervalOutputer temp = null;
+        AnalyzedIntervalOutputer temp;
         try {
             temp = (AnalyzedIntervalOutputer) Class.forName(name).newInstance();
             temp.setupSourceAndFlowType(source, framingFlowType);

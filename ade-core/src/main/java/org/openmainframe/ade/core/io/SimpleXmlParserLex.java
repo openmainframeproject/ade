@@ -365,7 +365,7 @@ class SimpleXmlParserLex {
         } else if (src.startsWith("#x")) {
             final String num = src.substring(2);
             final int len = num.length();
-            int code = 0;
+            int code;
             try {
                 code = Integer.valueOf(num, 16);
             } catch (NumberFormatException e) {
@@ -379,7 +379,7 @@ class SimpleXmlParserLex {
             return res.toString();
         } else if (src.startsWith("#")) {
             final String num = src.substring(1);
-            int code = 0;
+            int code;
             try {
                 code = Integer.valueOf(num);
             } catch (NumberFormatException e) {

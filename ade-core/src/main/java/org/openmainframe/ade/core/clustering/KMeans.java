@@ -148,8 +148,8 @@ public class KMeans implements IClusteringAlgorithm, Serializable {
         }
 
         protected void assignClusters() {
-            double minDistance = Double.MAX_VALUE;
-            int minCluster = -1;
+            double minDistance;
+            int minCluster;
             double distance;
             double totalCost = 0;
 

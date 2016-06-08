@@ -144,7 +144,7 @@ public class RuntimeModelDataManager {
 
         /* Keeps track of the time since last writing the RuntimeModelData. */
         final long currentTimestamp = System.currentTimeMillis();
-        String timeSinceLastRuntimeModelDataWriting = "NULL";
+        String timeSinceLastRuntimeModelDataWriting;
         if (m_creationTimeOfRuntimeModelData == 0) {
             /* Don't do the calculation. */
             timeSinceLastRuntimeModelDataWriting = "N/A";

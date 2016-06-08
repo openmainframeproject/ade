@@ -299,7 +299,7 @@ public final class GroupsQueryImpl {
          * @return the group internal id of the unassigned group.
          */
         private int insertUnassignedGroup() throws SQLException{
-            PreparedStatement groupStatement = null;
+            PreparedStatement groupStatement;
             final int ruleid = insertUnassignedRule();
             final int evaluationOrder = getNumOfGroups() + 1;
             String unassignedGroupSqlStatement = "INSERT INTO " + GROUPS_TABLE + " (GROUP_NAME, "
@@ -320,7 +320,7 @@ public final class GroupsQueryImpl {
          * @throws SQLException
          */
         private int insertUnassignedRule() throws SQLException{
-            PreparedStatement ruleStatement = null;
+            PreparedStatement ruleStatement;
             String unassignedRuleSqlStatement = "INSERT INTO " + SQL.RULES +
                     " (RULE_NAME, DESCRIPTION, RULE) VALUES ('%s','%s','%s')";
             unassignedRuleSqlStatement = String.format(unassignedRuleSqlStatement, UNASSIGNED_RULE_NAME, 
@@ -337,7 +337,7 @@ public final class GroupsQueryImpl {
          * @throws SQLException
          */
         public int getInternalId(PreparedStatement preparedStatement) throws SQLException {
-            ResultSet generatedKey = null;
+            ResultSet generatedKey;
             int internalId = 0;
             generatedKey = preparedStatement.getGeneratedKeys();
             if (generatedKey.next()) {
@@ -357,8 +357,8 @@ public final class GroupsQueryImpl {
          * @throws SQLException
          */
         private int getNumOfGroups() throws SQLException {
-            PreparedStatement numOfGroupsStatement = null;
-            ResultSet numOfGroupsResult = null;
+            PreparedStatement numOfGroupsStatement;
+            ResultSet numOfGroupsResult;
             numOfGroupsStatement = prepareStatement("SELECT COUNT(*) AS COUNT_TOTAL FROM " + SQL.GROUPS);
             numOfGroupsResult = numOfGroupsStatement.executeQuery();
             numOfGroupsResult.next();

@@ -149,7 +149,7 @@ public class ClusteringContextScore extends AbstractClusteringScorer {
             }
             sc.setStat(CLUSTER_ID, clusterId);
 
-            ClusteringContextScore.ClusterStatus status = null;
+            ClusteringContextScore.ClusterStatus status;
             if (!m_model.m_seenMsgIds.containsKey(ams.getMessageId())) {
                 status = ClusteringContextScore.ClusterStatus.NEW;
             } else if (clusterId == -1) {
