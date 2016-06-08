@@ -265,7 +265,7 @@ public abstract class DBDataCollector {
      * @return true, if can be initialized with required properties.
      */
     protected final boolean init() throws AdeException {
-        boolean initialized = false;
+        boolean initialized;
 
         final Properties prop = new Properties();
 

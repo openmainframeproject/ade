@@ -125,7 +125,7 @@ public final class AdeFileUtils {
      */
     public static BufferedReader openLogFile(File file)
             throws AdeUsageException {
-        BufferedReader logReader = null;
+        BufferedReader logReader;
         final String fileName = file.getPath();
         try {
             if (file.getName().endsWith(ZIP)) {

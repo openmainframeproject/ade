@@ -359,7 +359,7 @@ public class MessageSummaryImpl implements IMessageSummary {
 
     private void rebuildTimelineFromExactTimeline(long intervalStartTime, long intervalSize) {
         final ArrayList<Short> newTimeLine = new ArrayList<Short>(m_exactTimeLine.size());
-        int pos = 0;
+        int pos;
         short lastIndex = Short.MIN_VALUE;
         for (Long time : m_exactTimeLine) {
             final short index = MessageSummaryBuilder.timeToIndex(time, intervalStartTime, intervalSize);

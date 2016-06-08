@@ -597,7 +597,7 @@ public class LinuxSyslogMessageReader extends AdeMessageReader {
 
         Format formatter;
         formatter = new SimpleDateFormat("E, dd MMM yyyy HH:mm:ss Z");
-        String message = "";
+        String message;
         final int m_statCounterRawLines = getLineNumber();
         final long endTime = System.nanoTime();
         final long elapsedTime = endTime - m_parserStartTime;
