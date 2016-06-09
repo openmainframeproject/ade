@@ -26,6 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 
@@ -189,7 +190,7 @@ public class LinuxSyslogMessageReader extends AdeMessageReader {
     /**
      * Hashmap mapping SysId to Source ID.
      */
-    private HashMap<String, String> sourceToSourceIdMap = new HashMap<String, String>();
+    private Map<String, String> sourceToSourceIdMap = new HashMap<String, String>();
 
     /**
      * The Linux specific properties to be used containing configurations from start of AdeExt main class.

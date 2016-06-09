@@ -54,7 +54,7 @@ public class IClustExp implements IClusteringAlgorithm {
     private int mIdleTrials;
     private int mVerbosity = 0;
     private PrintStream mVerbosityOut = null;
-    private ArrayList<Double> mScoreArchive = null;
+    private List<Double> mScoreArchive = null;
     private int[] mCandidateClusters = null;
     private int mCandidateClustersNum = 0;
     private boolean mConverged;
@@ -73,7 +73,7 @@ public class IClustExp implements IClusteringAlgorithm {
     private int[] mElementsPermutation = null;
     private int mElementsPermutationIndex = 0;
 
-    private ArrayList<IClustRunSummary> mRunsSummary = null;
+    private List<IClustRunSummary> mRunsSummary = null;
 
     public class IClustRunSummary extends IClusteringAlgorithm.RunSummary {
         private static final long serialVersionUID = 1L;
@@ -114,7 +114,7 @@ public class IClustExp implements IClusteringAlgorithm {
             public Map<Integer, Double> mCandidateCalculatedExtraTermSum;
             public Map<Integer, Integer> mCandidateCalculatedExtraTermSumN;
 
-            public Cluster(int index, ArrayList<Integer> members) {
+            public Cluster(int index, List<Integer> members) {
 
                 mIndex = index;
                 for (int i : members) {
@@ -339,7 +339,7 @@ public class IClustExp implements IClusteringAlgorithm {
         private ArrayList<Cluster> mClusters = new ArrayList<Cluster>();
 
         public Partition() {
-            ArrayList<Integer> indices = new ArrayList<Integer>();
+            List<Integer> indices = new ArrayList<Integer>();
             for (int i = 0; i < mNumElements; ++i) {
                 indices.add(i);
             }
@@ -360,8 +360,8 @@ public class IClustExp implements IClusteringAlgorithm {
         }
 
         public Partition(int[] initialPartition) {
-            HashMap<Integer, Integer> clusterIdx = new HashMap<Integer, Integer>();
-            HashMap<Integer, ArrayList<Integer>> clusters = new HashMap<Integer, ArrayList<Integer>>();
+            Map<Integer, Integer> clusterIdx = new HashMap<Integer, Integer>();
+            Map<Integer, ArrayList<Integer>> clusters = new HashMap<Integer, ArrayList<Integer>>();
             mClusterIndices = initialPartition.clone();
             int k = 0;
             for (int i = 0; i < initialPartition.length; ++i) {

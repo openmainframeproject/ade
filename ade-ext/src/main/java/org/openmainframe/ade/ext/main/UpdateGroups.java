@@ -22,6 +22,7 @@ package org.openmainframe.ade.ext.main;
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -173,7 +174,7 @@ public class UpdateGroups extends ExtControlProgram{
      * @param parsedRules the rules extracted from the JSON file.
      * @throws AdeException
      */
-    private void updateDB(HashMap<Integer, List<Group>> parsedGroupsByType, List<Rule> parsedRules) throws AdeException {
+    private void updateDB(Map<Integer, List<Group>> parsedGroupsByType, List<Rule> parsedRules) throws AdeException {
         RulesQueryImpl.modifyRules(parsedRules);
         for (GroupType groupType : GroupType.values()){
             int groupTypeVal = groupType.getValue();

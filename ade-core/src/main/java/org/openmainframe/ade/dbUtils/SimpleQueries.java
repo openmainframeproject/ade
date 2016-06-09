@@ -25,6 +25,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.openmainframe.ade.Ade;
 import org.openmainframe.ade.exceptions.AdeException;
@@ -147,7 +148,7 @@ public class SimpleQueries {
      * @throws AdeException
      */
 
-    public final ArrayList<Integer> executeIntListQuery(String sql) throws AdeException {
+    public final List<Integer> executeIntListQuery(String sql) throws AdeException {
         return SpecialSqlQueries.executeIntListQuery(sql, m_connection);
     }
 

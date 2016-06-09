@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.junit.Before;
@@ -209,7 +210,7 @@ public class TestJSONGroupParser {
         rulesArray.put(rule2);
         rulesArray.put(rule3);
         writeToFileAndParseJSON();
-        HashMap<Integer, List<Group>> parsedGroupsByType = jsonGroupParser.getParsedGroupsByType();
+        Map<Integer, List<Group>> parsedGroupsByType = jsonGroupParser.getParsedGroupsByType();
         List<Rule> parsedRules = jsonGroupParser.getParsedRules();
         for (int i = 0 ; i < parsedRules.size(); i++){
             assertRulesEqual(rules.get(i),parsedRules.get(i));

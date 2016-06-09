@@ -25,6 +25,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import org.openmainframe.ade.Ade;
@@ -81,7 +82,7 @@ public class ArgumentConstants {
             reportInvalidSysId("'all' not allowed here. Please specifiy a system id.");
         }
 
-        final ArrayList<ISource> result = new ArrayList<ISource>();
+        final List<ISource> result = new ArrayList<ISource>();
         final ISource res = dataStoreSources.getSource(sysId);
         if (res != null) {
             result.add(res);

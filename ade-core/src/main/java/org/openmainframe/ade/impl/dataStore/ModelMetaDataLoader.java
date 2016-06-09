@@ -51,7 +51,7 @@ class ModelMetaDataLoader {
         return res;
     }
 
-    ArrayList<IModelMetaData> loadAll() throws AdeException {
+    List<IModelMetaData> loadAll() throws AdeException {
         final ArrayList<IModelMetaData> res = new ArrayList<IModelMetaData>();
         res.addAll(loadAllImpl());
         return res;

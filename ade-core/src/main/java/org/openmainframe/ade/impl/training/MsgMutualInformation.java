@@ -363,7 +363,7 @@ public class MsgMutualInformation implements IFrameableTarget<IInterval, TimeSep
      * @throws AdeException
      */
     public void printMemberReport(PrintWriter out, int member,
-            TreeSet<Integer> cluster) throws AdeException {
+            Set<Integer> cluster) throws AdeException {
         out.printf("%-15s:\n", memberStr(member));
 
         final ListSortedByKey<Double, String> list = new ListSortedByKey<Double, String>();
