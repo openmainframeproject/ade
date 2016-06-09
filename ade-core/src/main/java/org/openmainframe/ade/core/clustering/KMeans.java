@@ -70,7 +70,7 @@ public class KMeans implements IClusteringAlgorithm, Serializable {
     protected IBinaryDoubleVectorFunc mDistanceFunc = new DoubleVectorOps.BinaryDoubleVectorL2Squared();
 
     // Summary list - for performance evaluation.
-    protected ArrayList<RunSummary> mRunSummary = null;
+    protected List<RunSummary> mRunSummary = null;
 
     public KMeans() {
         mGlobalRandom = new Random();

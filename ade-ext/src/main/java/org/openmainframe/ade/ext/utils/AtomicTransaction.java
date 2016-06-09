@@ -272,7 +272,7 @@ public abstract class AtomicTransaction {
         return I;
     } 
 
-    private <T extends Statement> T addAndReturnStatement(ArrayList<Statement> statementList, T statement) {
+    private <T extends Statement> T addAndReturnStatement(List<Statement> statementList, T statement) {
         statementList.add(statement);
         return statement;
     }

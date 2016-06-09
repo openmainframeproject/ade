@@ -306,7 +306,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
         private int m_msgAppearThreshold;
         private boolean m_converged;
 
-        private ArrayList<String> m_runsSummary;
+        private List<String> m_runsSummary;
 
         /**
          * Constructor for Model - use reset() instead.
@@ -471,7 +471,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
 
         @Override
         public final void incomingObject(IInterval interval) throws AdeException {
-            final ArrayList<IMessageSummary> msgSummaries = 
+            final List<IMessageSummary> msgSummaries = 
                     new ArrayList<IMessageSummary>(interval.getMessageSummaries());
             for (IMessageSummary messageSummary : msgSummaries) {
                 mCounter.add(messageSummary.getMessageInternalId());
@@ -638,7 +638,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
             clusterData = calcClusterData(clusterPartition);
             //generate a mapping from msgIDs to their cluster
             int goodClusters = 0;
-            final HashMap<Integer, Integer> msgId2Cluster = new HashMap<Integer, Integer>();
+            final Map<Integer, Integer> msgId2Cluster = new HashMap<Integer, Integer>();
             final Map<Integer, String> clusterNames = new HashMap<Integer, String>();
 
             int clusteredMsgCount = 0;
@@ -676,7 +676,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
         }
 
         protected void outputClusterMembership(int[] matIndexToMsgInternalId,
-                ArrayList<ClusterData> clusterData)
+                List<ClusterData> clusterData)
                 throws AdeUsageException, AdeException {
             final PrintWriter out = FileUtils.openPrintWriterToFile(new File(m_scorerEnvironment.m_traceOutputPath, 
                     "clustering.clusterMembers.txt"), true);
@@ -690,7 +690,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
          * @param clusterPartition raw clustering partition reported
          * @param survivingClusters  subset of the clusters actually used
          */
-        private void printReport(File file, ArrayList<ClusterData> clusterData) throws AdeException {
+        private void printReport(File file, List<ClusterData> clusterData) throws AdeException {
             final PrintWriter out = FileUtils.openPrintWriterToFile(file, true);
 
             if (!Double.isNaN(m_model.m_meanInfo)){

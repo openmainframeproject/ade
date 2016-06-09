@@ -21,6 +21,7 @@ package org.openmainframe.ade.ext.stats;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.TimeZone;
 
 import org.openmainframe.ade.Ade;
@@ -48,7 +49,7 @@ public class MessageRateStats {
     /**
      * A map from Source to Analysis Group
      */
-    private static HashMap<String, String> s_sourceToAnalysisGroupMap = new HashMap<String, String>();
+    private static Map<String, String> s_sourceToAnalysisGroupMap = new HashMap<String, String>();
 
     public static void addSourceAndAnalysisGroup(String sourceName, String analysisGroupName) {
         s_sourceToAnalysisGroupMap.put(sourceName, analysisGroupName);
@@ -57,7 +58,7 @@ public class MessageRateStats {
     /**
      * A map containing the message Rate Stats 
      */
-    private static HashMap<String, MessageRateStats> s_sourceToMsgRatesStatsMap = new HashMap<String, MessageRateStats>();
+    private static Map<String, MessageRateStats> s_sourceToMsgRatesStatsMap = new HashMap<String, MessageRateStats>();
 
     public static MessageRateStats getMessageRateStatsForSource(String source) throws AdeException {
         MessageRateStats stats;
@@ -225,7 +226,7 @@ public class MessageRateStats {
     /**
      * A map from Msg ID to the MsgStats object.
      */
-    private HashMap<String, MessageStats> m_msgIdToMsgStatsMap = new HashMap<String, MessageRateStats.MessageStats>();
+    private Map<String, MessageStats> m_msgIdToMsgStatsMap = new HashMap<String, MessageRateStats.MessageStats>();
     private final static int MAX_MESSAGE_STATS_TO_KEEP = 1000;
     private static int s_maxMsgToKeep = 1000;
 

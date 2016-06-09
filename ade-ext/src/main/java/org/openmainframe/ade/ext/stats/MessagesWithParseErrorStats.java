@@ -22,6 +22,8 @@ package org.openmainframe.ade.ext.stats;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -100,7 +102,7 @@ public class MessagesWithParseErrorStats {
     /**
      * A mapping from MsgRep to Msg Stats
      */
-    private HashMap<String, MessageStats> m_msgRepToMsgStatsMap;
+    private Map<String, MessageStats> m_msgRepToMsgStatsMap;
 
     /**
      * Whether there are new errors
@@ -171,7 +173,7 @@ public class MessagesWithParseErrorStats {
             writeToLog();
 
             /* Perform cleanup */
-            final ArrayList<MessageStats> statsArray = new ArrayList<MessageStats>(m_msgRepToMsgStatsMap.values());
+            final List<MessageStats> statsArray = new ArrayList<MessageStats>(m_msgRepToMsgStatsMap.values());
             Collections.sort(statsArray);
 
             /* Remove the first few Stats from the beginning of the list, until we reach the max */
@@ -257,7 +259,7 @@ public class MessagesWithParseErrorStats {
             } else {
                 /* Only output this if there are new errors */
 
-                final ArrayList<MessageStats> statsArray = new ArrayList<MessageStats>(m_msgRepToMsgStatsMap.values());
+                final List<MessageStats> statsArray = new ArrayList<MessageStats>(m_msgRepToMsgStatsMap.values());
                 Collections.sort(statsArray);
 
                 statslogger.info("Parser Errors as of: " + s_dateTimeFormatter.print(DateTime.now()));

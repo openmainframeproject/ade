@@ -20,6 +20,7 @@
 package org.openmainframe.ade.ext.os.parser;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.joda.time.DateTime;
 import org.openmainframe.ade.Ade;
@@ -36,7 +37,7 @@ public final class InputTimeZoneManager {
     /**
      * A map from the source ID to dateTime object.
      */
-    private static HashMap<String, DateTime> s_sourceToTimeZoneMap = new HashMap<String, DateTime>();
+    private static Map<String, DateTime> s_sourceToTimeZoneMap = new HashMap<String, DateTime>();
 
     /**
      * The default GMT Offset from setup.props.

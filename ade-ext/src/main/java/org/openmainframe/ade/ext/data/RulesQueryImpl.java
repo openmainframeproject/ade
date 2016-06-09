@@ -134,7 +134,7 @@ public final class RulesQueryImpl {
                 List<Rule> rulesToDelete = getRulesToDelete(currentRules);
                 List<Rule> rulesToUpdate = getRulesToUpdate(currentRules, rulesToDelete);
                 
-                ArrayList<String> batchList = new ArrayList<String>();
+                List<String> batchList = new ArrayList<String>();
                 deleteRules(batchList, rulesToDelete);
                 addRules(batchList, rulesToAdd);
                 updateRules(batchList, rulesToUpdate);

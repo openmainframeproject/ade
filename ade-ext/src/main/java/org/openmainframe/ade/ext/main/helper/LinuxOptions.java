@@ -20,6 +20,7 @@
 package org.openmainframe.ade.ext.main.helper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.OptionBuilder;
@@ -46,13 +47,13 @@ public class LinuxOptions extends AdeExtOptions{
     public boolean readOptions(CommandLine line, AdeExtProperties linuxProperties){
         boolean readOptionsSuccessful = true;
         /* All the required parameters for Linux */
-        ArrayList<String> requiredParameterList = new ArrayList<String>();
+        List<String> requiredParameterList = new ArrayList<String>();
         requiredParameterList.add(AdeExtOptions.OPTION_GMT_OFFSET);
 
-        ArrayList<String> optionalParameterList = new ArrayList<String>();
+        List<String> optionalParameterList = new ArrayList<String>();
         optionalParameterList.add(OPTION_YEAR);
 
-        ArrayList<String> allParameterList = new ArrayList<String>();
+        List<String> allParameterList = new ArrayList<String>();
         allParameterList.addAll(optionalParameterList);
         allParameterList.addAll(requiredParameterList);
 

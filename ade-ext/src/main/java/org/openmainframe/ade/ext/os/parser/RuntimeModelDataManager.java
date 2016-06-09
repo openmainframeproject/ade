@@ -31,6 +31,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -329,7 +330,7 @@ public class RuntimeModelDataManager {
         DataInputStream dis = null;
         FileInputStream fis;
         String timeSinceLastRuntimeModelDataWriting = "-1";
-        final ArrayList<Entry<String, Object>> tmpModelData = new ArrayList<Map.Entry<String, Object>>();
+        final List<Entry<String, Object>> tmpModelData = new ArrayList<Map.Entry<String, Object>>();
         try {
             fis = new FileInputStream(file);
             dis = new DataInputStream(fis);

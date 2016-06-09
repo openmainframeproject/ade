@@ -19,6 +19,7 @@
 */
 package org.openmainframe.ade.impl.summary;
 
+import java.util.Set;
 import java.util.TreeSet;
 
 import org.openmainframe.ade.AdeInternal;
@@ -44,7 +45,7 @@ public class MessageSummaryBuilder implements IStreamTarget<IMessageInstance> {
 
     private MessageSummaryImpl m_messageSummary;
     private SummarizationProperties m_sumProps;
-    private TreeSet<Short> m_timeLine;
+    private Set<Short> m_timeLine;
     private boolean m_messageSummaryReady = false;
     private CriticalWordsScorer m_textScore = null;
     private long m_intervalStartTime;

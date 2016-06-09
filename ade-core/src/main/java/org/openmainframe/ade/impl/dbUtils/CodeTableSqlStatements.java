@@ -23,6 +23,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -114,7 +115,7 @@ public class CodeTableSqlStatements {
     private class WordReader extends QueryPreparedStatementExecuter {
 
         private int m_id;
-        private ArrayList<String> m_words = new ArrayList<String>();
+        private List<String> m_words = new ArrayList<String>();
 
         WordReader(int id) {
             super(String.format("select %s from %s where %s=?",

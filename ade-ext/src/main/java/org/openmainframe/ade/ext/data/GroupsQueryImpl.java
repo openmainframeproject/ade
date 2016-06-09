@@ -392,7 +392,7 @@ public final class GroupsQueryImpl {
          * @return patternList a list of patterns for each group rule.
          * @throws SQLException
          */
-        private ArrayList<Pattern> getPatternList(List<Group> groups) throws SQLException{
+        private List<Pattern> getPatternList(List<Group> groups) throws SQLException{
             final ArrayList<Pattern> patternList = new ArrayList<Pattern>();
             PreparedStatement ruleStatement = null;
             ResultSet ruleResult = null;
