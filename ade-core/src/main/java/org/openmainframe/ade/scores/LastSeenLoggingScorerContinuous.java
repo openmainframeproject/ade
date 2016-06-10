@@ -317,11 +317,8 @@ public class LastSeenLoggingScorerContinuous extends FixedMessageScorer {
      * @param contextElement AnalyzedInterval object that contains summary results of interval.
      * @param millisPerTick Long value with number of milliseconds per tick. 
      */
-<<<<<<< HEAD
-    public void processCurrentTimeLine(short[] timeLine,Set<Long> timeLineSet,IAnalyzedInterval contextElement){
-=======
+
     public void processCurrentTimeLine(short[] timeLine, Set<Long> timeLineSet, IAnalyzedInterval contextElement){
->>>>>>> DevFactory-release/using-interface-instead-of-imlementation-fix-1
         final boolean hasTimeline = !ArrayUtils.isEmpty(timeLine);
         final long millisPerTick = contextElement.getInterval().getIntervalSize() / 
                 SummarizationProperties.TIMELINE_RESOLUTION;
