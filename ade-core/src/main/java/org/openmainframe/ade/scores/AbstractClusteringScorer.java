@@ -240,7 +240,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
             res.append(String.format("Use square root value of messages as number of clusters: %s%n",
                     String.valueOf(m_numClustersSqrtNumMsgs)));
             res.append(String.format("Cluster square root factor: %f%n", m_SqrtFactor));
-            res.append(String.format("Minimal allowed ration between cluster mean and m_meanInfo: %d%n",
+            res.append(String.format("Minimal allowed ration between cluster mean and m_meanInfo: %f%n",
                     m_clusterMinAvgInfo));
             res.append(String.format("Use number of message occurences to prime clustering: %s%n",
                     String.valueOf(m_initialPartitionOccurrence)));
