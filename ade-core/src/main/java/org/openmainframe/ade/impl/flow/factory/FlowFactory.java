@@ -69,14 +69,16 @@ public class FlowFactory {
     private Map<String, FlowTemplateFactory> m_flowTemplateFactories;
 
     public static final String FLOW_LAYOUT_XSD_RESOURCE_PATH = "conf/xml/FlowLayout.xsd";
+    public static final String FLOW_LAYOUT_XSD_File_Name = "\\FlowLayout.xsd";
 
     public FlowFactory() throws AdeException {
         m_flowTemplateFactories = new TreeMap<String, FlowFactory.FlowTemplateFactory>();
 
         JAXBContext jaxbContext;
         try {
-
-            final File flowLayoutXsd = new File(FLOW_LAYOUT_XSD_RESOURCE_PATH);
+        	
+        	String fileName_Flowlayout_xsd = Ade.getAde().getConfigProperties().getXsltDir() + FLOW_LAYOUT_XSD_File_Name;
+            final File flowLayoutXsd = new File(fileName_Flowlayout_xsd);
             final SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
             Schema schema;
             schema = sf.newSchema(flowLayoutXsd);
