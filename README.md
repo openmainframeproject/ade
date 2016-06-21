@@ -21,6 +21,23 @@ Please see http://openmainframeproject.github.io/ade/ for documentation on ADE.
 
 ## Releases
 
+### Poesten Kill 1.0.2
+
+- Support for changing analytics
+   - command to check syntax of model (flowlayout.xml file)
+   - command to print out statistical information contained within model file (.bin file) to text file
+   - command to print out version of code and data base
+- Multiple SonarQube(TM) issues fixed
+- Fix to problem with regression test
+- Wiki article "Example of reading ADE data into R objects"
+
+### Esopus Creek 1.0.1
+
+- Support for MariaDB(TM)
+- Verify script - determine if sufficient messages are available to create a valid model
+- Multiple SonarQube(TM) issues fixed
+- Wiki article "Hints on how to update XSLT - tailor the output shown in a browser to problem"
+
 ### Initial release 1.0.0
 
 - Parsing of Linux Logs in RFC5424 and RFC3164 format
@@ -29,9 +46,3 @@ Please see http://openmainframeproject.github.io/ade/ for documentation on ADE.
 - Statistical analysis of logs
 - Creates output 
 
-### Esopus Creek 1.0.1
-
-- Support for MariaDB(TM)
-- Verify script - determine if sufficient messages are available to create a valid model
-- Multiple SonarQube(TM) issues fixed
-- Wiki article Hints on how to update XSLT - tailor the output shown in a browser to problem
