@@ -68,8 +68,8 @@ public class FlowFactory {
 
     private Map<String, FlowTemplateFactory> m_flowTemplateFactories;
 
-    public static final String FLOW_LAYOUT_XSD_RESOURCE_PATH = "conf/xml/FlowLayout.xsd";
-    public static final String FLOW_LAYOUT_XSD_File_Name = "\\FlowLayout.xsd";
+    public static final String FLOW_LAYOUT_XSD_RESOURCE_PATH = "conf"+File.separator+"xml"+File.separator+"FlowLayout.xsd";
+    public static final String FLOW_LAYOUT_XSD_File_Name = File.separator + "FlowLayout.xsd";
 
     public FlowFactory() throws AdeException {
         m_flowTemplateFactories = new TreeMap<String, FlowFactory.FlowTemplateFactory>();
