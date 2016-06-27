@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+    <meta charset="UTF-8">
+    
+    <title>Open Mainframe Project - ADE</title><meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen"></head>
+
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">ADE</h1>
+      <h2 class="project-tagline">Anomaly Detection Engine for Linux Logs</h2>
+      <a href="https://github.com/openmainframeproject/ade" class="btn">View on GitHub</a>
+	     <a href="https://github.com/openmainframeproject/ade/zipball/master" class="btn">Download .zip</a>
+   <a href="https://github.com/openmainframeproject/ade/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="anomaly-detection-engine-for-linux-logs-ade" class="anchor" href="#anomaly-detection-engine-for-linux-logs-ade" aria-hidden="true"><span class="octicon octicon-link"></span></a>Anomaly detection Engine for Linux Logs (ADE)</h1>
+
+<h1>
+<a id="utilities" class="anchor" href="#utilities" aria-hidden="true"><span class="octicon octicon-link"></span></a>Utilities to support different anomaly scorers and new anomaly scorers - <strong>utilities</strong></h1>
+
+<p><strong>utilities</strong> is a bash script which invokes the correct Java class after setting up the 
+environment needed. <strong>utilities</strong> provides a request to
+<ul>
+<li>check if a flowlayout.xml has the correct format. </li>
+<li>print out a textual description of a specific model. 
+The textual description contains a summary of statistical information captured during <strong>train</strong>.</li>
+</ul>
+ADE is shipped with a flowlayout.xml file that has been tuned to work for most enterprise Linux
+systems. Use these request if you make changes to the flowlayout.xml.  You might choose to change the flowlayout.xml
+to 
+<ul>
+<li>to tailor the existing scorers to more closely match the type of system you are analyzing</li>
+<li>to apply new statistical techniques to detect differ types of anomalies</li>
+<li>to change the Java class(s) that are used to write ADE results to a database, a file in the file system, ....</li>
+</ul>
+</p>
+<hr>
+<h3>Usage</h3>
+
+<p>Use <strong>utilities</strong> when defining a different collection of scores, different parameters
+for the scorers, or a different order to apply the scorers. <strong>utilities</strong> provides
+the following requests
+<ul>
+<li>return to standard out the version of the ADE code</li>
+<li>return to standard out the version of the database schema that is expected by the ADE code</li> 
+<li>check the syntax of a flowlayout.xml file</li> 
+<li>writes to a file a textual description of the statistical information used to create a model 
+</ul>
+</p>
+
+<blockquote>
+<p>Notes</p>
+
+<ul>
+<li>The flowlayout.xml controls how <strong>upload, analyze,</strong> and <strong>train</strong> process
+Linux logs. The following behavior of ADE is controled by flowlayout.xml:
+<ul>
+<li>The time duration which is used (interval)</li>
+<li>The statistical methods that are used to determine if a message is anomalous and any parameters which the
+statistical method needs</li>
+<li>The order that statistical methods are applied and how the results of different statistical methods are
+combined</li>
+<li>The statistical methods that are used to determine if the collection of messages within an interval
+are unusual</li>
+<li>The Java class(s) which are used to write out the results of ADE to either a database, to a file in the file system, ....</li>
+</ul>
+For simplicity within ADE the contents of flowlayout.xml is called the meta model.</li>
+<li>ADE does not need to be connected to a JDBC complaint database for the following requests to be
+processed:
+<ul>
+<li>return the version of ADE code</li>
+<li>return the version of the database schema</li>
+<li>check the synatx of a flowlayout.xml file</li>
+</ul>
+</ul>
+</blockquote>
+
+<hr>
+
+
+<h3>Options</h3>
+
+<hr>
+
+<table style="width: 900px; height: 400px;" border="10"><thead>
+<tr>
+<th>Option</th>
+<th>Parameter</th>
+<th align="left">Request type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>-b </td>
+<td>none</td>
+<td align="left">Print version of database schema used by ADE code</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>name of model file (.bin)</td>
+<td align="left">Print textual summary of model contained in .bin ilfe</td>
+</tr>
+<td>-f</td>
+<td>name of flowlayout.xml</td>
+<td align="left">Verify syntax of flowlayout.xml and print out results</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>none</td>
+<td align="left">Print out help information</td>
+</tr>
+<tr>
+<tr>
+<td>-o</td>
+<td>name of output file</td>
+<td align="left">Name of file to contain textual description of model</td>
+</tr>
+<tr>
+<td>-v </td>
+<td>none</td>
+<td align="left">Print version of the ADE code</td>
+</tr>
+</tbody></table>
+<h3>Restrictions</h3>
+<p>
+<ul>
+<li>The version of the ADE code being used to print out the textual information about the
+model must match the version of the ADE code used to create the model.
+</ul>
+</p>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/openmainframeproject/ade">ADE</a> is maintained by <a href="https://github.com/openmainframeproject/ade">Open Mainframe project - ADE</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    
+ </section>
+  
+  </body></html>
