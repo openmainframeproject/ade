@@ -23,6 +23,7 @@ package org.openmainframe.ade.impl.flow;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Random;
 
@@ -237,7 +238,7 @@ public class TestMultiLogTracker extends TestCase {
 
         private int m_curLen;
 
-        ArrayList<Message> m_messages = new ArrayList<Message>();
+        List<Message> m_messages = new ArrayList<Message>();
         Message m_lastMessage;
 
         public DummyProcessor(String name) {

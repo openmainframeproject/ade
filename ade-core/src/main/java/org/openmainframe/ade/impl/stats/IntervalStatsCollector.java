@@ -182,7 +182,7 @@ class IntervalStatsCollector extends HubStreamBlock<IInterval, IInterval> {
 
     private static class NumNewMsgIdsInIntervalStat extends IntervalStatManager {
 
-        static HashSet<String> oldMessageIds = new HashSet<String>();
+        static Set<String> oldMessageIds = new HashSet<String>();
 
         protected NumNewMsgIdsInIntervalStat(File dir) throws AdeInternalException {
             super(new File(dir, "numNewMsgIdsInInterval.txt"), "The number of new message IDs in an interval (per interval)");

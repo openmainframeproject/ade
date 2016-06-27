@@ -22,6 +22,7 @@ package org.openmainframe.ade.core;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 /** An object for storing a list of V objects, sorted by key K objects
  * And optionally secondary sort by the V objects.
@@ -48,7 +49,7 @@ public class ListSortedByKey<K, V> {
     /**
      * Internal list of items (=key value pair).
      */
-    private ArrayList<Item> mItems = new ArrayList<Item>();
+    private List<Item> mItems = new ArrayList<Item>();
     /**
      * Is list sorted (sorting is performed lazily).
      */
@@ -248,7 +249,7 @@ public class ListSortedByKey<K, V> {
         @Override
         public int compareTo(Item other) {
             // The comparison result
-            int res = 0;
+            int res;
 
             // First order by keys, either by a user-defined comparator or by natural ordering
             res = getKeyComparisonResult(other.mKey);

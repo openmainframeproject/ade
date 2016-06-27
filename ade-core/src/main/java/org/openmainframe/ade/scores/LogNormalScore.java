@@ -259,7 +259,7 @@ public class LogNormalScore extends MessageScorer {
         final boolean seenInTraining = (data != null);
         final boolean noLambda = (data == null || data.m_intervalCount == 0);
 
-        double mu = 0;
+        double mu;
         if (noLambda) {
             if (m_newMessageLambda != null) {
                 mu = m_newMessageLambda;

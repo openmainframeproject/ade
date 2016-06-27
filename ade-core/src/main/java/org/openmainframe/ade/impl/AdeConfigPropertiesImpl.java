@@ -394,8 +394,8 @@ public class AdeConfigPropertiesImpl implements IAdeConfigProperties {
                 return res;
             }
             for (String part : parts) {
-                String src = null;
-                String dst = null;
+                String src;
+                String dst;
                 if (part.contains("->")) {
                     final String[] pp = part.split("->");
                     if (pp.length != MAX_PP_LENGTH) {

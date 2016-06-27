@@ -96,7 +96,7 @@ public class IntervalShiftAccumulator extends HubFrameableFramingBlock<IInterval
     private void fixFramingFlowType(IInterval top) throws AdeException {
         final FramingFlowType fft = top.getIntervalFramingFlowType();
 
-        if (!(m_splitFlow.equals(fft))) {
+        if (!m_splitFlow.equals(fft)) {
             throw new AdeFlowException("flow types missmatch");
         }
         top.setIntervalFramingFlowType(getFramingFlowType());

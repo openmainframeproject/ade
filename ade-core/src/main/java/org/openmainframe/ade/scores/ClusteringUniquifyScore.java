@@ -55,7 +55,7 @@ public class ClusteringUniquifyScore extends AbstractClusteringScorer {
         @Override
         public StatisticsChart getScore(IAnalyzedMessageSummary ams, IAnalyzedInterval analyzedInterval) throws AdeException {
             boolean representatitve = false;
-            Integer clusterId = -1;
+            Integer clusterId;
             setContext(analyzedInterval.getInterval());
             final int id = ams.getMessageSummary().getMessageInternalId();
             final StatisticsChart sc = new StatisticsChart();
@@ -65,16 +65,14 @@ public class ClusteringUniquifyScore extends AbstractClusteringScorer {
                 clusterId = -1;
             } else {
                 spike = m_contextGoodClusters.contains(clusterId);
-                if (spike) {
-                    if (!m_goodClustersRepresentative.contains(clusterId)) {
-                        m_goodClustersRepresentative.add(clusterId);
-                        representatitve = true;
-                    }
+                if (spike && !m_goodClustersRepresentative.contains(clusterId)) {
+                    m_goodClustersRepresentative.add(clusterId);
+                    representatitve = true;
                 }
             }
             sc.setStat(CLUSTER_ID, clusterId);
 
-            ClusteringUniquifyScore.ClusterStatus status = null;
+            ClusteringUniquifyScore.ClusterStatus status;
             if (!m_model.m_seenMsgIds.containsKey(ams.getMessageId())) {
                 status = AbstractClusteringScorer.ClusterStatus.NEW;
             } else if (clusterId == -1) {

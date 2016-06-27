@@ -30,9 +30,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
-import java.util.TreeSet;
 
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import org.openmainframe.ade.core.ListSortedByKey;
@@ -240,7 +240,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
             res.append(String.format("Use square root value of messages as number of clusters: %s%n",
                     String.valueOf(m_numClustersSqrtNumMsgs)));
             res.append(String.format("Cluster square root factor: %f%n", m_SqrtFactor));
-            res.append(String.format("Minimal allowed ration between cluster mean and m_meanInfo: %d%n",
+            res.append(String.format("Minimal allowed ration between cluster mean and m_meanInfo: %f%n",
                     m_clusterMinAvgInfo));
             res.append(String.format("Use number of message occurences to prime clustering: %s%n",
                     String.valueOf(m_initialPartitionOccurrence)));
@@ -306,7 +306,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
         private int m_msgAppearThreshold;
         private boolean m_converged;
 
-        private ArrayList<String> m_runsSummary;
+        private List<String> m_runsSummary;
 
         /**
          * Constructor for Model - use reset() instead.
@@ -471,7 +471,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
 
         @Override
         public final void incomingObject(IInterval interval) throws AdeException {
-            final ArrayList<IMessageSummary> msgSummaries = 
+            final List<IMessageSummary> msgSummaries = 
                     new ArrayList<IMessageSummary>(interval.getMessageSummaries());
             for (IMessageSummary messageSummary : msgSummaries) {
                 mCounter.add(messageSummary.getMessageInternalId());
@@ -638,7 +638,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
             clusterData = calcClusterData(clusterPartition);
             //generate a mapping from msgIDs to their cluster
             int goodClusters = 0;
-            final HashMap<Integer, Integer> msgId2Cluster = new HashMap<Integer, Integer>();
+            final Map<Integer, Integer> msgId2Cluster = new HashMap<Integer, Integer>();
             final Map<Integer, String> clusterNames = new HashMap<Integer, String>();
 
             int clusteredMsgCount = 0;
@@ -676,7 +676,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
         }
 
         protected void outputClusterMembership(int[] matIndexToMsgInternalId,
-                ArrayList<ClusterData> clusterData)
+                List<ClusterData> clusterData)
                 throws AdeUsageException, AdeException {
             final PrintWriter out = FileUtils.openPrintWriterToFile(new File(m_scorerEnvironment.m_traceOutputPath, 
                     "clustering.clusterMembers.txt"), true);
@@ -690,7 +690,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
          * @param clusterPartition raw clustering partition reported
          * @param survivingClusters  subset of the clusters actually used
          */
-        private void printReport(File file, ArrayList<ClusterData> clusterData) throws AdeException {
+        private void printReport(File file, List<ClusterData> clusterData) throws AdeException {
             final PrintWriter out = FileUtils.openPrintWriterToFile(file, true);
 
             if (!Double.isNaN(m_model.m_meanInfo)){
@@ -706,7 +706,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
 
             for (int i = 0; i < clusterList.size(); ++i) {
                 final ClusterData cd = clusterList.getValue(i);
-                final TreeSet<Integer> c = cd.m_cluster;
+                final Set<Integer> c = cd.m_cluster;
                 out.printf("%d. Cluster id=%d, Used=%s, Size=%d, ", i, cd.m_id, cd.m_clusterUsage.toString(), c.size());
                 if (!Double.isNaN(cd.m_score)){
                     out.printf("Score=%f", cd.m_score);
@@ -736,7 +736,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
             final double threshold = m_config.m_clusterMinAvgInfo == null ? -1 : m_config.m_clusterMinAvgInfo * m_model.m_meanInfo;
 
             for (int i = 0; i < partition.getNumClusters(); ++i) {
-                final TreeSet<Integer> clusterElements = partition.getClusterElements(i);
+                final Set<Integer> clusterElements = partition.getClusterElements(i);
                 final ClusterData cd = new ClusterData();
                 cd.m_cluster = clusterElements;
                 clusterData.add(cd);
@@ -765,7 +765,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
             return clusterData;
         }
 
-        private double calcClusterMeanInfo(TreeSet<Integer> members) throws AdeInternalException {
+        private double calcClusterMeanInfo(Set<Integer> members) throws AdeInternalException {
             if (members.size() == 1){
                 return 0;
             }
@@ -951,7 +951,7 @@ public abstract class AbstractClusteringScorer extends MessageScorer implements 
      */
     public static class ClusterData {
         public ClusterUsage m_clusterUsage = ClusterUsage.UNKNOWN;
-        public TreeSet<Integer> m_cluster = null;
+        public Set<Integer> m_cluster = null;
         public int m_id = -1;
         public double m_meanInfo = Double.NaN;
         public double m_score = Double.NaN;

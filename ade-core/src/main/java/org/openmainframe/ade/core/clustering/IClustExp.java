@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import java.util.TreeSet;
 
 import org.openmainframe.ade.core.exceptions.AdeCoreIllegalArgumentException;
@@ -54,7 +55,7 @@ public class IClustExp implements IClusteringAlgorithm {
     private int mIdleTrials;
     private int mVerbosity = 0;
     private PrintStream mVerbosityOut = null;
-    private ArrayList<Double> mScoreArchive = null;
+    private List<Double> mScoreArchive = null;
     private int[] mCandidateClusters = null;
     private int mCandidateClustersNum = 0;
     private boolean mConverged;
@@ -73,7 +74,7 @@ public class IClustExp implements IClusteringAlgorithm {
     private int[] mElementsPermutation = null;
     private int mElementsPermutationIndex = 0;
 
-    private ArrayList<IClustRunSummary> mRunsSummary = null;
+    private List<IClustRunSummary> mRunsSummary = null;
 
     public class IClustRunSummary extends IClusteringAlgorithm.RunSummary {
         private static final long serialVersionUID = 1L;
@@ -101,7 +102,7 @@ public class IClustExp implements IClusteringAlgorithm {
         public class Cluster {
 
             public int mIndex;
-            public TreeSet<Integer> mMembers = new TreeSet<Integer>();
+            public Set<Integer> mMembers = new TreeSet<Integer>();
             public int mSize = 0;
 
             public double mSimilaritySum = 0;
@@ -114,7 +115,7 @@ public class IClustExp implements IClusteringAlgorithm {
             public Map<Integer, Double> mCandidateCalculatedExtraTermSum;
             public Map<Integer, Integer> mCandidateCalculatedExtraTermSumN;
 
-            public Cluster(int index, ArrayList<Integer> members) {
+            public Cluster(int index, List<Integer> members) {
 
                 mIndex = index;
                 for (int i : members) {
@@ -184,8 +185,7 @@ public class IClustExp implements IClusteringAlgorithm {
             }
 
             public String toStringSimple() {
-                String res = "  " + mMembers + " score=" + scoreContribution();
-                return res;
+                return "  " + mMembers + " score=" + scoreContribution();
             }
 
             public double calculateSimilarityGainForMember(int element) {
@@ -339,7 +339,7 @@ public class IClustExp implements IClusteringAlgorithm {
         private ArrayList<Cluster> mClusters = new ArrayList<Cluster>();
 
         public Partition() {
-            ArrayList<Integer> indices = new ArrayList<Integer>();
+            List<Integer> indices = new ArrayList<Integer>();
             for (int i = 0; i < mNumElements; ++i) {
                 indices.add(i);
             }
@@ -360,8 +360,8 @@ public class IClustExp implements IClusteringAlgorithm {
         }
 
         public Partition(int[] initialPartition) {
-            HashMap<Integer, Integer> clusterIdx = new HashMap<Integer, Integer>();
-            HashMap<Integer, ArrayList<Integer>> clusters = new HashMap<Integer, ArrayList<Integer>>();
+            Map<Integer, Integer> clusterIdx = new HashMap<Integer, Integer>();
+            Map<Integer, ArrayList<Integer>> clusters = new HashMap<Integer, ArrayList<Integer>>();
             mClusterIndices = initialPartition.clone();
             int k = 0;
             for (int i = 0; i < initialPartition.length; ++i) {
@@ -437,7 +437,7 @@ public class IClustExp implements IClusteringAlgorithm {
             return bldres.toString();
         }
 
-        public ArrayList<Cluster> getClusters() {
+        public List<Cluster> getClusters() {
             return mClusters;
         }
 
@@ -498,7 +498,7 @@ public class IClustExp implements IClusteringAlgorithm {
         }
 
         @Override
-        public TreeSet<Integer> getClusterElements(int clusterIndex) {
+        public Set<Integer> getClusterElements(int clusterIndex) {
             if (clusterIndex < 0 || clusterIndex >= mClusters.size()) {
                 return new TreeSet<Integer>();
             }
@@ -549,7 +549,7 @@ public class IClustExp implements IClusteringAlgorithm {
 
     }
 
-    public void storeAllScores(ArrayList<Double> scoreArchive) {
+    public void storeAllScores(List<Double> scoreArchive) {
         mScoreArchive = scoreArchive;
     }
 
@@ -636,7 +636,7 @@ public class IClustExp implements IClusteringAlgorithm {
             throw new AdeCoreInvalidInitialStateException("Cluster number must be smaller than elements number");
         }
 
-        Partition partition = null;
+        Partition partition;
         if (mInitialPartition != null) {
             partition = new Partition(mInitialPartition);
         } else {

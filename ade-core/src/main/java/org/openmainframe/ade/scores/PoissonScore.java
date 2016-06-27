@@ -133,7 +133,7 @@ public class PoissonScore extends MessageScorer {
         final MsgData data = m_msgData.get(ams.getMessageId());
         final boolean noLambda = data == null || data.m_count == 0;
 
-        double lambda = 0;
+        double lambda;
         if (noLambda) {
             lambda = m_minLambda;
         } else {

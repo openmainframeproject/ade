@@ -26,6 +26,7 @@ import java.sql.SQLException;
 import java.sql.SQLNonTransientConnectionException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import org.openmainframe.ade.Ade;
@@ -125,7 +126,7 @@ public final class ExtDataStoreUtils {
      */
     public static IAdeConfigProperties getAdeConfigProperties() {
 
-        IAdeConfigProperties configProperties = null;
+        IAdeConfigProperties configProperties;
 
         try {
             initAde();
@@ -248,7 +249,7 @@ public final class ExtDataStoreUtils {
      */
     private static synchronized Connection getConnection() {
 
-        Connection C = null;
+        Connection C;
         final IAdeConfigProperties config = getAdeConfigProperties(); 
         final String databaseUrl = getDatabaseUrl(config); 
         final String connectionUserid = getDbConnectionUserid(config); 
@@ -420,7 +421,7 @@ public final class ExtDataStoreUtils {
      * @return - ArrayList of String(s)
      * @throws AdeException
      */
-    public static ArrayList<String> getStringColList(String sqlQuery,
+    public static List<String> getStringColList(String sqlQuery,
             String colName)
                     throws AdeException {
         final ArrayList<String> colList = new ArrayList<String>();
@@ -458,7 +459,7 @@ public final class ExtDataStoreUtils {
      * @return - ArrayList of String(s)
      * @throws AdeException
      */
-    public static <T> ArrayList<T> getCustomList(String sqlQuery,
+    public static <T> List<T> getCustomList(String sqlQuery,
             IDbResultParser<T> resultParser)
                     throws AdeException {
         final ArrayList<T> colList = new ArrayList<T>();
@@ -581,7 +582,7 @@ public final class ExtDataStoreUtils {
      *           of the input SQL statement(s) did not raise
      *           any exceptions, false to indicate that it did.
      */
-    public static synchronized boolean executeBatch(ArrayList<String> sqlStatement) { 
+    public static synchronized boolean executeBatch(List<String> sqlStatement) { 
 
         boolean batchOk = false;
         logger.trace("executeBatch() -->entry");
@@ -837,11 +838,9 @@ public final class ExtDataStoreUtils {
 
         t = t.getCause();
 
-        if (t != null) {
-            if (t instanceof SQLException) {
-                logger.error("Caused by SQLException(s):");
-                surfaceSqlException((SQLException) t);
-            }
+        if (t != null && t instanceof SQLException) {
+            logger.error("Caused by SQLException(s):");
+            surfaceSqlException((SQLException) t);
             // We've already logged the entired caused by stack trace above    
         }
 
@@ -953,8 +952,7 @@ public final class ExtDataStoreUtils {
         if (t instanceof AdeException) {
             return (AdeException) t;
         } else {
-            final AdeInternalException m = new AdeInternalException("adeExceptionOf( " + t.getMessage() + " )", t);
-            return m;
+            return new AdeInternalException("adeExceptionOf( " + t.getMessage() + " )", t);
         }
 
     } 
@@ -1081,7 +1079,7 @@ public final class ExtDataStoreUtils {
      */
     public static boolean isConnectionException(SQLException e) throws AdeInternalException {
 
-        boolean isSessionSeverity = false;
+        boolean isSessionSeverity;
         logger.trace("isConnectionException()  --> entry");
         final String connectionUrl = getDatabaseUrl();
 
@@ -1103,7 +1101,7 @@ public final class ExtDataStoreUtils {
 
     public static boolean isDbNotFoundException(SQLException e) throws AdeInternalException {
 
-        boolean isNotFound = false;
+        boolean isNotFound;
         logger.trace("isDbNotFoundException()  --> entry");
 
         final String sqlState = e.getSQLState();

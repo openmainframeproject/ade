@@ -121,7 +121,7 @@ public class AsyncLineReaderThreadedImpl implements IAsyncLineReader {
         @Override
         public void run() {
 
-            String line = null;
+            String line;
             try {
                 // Put all lines in buffer sequentially
                 // m_thread indicates abort

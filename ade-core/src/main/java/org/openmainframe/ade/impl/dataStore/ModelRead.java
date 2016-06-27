@@ -61,7 +61,7 @@ public final class ModelRead {
         final String sql = String.format(
                 "select MODEL_INTERNAL_ID from %s where IS_DEFAULT=1 and ANALYSIS_GROUP is null", table
                 );
-        final ArrayList<Integer> ids = SpecialSqlQueries.executeIntListQuery(sql);
+        final List<Integer> ids = SpecialSqlQueries.executeIntListQuery(sql);
         if (ids.size() != 1) {
             if (ids.isEmpty()) {
                 return null;

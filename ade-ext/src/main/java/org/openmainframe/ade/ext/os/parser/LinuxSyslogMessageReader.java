@@ -26,6 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 
@@ -189,7 +190,7 @@ public class LinuxSyslogMessageReader extends AdeMessageReader {
     /**
      * Hashmap mapping SysId to Source ID.
      */
-    private HashMap<String, String> sourceToSourceIdMap = new HashMap<String, String>();
+    private Map<String, String> sourceToSourceIdMap = new HashMap<String, String>();
 
     /**
      * The Linux specific properties to be used containing configurations from start of AdeExt main class.
@@ -242,8 +243,7 @@ public class LinuxSyslogMessageReader extends AdeMessageReader {
         boolean gotLine = false;
         boolean unexpectedSource = false;        
         if (m_messageInstanceWaiting != null) {
-            final IMessageInstance tmp = getMessageInstanceWaiting();
-            return tmp;
+            return getMessageInstanceWaiting();
         }
         if (m_suppressedMessagesRemaining > 0) {
             updateSuppressedMessageStats();
@@ -400,8 +400,7 @@ public class LinuxSyslogMessageReader extends AdeMessageReader {
         final Pair<String, IThresholdSetter> p = m_messageTextPreprocessor.updateComponent(lineParser.m_component, lineParser.m_text);
         lineParser.m_component = p.m_first;
         final IThresholdSetter thresholdSetter = p.m_second;
-        final String msgId = generateMessageId(lineParser, thresholdSetter);
-        return msgId;
+        return generateMessageId(lineParser, thresholdSetter);
     }
     /**
      * Updates the last determined date time and returns the updated value. 
@@ -415,7 +414,7 @@ public class LinuxSyslogMessageReader extends AdeMessageReader {
      */
     private DateTime handleDateTime(LinuxSyslogLineParser lineParser){
         final DateTime dateTime = lineParser.getLastDeterminedDateTime();
-        if (dateTime != null && !(m_adeExtProperties.isGmtOffsetDefined())) {
+        if (dateTime != null && !m_adeExtProperties.isGmtOffsetDefined()) {
             updateGmtOffset(dateTime);
         }
         return dateTime;
@@ -597,7 +596,7 @@ public class LinuxSyslogMessageReader extends AdeMessageReader {
 
         Format formatter;
         formatter = new SimpleDateFormat("E, dd MMM yyyy HH:mm:ss Z");
-        String message = "";
+        String message;
         final int m_statCounterRawLines = getLineNumber();
         final long endTime = System.nanoTime();
         final long elapsedTime = endTime - m_parserStartTime;

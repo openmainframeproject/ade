@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
+import java.util.Set;
 
 import org.openmainframe.ade.exceptions.AdeInternalException;
 
@@ -36,7 +37,7 @@ import org.openmainframe.ade.exceptions.AdeInternalException;
 public class CriticalWordsScorer {
 
     public static final int INIT_SIZE = 30;
-    private HashSet<String> m_criticalWordsSet = null;
+    private Set<String> m_criticalWordsSet = null;
     private File m_criticalWordsFile = null;
 
     public CriticalWordsScorer(String criticalWordsFile) throws AdeInternalException {
@@ -47,7 +48,7 @@ public class CriticalWordsScorer {
 
     private void init() throws AdeInternalException {
         BufferedReader br = null;
-        String line = null;
+        String line;
         try {
             br = new BufferedReader(new InputStreamReader(
                     new FileInputStream(m_criticalWordsFile), StandardCharsets.UTF_8));

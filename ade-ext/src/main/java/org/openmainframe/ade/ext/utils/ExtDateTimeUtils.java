@@ -199,9 +199,7 @@ public final class ExtDateTimeUtils {
             throw new IllegalArgumentException();
         }
         final long daysInMillis = numDays * MILLIS_IN_DAY;
-        final Date ret = new Date(dateInst.getTime() + daysInMillis);
-        return ret;
-
+        return new Date(dateInst.getTime() + daysInMillis);
     } 
 
     /**

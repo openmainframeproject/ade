@@ -191,7 +191,7 @@ public final class GroupsQueryImpl {
             short evaluationOrder = resultSet.getShort("EVALUATION_ORDER");
             int rid = resultSet.getInt("RULE_INTERNAL_ID");
             String ruleName = getRuleName(rid);
-            return (new Group(uid,name,groupType,dataType,evaluationOrder,ruleName));            
+            return new Group(uid,name,groupType,dataType,evaluationOrder,ruleName);            
         }
         /**
          * Retrieves the rule name by selecting the row with the given unique rule id. 
@@ -299,7 +299,7 @@ public final class GroupsQueryImpl {
          * @return the group internal id of the unassigned group.
          */
         private int insertUnassignedGroup() throws SQLException{
-            PreparedStatement groupStatement = null;
+            PreparedStatement groupStatement;
             final int ruleid = insertUnassignedRule();
             final int evaluationOrder = getNumOfGroups() + 1;
             String unassignedGroupSqlStatement = "INSERT INTO " + GROUPS_TABLE + " (GROUP_NAME, "
@@ -309,8 +309,7 @@ public final class GroupsQueryImpl {
                     UNASSIGNED_DATA_TYPE, ruleid , evaluationOrder);
             groupStatement = prepareStatement(unassignedGroupSqlStatement, new String[]{"GROUP_INTERNAL_ID"});
             groupStatement.execute();
-            final int unassignedGroupId = getInternalId(groupStatement);
-            return unassignedGroupId;
+            return getInternalId(groupStatement);
         }
 
         /**
@@ -321,15 +320,14 @@ public final class GroupsQueryImpl {
          * @throws SQLException
          */
         private int insertUnassignedRule() throws SQLException{
-            PreparedStatement ruleStatement = null;
+            PreparedStatement ruleStatement;
             String unassignedRuleSqlStatement = "INSERT INTO " + SQL.RULES +
                     " (RULE_NAME, DESCRIPTION, RULE) VALUES ('%s','%s','%s')";
             unassignedRuleSqlStatement = String.format(unassignedRuleSqlStatement, UNASSIGNED_RULE_NAME, 
                     UNASSIGNED_RULE_DESCRIPTION, UNASSIGNED_RULE);
             ruleStatement = prepareStatement(unassignedRuleSqlStatement, new String[]{"RULE_INTERNAL_ID"});
             ruleStatement.execute();
-            final int ruleid = getInternalId(ruleStatement);
-            return ruleid;
+            return getInternalId(ruleStatement);
         }
 
         /**
@@ -339,7 +337,7 @@ public final class GroupsQueryImpl {
          * @throws SQLException
          */
         public int getInternalId(PreparedStatement preparedStatement) throws SQLException {
-            ResultSet generatedKey = null;
+            ResultSet generatedKey;
             int internalId = 0;
             generatedKey = preparedStatement.getGeneratedKeys();
             if (generatedKey.next()) {
@@ -359,8 +357,8 @@ public final class GroupsQueryImpl {
          * @throws SQLException
          */
         private int getNumOfGroups() throws SQLException {
-            PreparedStatement numOfGroupsStatement = null;
-            ResultSet numOfGroupsResult = null;
+            PreparedStatement numOfGroupsStatement;
+            ResultSet numOfGroupsResult;
             numOfGroupsStatement = prepareStatement("SELECT COUNT(*) AS COUNT_TOTAL FROM " + SQL.GROUPS);
             numOfGroupsResult = numOfGroupsStatement.executeQuery();
             numOfGroupsResult.next();
@@ -394,7 +392,7 @@ public final class GroupsQueryImpl {
          * @return patternList a list of patterns for each group rule.
          * @throws SQLException
          */
-        private ArrayList<Pattern> getPatternList(List<Group> groups) throws SQLException{
+        private List<Pattern> getPatternList(List<Group> groups) throws SQLException{
             final ArrayList<Pattern> patternList = new ArrayList<Pattern>();
             PreparedStatement ruleStatement = null;
             ResultSet ruleResult = null;
@@ -850,8 +848,8 @@ public final class GroupsQueryImpl {
          */
         private boolean unassignedIsInGroups(List<Group> groups, int groupId){
             for (Group group : groups){
-                if (group != null && (group.getUid() == groupId) && 
-                        (group.getName().equalsIgnoreCase(UNASSIGNED_GROUP))){
+                if (group != null && (group.getUid() == groupId) &&
+                        group.getName().equalsIgnoreCase(UNASSIGNED_GROUP)){
                     return true;
                 }
             }

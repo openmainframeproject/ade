@@ -20,8 +20,8 @@
 package org.openmainframe.ade.ext.main;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -117,7 +117,7 @@ public class UpdateGroups extends ExtControlProgram{
      * @throws AdeUsageException
      */
     private CommandLine parseLine(CommandLineParser parser, Options options, String[] args) throws AdeUsageException {
-        CommandLine line = null;
+        CommandLine line;
         try {
             line = parser.parse(options, args);
         } catch (ParseException exp) {
@@ -147,7 +147,7 @@ public class UpdateGroups extends ExtControlProgram{
     @Override
     protected boolean doControlLogic() throws AdeException {
         JSONGroupParser jsonParser = parseJSON();
-        HashMap<Integer, List<Group>> parsedGroupsByType = jsonParser.getParsedGroupsByType();
+        Map<Integer, List<Group>> parsedGroupsByType = jsonParser.getParsedGroupsByType();
         List<Rule> parsedRules = jsonParser.getParsedRules();         
         updateDB(parsedGroupsByType, parsedRules);
         return true;
@@ -173,7 +173,7 @@ public class UpdateGroups extends ExtControlProgram{
      * @param parsedRules the rules extracted from the JSON file.
      * @throws AdeException
      */
-    private void updateDB(HashMap<Integer, List<Group>> parsedGroupsByType, List<Rule> parsedRules) throws AdeException {
+    private void updateDB(Map<Integer, List<Group>> parsedGroupsByType, List<Rule> parsedRules) throws AdeException {
         RulesQueryImpl.modifyRules(parsedRules);
         for (GroupType groupType : GroupType.values()){
             int groupTypeVal = groupType.getValue();

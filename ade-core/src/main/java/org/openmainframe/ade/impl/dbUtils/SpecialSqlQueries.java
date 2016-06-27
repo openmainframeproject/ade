@@ -24,6 +24,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.openmainframe.ade.Ade;
 import org.openmainframe.ade.AdeInternal;
@@ -110,7 +111,7 @@ public final class SpecialSqlQueries {
     /** Executes a query that is expected to returned a column of integers.
      *  Uses the default connection
      */
-    public static ArrayList<Integer> executeIntListQuery(String sql) throws AdeException {
+    public static List<Integer> executeIntListQuery(String sql) throws AdeException {
         return executeIntListQuery(sql, AdeInternal.getDefaultConnection());
     }
 
@@ -122,7 +123,7 @@ public final class SpecialSqlQueries {
      * @throws AdeException
      */
 
-    public static ArrayList<Integer> executeIntListQuery(String sql, Connection con) throws AdeException {
+    public static List<Integer> executeIntListQuery(String sql, Connection con) throws AdeException {
         final IntListQueryExecuter executer = new IntListQueryExecuter(sql, con);
         executer.executeQuery();
         return executer.m_result;
@@ -155,7 +156,7 @@ public final class SpecialSqlQueries {
     }
 
     private static class IntListQueryExecuter extends QueryStatementExecuter {
-        public ArrayList<Integer> m_result = new ArrayList<Integer>();
+        public List<Integer> m_result = new ArrayList<Integer>();
 
         public IntListQueryExecuter(String sql, Connection con) {
             super(sql, con);

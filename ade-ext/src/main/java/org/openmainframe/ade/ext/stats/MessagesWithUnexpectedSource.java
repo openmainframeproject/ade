@@ -21,6 +21,7 @@
 package org.openmainframe.ade.ext.stats;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,7 +43,7 @@ public final class MessagesWithUnexpectedSource {
     /**
      * Map from source name to the SourceStatisticsForMessage object
      */
-    private static HashMap<String, SourceStatisticsForMessage> sourceToStatisticsMap = new HashMap<String, MessagesWithUnexpectedSource.SourceStatisticsForMessage>();
+    private static Map<String, SourceStatisticsForMessage> sourceToStatisticsMap = new HashMap<String, MessagesWithUnexpectedSource.SourceStatisticsForMessage>();
 
     /**
      * Add a message that belongs to an unexpected source.
@@ -83,7 +84,7 @@ public final class MessagesWithUnexpectedSource {
          * 
          * After the log interval has elapsed, the logging for a source will be enabled again. 
          */
-        private static final long LOG_INTERVAL = 60 * 60 * 1000;
+        private static final long LOG_INTERVAL = (long)60 * 60 * 1000;
 
         /**
          * A count of number of log messages about the unexpected source.

@@ -21,6 +21,7 @@ package org.openmainframe.ade.ext.stats;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.TimeZone;
 
 import org.openmainframe.ade.Ade;
@@ -48,7 +49,7 @@ public class MessageRateStats {
     /**
      * A map from Source to Analysis Group
      */
-    private static HashMap<String, String> s_sourceToAnalysisGroupMap = new HashMap<String, String>();
+    private static Map<String, String> s_sourceToAnalysisGroupMap = new HashMap<String, String>();
 
     public static void addSourceAndAnalysisGroup(String sourceName, String analysisGroupName) {
         s_sourceToAnalysisGroupMap.put(sourceName, analysisGroupName);
@@ -57,7 +58,7 @@ public class MessageRateStats {
     /**
      * A map containing the message Rate Stats 
      */
-    private static HashMap<String, MessageRateStats> s_sourceToMsgRatesStatsMap = new HashMap<String, MessageRateStats>();
+    private static Map<String, MessageRateStats> s_sourceToMsgRatesStatsMap = new HashMap<String, MessageRateStats>();
 
     public static MessageRateStats getMessageRateStatsForSource(String source) throws AdeException {
         MessageRateStats stats;
@@ -136,7 +137,7 @@ public class MessageRateStats {
 
         @Override
         public String toString() {
-            String str = "";
+            String str;
             switch (this) {
                 case DAYS:
                     str = this.name() + "(" + getDays() + ")";
@@ -154,7 +155,7 @@ public class MessageRateStats {
     /**
      * 10 minutes
      */
-    private static final long TEN_MINUTES = 10 * 60 * 1000;
+    private static final long TEN_MINUTES = (long)10 * 60 * 1000;
 
     /**
      * Output format
@@ -225,7 +226,7 @@ public class MessageRateStats {
     /**
      * A map from Msg ID to the MsgStats object.
      */
-    private HashMap<String, MessageStats> m_msgIdToMsgStatsMap = new HashMap<String, MessageRateStats.MessageStats>();
+    private Map<String, MessageStats> m_msgIdToMsgStatsMap = new HashMap<String, MessageRateStats.MessageStats>();
     private final static int MAX_MESSAGE_STATS_TO_KEEP = 1000;
     private static int s_maxMsgToKeep = 1000;
 
@@ -901,16 +902,14 @@ public class MessageRateStats {
          * Return the mean value
          */
         public double getMsg1UniqueMsgIdMean() {
-            final double mean = (double) m_sumOfMsg1UniqueMsgIdCount / (double) m_numberOfIntervals;
-            return mean;
+            return (double) m_sumOfMsg1UniqueMsgIdCount / (double) m_numberOfIntervals;
         }
 
         /**
          * Return the mean value
          */
         public double getMsg2UniqueMsgIdMean() {
-            final double mean = (double) m_sumOfMsg2UniqueMsgIdCount / (double) m_numberOfIntervals;
-            return mean;
+            return (double) m_sumOfMsg2UniqueMsgIdCount / (double) m_numberOfIntervals;
         }
 
         /**
@@ -933,9 +932,10 @@ public class MessageRateStats {
          * Return the mean value
          */
         public double getMsg1UniqueMsgIdVariance() {
-            final double variance = (double) m_sumOfMsg1UniqueMsgIdCountSquare / (double) m_numberOfIntervals -
-                    -(getMsg1UniqueMsgIdMean() * getMsg1UniqueMsgIdMean());
-            return variance;
+
+            return (double) m_sumOfMsg1UniqueMsgIdCountSquare / (double) m_numberOfIntervals -
+                    -((double) getMsg1UniqueMsgIdMean() * (double) getMsg1UniqueMsgIdMean());
+
         }
 
         /**
@@ -943,8 +943,7 @@ public class MessageRateStats {
          */
         public double getMsg1UniqueMsgIdStandardVariation() {
             final double variance = getMsg1UniqueMsgIdVariance();
-            final double stdDev = Math.sqrt(variance);
-            return stdDev;
+            return Math.sqrt(variance);
         }
 
         @Override

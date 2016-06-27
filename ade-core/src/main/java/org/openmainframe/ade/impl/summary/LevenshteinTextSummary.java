@@ -156,7 +156,7 @@ public final class LevenshteinTextSummary {
     }
 
     private static void splitWordByDirectory(String str, ArrayList<Word> strWithDelim) {
-        boolean isFirstToken = true;
+        boolean isFirstToken;
         boolean isFirstWord = true;
         final Matcher dirMatcher = directoryPatternSplitter.matcher(str);
         final String currWord = str;
@@ -178,7 +178,7 @@ public final class LevenshteinTextSummary {
             }
 
             /* adding the directory */
-            addWord(isFirstToken && (!isFirstWord), dirMatcher.group(), strWithDelim);
+            addWord(isFirstToken && !isFirstWord, dirMatcher.group(), strWithDelim);
             isFirstWord = false;
 
             /* adding the suffix after the delimiter */
@@ -218,13 +218,13 @@ public final class LevenshteinTextSummary {
             /* handle the prefix before the delimiter */
             final String currStr = currWord.substring(lastStartIndex, delimtMatcher.end() - 1);
             if (currStr.length() > 0) {
-                addWord(tempIsFirstToken && (!tempIsFirstWord), currStr, strWithDelim);
+                addWord(tempIsFirstToken && !tempIsFirstWord, currStr, strWithDelim);
                 tempIsFirstWord = false;
                 tempIsFirstToken = false;
             }
 
             /* adding the delimiter */
-            addWord(tempIsFirstToken && (!tempIsFirstWord), delimtMatcher.group(), strWithDelim);
+            addWord(tempIsFirstToken && !tempIsFirstWord, delimtMatcher.group(), strWithDelim);
 
             /* adding the suffix after the delimiter */
             suffix = currWord.substring(delimtMatcher.end());
@@ -234,11 +234,11 @@ public final class LevenshteinTextSummary {
         if (isFindMatch) {
             // adding the last subString after the last delimiter
             if (suffix.length() > 0) {
-                addWord(tempIsFirstToken && (!tempIsFirstWord), suffix, strWithDelim);
+                addWord(tempIsFirstToken && !tempIsFirstWord, suffix, strWithDelim);
             }
         } else {
             // in case no delimiter was found
-            addWord(tempIsFirstToken && (!tempIsFirstWord), currWord, strWithDelim);
+            addWord(tempIsFirstToken && !tempIsFirstWord, currWord, strWithDelim);
             tempIsFirstWord = false;
         }
     }
@@ -590,12 +590,12 @@ public final class LevenshteinTextSummary {
                 final String currStr = currWord.substring(lastStartIndex,
                         delimtMatcher.end() - 1);
                 if (currStr.length() > 0) {
-                    addWord(isFirstToken && (!isFirstWord), currStr, strWithDelim);
+                    addWord(isFirstToken && !isFirstWord, currStr, strWithDelim);
                     isFirstWord = false;
                     isFirstToken = false;
                 }
                 // adding the delimiter
-                addWord(isFirstToken && (!isFirstWord), delimtMatcher.group(),
+                addWord(isFirstToken && !isFirstWord, delimtMatcher.group(),
                         strWithDelim);
                 // adding the suffix after the delimiter
                 suffix = currWord.substring(delimtMatcher.end());
@@ -605,11 +605,11 @@ public final class LevenshteinTextSummary {
             if (isFindMatch) {
                 // adding the last subString after the last delimiter
                 if (suffix.length() > 0) {
-                    addWord(isFirstToken && (!isFirstWord), suffix, strWithDelim);
+                    addWord(isFirstToken && !isFirstWord, suffix, strWithDelim);
                 }
             } else {
                 // in case no delimiter was found
-                addWord(isFirstToken && (!isFirstWord), currWord, strWithDelim);
+                addWord(isFirstToken && !isFirstWord, currWord, strWithDelim);
                 isFirstWord = false;
             }
             isFirstWord = false;

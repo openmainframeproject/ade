@@ -224,8 +224,7 @@ public abstract class LinuxSyslog3164ParserBase extends LinuxSyslogLineParser {
 
                 /* AdeCore will take the Java Date object, and convert 
                  * it to the output time-zone, then extract the hour. */
-                final Date d = dt.toDate();
-                return d;
+                return dt.toDate();
             } catch (IllegalArgumentException e) {
                 /* This exception can occur normally when iterating
                  * through the DateTimeFormatter objects. It is only 

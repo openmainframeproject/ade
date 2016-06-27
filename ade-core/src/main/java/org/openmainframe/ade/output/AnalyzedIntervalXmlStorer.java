@@ -250,7 +250,7 @@ public class AnalyzedIntervalXmlStorer extends AnalyzedIntervalOutputer {
     }
 
     public static Collection<IAnalyzedMessageSummary> getSortedMessages(IAnalyzedInterval interval) {
-        final ArrayList<IAnalyzedMessageSummary> sortedMessages = new ArrayList<IAnalyzedMessageSummary>();
+        final List<IAnalyzedMessageSummary> sortedMessages = new ArrayList<IAnalyzedMessageSummary>();
         sortedMessages.addAll(interval.getAnalyzedMessages());
         Collections.sort(sortedMessages, new AnomalyScoreComparator());
         return sortedMessages;
@@ -374,8 +374,7 @@ public class AnalyzedIntervalXmlStorer extends AnalyzedIntervalOutputer {
 
     protected final String cleanTextSample(String textSample) {
         final Matcher matcher = s_invalidXMLChars.matcher(textSample);
-        final String res = matcher.replaceAll("");
-        return res;
+        return matcher.replaceAll("");
     }
 
     /**

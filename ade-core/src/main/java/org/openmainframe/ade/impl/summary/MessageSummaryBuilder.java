@@ -19,6 +19,7 @@
 */
 package org.openmainframe.ade.impl.summary;
 
+import java.util.Set;
 import java.util.TreeSet;
 
 import org.openmainframe.ade.AdeInternal;
@@ -44,7 +45,7 @@ public class MessageSummaryBuilder implements IStreamTarget<IMessageInstance> {
 
     private MessageSummaryImpl m_messageSummary;
     private SummarizationProperties m_sumProps;
-    private TreeSet<Short> m_timeLine;
+    private Set<Short> m_timeLine;
     private boolean m_messageSummaryReady = false;
     private CriticalWordsScorer m_textScore = null;
     private long m_intervalStartTime;
@@ -150,11 +151,9 @@ public class MessageSummaryBuilder implements IStreamTarget<IMessageInstance> {
         m_messageSummary.setMessageCounter(m_messageSummary.getNumMessageInstances() + other.getNumMessageInstances());
         m_messageSummary.setMessageFailedCounter(m_messageSummary.getNumFailedMessageInstances() + other.getNumFailedMessageInstances());
 
-        if (m_sumProps.m_calculateCriticalWordsScore) {
-            if (other.getCriticalWordsScore() > m_messageSummary.getCriticalWordsScore()) {
-                m_messageSummary.setCriticalWordsScore(other.getCriticalWordsScore());
-                m_messageSummary.setTextSample(other.getTextSample());
-            }
+        if (m_sumProps.m_calculateCriticalWordsScore && other.getCriticalWordsScore() > m_messageSummary.getCriticalWordsScore()) {
+            m_messageSummary.setCriticalWordsScore(other.getCriticalWordsScore());
+            m_messageSummary.setTextSample(other.getTextSample());
         }
         if (m_messageSummary.getTextSample() == null) {
             m_messageSummary.setTextSample(other.getTextSample());

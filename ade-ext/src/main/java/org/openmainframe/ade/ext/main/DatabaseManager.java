@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Map;
 import java.util.Properties;
 
 import org.openmainframe.ade.exceptions.AdeException;
@@ -246,7 +247,7 @@ public class DatabaseManager {
      * @return the DB name
      */
     private String parseDBName() {
-        String dbname = null;
+        String dbname;
 
         final int dbnameStartPosition = dbURL.lastIndexOf(File.separator);
         final int dburlLength = dbURL.length();
@@ -381,7 +382,7 @@ public class DatabaseManager {
 
         mLogger.info("Connecting to database " + connectionUrl + " to restore from backup.");
 
-        Connection con = null;
+        Connection con;
         try {
 
             if (dbUserName == null || dbUserPassword == null) {
@@ -441,7 +442,7 @@ public class DatabaseManager {
 
         mLogger.info("Connecting to database " + connectionUrl + " in location " + dbLocation + " to restore from backup.");
 
-        Connection con = null;
+        Connection con;
         try {
             con = DriverManager.getConnection(connectionUrl);
 
@@ -471,9 +472,9 @@ public class DatabaseManager {
      * @return a connection object to Derby DB
      */
     private static Connection getEmbeddedDBConnection(String dirName) throws AdeException {
-        final Properties p = System.getProperties();
+        final Map p = System.getProperties();
         p.put("derby.system.home", dirName);
-        Connection con = null;
+        Connection con;
 
         try {
             Class.forName(DRIVER);

@@ -52,7 +52,7 @@ public final class ScorerFactory {
         if (!name.contains(".")) {
             name = DEFAULT_PACKAGE + name;
         }
-        Object temp = null;
+        Object temp;
         try {
             temp = Class.forName(name).newInstance();
         } catch (Exception e) {

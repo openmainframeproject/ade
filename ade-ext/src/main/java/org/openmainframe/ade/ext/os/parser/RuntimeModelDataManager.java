@@ -31,6 +31,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -144,7 +145,7 @@ public class RuntimeModelDataManager {
 
         /* Keeps track of the time since last writing the RuntimeModelData. */
         final long currentTimestamp = System.currentTimeMillis();
-        String timeSinceLastRuntimeModelDataWriting = "NULL";
+        String timeSinceLastRuntimeModelDataWriting;
         if (m_creationTimeOfRuntimeModelData == 0) {
             /* Don't do the calculation. */
             timeSinceLastRuntimeModelDataWriting = "N/A";
@@ -329,7 +330,7 @@ public class RuntimeModelDataManager {
         DataInputStream dis = null;
         FileInputStream fis;
         String timeSinceLastRuntimeModelDataWriting = "-1";
-        final ArrayList<Entry<String, Object>> tmpModelData = new ArrayList<Map.Entry<String, Object>>();
+        final List<Entry<String, Object>> tmpModelData = new ArrayList<Map.Entry<String, Object>>();
         try {
             fis = new FileInputStream(file);
             dis = new DataInputStream(fis);
@@ -543,10 +544,8 @@ public class RuntimeModelDataManager {
      * @return the temporary file (where the file name is the runtime model data file name with ".tmp" appended)
      */
     private File getTempFile(File runtimeModelDataFile) {
-        final File ret = new File(runtimeModelDataFile.getParent(),
+        return new File(runtimeModelDataFile.getParent(),
                 runtimeModelDataFile.getName() + ".tmp");
-
-        return ret;
     }
 
     /**
@@ -555,9 +554,7 @@ public class RuntimeModelDataManager {
      * @return the error file (where the file name is the runtime model data file name with ".ffdc" appended)
      */
     private File getErrorFile(File runtimeModelDataFile) {
-        final File ret = new File(runtimeModelDataFile.getParent(),
+        return new File(runtimeModelDataFile.getParent(),
                 runtimeModelDataFile.getName() + ".ffdc");
-
-        return ret;
     }
 }

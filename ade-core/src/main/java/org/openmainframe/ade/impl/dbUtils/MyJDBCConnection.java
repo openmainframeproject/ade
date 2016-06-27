@@ -173,7 +173,7 @@ public final class MyJDBCConnection {
          * if it needs to be renewed (by closing their current instance
          * and constructing another).
          */
-        renewConnectionTime = (new Date()).getTime();
+        renewConnectionTime = new Date().getTime();
     }
 
     /**

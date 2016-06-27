@@ -160,9 +160,7 @@ public class ManagedSystemInfo {
         }
 
         public boolean execute() throws AdeException {
-            final boolean success = ExtDataStoreUtils.executeAtomicTransaction(this);
-
-            return success;
+            return ExtDataStoreUtils.executeAtomicTransaction(this);
         }
 
         @Override
@@ -226,8 +224,8 @@ public class ManagedSystemInfo {
             final String MANAGED_QUERY = String.format("SELECT * FROM MANAGED_SYSTEMS WHERE SOURCE_INTERNAL_ID=%s",
                     S.getSourceInternalId());
             ResultSet R = null;
-            String osName = null;
-            int gmtOffset = 0;
+            String osName;
+            int gmtOffset;
 
             logger.trace(String.format("lookupManagedSystemInfo(%s) -->entry",
                     S.getSourceId())); 
@@ -304,7 +302,7 @@ public class ManagedSystemInfo {
 
             logger.trace(String.format("addManagedSystem(%s) -->entry",
                     S.getSourceId())); 
-            boolean addOk = false;
+            boolean addOk;
 
             try {
                 logger.info(String.format("addManagedSystem(%s) -->executeBatch",
@@ -342,7 +340,7 @@ public class ManagedSystemInfo {
 
             logger.trace(String.format("updateManagedSystem(%s) -->entry",
                     S.getSourceId())); 
-            boolean updateOk = false;
+            boolean updateOk;
             try {
                 logger.info(String.format("updateManagedSystem(%s) -->executeBatch",
                         S.getSourceId()));
@@ -374,7 +372,7 @@ public class ManagedSystemInfo {
          * @param ISource - datastore object which is associated with a SOURCES Table row
          * @return ArrayList<String> as described above
          */
-        private ArrayList<String> getSqlForAdd(ISource S) {
+        private List<String> getSqlForAdd(ISource S) {
 
             logger.trace("getSqlForAdd() -->entry");
 
@@ -410,7 +408,7 @@ public class ManagedSystemInfo {
          *                 and also wth a MANAGED_SYSTEMS Table row
          * @return ArrayList<String> as described above
          */
-        private ArrayList<String> getSqlForUpdate(ISource S) {
+        private List<String> getSqlForUpdate(ISource S) {
 
             final List<String> msSets = new ArrayList<String>();
             String SET_STRING, WHERE_STRING, UPDATE_STRING;

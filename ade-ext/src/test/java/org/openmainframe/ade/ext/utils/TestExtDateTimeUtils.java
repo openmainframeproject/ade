@@ -190,7 +190,7 @@ public class TestExtDateTimeUtils {
     
     @Test
     public void testStartOfDay() throws ParseException {
-        Date date = new Date();
+        Date date;
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss.SSS");
         String dateInString = "10-Dec-2015 00:00:00.000";
         date = formatter.parse(dateInString);
@@ -206,7 +206,7 @@ public class TestExtDateTimeUtils {
     
     @Test
     public void testEndOfDay() throws ParseException {
-        Date date = new Date();
+        Date date;
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss.SSS");
         String dateInString = "10-Dec-2015 23:59:59.999";
         date = formatter.parse(dateInString);

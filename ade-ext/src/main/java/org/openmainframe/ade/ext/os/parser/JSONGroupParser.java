@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import org.apache.wink.json4j.JSONArray;
@@ -75,7 +76,7 @@ public class JSONGroupParser {
             JSONObject jsonData = new JSONObject(jsonInputStream);
             JSONObject groups = jsonData.getJSONObject("groups");
             for (GroupType group : GroupType.values()){
-                List<Group> parsedGroups = new ArrayList<Group>();
+                List<Group> parsedGroups;
                 JSONArray groupsArray = groups.getJSONArray(group.name().toLowerCase());
                 parsedGroups = parseGroups(groupsArray, group.name());    
                 parsedGroupsByType.put(group.getValue(),parsedGroups);
@@ -254,7 +255,7 @@ public class JSONGroupParser {
      * Method for getting the parsed groups from the JSON file.
      * @return parsedGroupsByType contains the groups of a specific type.
      */
-    public HashMap<Integer,List<Group>> getParsedGroupsByType(){
+    public Map<Integer,List<Group>> getParsedGroupsByType(){
         return parsedGroupsByType;
     }
     
