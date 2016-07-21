@@ -54,7 +54,7 @@ public class AdeUtilMain extends ControlProgram {
 		new AdeUtilMain().run(args);
 	}
 
-	public static final String FLOW_LAYOUT_XSD_File_Name = "\\FlowLayout.xsd";
+	public static final String FLOW_LAYOUT_XSD_File_Name = File.separator + "FlowLayout.xsd";
 
 	@SuppressWarnings("static-access")
 	@Override
