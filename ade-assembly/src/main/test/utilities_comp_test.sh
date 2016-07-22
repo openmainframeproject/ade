@@ -24,7 +24,10 @@
 #
 # This script will process a baseline set of syslog files so that the
 # resulting utilities ouput (text summary of model) can be compared to the 
-# baseline. The script is intended to be run after any change to the 
+# baseline.  It also checks that the flowlayout.xml file is syntactically
+# correct.  
+# 
+# The script is intended to be run after any change to the 
 # analytics code to point any changes from the existing baseline. Changes 
 # to the local constants below should be made to customize to your 
 # environment.
