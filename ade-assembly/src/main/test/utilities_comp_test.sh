@@ -336,7 +336,7 @@ if [ $? -ne 0 ]; then
   cleanup_and_exit 1
 fi 
 
-issue_command "diff <(tail -n -31 $BASELINE_OUTPUT_DIR/models/test/event_log_model_1.txt) <(tail -n -31 $MODEL_OUTPUT_FILE) > $UTILITIES_COMPARE_LOG"
+issue_command "diff <(tail -n-31 $BASELINE_DIR/model/event_log_model_1.txt) <(tail -n-31 $MODEL_OUTPUT_FILE) > $UTILITIES_COMPARE_LOG"
 
 echo 
 echo "Utilities comparison output written to $UTILITIES_COMPARE_LOG"
