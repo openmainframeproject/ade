@@ -1,0 +1,2027 @@
+Meta data
+Model(1) analysisGroup=regression_ag_20160720123309:[22 Nov 2015 07:00:00-29 Nov 2015 08:00:00] creationTime:Wed Jul 20 12:35:04 EDT 2016, adeVersion:3.2.1 Excluded Periods:
+scorers:
+Scorer ClusteringContextScore
+Input arguments: [allowEmptyClusters=false, alpha=0.1, clusterContextFraction=0.3, maxIdleTrials=15000, maxTrials=100000, minAppearThresh=3, minAverageInformationRatio=2, numClustersSqrtNumMsgs=true, numClustersSqrtNumMsgsFactor=3, numRuns=50, seed=1, trace=false, useTimelineForMutualInformation=true]
+Configuration
+num clusters: 28
+max trials: 100000
+max idle trials: 15000
+alpha: 0.100000
+seed: 1
+trace: false
+num clustering runs: 50
+min appear thresh: 3
+cluster min avg info: 2.000000
+cluster context fraction: 0.300000
+miminal cluster size: 2
+Use square root value of messages as number of clusters: true
+Cluster square root factor: 3.000000
+Minimal allowed ration between cluster mean and m_meanInfo: 2.000000
+Use number of message occurences to prime clustering: false
+Filename containing clusters to prime clustering: null
+Use timeline of messages for precise mutal information: true
+
+Model summary
+Mean information in similary matrix: 0.015579
+Runs:
+  run 0: [IClust run: score=29.825338 trials=100000 idleTrials=81 time(seconds)= 0.14 seed=1]
+  run 1: [IClust run: score=29.454875 trials=100000 idleTrials=81 time(seconds)= 0.04 seed=2]
+  run 2: [IClust run: score=29.381200 trials=100000 idleTrials=82 time(seconds)= 0.02 seed=3]
+  run 3: [IClust run: score=29.027778 trials=100000 idleTrials=81 time(seconds)= 0.02 seed=4]
+  run 4: [IClust run: score=29.054772 trials=100000 idleTrials=79 time(seconds)= 0.02 seed=5]
+  run 5: [IClust run: score=29.125695 trials=100000 idleTrials=78 time(seconds)= 0.01 seed=6]
+  run 6: [IClust run: score=29.560584 trials=100000 idleTrials=83 time(seconds)= 0.01 seed=7]
+  run 7: [IClust run: score=28.644198 trials=100000 idleTrials=81 time(seconds)= 0.01 seed=8]
+  run 8: [IClust run: score=29.282406 trials=100000 idleTrials=81 time(seconds)= 0.01 seed=9]
+  run 9: [IClust run: score=29.192563 trials=100000 idleTrials=80 time(seconds)= 0.01 seed=10]
+  run 10: [IClust run: score=29.456540 trials=100000 idleTrials=83 time(seconds)= 0.01 seed=11]
+  run 11: [IClust run: score=29.688228 trials=100000 idleTrials=81 time(seconds)= 0.01 seed=12]
+  run 12: [IClust run: score=29.499485 trials=100000 idleTrials=81 time(seconds)= 0.01 seed=13]
+  run 13: [IClust run: score=28.894337 trials=100000 idleTrials=81 time(seconds)= 0.01 seed=14]
+  run 14: [IClust run: score=29.363231 trials=100000 idleTrials=83 time(seconds)= 0.01 seed=15]
+  run 15: [IClust run: score=28.991444 trials=100000 idleTrials=84 time(seconds)= 0.01 seed=16]
+  run 16: [IClust run: score=29.299703 trials=100000 idleTrials=83 time(seconds)= 0.01 seed=17]
+  run 17: [IClust run: score=29.300038 trials=100000 idleTrials=81 time(seconds)= 0.01 seed=18]
+  run 18: [IClust run: score=28.804043 trials=100000 idleTrials=82 time(seconds)= 0.01 seed=19]
+  run 19: [IClust run: score=29.561242 trials=100000 idleTrials=83 time(seconds)= 0.01 seed=20]
+  run 20: [IClust run: score=29.343164 trials=100000 idleTrials=81 time(seconds)= 0.01 seed=21]
+  run 21: [IClust run: score=29.253182 trials=100000 idleTrials=81 time(seconds)= 0.01 seed=22]
+  run 22: [IClust run: score=29.340854 trials=100000 idleTrials=82 time(seconds)= 0.01 seed=23]
+  run 23: [IClust run: score=28.995361 trials=100000 idleTrials=81 time(seconds)= 0.01 seed=24]
+  run 24: [IClust run: score=29.505888 trials=100000 idleTrials=84 time(seconds)= 0.01 seed=25]
+  run 25: [IClust run: score=28.574943 trials=100000 idleTrials=79 time(seconds)= 0.01 seed=26]
+  run 26: [IClust run: score=29.504171 trials=100000 idleTrials=82 time(seconds)= 0.01 seed=27]
+  run 27: [IClust run: score=29.440212 trials=100000 idleTrials=83 time(seconds)= 0.01 seed=28]
+  run 28: [IClust run: score=29.534467 trials=100000 idleTrials=81 time(seconds)= 0.01 seed=29]
+  run 29: [IClust run: score=29.308240 trials=100000 idleTrials=78 time(seconds)= 0.01 seed=30]
+  run 30: [IClust run: score=29.422119 trials=100000 idleTrials=81 time(seconds)= 0.01 seed=31]
+  run 31: [IClust run: score=29.491772 trials=100000 idleTrials=81 time(seconds)= 0.01 seed=32]
+  run 32: [IClust run: score=29.336577 trials=100000 idleTrials=82 time(seconds)= 0.01 seed=33]
+  run 33: [IClust run: score=29.255267 trials=100000 idleTrials=82 time(seconds)= 0.01 seed=34]
+  run 34: [IClust run: score=28.636082 trials=100000 idleTrials=81 time(seconds)= 0.01 seed=35]
+  run 35: [IClust run: score=29.140523 trials=100000 idleTrials=81 time(seconds)= 0.01 seed=36]
+  run 36: [IClust run: score=29.551559 trials=100000 idleTrials=80 time(seconds)= 0.01 seed=37]
+  run 37: [IClust run: score=29.618866 trials=100000 idleTrials=82 time(seconds)= 0.01 seed=38]
+  run 38: [IClust run: score=29.379427 trials=100000 idleTrials=83 time(seconds)= 0.01 seed=39]
+  run 39: [IClust run: score=29.310186 trials=100000 idleTrials=81 time(seconds)= 0.01 seed=40]
+  run 40: [IClust run: score=29.091253 trials=100000 idleTrials=79 time(seconds)= 0.01 seed=41]
+  run 41: [IClust run: score=28.802019 trials=100000 idleTrials=82 time(seconds)= 0.01 seed=42]
+  run 42: [IClust run: score=29.303120 trials=100000 idleTrials=81 time(seconds)= 0.01 seed=43]
+  run 43: [IClust run: score=29.208868 trials=100000 idleTrials=83 time(seconds)= 0.01 seed=44]
+  run 44: [IClust run: score=29.543009 trials=100000 idleTrials=83 time(seconds)= 0.01 seed=45]
+  run 45: [IClust run: score=29.405180 trials=100000 idleTrials=85 time(seconds)= 0.01 seed=46]
+  run 46: [IClust run: score=29.103816 trials=100000 idleTrials=80 time(seconds)= 0.01 seed=47]
+  run 47: [IClust run: score=29.356544 trials=100000 idleTrials=81 time(seconds)= 0.01 seed=48]
+  run 48: [IClust run: score=29.311208 trials=100000 idleTrials=83 time(seconds)= 0.01 seed=49]
+  run 49: [IClust run: score=28.687741 trials=100000 idleTrials=82 time(seconds)= 0.01 seed=50]
+Resulting clusters: 28
+Remaining after filtering clusters: 19
+Total intervals scanned: 169
+Total msg-ids found: 143
+Total msg-ids above min appear threshold 3: 89
+Total msg-ids clustered: 74
+Converged: false
+clustering members
+/usr/sbin/cron(notes):/home/notes/psefoutput_12	12	15
+/usr/sbin/cron(notes):/opt/lotus/notesapi/chk_work_63	63	15
+/usr/sbin/cron(notes):/opt/lotus/notesapi/tsm_log_scan_22	22	9
+/usr/sbin/cron(notes):/usr/bin/sudo_72	72	0
+/usr/sbin/cron(notesa):/opt/lotus/notesapi/check_dasd_89	89	-1	unclustered
+/usr/sbin/cron(notesa):/opt/lotus/notesapi/domsrv_90	90	-1	unclustered
+/usr/sbin/cron(notesb):/notes/d01ml074/logs/psauxww.sh_21	21	-1	unclustered
+/usr/sbin/cron(notesb):/opt/lotus/notesapi/domsrv_91	91	-1	unclustered
+/usr/sbin/cron(root):/etc/init.d/synctime_64	64	4
+/usr/sbin/cron(root):/root/zaware_script.sh_143	143	-1	unclustered
+/usr/sbin/cron(root):/usr/bin/test && /usr/lib/secchk/security-control-vmsd.sh_117	117	-1	unclustered
+/usr/sbin/cron(root):/usr/lib64/sa/sa2_62	62	15
+/usr/sbin/cron(root):/usr/local/support/workfstest_10	10	4
+/usr/sbin/cron(root):/var/adm/perfmgr/bin/clean.account_84	84	-1	unclustered
+/usr/sbin/cron(root):/var/adm/perfmgr/bin/package.srm_76	76	1
+/usr/sbin/cron(root):/var/adm/perfmgr/bin/terminate.srm ; /var/adm/perfmgr/bin/verify.srm_78	78	1
+/usr/sbin/cron(root):/var/adm/perfmgr/bin/verify.srm_20	20	15
+/usr/sbin/cron(root):root_77	77	1
+/usr/sbin/cron_11	11	4
+/usr/sbin/cron_14	14	15
+/usr/sbin/cron_3	3	15
+/usr/sbin/cron_9	9	15
+automount_31	31	11
+automount_32	32	11
+kernel_127	127	-1	unclustered
+kernel_128	128	-1	unclustered
+kernel_130	130	-1	unclustered
+kernel_131	131	-1	unclustered
+kernel_132	132	-1	unclustered
+kernel_133	133	-1	unclustered
+kernel_134	134	-1	unclustered
+kernel_2	2	-1	unclustered
+ntpdate_65	65	4
+ntpdate_66	66	4
+passwd_125	125	-1	unclustered
+passwd_126	126	-1	unclustered
+passwd_68	68	17
+passwd_69	69	17
+passwd_70	70	17
+passwd_71	71	17
+postfix/cleanup_15	15	15
+postfix/local_17	17	4
+postfix/pickup_13	13	4
+postfix/pickup_74	74	10
+postfix/qmgr_16	16	15
+postfix/qmgr_18	18	4
+postfix/smtp_114	114	-1	unclustered
+postfix/smtp_19	19	4
+postfix/smtp_52	52	-1	unclustered
+postfix/smtp_75	75	10
+run-crons_42	42	-1	unclustered
+run-crons_56	56	16
+run-crons_58	58	3
+run-crons_59	59	3
+run-crons_60	60	16
+run-crons_61	61	16
+sshd_111	111	-1	unclustered
+sshd_122	122	-1	unclustered
+sshd_123	123	-1	unclustered
+sshd_28	28	-1	unclustered
+sshd_4	4	4
+sshd_40	40	-1	unclustered
+sshd_45	45	14
+sshd_46	46	13
+sshd_47	47	14
+sshd_48	48	14
+sshd_5	5	15
+sshd_54	54	12
+sshd_6	6	15
+sshd_7	7	4
+sshd_8	8	15
+su_137	137	-1	unclustered
+su_26	26	-1	unclustered
+su_50	50	13
+su_51	51	13
+su_53	53	12
+su_80	80	7
+su_81	81	7
+su_82	82	7
+su_94	94	5
+su_95	95	5
+su_96	96	-1	unclustered
+sudo(akparida):/bin/su_135	135	-1	unclustered
+sudo(gnbhat):/bin/su_142	142	-1	unclustered
+sudo(itimssh):/bin/cat_35	35	2
+sudo(itimssh):/bin/chmod_33	33	11
+sudo(itimssh):/bin/ls_116	116	8
+sudo(itimssh):/bin/ls_29	29	2
+sudo(itimssh):/bin/ls_39	39	11
+sudo(itimssh):/usr/bin/faillog_34	34	11
+sudo(itimssh):/usr/bin/faillog_37	37	2
+sudo(itimssh):/usr/bin/groups_36	36	11
+sudo(itimssh):/usr/bin/groups_38	38	11
+sudo(itimssh):/usr/bin/passwd_118	118	-1	unclustered
+sudo(itimssh):/usr/bin/passwd_67	67	17
+sudo(itimssh):list_115	115	8
+sudo(kemahesh):/bin/su_139	139	-1	unclustered
+sudo(notes):/bin/cat_23	23	9
+sudo(notes):/opt/lotus/notesapi/bounce_tsm_73	73	0
+sudo(notesa):/bin/su | /opt/lotus/notesapi/bin64/splitter_110	110	-1	unclustered
+sudo(notesa):/bin/su | grep | cut_97	97	-1	unclustered
+sudo(notesa):/bin/su | xargs_106	106	-1	unclustered
+sudo(notesa):/bin/su | xargs_107	107	-1	unclustered
+sudo(notesa):/bin/su | xargs_108	108	-1	unclustered
+sudo(notesa):/bin/su | xargs_109	109	-1	unclustered
+sudo(notesa):/bin/su_100	100	-1	unclustered
+sudo(notesa):/bin/su_140	140	-1	unclustered
+sudo(notesa):/bin/su_93	93	-1	unclustered
+sudo(notesb):/bin/su | /opt/lotus/notesapi/bin64/splitter_105	105	-1	unclustered
+sudo(notesb):/bin/su | grep | cut_98	98	-1	unclustered
+sudo(notesb):/bin/su | xargs_101	101	-1	unclustered
+sudo(notesb):/bin/su | xargs_102	102	-1	unclustered
+sudo(notesb):/bin/su | xargs_103	103	-1	unclustered
+sudo(notesb):/bin/su | xargs_104	104	-1	unclustered
+sudo(notesb):/bin/su_136	136	-1	unclustered
+sudo(notesb):/bin/su_92	92	-1	unclustered
+sudo(notesb):/bin/su_99	99	-1	unclustered
+sudo(notesssh):/bin/cat_55	55	-1	unclustered
+sudo(notesssh):/bin/mv_44	44	-1	unclustered
+sudo(root):/etc/init.d/syslog_41	41	-1	unclustered
+sudo(root):/sbin/vmcp_57	57	16
+sudo(root):/usr/local/support/instsan_linux_z.sh_141	141	-1	unclustered
+sudo(sakittus):/bin/su_124	124	-1	unclustered
+sudo(sumabisw):/bin/su_49	49	-1	unclustered
+sudo(support):/bin/su && chown_79	79	7
+sudo(support):/bin/su_83	83	7
+sudo(support):/sbin/service_129	129	-1	unclustered
+sudo(support):/sbin/vmcp_121	121	-1	unclustered
+sudo(support):/usr/local/bin/lssecfixes_120	120	-1	unclustered
+sudo(support):/usr/local/support/updtlssecfixes.sh_119	119	-1	unclustered
+sudo(wcamargo):/bin/su_138	138	-1	unclustered
+sudo_24	24	-1	unclustered
+sudo_25	25	-1	unclustered
+support_27	27	-1	unclustered
+syslog-ng_1	1	-1	unclustered
+syslog-ng_112	112	-1	unclustered
+syslog-ng_113	113	-1	unclustered
+syslog-ng_30	30	-1	unclustered
+syslog-ng_43	43	-1	unclustered
+zmd_85	85	18
+zmd_86	86	18
+zmd_87	87	6
+zmd_88	88	6
+Scorer FullBernoulliClusterAwareScore
+Input arguments: [ClusteringScorer=ClusteringContextScore, FullProb=true]
+Trained=true
+Total interval count=169
+/usr/sbin/cron(notes):/home/notes/psefoutput_12 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron(notes):/opt/lotus/notesapi/chk_work_63 : (count=28, prob=0.167647, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron(notes):/opt/lotus/notesapi/tsm_log_scan_22 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron(notes):/usr/bin/sudo_72 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron(notesa):/opt/lotus/notesapi/check_dasd_89 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=7, OutOfClusterProb=0.044118, outOfContextScore=1.000000)
+/usr/sbin/cron(notesa):/opt/lotus/notesapi/domsrv_90 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+/usr/sbin/cron(notesb):/notes/d01ml074/logs/psauxww.sh_21 : (count=168, prob=0.991176, score=0.008863 | outOfClusterCount=168, OutOfClusterProb=0.991176, outOfContextScore=0.008863)
+/usr/sbin/cron(notesb):/opt/lotus/notesapi/domsrv_91 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+/usr/sbin/cron(root):/etc/init.d/synctime_64 : (count=28, prob=0.167647, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron(root):/root/zaware_script.sh_143 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+/usr/sbin/cron(root):/usr/bin/test && /usr/lib/secchk/security-control-vmsd.sh_117 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+/usr/sbin/cron(root):/usr/lib64/sa/sa2_62 : (count=28, prob=0.167647, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron(root):/usr/local/support/workfstest_10 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron(root):/var/adm/perfmgr/bin/clean.account_84 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=7, OutOfClusterProb=0.044118, outOfContextScore=1.000000)
+/usr/sbin/cron(root):/var/adm/perfmgr/bin/package.srm_76 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=7, OutOfClusterProb=0.044118, outOfContextScore=1.000000)
+/usr/sbin/cron(root):/var/adm/perfmgr/bin/terminate.srm ; /var/adm/perfmgr/bin/verify.srm_78 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron(root):/var/adm/perfmgr/bin/verify.srm_20 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron(root):root_77 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron_11 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron_14 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron_3 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron_9 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+automount_31 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+automount_32 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+kernel_127 : (count=3, prob=0.020588, score=1.000000 | outOfClusterCount=3, OutOfClusterProb=0.020588, outOfContextScore=1.000000)
+kernel_128 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+kernel_130 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+kernel_131 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+kernel_132 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+kernel_133 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+kernel_134 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+kernel_2 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+ntpdate_65 : (count=28, prob=0.167647, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+ntpdate_66 : (count=28, prob=0.167647, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+passwd_125 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+passwd_126 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+passwd_68 : (count=6, prob=0.038235, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+passwd_69 : (count=6, prob=0.038235, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+passwd_70 : (count=6, prob=0.038235, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+passwd_71 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+postfix/cleanup_15 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+postfix/local_17 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+postfix/pickup_13 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+postfix/pickup_74 : (count=17, prob=0.102941, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+postfix/qmgr_16 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+postfix/qmgr_18 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+postfix/smtp_114 : (count=3, prob=0.020588, score=1.000000 | outOfClusterCount=3, OutOfClusterProb=0.020588, outOfContextScore=1.000000)
+postfix/smtp_19 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+postfix/smtp_52 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+postfix/smtp_75 : (count=18, prob=0.108824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+run-crons_42 : (count=168, prob=0.991176, score=0.008863 | outOfClusterCount=168, OutOfClusterProb=0.991176, outOfContextScore=0.008863)
+run-crons_56 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+run-crons_58 : (count=8, prob=0.050000, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+run-crons_59 : (count=8, prob=0.050000, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+run-crons_60 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+run-crons_61 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sshd_111 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=7, OutOfClusterProb=0.044118, outOfContextScore=1.000000)
+sshd_122 : (count=4, prob=0.026471, score=1.000000 | outOfClusterCount=4, OutOfClusterProb=0.026471, outOfContextScore=1.000000)
+sshd_123 : (count=3, prob=0.020588, score=1.000000 | outOfClusterCount=3, OutOfClusterProb=0.020588, outOfContextScore=1.000000)
+sshd_28 : (count=17, prob=0.102941, score=1.000000 | outOfClusterCount=17, OutOfClusterProb=0.102941, outOfContextScore=1.000000)
+sshd_4 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sshd_40 : (count=12, prob=0.073529, score=1.000000 | outOfClusterCount=12, OutOfClusterProb=0.073529, outOfContextScore=1.000000)
+sshd_45 : (count=9, prob=0.055882, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sshd_46 : (count=8, prob=0.050000, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sshd_47 : (count=9, prob=0.055882, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sshd_48 : (count=9, prob=0.055882, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sshd_5 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sshd_54 : (count=10, prob=0.061765, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sshd_6 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sshd_7 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sshd_8 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+su_137 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=5, OutOfClusterProb=0.032353, outOfContextScore=1.000000)
+su_26 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+su_50 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+su_51 : (count=8, prob=0.050000, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+su_53 : (count=9, prob=0.055882, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+su_80 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+su_81 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+su_82 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+su_94 : (count=4, prob=0.026471, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+su_95 : (count=4, prob=0.026471, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+su_96 : (count=3, prob=0.020588, score=1.000000 | outOfClusterCount=3, OutOfClusterProb=0.020588, outOfContextScore=1.000000)
+sudo(akparida):/bin/su_135 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo(gnbhat):/bin/su_142 : (count=3, prob=0.020588, score=1.000000 | outOfClusterCount=3, OutOfClusterProb=0.020588, outOfContextScore=1.000000)
+sudo(itimssh):/bin/cat_35 : (count=10, prob=0.061765, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(itimssh):/bin/chmod_33 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(itimssh):/bin/ls_116 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(itimssh):/bin/ls_29 : (count=10, prob=0.061765, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(itimssh):/bin/ls_39 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(itimssh):/usr/bin/faillog_34 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(itimssh):/usr/bin/faillog_37 : (count=10, prob=0.061765, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(itimssh):/usr/bin/groups_36 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(itimssh):/usr/bin/groups_38 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(itimssh):/usr/bin/passwd_118 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo(itimssh):/usr/bin/passwd_67 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(itimssh):list_115 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(kemahesh):/bin/su_139 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo(notes):/bin/cat_23 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(notes):/opt/lotus/notesapi/bounce_tsm_73 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(notesa):/bin/su | /opt/lotus/notesapi/bin64/splitter_110 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesa):/bin/su | grep | cut_97 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesa):/bin/su | xargs_106 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo(notesa):/bin/su | xargs_107 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesa):/bin/su | xargs_108 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesa):/bin/su | xargs_109 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesa):/bin/su_100 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesa):/bin/su_140 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo(notesa):/bin/su_93 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesb):/bin/su | /opt/lotus/notesapi/bin64/splitter_105 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesb):/bin/su | grep | cut_98 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesb):/bin/su | xargs_101 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesb):/bin/su | xargs_102 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesb):/bin/su | xargs_103 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesb):/bin/su | xargs_104 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesb):/bin/su_136 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo(notesb):/bin/su_92 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesb):/bin/su_99 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesssh):/bin/cat_55 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=7, OutOfClusterProb=0.044118, outOfContextScore=1.000000)
+sudo(notesssh):/bin/mv_44 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=5, OutOfClusterProb=0.032353, outOfContextScore=1.000000)
+sudo(root):/etc/init.d/syslog_41 : (count=168, prob=0.991176, score=0.008863 | outOfClusterCount=168, OutOfClusterProb=0.991176, outOfContextScore=0.008863)
+sudo(root):/sbin/vmcp_57 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(root):/usr/local/support/instsan_linux_z.sh_141 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo(sakittus):/bin/su_124 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo(sumabisw):/bin/su_49 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo(support):/bin/su && chown_79 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(support):/bin/su_83 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(support):/sbin/service_129 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo(support):/sbin/vmcp_121 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(support):/usr/local/bin/lssecfixes_120 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(support):/usr/local/support/updtlssecfixes.sh_119 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(wcamargo):/bin/su_138 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo_24 : (count=168, prob=0.991176, score=0.008863 | outOfClusterCount=168, OutOfClusterProb=0.991176, outOfContextScore=0.008863)
+sudo_25 : (count=168, prob=0.991176, score=0.008863 | outOfClusterCount=168, OutOfClusterProb=0.991176, outOfContextScore=0.008863)
+support_27 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+syslog-ng_1 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+syslog-ng_112 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+syslog-ng_113 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+syslog-ng_30 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+syslog-ng_43 : (count=167, prob=0.985294, score=0.014815 | outOfClusterCount=167, OutOfClusterProb=0.985294, outOfContextScore=0.014815)
+zmd_85 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+zmd_86 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+zmd_87 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+zmd_88 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+Trained=true
+Total interval count=169
+/usr/sbin/cron(notes):/home/notes/psefoutput_12 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron(notes):/opt/lotus/notesapi/chk_work_63 : (count=28, prob=0.167647, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron(notes):/opt/lotus/notesapi/tsm_log_scan_22 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron(notes):/usr/bin/sudo_72 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron(notesa):/opt/lotus/notesapi/check_dasd_89 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=7, OutOfClusterProb=0.044118, outOfContextScore=1.000000)
+/usr/sbin/cron(notesa):/opt/lotus/notesapi/domsrv_90 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+/usr/sbin/cron(notesb):/notes/d01ml074/logs/psauxww.sh_21 : (count=168, prob=0.991176, score=0.008863 | outOfClusterCount=168, OutOfClusterProb=0.991176, outOfContextScore=0.008863)
+/usr/sbin/cron(notesb):/opt/lotus/notesapi/domsrv_91 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+/usr/sbin/cron(root):/etc/init.d/synctime_64 : (count=28, prob=0.167647, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron(root):/root/zaware_script.sh_143 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+/usr/sbin/cron(root):/usr/bin/test && /usr/lib/secchk/security-control-vmsd.sh_117 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+/usr/sbin/cron(root):/usr/lib64/sa/sa2_62 : (count=28, prob=0.167647, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron(root):/usr/local/support/workfstest_10 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron(root):/var/adm/perfmgr/bin/clean.account_84 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=7, OutOfClusterProb=0.044118, outOfContextScore=1.000000)
+/usr/sbin/cron(root):/var/adm/perfmgr/bin/package.srm_76 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=7, OutOfClusterProb=0.044118, outOfContextScore=1.000000)
+/usr/sbin/cron(root):/var/adm/perfmgr/bin/terminate.srm ; /var/adm/perfmgr/bin/verify.srm_78 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron(root):/var/adm/perfmgr/bin/verify.srm_20 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron(root):root_77 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron_11 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron_14 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron_3 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+/usr/sbin/cron_9 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+automount_31 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+automount_32 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+kernel_127 : (count=3, prob=0.020588, score=1.000000 | outOfClusterCount=3, OutOfClusterProb=0.020588, outOfContextScore=1.000000)
+kernel_128 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+kernel_130 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+kernel_131 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+kernel_132 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+kernel_133 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+kernel_134 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+kernel_2 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+ntpdate_65 : (count=28, prob=0.167647, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+ntpdate_66 : (count=28, prob=0.167647, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+passwd_125 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+passwd_126 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+passwd_68 : (count=6, prob=0.038235, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+passwd_69 : (count=6, prob=0.038235, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+passwd_70 : (count=6, prob=0.038235, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+passwd_71 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+postfix/cleanup_15 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+postfix/local_17 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+postfix/pickup_13 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+postfix/pickup_74 : (count=17, prob=0.102941, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+postfix/qmgr_16 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+postfix/qmgr_18 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+postfix/smtp_114 : (count=3, prob=0.020588, score=1.000000 | outOfClusterCount=3, OutOfClusterProb=0.020588, outOfContextScore=1.000000)
+postfix/smtp_19 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+postfix/smtp_52 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+postfix/smtp_75 : (count=18, prob=0.108824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+run-crons_42 : (count=168, prob=0.991176, score=0.008863 | outOfClusterCount=168, OutOfClusterProb=0.991176, outOfContextScore=0.008863)
+run-crons_56 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+run-crons_58 : (count=8, prob=0.050000, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+run-crons_59 : (count=8, prob=0.050000, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+run-crons_60 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+run-crons_61 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sshd_111 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=7, OutOfClusterProb=0.044118, outOfContextScore=1.000000)
+sshd_122 : (count=4, prob=0.026471, score=1.000000 | outOfClusterCount=4, OutOfClusterProb=0.026471, outOfContextScore=1.000000)
+sshd_123 : (count=3, prob=0.020588, score=1.000000 | outOfClusterCount=3, OutOfClusterProb=0.020588, outOfContextScore=1.000000)
+sshd_28 : (count=17, prob=0.102941, score=1.000000 | outOfClusterCount=17, OutOfClusterProb=0.102941, outOfContextScore=1.000000)
+sshd_4 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sshd_40 : (count=12, prob=0.073529, score=1.000000 | outOfClusterCount=12, OutOfClusterProb=0.073529, outOfContextScore=1.000000)
+sshd_45 : (count=9, prob=0.055882, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sshd_46 : (count=8, prob=0.050000, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sshd_47 : (count=9, prob=0.055882, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sshd_48 : (count=9, prob=0.055882, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sshd_5 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sshd_54 : (count=10, prob=0.061765, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sshd_6 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sshd_7 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sshd_8 : (count=169, prob=0.997059, score=0.002946 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+su_137 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=5, OutOfClusterProb=0.032353, outOfContextScore=1.000000)
+su_26 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+su_50 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+su_51 : (count=8, prob=0.050000, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+su_53 : (count=9, prob=0.055882, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+su_80 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+su_81 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+su_82 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+su_94 : (count=4, prob=0.026471, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+su_95 : (count=4, prob=0.026471, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+su_96 : (count=3, prob=0.020588, score=1.000000 | outOfClusterCount=3, OutOfClusterProb=0.020588, outOfContextScore=1.000000)
+sudo(akparida):/bin/su_135 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo(gnbhat):/bin/su_142 : (count=3, prob=0.020588, score=1.000000 | outOfClusterCount=3, OutOfClusterProb=0.020588, outOfContextScore=1.000000)
+sudo(itimssh):/bin/cat_35 : (count=10, prob=0.061765, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(itimssh):/bin/chmod_33 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(itimssh):/bin/ls_116 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(itimssh):/bin/ls_29 : (count=10, prob=0.061765, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(itimssh):/bin/ls_39 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(itimssh):/usr/bin/faillog_34 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(itimssh):/usr/bin/faillog_37 : (count=10, prob=0.061765, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(itimssh):/usr/bin/groups_36 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(itimssh):/usr/bin/groups_38 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(itimssh):/usr/bin/passwd_118 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo(itimssh):/usr/bin/passwd_67 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(itimssh):list_115 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(kemahesh):/bin/su_139 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo(notes):/bin/cat_23 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(notes):/opt/lotus/notesapi/bounce_tsm_73 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(notesa):/bin/su | /opt/lotus/notesapi/bin64/splitter_110 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesa):/bin/su | grep | cut_97 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesa):/bin/su | xargs_106 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo(notesa):/bin/su | xargs_107 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesa):/bin/su | xargs_108 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesa):/bin/su | xargs_109 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesa):/bin/su_100 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesa):/bin/su_140 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo(notesa):/bin/su_93 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesb):/bin/su | /opt/lotus/notesapi/bin64/splitter_105 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesb):/bin/su | grep | cut_98 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesb):/bin/su | xargs_101 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesb):/bin/su | xargs_102 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesb):/bin/su | xargs_103 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesb):/bin/su | xargs_104 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesb):/bin/su_136 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo(notesb):/bin/su_92 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesb):/bin/su_99 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(notesssh):/bin/cat_55 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=7, OutOfClusterProb=0.044118, outOfContextScore=1.000000)
+sudo(notesssh):/bin/mv_44 : (count=5, prob=0.032353, score=1.000000 | outOfClusterCount=5, OutOfClusterProb=0.032353, outOfContextScore=1.000000)
+sudo(root):/etc/init.d/syslog_41 : (count=168, prob=0.991176, score=0.008863 | outOfClusterCount=168, OutOfClusterProb=0.991176, outOfContextScore=0.008863)
+sudo(root):/sbin/vmcp_57 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(root):/usr/local/support/instsan_linux_z.sh_141 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo(sakittus):/bin/su_124 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo(sumabisw):/bin/su_49 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo(support):/bin/su && chown_79 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(support):/bin/su_83 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+sudo(support):/sbin/service_129 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo(support):/sbin/vmcp_121 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(support):/usr/local/bin/lssecfixes_120 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(support):/usr/local/support/updtlssecfixes.sh_119 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+sudo(wcamargo):/bin/su_138 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+sudo_24 : (count=168, prob=0.991176, score=0.008863 | outOfClusterCount=168, OutOfClusterProb=0.991176, outOfContextScore=0.008863)
+sudo_25 : (count=168, prob=0.991176, score=0.008863 | outOfClusterCount=168, OutOfClusterProb=0.991176, outOfContextScore=0.008863)
+support_27 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+syslog-ng_1 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+syslog-ng_112 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+syslog-ng_113 : (count=1, prob=0.008824, score=1.000000 | outOfClusterCount=1, OutOfClusterProb=0.008824, outOfContextScore=1.000000)
+syslog-ng_30 : (count=2, prob=0.014706, score=1.000000 | outOfClusterCount=2, OutOfClusterProb=0.014706, outOfContextScore=1.000000)
+syslog-ng_43 : (count=167, prob=0.985294, score=0.014815 | outOfClusterCount=167, OutOfClusterProb=0.985294, outOfContextScore=0.014815)
+zmd_85 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+zmd_86 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+zmd_87 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+zmd_88 : (count=7, prob=0.044118, score=1.000000 | outOfClusterCount=0, OutOfClusterProb=0.002941, outOfContextScore=1.000000)
+Scorer LastSeenLoggingScorerContinuous
+Input arguments: []
+Scorer LastSeenScorer
+Input arguments: []
+Last seen model for /usr/sbin/cron(notes):/home/notes/psefoutput_12: 0.0014892035514677455
+  900, 0.0
+  missing, 0.6931471805599453
+Last seen model for /usr/sbin/cron(notes):/opt/lotus/notesapi/chk_work_63: 0.03636764417087483
+  21600, 0.0
+  missing, 0.6931471805599453
+Last seen model for /usr/sbin/cron(notes):/opt/lotus/notesapi/tsm_log_scan_22: 0.0
+Last seen model for /usr/sbin/cron(notes):/usr/bin/sudo_72: 0.0
+Last seen model for /usr/sbin/cron(notesa):/opt/lotus/notesapi/check_dasd_89: 0.0
+Last seen model for /usr/sbin/cron(notesa):/opt/lotus/notesapi/domsrv_90: 0.0
+Last seen model for /usr/sbin/cron(notesb):/notes/d01ml074/logs/psauxww.sh_21: 0.005970166986503796
+  3600, 0.0
+  missing, 0.6931471805599453
+Last seen model for /usr/sbin/cron(notesb):/opt/lotus/notesapi/domsrv_91: 0.0
+Last seen model for /usr/sbin/cron(root):/etc/init.d/synctime_64: 0.03636764417087483
+  21600, 0.0
+  missing, 0.6931471805599453
+Last seen model for /usr/sbin/cron(root):/root/zaware_script.sh_143: 0.0
+Last seen model for /usr/sbin/cron(root):/usr/bin/test && /usr/lib/secchk/security-control-vmsd.sh_117: 0.0
+Last seen model for /usr/sbin/cron(root):/usr/lib64/sa/sa2_62: 0.03636764417087483
+  21600, 0.0
+  missing, 0.6931471805599453
+Last seen model for /usr/sbin/cron(root):/usr/local/support/workfstest_10: 4.961548104758767E-4
+  300, 0.0
+  missing, 0.6931471805599453
+Last seen model for /usr/sbin/cron(root):/var/adm/perfmgr/bin/clean.account_84: 0.0
+Last seen model for /usr/sbin/cron(root):/var/adm/perfmgr/bin/package.srm_76: 0.0
+Last seen model for /usr/sbin/cron(root):/var/adm/perfmgr/bin/terminate.srm ; /var/adm/perfmgr/bin/verify.srm_78: 0.0
+Last seen model for /usr/sbin/cron(root):/var/adm/perfmgr/bin/verify.srm_20: 0.0029806281381377893
+  1800, 0.0
+  missing, 0.6931471805599453
+Last seen model for /usr/sbin/cron(root):root_77: 0.0
+Last seen model for /usr/sbin/cron_11: 0.004467617259716045
+  900, 0.0
+  missing, 0.6931471805599453
+Last seen model for /usr/sbin/cron_14: 0.005952398527295273
+  900, 0.0
+  missing, 0.6931471805599453
+Last seen model for /usr/sbin/cron_3: 1.3018025571359817
+  30, 0.3902201607828184
+  60, 0.0
+  180, 4.27765769073835
+  210, 1.1515239175687642
+  240, 0.40348490944130155
+  270, 1.0996038603904044
+  300, 0.40645667983045897
+  missing, 0.6931471805599453
+Last seen model for /usr/sbin/cron_9: 1.0940039855819155
+  60, 0.0
+  240, 9.857073247587778E-4
+  300, 0.013889112160667239
+  missing, 0.6931471805599453
+Last seen model for automount_31: 0.0
+Last seen model for automount_32: 0.0
+Last seen model for kernel_127: 0.0
+Last seen model for kernel_128: 0.0
+Last seen model for kernel_130: 0.0
+Last seen model for kernel_131: 0.0
+Last seen model for kernel_132: 0.0
+Last seen model for kernel_133: 0.0
+Last seen model for kernel_134: 0.0
+Last seen model for kernel_2: 0.0
+Last seen model for ntpdate_65: 0.03636764417087483
+  21600, 0.0
+  missing, 0.6931471805599453
+Last seen model for ntpdate_66: 0.03636764417087483
+  21600, 0.0
+  missing, 0.6931471805599453
+Last seen model for passwd_125: 0.0
+Last seen model for passwd_126: 0.0
+Last seen model for passwd_68: 0.0
+Last seen model for passwd_69: 0.0
+Last seen model for passwd_70: 0.0
+Last seen model for passwd_71: 0.0
+Last seen model for postfix/cleanup_15: 0.13830467137718028
+  30, 3.732896339530711
+  60, 4.83150862819882
+  240, 3.145109674628592
+  660, 3.108742030457717
+  840, 4.83150862819882
+  870, 4.138361447638875
+  900, 0.0
+  missing, 0.6931471805599453
+Last seen model for postfix/local_17: 0.0863631627969707
+  240, 3.17030785823329
+  660, 3.1339402140624153
+  900, 0.0
+  missing, 0.6931471805599453
+Last seen model for postfix/pickup_13: 0.0863631627969707
+  240, 3.17030785823329
+  660, 3.1339402140624153
+  900, 0.0
+  missing, 0.6931471805599453
+Last seen model for postfix/pickup_74: 1.3862943611198906
+Last seen model for postfix/qmgr_16: 0.13830467137718028
+  30, 3.732896339530711
+  60, 4.83150862819882
+  240, 3.145109674628592
+  660, 3.108742030457717
+  840, 4.83150862819882
+  870, 4.138361447638875
+  900, 0.0
+  missing, 0.6931471805599453
+Last seen model for postfix/qmgr_18: 0.15024487359826316
+  30, 3.601333174731237
+  60, 4.825108606353353
+  240, 3.138709652783124
+  300, 5.741399338227508
+  600, 5.741399338227508
+  660, 3.1023420086122493
+  840, 4.825108606353353
+  870, 3.9496398689994527
+  900, 0.0
+  missing, 0.6931471805599453
+Last seen model for postfix/smtp_114: 0.0
+Last seen model for postfix/smtp_19: 0.09829334843473388
+  30, 5.766757273817589
+  240, 3.1640675883732055
+  300, 5.766757273817589
+  600, 5.766757273817589
+  660, 3.1276999442023308
+  870, 5.766757273817589
+  900, 0.0
+  missing, 0.6931471805599453
+Last seen model for postfix/smtp_52: 0.0
+Last seen model for postfix/smtp_75: 1.5686159179138452
+Last seen model for run-crons_42: 0.08961215868968717
+  900, 3.129263666178513
+  2700, 3.129263666178513
+  3600, 0.0
+  missing, 0.6931471805599453
+Last seen model for run-crons_56: 0.0
+Last seen model for run-crons_58: 0.0
+Last seen model for run-crons_59: 0.0
+Last seen model for run-crons_60: 0.0
+Last seen model for run-crons_61: 0.0
+Last seen model for sshd_111: 0.0
+Last seen model for sshd_122: 0.0
+Last seen model for sshd_123: 0.0
+Last seen model for sshd_28: 2.890371757896165
+Last seen model for sshd_4: 0.06773035276534735
+  30, 4.320048934397985
+  60, 4.870095271317256
+  90, 5.380920895083246
+  120, 4.870095271317256
+  150, 4.320048934397985
+  180, 4.805556750179685
+  210, 5.380920895083246
+  240, 5.093238822631466
+  270, 5.49870393073963
+  300, 0.0
+  missing, 0.6931471805599453
+Last seen model for sshd_40: 2.1400661634962708
+Last seen model for sshd_45: 2.0794415416798357
+Last seen model for sshd_46: 2.4849066497880004
+Last seen model for sshd_47: 2.639057329615259
+Last seen model for sshd_48: 2.639057329615259
+Last seen model for sshd_5: 0.11539882843852817
+  30, 3.531076278705103
+  60, 4.465385516081937
+  90, 4.848377768338043
+  120, 4.1224407649551065
+  150, 4.224223459265049
+  180, 4.420933753511103
+  210, 4.848377768338043
+  240, 4.6119889902738125
+  270, 4.3783741390923065
+  300, 0.0
+  missing, 0.6931471805599453
+Last seen model for sshd_54: 2.4849066497880004
+Last seen model for sshd_6: 0.06773035276534735
+  30, 4.320048934397985
+  60, 4.870095271317256
+  90, 5.380920895083246
+  120, 4.870095271317256
+  150, 4.320048934397985
+  180, 4.805556750179685
+  210, 5.380920895083246
+  240, 5.093238822631466
+  270, 5.49870393073963
+  300, 0.0
+  missing, 0.6931471805599453
+Last seen model for sshd_7: 0.058124130959907504
+  30, 4.320048934397985
+  60, 5.180250199621096
+  90, 6.479533183751357
+  120, 5.01319611495793
+  150, 4.805556750179685
+  180, 5.632235323364153
+  210, 6.479533183751357
+  240, 5.180250199621096
+  270, 4.870095271317256
+  300, 0.0
+  330, 5.380920895083246
+  390, 6.884998291859521
+  missing, 0.6931471805599453
+Last seen model for sshd_8: 0.08887015375841092
+  30, 3.9796816539019613
+  60, 4.729987248301855
+  90, 5.260615499364025
+  120, 4.472158138999755
+  150, 4.56746831880408
+  180, 4.855150391255862
+  210, 5.260615499364025
+  240, 4.7906118701182905
+  270, 4.518678154634648
+  300, 0.0
+  330, 5.365976015021852
+  390, 6.870053411798126
+  missing, 0.6931471805599453
+Last seen model for su_137: 0.0
+Last seen model for su_26: 0.0
+Last seen model for su_50: 1.178654996341646
+Last seen model for su_51: 1.2039728043259361
+Last seen model for su_53: 1.4469189829363254
+Last seen model for su_80: 0.0
+Last seen model for su_81: 0.0
+Last seen model for su_82: 0.6931471805599453
+Last seen model for su_94: 0.0
+Last seen model for su_95: 0.0
+Last seen model for su_96: 0.0
+Last seen model for sudo(akparida):/bin/su_135: 0.0
+Last seen model for sudo(gnbhat):/bin/su_142: 0.0
+Last seen model for sudo(itimssh):/bin/cat_35: 1.8718021769015913
+Last seen model for sudo(itimssh):/bin/chmod_33: 0.0
+Last seen model for sudo(itimssh):/bin/ls_116: 0.0
+Last seen model for sudo(itimssh):/bin/ls_29: 1.8718021769015913
+Last seen model for sudo(itimssh):/bin/ls_39: 0.0
+Last seen model for sudo(itimssh):/usr/bin/faillog_34: 0.0
+Last seen model for sudo(itimssh):/usr/bin/faillog_37: 1.791759469228055
+Last seen model for sudo(itimssh):/usr/bin/groups_36: 0.0
+Last seen model for sudo(itimssh):/usr/bin/groups_38: 0.0
+Last seen model for sudo(itimssh):/usr/bin/passwd_118: 0.0
+Last seen model for sudo(itimssh):/usr/bin/passwd_67: 0.0
+Last seen model for sudo(itimssh):list_115: 0.0
+Last seen model for sudo(kemahesh):/bin/su_139: 0.0
+Last seen model for sudo(notes):/bin/cat_23: 0.0
+Last seen model for sudo(notes):/opt/lotus/notesapi/bounce_tsm_73: 0.0
+Last seen model for sudo(notesa):/bin/su | /opt/lotus/notesapi/bin64/splitter_110: 0.0
+Last seen model for sudo(notesa):/bin/su | grep | cut_97: 0.0
+Last seen model for sudo(notesa):/bin/su | xargs_106: 0.0
+Last seen model for sudo(notesa):/bin/su | xargs_107: 0.0
+Last seen model for sudo(notesa):/bin/su | xargs_108: 0.0
+Last seen model for sudo(notesa):/bin/su | xargs_109: 0.0
+Last seen model for sudo(notesa):/bin/su_100: 0.0
+Last seen model for sudo(notesa):/bin/su_140: 0.0
+Last seen model for sudo(notesa):/bin/su_93: 0.0
+Last seen model for sudo(notesb):/bin/su | /opt/lotus/notesapi/bin64/splitter_105: 0.0
+Last seen model for sudo(notesb):/bin/su | grep | cut_98: 0.0
+Last seen model for sudo(notesb):/bin/su | xargs_101: 0.0
+Last seen model for sudo(notesb):/bin/su | xargs_102: 0.0
+Last seen model for sudo(notesb):/bin/su | xargs_103: 0.0
+Last seen model for sudo(notesb):/bin/su | xargs_104: 0.0
+Last seen model for sudo(notesb):/bin/su_136: 0.0
+Last seen model for sudo(notesb):/bin/su_92: 0.0
+Last seen model for sudo(notesb):/bin/su_99: 0.0
+Last seen model for sudo(notesssh):/bin/cat_55: 0.0
+Last seen model for sudo(notesssh):/bin/mv_44: 0.0
+Last seen model for sudo(root):/etc/init.d/syslog_41: 0.005970166986503796
+  3600, 0.0
+  missing, 0.6931471805599453
+Last seen model for sudo(root):/sbin/vmcp_57: 0.0
+Last seen model for sudo(root):/usr/local/support/instsan_linux_z.sh_141: 0.0
+Last seen model for sudo(sakittus):/bin/su_124: 0.0
+Last seen model for sudo(sumabisw):/bin/su_49: 0.0
+Last seen model for sudo(support):/bin/su && chown_79: 0.0
+Last seen model for sudo(support):/bin/su_83: 0.0
+Last seen model for sudo(support):/sbin/service_129: 0.0
+Last seen model for sudo(support):/sbin/vmcp_121: 0.0
+Last seen model for sudo(support):/usr/local/bin/lssecfixes_120: 0.0
+Last seen model for sudo(support):/usr/local/support/updtlssecfixes.sh_119: 0.0
+Last seen model for sudo(wcamargo):/bin/su_138: 0.0
+Last seen model for sudo_24: 0.8278040657062025
+  30, 2.406945108318288
+  60, 3.1000922888782334
+  120, 2.630088659632498
+  450, 4.0163830207523885
+  510, 4.0163830207523885
+  570, 4.0163830207523885
+  690, 4.0163830207523885
+  720, 4.0163830207523885
+  840, 4.0163830207523885
+  900, 2.7636200522570205
+  960, 3.6109179126442243
+  990, 3.6109179126442243
+  1020, 4.0163830207523885
+  1110, 4.0163830207523885
+  1200, 2.917770732084279
+  1230, 3.323235840192443
+  1350, 4.0163830207523885
+  1500, 4.0163830207523885
+  1800, 1.7650912221458936
+  1980, 3.323235840192443
+  2370, 3.323235840192443
+  2400, 3.1000922888782334
+  2610, 3.6109179126442243
+  2700, 2.917770732084279
+  3480, 2.7636200522570205
+  3600, 0.0
+  missing, 0.6931471805599453
+Last seen model for sudo_25: 0.8278040657062025
+  30, 2.406945108318288
+  60, 3.1000922888782334
+  120, 2.630088659632498
+  450, 4.0163830207523885
+  510, 4.0163830207523885
+  570, 4.0163830207523885
+  690, 4.0163830207523885
+  720, 4.0163830207523885
+  840, 4.0163830207523885
+  900, 2.7636200522570205
+  960, 3.6109179126442243
+  990, 3.6109179126442243
+  1020, 4.0163830207523885
+  1110, 4.0163830207523885
+  1200, 2.917770732084279
+  1230, 3.323235840192443
+  1350, 4.0163830207523885
+  1500, 4.0163830207523885
+  1800, 1.7650912221458936
+  1980, 3.323235840192443
+  2370, 3.323235840192443
+  2400, 3.1000922888782334
+  2610, 3.6109179126442243
+  2700, 2.917770732084279
+  3480, 2.7636200522570205
+  3600, 0.0
+  missing, 0.6931471805599453
+Last seen model for support_27: 0.0
+Last seen model for syslog-ng_1: 0.0
+Last seen model for syslog-ng_112: 0.0
+Last seen model for syslog-ng_113: 0.0
+Last seen model for syslog-ng_30: 0.0
+Last seen model for syslog-ng_43: 0.02424361160999274
+  3600, 0.0
+  3630, 4.400603020246817
+  missing, 0.6931471805599453
+Last seen model for zmd_85: 0.0
+Last seen model for zmd_86: 0.0
+Last seen model for zmd_87: 0.0
+Last seen model for zmd_88: 0.0
+Scorer BestOfTwoScorer
+Input arguments: [firstScoreString=FullBernoulliClusterAwareScore.logProb, secondScoreString=LastSeenScorer.LogProbGivenLast]
+Scorer SeverityScore
+Input arguments: []
+Scorer LogNormalScore
+Input arguments: [baseScorer=ClusteringContextScore, noPeneltyOnMean=true]
+Trained=true
+Total interval count=169
+min lambda=0.033007008598092635
+/usr/sbin/cron(notes):/home/notes/psefoutput_12 : sumOfLogCounts=232.609771 intervalCount=169 lambda=1.376389 intervalAllCount=169 allCount=672, maxAppear=4, badFit=false
+/usr/sbin/cron(notes):/opt/lotus/notesapi/chk_work_63 : sumOfLogCounts=0.000000 intervalCount=28 lambda=0.000000 intervalAllCount=28 allCount=28, maxAppear=1, badFit=false
+/usr/sbin/cron(notes):/opt/lotus/notesapi/tsm_log_scan_22 : sumOfLogCounts=0.000000 intervalCount=7 lambda=0.000000 intervalAllCount=7 allCount=7, maxAppear=1, badFit=false
+/usr/sbin/cron(notes):/usr/bin/sudo_72 : sumOfLogCounts=0.000000 intervalCount=7 lambda=0.000000 intervalAllCount=7 allCount=7, maxAppear=1, badFit=false
+/usr/sbin/cron(notesa):/opt/lotus/notesapi/check_dasd_89 : sumOfLogCounts=0.000000 intervalCount=7 lambda=0.000000 intervalAllCount=7 allCount=7, maxAppear=1, badFit=false
+/usr/sbin/cron(notesa):/opt/lotus/notesapi/domsrv_90 : sumOfLogCounts=0.000000 intervalCount=1 lambda=0.000000 intervalAllCount=1 allCount=1, maxAppear=1, badFit=false
+/usr/sbin/cron(notesb):/notes/d01ml074/logs/psauxww.sh_21 : sumOfLogCounts=0.000000 intervalCount=168 lambda=0.000000 intervalAllCount=168 allCount=168, maxAppear=1, badFit=false
+/usr/sbin/cron(notesb):/opt/lotus/notesapi/domsrv_91 : sumOfLogCounts=0.000000 intervalCount=1 lambda=0.000000 intervalAllCount=1 allCount=1, maxAppear=1, badFit=false
+/usr/sbin/cron(root):/etc/init.d/synctime_64 : sumOfLogCounts=0.000000 intervalCount=28 lambda=0.000000 intervalAllCount=28 allCount=28, maxAppear=1, badFit=false
+/usr/sbin/cron(root):/root/zaware_script.sh_143 : sumOfLogCounts=0.000000 intervalCount=1 lambda=0.000000 intervalAllCount=1 allCount=1, maxAppear=1, badFit=false
+/usr/sbin/cron(root):/usr/bin/test && /usr/lib/secchk/security-control-vmsd.sh_117 : sumOfLogCounts=0.000000 intervalCount=2 lambda=0.000000 intervalAllCount=2 allCount=2, maxAppear=1, badFit=false
+/usr/sbin/cron(root):/usr/lib64/sa/sa2_62 : sumOfLogCounts=19.408121 intervalCount=28 lambda=0.693147 intervalAllCount=28 allCount=56, maxAppear=2, badFit=false
+/usr/sbin/cron(root):/usr/local/support/workfstest_10 : sumOfLogCounts=418.534759 intervalCount=169 lambda=2.476537 intervalAllCount=169 allCount=2016, maxAppear=12, badFit=false
+/usr/sbin/cron(root):/var/adm/perfmgr/bin/clean.account_84 : sumOfLogCounts=0.000000 intervalCount=7 lambda=0.000000 intervalAllCount=7 allCount=7, maxAppear=1, badFit=false
+/usr/sbin/cron(root):/var/adm/perfmgr/bin/package.srm_76 : sumOfLogCounts=0.000000 intervalCount=7 lambda=0.000000 intervalAllCount=7 allCount=7, maxAppear=1, badFit=false
+/usr/sbin/cron(root):/var/adm/perfmgr/bin/terminate.srm ; /var/adm/perfmgr/bin/verify.srm_78 : sumOfLogCounts=0.000000 intervalCount=7 lambda=0.000000 intervalAllCount=7 allCount=7, maxAppear=1, badFit=false
+/usr/sbin/cron(root):/var/adm/perfmgr/bin/verify.srm_20 : sumOfLogCounts=115.755579 intervalCount=169 lambda=0.684944 intervalAllCount=169 allCount=336, maxAppear=2, badFit=false
+/usr/sbin/cron(root):root_77 : sumOfLogCounts=0.000000 intervalCount=7 lambda=0.000000 intervalAllCount=7 allCount=7, maxAppear=1, badFit=false
+/usr/sbin/cron_11 : sumOfLogCounts=279.383864 intervalCount=169 lambda=1.653159 intervalAllCount=169 allCount=891, maxAppear=8, badFit=false
+/usr/sbin/cron_14 : sumOfLogCounts=279.383864 intervalCount=169 lambda=1.653159 intervalAllCount=169 allCount=891, maxAppear=8, badFit=false
+/usr/sbin/cron_3 : sumOfLogCounts=640.567762 intervalCount=169 lambda=3.790342 intervalAllCount=169 allCount=7506, maxAppear=51, badFit=false
+/usr/sbin/cron_9 : sumOfLogCounts=640.594887 intervalCount=169 lambda=3.790502 intervalAllCount=169 allCount=7507, maxAppear=50, badFit=false
+automount_31 : sumOfLogCounts=5.493061 intervalCount=5 lambda=1.098612 intervalAllCount=5 allCount=15, maxAppear=3, badFit=false
+automount_32 : sumOfLogCounts=5.493061 intervalCount=5 lambda=1.098612 intervalAllCount=5 allCount=15, maxAppear=3, badFit=false
+kernel_127 : sumOfLogCounts=0.000000 intervalCount=3 lambda=0.000000 intervalAllCount=3 allCount=3, maxAppear=1, badFit=false
+kernel_128 : sumOfLogCounts=0.000000 intervalCount=1 lambda=0.000000 intervalAllCount=1 allCount=1, maxAppear=1, badFit=false
+kernel_130 : sumOfLogCounts=3.332205 intervalCount=1 lambda=3.332205 intervalAllCount=1 allCount=28, maxAppear=28, badFit=false
+kernel_131 : sumOfLogCounts=3.332205 intervalCount=1 lambda=3.332205 intervalAllCount=1 allCount=28, maxAppear=28, badFit=false
+kernel_132 : sumOfLogCounts=3.332205 intervalCount=1 lambda=3.332205 intervalAllCount=1 allCount=28, maxAppear=28, badFit=false
+kernel_133 : sumOfLogCounts=3.401197 intervalCount=1 lambda=3.401197 intervalAllCount=1 allCount=30, maxAppear=30, badFit=false
+kernel_134 : sumOfLogCounts=3.401197 intervalCount=1 lambda=3.401197 intervalAllCount=1 allCount=30, maxAppear=30, badFit=false
+kernel_2 : sumOfLogCounts=0.000000 intervalCount=1 lambda=0.000000 intervalAllCount=1 allCount=1, maxAppear=1, badFit=false
+ntpdate_65 : sumOfLogCounts=0.000000 intervalCount=28 lambda=0.000000 intervalAllCount=28 allCount=28, maxAppear=1, badFit=false
+ntpdate_66 : sumOfLogCounts=0.000000 intervalCount=28 lambda=0.000000 intervalAllCount=28 allCount=28, maxAppear=1, badFit=false
+passwd_125 : sumOfLogCounts=0.000000 intervalCount=1 lambda=0.000000 intervalAllCount=1 allCount=1, maxAppear=1, badFit=false
+passwd_126 : sumOfLogCounts=0.000000 intervalCount=1 lambda=0.000000 intervalAllCount=1 allCount=1, maxAppear=1, badFit=false
+passwd_68 : sumOfLogCounts=4.852030 intervalCount=6 lambda=0.808672 intervalAllCount=6 allCount=14, maxAppear=4, badFit=false
+passwd_69 : sumOfLogCounts=9.010913 intervalCount=6 lambda=1.501819 intervalAllCount=6 allCount=28, maxAppear=8, badFit=false
+passwd_70 : sumOfLogCounts=9.010913 intervalCount=6 lambda=1.501819 intervalAllCount=6 allCount=28, maxAppear=8, badFit=false
+passwd_71 : sumOfLogCounts=0.000000 intervalCount=7 lambda=0.000000 intervalAllCount=7 allCount=7, maxAppear=1, badFit=false
+postfix/cleanup_15 : sumOfLogCounts=473.710898 intervalCount=169 lambda=2.803023 intervalAllCount=169 allCount=2806, maxAppear=22, badFit=false
+postfix/local_17 : sumOfLogCounts=354.824667 intervalCount=169 lambda=2.099554 intervalAllCount=169 allCount=1388, maxAppear=11, badFit=false
+postfix/pickup_13 : sumOfLogCounts=354.942450 intervalCount=169 lambda=2.100251 intervalAllCount=169 allCount=1389, maxAppear=11, badFit=false
+postfix/pickup_74 : sumOfLogCounts=8.317766 intervalCount=17 lambda=0.489280 intervalAllCount=17 allCount=29, maxAppear=2, badFit=false
+postfix/qmgr_16 : sumOfLogCounts=473.710898 intervalCount=169 lambda=2.803023 intervalAllCount=169 allCount=2806, maxAppear=22, badFit=false
+postfix/qmgr_18 : sumOfLogCounts=473.710898 intervalCount=169 lambda=2.803023 intervalAllCount=169 allCount=2806, maxAppear=22, badFit=false
+postfix/smtp_114 : sumOfLogCounts=0.000000 intervalCount=3 lambda=0.000000 intervalAllCount=3 allCount=3, maxAppear=1, badFit=false
+postfix/smtp_19 : sumOfLogCounts=354.824667 intervalCount=169 lambda=2.099554 intervalAllCount=169 allCount=1388, maxAppear=11, badFit=false
+postfix/smtp_52 : sumOfLogCounts=0.000000 intervalCount=2 lambda=0.000000 intervalAllCount=2 allCount=2, maxAppear=1, badFit=false
+postfix/smtp_75 : sumOfLogCounts=8.317766 intervalCount=18 lambda=0.462098 intervalAllCount=18 allCount=30, maxAppear=2, badFit=false
+run-crons_42 : sumOfLogCounts=5.545177 intervalCount=168 lambda=0.033007 intervalAllCount=168 allCount=176, maxAppear=2, badFit=false
+run-crons_56 : sumOfLogCounts=0.000000 intervalCount=7 lambda=0.000000 intervalAllCount=7 allCount=7, maxAppear=1, badFit=false
+run-crons_58 : sumOfLogCounts=0.000000 intervalCount=8 lambda=0.000000 intervalAllCount=8 allCount=8, maxAppear=1, badFit=false
+run-crons_59 : sumOfLogCounts=0.000000 intervalCount=8 lambda=0.000000 intervalAllCount=8 allCount=8, maxAppear=1, badFit=false
+run-crons_60 : sumOfLogCounts=0.000000 intervalCount=7 lambda=0.000000 intervalAllCount=7 allCount=7, maxAppear=1, badFit=false
+run-crons_61 : sumOfLogCounts=9.704061 intervalCount=7 lambda=1.386294 intervalAllCount=7 allCount=28, maxAppear=4, badFit=false
+sshd_111 : sumOfLogCounts=0.000000 intervalCount=7 lambda=0.000000 intervalAllCount=7 allCount=7, maxAppear=1, badFit=false
+sshd_122 : sumOfLogCounts=2.079442 intervalCount=4 lambda=0.519860 intervalAllCount=4 allCount=7, maxAppear=2, badFit=false
+sshd_123 : sumOfLogCounts=1.386294 intervalCount=3 lambda=0.462098 intervalAllCount=3 allCount=5, maxAppear=2, badFit=false
+sshd_28 : sumOfLogCounts=3.871201 intervalCount=17 lambda=0.227718 intervalAllCount=17 allCount=23, maxAppear=3, badFit=false
+sshd_4 : sumOfLogCounts=432.775408 intervalCount=169 lambda=2.560801 intervalAllCount=169 allCount=2225, maxAppear=22, badFit=false
+sshd_40 : sumOfLogCounts=9.234057 intervalCount=12 lambda=0.769505 intervalAllCount=12 allCount=31, maxAppear=5, badFit=false
+sshd_45 : sumOfLogCounts=7.049255 intervalCount=9 lambda=0.783251 intervalAllCount=9 allCount=22, maxAppear=4, badFit=false
+sshd_46 : sumOfLogCounts=2.484907 intervalCount=8 lambda=0.310613 intervalAllCount=8 allCount=12, maxAppear=3, badFit=false
+sshd_47 : sumOfLogCounts=3.178054 intervalCount=9 lambda=0.353117 intervalAllCount=9 allCount=14, maxAppear=3, badFit=false
+sshd_48 : sumOfLogCounts=3.178054 intervalCount=9 lambda=0.353117 intervalAllCount=9 allCount=14, maxAppear=3, badFit=false
+sshd_5 : sumOfLogCounts=619.477007 intervalCount=169 lambda=3.665544 intervalAllCount=169 allCount=6717, maxAppear=66, badFit=false
+sshd_54 : sumOfLogCounts=1.791759 intervalCount=10 lambda=0.179176 intervalAllCount=10 allCount=13, maxAppear=3, badFit=false
+sshd_6 : sumOfLogCounts=432.775408 intervalCount=169 lambda=2.560801 intervalAllCount=169 allCount=2225, maxAppear=22, badFit=false
+sshd_7 : sumOfLogCounts=425.244463 intervalCount=169 lambda=2.516239 intervalAllCount=169 allCount=2114, maxAppear=22, badFit=false
+sshd_8 : sumOfLogCounts=432.847902 intervalCount=169 lambda=2.561230 intervalAllCount=169 allCount=2226, maxAppear=22, badFit=false
+su_137 : sumOfLogCounts=3.713572 intervalCount=5 lambda=0.742714 intervalAllCount=5 allCount=45, maxAppear=41, badFit=false
+su_26 : sumOfLogCounts=0.000000 intervalCount=1 lambda=0.000000 intervalAllCount=1 allCount=1, maxAppear=1, badFit=false
+su_50 : sumOfLogCounts=5.817111 intervalCount=7 lambda=0.831016 intervalAllCount=7 allCount=60, maxAppear=48, badFit=false
+su_51 : sumOfLogCounts=9.149316 intervalCount=8 lambda=1.143664 intervalAllCount=8 allCount=105, maxAppear=49, badFit=false
+su_53 : sumOfLogCounts=8.414496 intervalCount=9 lambda=0.934944 intervalAllCount=9 allCount=103, maxAppear=48, badFit=false
+su_80 : sumOfLogCounts=4.852030 intervalCount=7 lambda=0.693147 intervalAllCount=7 allCount=14, maxAppear=2, badFit=false
+su_81 : sumOfLogCounts=4.852030 intervalCount=7 lambda=0.693147 intervalAllCount=7 allCount=14, maxAppear=2, badFit=false
+su_82 : sumOfLogCounts=4.852030 intervalCount=7 lambda=0.693147 intervalAllCount=7 allCount=14, maxAppear=2, badFit=false
+su_94 : sumOfLogCounts=4.574711 intervalCount=4 lambda=1.143678 intervalAllCount=4 allCount=100, maxAppear=97, badFit=false
+su_95 : sumOfLogCounts=4.574711 intervalCount=4 lambda=1.143678 intervalAllCount=4 allCount=100, maxAppear=97, badFit=false
+su_96 : sumOfLogCounts=5.267858 intervalCount=3 lambda=1.755953 intervalAllCount=3 allCount=100, maxAppear=97, badFit=false
+sudo(akparida):/bin/su_135 : sumOfLogCounts=0.000000 intervalCount=1 lambda=0.000000 intervalAllCount=1 allCount=1, maxAppear=1, badFit=false
+sudo(gnbhat):/bin/su_142 : sumOfLogCounts=1.386294 intervalCount=3 lambda=0.462098 intervalAllCount=3 allCount=5, maxAppear=2, badFit=false
+sudo(itimssh):/bin/cat_35 : sumOfLogCounts=21.872241 intervalCount=10 lambda=2.187224 intervalAllCount=10 allCount=402, maxAppear=81, badFit=false
+sudo(itimssh):/bin/chmod_33 : sumOfLogCounts=0.000000 intervalCount=5 lambda=0.000000 intervalAllCount=5 allCount=5, maxAppear=1, badFit=false
+sudo(itimssh):/bin/ls_116 : sumOfLogCounts=0.000000 intervalCount=5 lambda=0.000000 intervalAllCount=5 allCount=5, maxAppear=1, badFit=false
+sudo(itimssh):/bin/ls_29 : sumOfLogCounts=16.696114 intervalCount=10 lambda=1.669611 intervalAllCount=10 allCount=146, maxAppear=29, badFit=false
+sudo(itimssh):/bin/ls_39 : sumOfLogCounts=0.000000 intervalCount=5 lambda=0.000000 intervalAllCount=5 allCount=5, maxAppear=1, badFit=false
+sudo(itimssh):/usr/bin/faillog_34 : sumOfLogCounts=3.465736 intervalCount=5 lambda=0.693147 intervalAllCount=5 allCount=10, maxAppear=2, badFit=false
+sudo(itimssh):/usr/bin/faillog_37 : sumOfLogCounts=21.383331 intervalCount=10 lambda=2.138333 intervalAllCount=10 allCount=365, maxAppear=72, badFit=false
+sudo(itimssh):/usr/bin/groups_36 : sumOfLogCounts=21.383331 intervalCount=5 lambda=4.276666 intervalAllCount=5 allCount=360, maxAppear=72, badFit=false
+sudo(itimssh):/usr/bin/groups_38 : sumOfLogCounts=0.000000 intervalCount=5 lambda=0.000000 intervalAllCount=5 allCount=5, maxAppear=1, badFit=false
+sudo(itimssh):/usr/bin/passwd_118 : sumOfLogCounts=0.000000 intervalCount=1 lambda=0.000000 intervalAllCount=1 allCount=1, maxAppear=1, badFit=false
+sudo(itimssh):/usr/bin/passwd_67 : sumOfLogCounts=0.000000 intervalCount=5 lambda=0.000000 intervalAllCount=5 allCount=5, maxAppear=1, badFit=false
+sudo(itimssh):list_115 : sumOfLogCounts=0.000000 intervalCount=5 lambda=0.000000 intervalAllCount=5 allCount=5, maxAppear=1, badFit=false
+sudo(kemahesh):/bin/su_139 : sumOfLogCounts=0.693147 intervalCount=1 lambda=0.693147 intervalAllCount=1 allCount=2, maxAppear=2, badFit=false
+sudo(notes):/bin/cat_23 : sumOfLogCounts=0.000000 intervalCount=7 lambda=0.000000 intervalAllCount=7 allCount=7, maxAppear=1, badFit=false
+sudo(notes):/opt/lotus/notesapi/bounce_tsm_73 : sumOfLogCounts=0.000000 intervalCount=7 lambda=0.000000 intervalAllCount=7 allCount=7, maxAppear=1, badFit=false
+sudo(notesa):/bin/su | /opt/lotus/notesapi/bin64/splitter_110 : sumOfLogCounts=0.000000 intervalCount=2 lambda=0.000000 intervalAllCount=2 allCount=2, maxAppear=1, badFit=false
+sudo(notesa):/bin/su | grep | cut_97 : sumOfLogCounts=1.386294 intervalCount=2 lambda=0.693147 intervalAllCount=2 allCount=4, maxAppear=2, badFit=false
+sudo(notesa):/bin/su | xargs_106 : sumOfLogCounts=1.386294 intervalCount=1 lambda=1.386294 intervalAllCount=1 allCount=4, maxAppear=4, badFit=false
+sudo(notesa):/bin/su | xargs_107 : sumOfLogCounts=0.000000 intervalCount=2 lambda=0.000000 intervalAllCount=2 allCount=2, maxAppear=1, badFit=false
+sudo(notesa):/bin/su | xargs_108 : sumOfLogCounts=2.484907 intervalCount=2 lambda=1.242453 intervalAllCount=2 allCount=7, maxAppear=4, badFit=false
+sudo(notesa):/bin/su | xargs_109 : sumOfLogCounts=0.693147 intervalCount=2 lambda=0.346574 intervalAllCount=2 allCount=3, maxAppear=2, badFit=false
+sudo(notesa):/bin/su_100 : sumOfLogCounts=2.772589 intervalCount=2 lambda=1.386294 intervalAllCount=2 allCount=8, maxAppear=4, badFit=false
+sudo(notesa):/bin/su_140 : sumOfLogCounts=3.496508 intervalCount=1 lambda=3.496508 intervalAllCount=1 allCount=33, maxAppear=33, badFit=false
+sudo(notesa):/bin/su_93 : sumOfLogCounts=3.401197 intervalCount=2 lambda=1.700599 intervalAllCount=2 allCount=31, maxAppear=30, badFit=false
+sudo(notesb):/bin/su | /opt/lotus/notesapi/bin64/splitter_105 : sumOfLogCounts=0.000000 intervalCount=2 lambda=0.000000 intervalAllCount=2 allCount=2, maxAppear=1, badFit=false
+sudo(notesb):/bin/su | grep | cut_98 : sumOfLogCounts=1.386294 intervalCount=2 lambda=0.693147 intervalAllCount=2 allCount=4, maxAppear=2, badFit=false
+sudo(notesb):/bin/su | xargs_101 : sumOfLogCounts=2.772589 intervalCount=2 lambda=1.386294 intervalAllCount=2 allCount=8, maxAppear=4, badFit=false
+sudo(notesb):/bin/su | xargs_102 : sumOfLogCounts=0.000000 intervalCount=2 lambda=0.000000 intervalAllCount=2 allCount=2, maxAppear=1, badFit=false
+sudo(notesb):/bin/su | xargs_103 : sumOfLogCounts=2.484907 intervalCount=2 lambda=1.242453 intervalAllCount=2 allCount=7, maxAppear=4, badFit=false
+sudo(notesb):/bin/su | xargs_104 : sumOfLogCounts=0.693147 intervalCount=2 lambda=0.346574 intervalAllCount=2 allCount=3, maxAppear=2, badFit=false
+sudo(notesb):/bin/su_136 : sumOfLogCounts=3.401197 intervalCount=1 lambda=3.401197 intervalAllCount=1 allCount=30, maxAppear=30, badFit=false
+sudo(notesb):/bin/su_92 : sumOfLogCounts=3.433987 intervalCount=2 lambda=1.716994 intervalAllCount=2 allCount=32, maxAppear=31, badFit=false
+sudo(notesb):/bin/su_99 : sumOfLogCounts=2.772589 intervalCount=2 lambda=1.386294 intervalAllCount=2 allCount=8, maxAppear=4, badFit=false
+sudo(notesssh):/bin/cat_55 : sumOfLogCounts=0.000000 intervalCount=7 lambda=0.000000 intervalAllCount=7 allCount=7, maxAppear=1, badFit=false
+sudo(notesssh):/bin/mv_44 : sumOfLogCounts=3.465736 intervalCount=5 lambda=0.693147 intervalAllCount=5 allCount=10, maxAppear=2, badFit=false
+sudo(root):/etc/init.d/syslog_41 : sumOfLogCounts=0.000000 intervalCount=168 lambda=0.000000 intervalAllCount=168 allCount=168, maxAppear=1, badFit=false
+sudo(root):/sbin/vmcp_57 : sumOfLogCounts=0.000000 intervalCount=7 lambda=0.000000 intervalAllCount=7 allCount=7, maxAppear=1, badFit=false
+sudo(root):/usr/local/support/instsan_linux_z.sh_141 : sumOfLogCounts=0.000000 intervalCount=1 lambda=0.000000 intervalAllCount=1 allCount=1, maxAppear=1, badFit=false
+sudo(sakittus):/bin/su_124 : sumOfLogCounts=0.000000 intervalCount=1 lambda=0.000000 intervalAllCount=1 allCount=1, maxAppear=1, badFit=false
+sudo(sumabisw):/bin/su_49 : sumOfLogCounts=0.000000 intervalCount=1 lambda=0.000000 intervalAllCount=1 allCount=1, maxAppear=1, badFit=false
+sudo(support):/bin/su && chown_79 : sumOfLogCounts=0.000000 intervalCount=7 lambda=0.000000 intervalAllCount=7 allCount=7, maxAppear=1, badFit=false
+sudo(support):/bin/su_83 : sumOfLogCounts=0.000000 intervalCount=7 lambda=0.000000 intervalAllCount=7 allCount=7, maxAppear=1, badFit=false
+sudo(support):/sbin/service_129 : sumOfLogCounts=0.000000 intervalCount=1 lambda=0.000000 intervalAllCount=1 allCount=1, maxAppear=1, badFit=false
+sudo(support):/sbin/vmcp_121 : sumOfLogCounts=0.693147 intervalCount=2 lambda=0.346574 intervalAllCount=2 allCount=3, maxAppear=2, badFit=false
+sudo(support):/usr/local/bin/lssecfixes_120 : sumOfLogCounts=0.693147 intervalCount=2 lambda=0.346574 intervalAllCount=2 allCount=3, maxAppear=2, badFit=false
+sudo(support):/usr/local/support/updtlssecfixes.sh_119 : sumOfLogCounts=0.693147 intervalCount=2 lambda=0.346574 intervalAllCount=2 allCount=3, maxAppear=2, badFit=false
+sudo(wcamargo):/bin/su_138 : sumOfLogCounts=0.000000 intervalCount=1 lambda=0.000000 intervalAllCount=1 allCount=1, maxAppear=1, badFit=false
+sudo_24 : sumOfLogCounts=87.302577 intervalCount=168 lambda=0.519658 intervalAllCount=168 allCount=1741, maxAppear=261, badFit=true
+sudo_25 : sumOfLogCounts=87.302577 intervalCount=168 lambda=0.519658 intervalAllCount=168 allCount=1741, maxAppear=261, badFit=true
+support_27 : sumOfLogCounts=0.000000 intervalCount=1 lambda=0.000000 intervalAllCount=1 allCount=1, maxAppear=1, badFit=false
+syslog-ng_1 : sumOfLogCounts=0.000000 intervalCount=1 lambda=0.000000 intervalAllCount=1 allCount=1, maxAppear=1, badFit=false
+syslog-ng_112 : sumOfLogCounts=0.693147 intervalCount=1 lambda=0.693147 intervalAllCount=1 allCount=2, maxAppear=2, badFit=false
+syslog-ng_113 : sumOfLogCounts=0.693147 intervalCount=1 lambda=0.693147 intervalAllCount=1 allCount=2, maxAppear=2, badFit=false
+syslog-ng_30 : sumOfLogCounts=1.386294 intervalCount=2 lambda=0.693147 intervalAllCount=2 allCount=4, maxAppear=2, badFit=false
+syslog-ng_43 : sumOfLogCounts=0.000000 intervalCount=167 lambda=0.000000 intervalAllCount=167 allCount=167, maxAppear=1, badFit=false
+zmd_85 : sumOfLogCounts=0.000000 intervalCount=7 lambda=0.000000 intervalAllCount=7 allCount=7, maxAppear=1, badFit=false
+zmd_86 : sumOfLogCounts=0.000000 intervalCount=7 lambda=0.000000 intervalAllCount=7 allCount=7, maxAppear=1, badFit=false
+zmd_87 : sumOfLogCounts=0.000000 intervalCount=7 lambda=0.000000 intervalAllCount=7 allCount=7, maxAppear=1, badFit=false
+zmd_88 : sumOfLogCounts=0.000000 intervalCount=7 lambda=0.000000 intervalAllCount=7 allCount=7, maxAppear=1, badFit=false
+Scorer AdeWeightedMessageAnomalyScorerLogNormal
+Input arguments: [baseScorer=ClusteringContextScore, countScorer=LogNormalScore, rarityScorer=BestOfTwoScorer, severityScorer=SeverityScore]
+Ade 1 message anomaly scorer.
+Scorer AdeAnomalyIntervalScorer
+Input arguments: []
+consideringEmptyIntervals = false
+intervalCount = 169
+percentiles:
+    0:  -22.24964
+    1:  -22.24964
+    2:  -22.24964
+    3:  -22.24964
+    4:  -22.24964
+    5:  -22.24964
+    6:  -22.24964
+    7:  -22.24964
+    8:  -22.24964
+    9:  -22.24964
+   10:  -22.24964
+   11:  -22.24964
+   12:  -22.24964
+   13:  -22.24964
+   14:  -22.24964
+   15:  -22.24964
+   16:  -22.24964
+   17:  -22.24964
+   18:  -22.24964
+   19:  -22.24964
+   20:  -22.24964
+   21:  -22.24964
+   22:  -22.24964
+   23:  -22.24964
+   24:  -22.24964
+   25:  -22.24964
+   26:  -22.24964
+   27:  -22.24964
+   28:  -22.24964
+   29:  -22.24964
+   30:  -22.24964
+   31:  -22.24964
+   32:  -22.24964
+   33:  -22.24964
+   34:  -22.24964
+   35:  -22.24964
+   36:  -22.24964
+   37:  -22.24964
+   38:  -22.24964
+   39:  -22.24964
+   40:  -22.24964
+   41:  -22.24964
+   42:  -22.24964
+   43:  -22.24964
+   44:  -22.24964
+   45:  -22.24964
+   46:  -22.24964
+   47:  -22.24964
+   48:  -22.24964
+   49:  -22.24964
+   50:  -22.24964
+   51:  -22.24964
+   52:  -22.24964
+   53:  -22.24964
+   54:  -22.24964
+   55:  -22.24964
+   56:  -22.24964
+   57:  -22.24964
+   58:  -22.24964
+   59:  -22.24964
+   60:  -22.24964
+   61:  -22.24964
+   62:  -22.24964
+   63:  -22.24964
+   64:  -22.24964
+   65:  -22.24964
+   66:  -22.24964
+   67:  -22.24964
+   68:  -22.24964
+   69:  -22.24964
+   70:  -22.24964
+   71:  -22.24964
+   72:  -22.24964
+   73:  -22.24964
+   74:  -22.24964
+   75:  -22.24964
+   76:  -22.24964
+   77:  -22.24964
+   78:  -22.24964
+   79:  -22.24964
+   80:  -22.24964
+   81:  -22.24964
+   82:  -22.24964
+   83:  -22.24964
+   84:  -22.24964
+   85:  -22.24964
+   86:  -22.24964
+   87:  -22.24964
+   88:  -22.24964
+   89:  -22.24964
+   90:  -22.24964
+   91:  -22.24964
+   92:  -22.24964
+   93:  -22.24964
+   94:  -22.24964
+   95:  -22.24964
+   96:  -22.24964
+   97:  -22.24964
+   98:  -22.24964
+   99:  -22.24964
+  100:  -22.24964
+  101:  -22.24964
+  102:  -22.24964
+  103:  -22.24964
+  104:  -22.24964
+  105:  -22.24964
+  106:  -22.24964
+  107:  -22.24964
+  108:  -22.24964
+  109:  -22.24964
+  110:  -22.24964
+  111:  -22.24964
+  112:  -22.24964
+  113:  -22.24964
+  114:  -22.24964
+  115:  -22.24964
+  116:  -22.24964
+  117:  -22.24964
+  118:  -22.24964
+  119:  -22.24964
+  120:  -22.24964
+  121:  -22.24964
+  122:  -22.24964
+  123:  -22.24964
+  124:  -22.24964
+  125:  -22.24964
+  126:  -22.24964
+  127:  -22.24964
+  128:  -22.24964
+  129:  -22.24964
+  130:  -22.24964
+  131:  -22.24964
+  132:  -22.24964
+  133:  -22.24964
+  134:  -22.24964
+  135:  -22.24964
+  136:  -22.24964
+  137:  -22.24964
+  138:  -22.24964
+  139:  -22.24964
+  140:  -22.24964
+  141:  -22.24964
+  142:  -22.24964
+  143:  -22.24964
+  144:  -22.24964
+  145:  -22.24964
+  146:  -22.24964
+  147:  -22.24964
+  148:  -22.24964
+  149:  -22.24964
+  150:  -22.24964
+  151:  -22.24964
+  152:  -22.24964
+  153:  -22.24964
+  154:  -22.24964
+  155:  -22.24964
+  156:  -22.24964
+  157:  -22.24964
+  158:  -22.24964
+  159:  -22.24964
+  160:  -22.24964
+  161:  -22.24964
+  162:  -22.24964
+  163:  -22.24964
+  164:  -22.24964
+  165:  -22.24964
+  166:  -22.24964
+  167:  -22.24964
+  168:  -22.24964
+  169:  -22.24964
+  170:  -22.24964
+  171:  -22.24964
+  172:  -22.24964
+  173:  -22.24964
+  174:  -22.24964
+  175:  -22.24964
+  176:  -22.24964
+  177:  -22.24964
+  178:  -22.24964
+  179:  -22.24964
+  180:  -22.24964
+  181:  -22.24964
+  182:  -22.24964
+  183:  -22.24964
+  184:  -22.24964
+  185:  -22.24964
+  186:  -22.24964
+  187:  -22.24964
+  188:  -22.24964
+  189:  -22.24964
+  190:  -22.24964
+  191:  -22.24964
+  192:  -22.24964
+  193:  -22.24964
+  194:  -22.24964
+  195:  -22.24964
+  196:  -22.24964
+  197:  -22.24964
+  198:  -22.24964
+  199:  -22.24964
+  200:  -22.24964
+  201:  -22.24964
+  202:  -22.24964
+  203:  -22.24964
+  204:  -22.24964
+  205:  -22.24964
+  206:  -22.24964
+  207:  -22.24964
+  208:  -22.24964
+  209:  -22.24964
+  210:  -22.24964
+  211:  -22.24964
+  212:  -22.24964
+  213:  -22.24964
+  214:  -22.24964
+  215:  -22.24964
+  216:  -22.24964
+  217:  -22.24964
+  218:  -22.24964
+  219:  -22.24964
+  220:  -22.24964
+  221:  -22.24964
+  222:  -22.24964
+  223:  -22.24964
+  224:  -22.24964
+  225:  -22.24964
+  226:  -22.24964
+  227:  -22.24964
+  228:  -22.24964
+  229:  -22.24964
+  230:  -22.24964
+  231:  -22.24964
+  232:  -22.24964
+  233:  -22.24964
+  234:  -22.24964
+  235:  -22.24964
+  236:  -22.24964
+  237:  -22.24964
+  238:  -22.24964
+  239:  -22.24964
+  240:  -22.24964
+  241:  -22.24964
+  242:  -22.24964
+  243:  -22.24964
+  244:  -22.24964
+  245:  -22.24964
+  246:  -22.24964
+  247:  -22.24964
+  248:  -22.24964
+  249:  -22.24964
+  250:  -22.24964
+  251:  -22.24964
+  252:  -22.24964
+  253:  -22.24964
+  254:  -22.24964
+  255:  -22.24964
+  256:  -22.24964
+  257:  -22.24964
+  258:  -22.24964
+  259:  -22.24964
+  260:  -22.24964
+  261:  -22.24964
+  262:  -22.24964
+  263:  -22.24964
+  264:  -22.24964
+  265:  -22.24964
+  266:  -22.24964
+  267:  -22.24964
+  268:  -22.24964
+  269:  -22.24964
+  270:  -22.24964
+  271:  -22.24964
+  272:  -22.24964
+  273:  -22.24964
+  274:  -22.24964
+  275:  -22.24964
+  276:  -22.24964
+  277:  -22.24964
+  278:  -22.24964
+  279:  -22.24964
+  280:  -22.24964
+  281:  -22.24964
+  282:  -22.24964
+  283:  -22.24964
+  284:  -22.24964
+  285:  -22.24964
+  286:  -22.24964
+  287:  -22.24964
+  288:  -22.24964
+  289:  -22.24964
+  290:  -22.24964
+  291:  -22.24964
+  292:  -22.24964
+  293:  -22.24964
+  294:  -22.24964
+  295:  -22.24964
+  296:  -22.24964
+  297:  -22.24964
+  298:  -22.24964
+  299:  -22.24964
+  300:  -22.24964
+  301:  -22.24964
+  302:  -22.24964
+  303:  -22.24964
+  304:  -22.24964
+  305:  -22.24964
+  306:  -22.24964
+  307:  -22.24964
+  308:  -22.24964
+  309:  -22.24964
+  310:  -22.24964
+  311:  -22.24964
+  312:  -22.24964
+  313:  -22.24964
+  314:  -22.24964
+  315:  -22.24964
+  316:  -22.24964
+  317:  -22.24964
+  318:  -22.24964
+  319:  -22.24964
+  320:  -22.24964
+  321:  -22.24964
+  322:  -22.24964
+  323:  -22.24964
+  324:  -22.24964
+  325:  -22.24964
+  326:  -22.24964
+  327:  -22.24964
+  328:  -22.24964
+  329:  -22.24964
+  330:  -22.24964
+  331:  -22.24964
+  332:  -22.24964
+  333:  -22.24964
+  334:  -22.24964
+  335:  -22.24964
+  336:  -22.24964
+  337:  -22.24964
+  338:  -22.24964
+  339:  -22.24964
+  340:  -22.24964
+  341:  -22.24964
+  342:  -22.24964
+  343:  -22.24964
+  344:  -22.24964
+  345:  -22.24964
+  346:  -22.24964
+  347:  -22.24964
+  348:  -22.24964
+  349:  -22.24964
+  350:  -22.24964
+  351:  -22.24964
+  352:  -22.24964
+  353:  -22.24964
+  354:  -22.24964
+  355:  -22.24964
+  356:  -22.24964
+  357:  -22.24964
+  358:  -22.24964
+  359:  -22.24964
+  360:  -22.24964
+  361:  -22.24964
+  362:  -22.24964
+  363:  -22.24964
+  364:  -22.24964
+  365:  -22.24964
+  366:  -22.24964
+  367:  -22.24964
+  368:  -22.24964
+  369:  -22.24964
+  370:  -22.24964
+  371:  -22.24964
+  372:  -22.24964
+  373:  -22.24964
+  374:  -22.24964
+  375:  -22.24964
+  376:  -22.24964
+  377:  -22.24964
+  378:  -22.24964
+  379:  -22.24964
+  380:  -22.24964
+  381:  -22.24964
+  382:  -22.24964
+  383:  -22.24964
+  384:  -22.24964
+  385:  -22.24964
+  386:  -22.24964
+  387:  -22.24964
+  388:  -22.24964
+  389:  -22.24964
+  390:  -22.24964
+  391:  -22.24964
+  392:  -22.24964
+  393:  -22.24964
+  394:  -22.24964
+  395:  -22.24964
+  396:  -22.24964
+  397:  -22.24964
+  398:  -22.24964
+  399:  -22.24964
+  400:  -22.24964
+  401:  -22.24964
+  402:  -22.24964
+  403:  -22.24964
+  404:  -22.24964
+  405:  -22.24964
+  406:  -22.24964
+  407:  -22.24964
+  408:  -22.24964
+  409:  -22.24964
+  410:  -22.24964
+  411:  -22.24964
+  412:  -22.24964
+  413:  -22.24964
+  414:  -22.24964
+  415:  -22.24964
+  416:  -22.24964
+  417:  -22.24964
+  418:  -22.24964
+  419:  -22.24964
+  420:  -22.24964
+  421:  -22.24964
+  422:  -22.24964
+  423:  -22.24964
+  424:  -22.24964
+  425:  -22.24964
+  426:  -22.24964
+  427:  -22.24964
+  428:  -22.24964
+  429:  -22.24964
+  430:  -22.24964
+  431:  -22.24964
+  432:  -22.24964
+  433:  -22.24964
+  434:  -22.24964
+  435:  -22.24964
+  436:  -22.24964
+  437:  -22.24964
+  438:  -22.24964
+  439:  -22.24964
+  440:  -22.24964
+  441:  -22.24964
+  442:  -22.24964
+  443:  -22.24964
+  444:  -22.24964
+  445:  -22.24964
+  446:  -22.24964
+  447:  -22.24964
+  448:  -22.24964
+  449:  -22.24964
+  450:  -22.24964
+  451:  -22.24964
+  452:  -22.24964
+  453:  -22.24964
+  454:  -22.24964
+  455:  -22.24964
+  456:  -22.24964
+  457:  -22.24964
+  458:  -22.24964
+  459:  -22.24964
+  460:  -22.24964
+  461:  -22.24964
+  462:  -22.24964
+  463:  -22.24964
+  464:  -22.24964
+  465:  -22.24964
+  466:  -22.24964
+  467:  -22.24964
+  468:  -22.24964
+  469:  -22.24964
+  470:  -22.24964
+  471:  -22.24964
+  472:  -22.24964
+  473:  -22.24964
+  474:  -22.24964
+  475:  -22.24964
+  476:  -22.24964
+  477:  -22.24964
+  478:  -22.24964
+  479:  -22.24964
+  480:  -22.24964
+  481:  -22.24964
+  482:  -22.24964
+  483:  -22.24964
+  484:  -22.24964
+  485:  -22.24964
+  486:  -22.24964
+  487:  -22.24964
+  488:  -22.24964
+  489:  -22.24964
+  490:  -22.24964
+  491:  -22.24964
+  492:  -22.24964
+  493:  -22.24964
+  494:  -22.24964
+  495:  -22.24964
+  496:  -22.24964
+  497:  -22.24964
+  498:  -22.24964
+  499:  -22.24964
+  500:  -22.24964
+  501:  -22.24964
+  502:  -22.24964
+  503:  -22.24964
+  504:  -22.24964
+  505:  -22.24964
+  506:  -22.24964
+  507:  -22.24964
+  508:  -22.24964
+  509:  -22.24964
+  510:  -22.24964
+  511:  -22.24964
+  512:  -22.24964
+  513:  -22.24964
+  514:  -22.24964
+  515:  -22.24964
+  516:  -22.24964
+  517:  -22.24964
+  518:  -22.24964
+  519:  -22.24964
+  520:  -22.24964
+  521:  -22.24964
+  522:  -22.24964
+  523:  -22.24964
+  524:  -22.24964
+  525:  -22.24964
+  526:  -22.24964
+  527:  -22.24964
+  528:  -22.24964
+  529:  -22.24964
+  530:  -22.24964
+  531:  -22.24964
+  532:  -22.24964
+  533:  -22.24964
+  534:  -22.24964
+  535:  -22.24964
+  536:  -22.24964
+  537:  -22.24964
+  538:  -22.24964
+  539:  -22.24964
+  540:  -22.24964
+  541:  -22.24964
+  542:  -22.24964
+  543:  -22.24964
+  544:  -22.24964
+  545:  -22.24964
+  546:  -22.24964
+  547:  -22.24964
+  548:  -22.24964
+  549:  -22.24964
+  550:  -22.24964
+  551:  -22.24964
+  552:  -22.24964
+  553:  -22.24964
+  554:  -22.24964
+  555:  -22.24964
+  556:  -22.24964
+  557:  -22.24964
+  558:  -22.24964
+  559:  -22.24964
+  560:  -22.24964
+  561:  -22.24964
+  562:  -22.24964
+  563:  -22.24964
+  564:  -22.24964
+  565:  -22.24964
+  566:  -22.24964
+  567:  -22.24964
+  568:  -22.24964
+  569:  -22.24964
+  570:  -22.24964
+  571:  -22.24964
+  572:  -22.24964
+  573:  -22.24964
+  574:  -22.24964
+  575:  -22.24964
+  576:  -22.24964
+  577:  -22.24964
+  578:  -22.24964
+  579:  -22.24964
+  580:  -22.24964
+  581:  -22.24964
+  582:  -22.24964
+  583:  -22.24964
+  584:  -22.24964
+  585:  -22.24964
+  586:  -20.22268
+  587:  -20.22268
+  588:  -20.22268
+  589:  -20.22268
+  590:  -20.22268
+  591:  -20.22268
+  592:  -20.22268
+  593:  -20.22268
+  594:  -20.22268
+  595:  -20.22268
+  596:  -20.22268
+  597:  -20.22268
+  598:  -19.78902
+  599:  -19.78902
+  600:  -19.78902
+  601:  -19.78902
+  602:  -19.78902
+  603:  -19.78902
+  604:  -19.78902
+  605:  -19.78902
+  606:  -19.78902
+  607:  -19.78902
+  608:  -19.78902
+  609:  -19.78902
+  610:  -19.78902
+  611:  -19.78902
+  612:  -19.78902
+  613:  -19.78902
+  614:  -19.78902
+  615:  -19.78902
+  616:  -19.78902
+  617:  -19.78902
+  618:  -19.78902
+  619:  -19.78902
+  620:  -19.78902
+  621:  -19.78902
+  622:  -19.78902
+  623:  -19.78902
+  624:  -19.78902
+  625:  -19.78902
+  626:  -19.78902
+  627:  -19.78902
+  628:  -19.78902
+  629:  -19.78902
+  630:  -19.78902
+  631:  -19.78902
+  632:  -19.78902
+  633:  -19.78902
+  634:  -19.78902
+  635:  -19.78902
+  636:  -19.78902
+  637:  -19.78902
+  638:  -19.78902
+  639:  -19.78902
+  640:  -19.78902
+  641:  -19.78902
+  642:  -19.78902
+  643:  -19.78902
+  644:  -19.78902
+  645:  -19.78902
+  646:  -19.78902
+  647:  -19.78902
+  648:  -19.78902
+  649:  -19.78902
+  650:  -19.78902
+  651:  -19.78902
+  652:  -19.78902
+  653:  -19.78902
+  654:  -19.78902
+  655:  -19.78902
+  656:  -19.78902
+  657:  -19.78902
+  658:  -19.78902
+  659:  -19.78902
+  660:  -19.78902
+  661:  -19.78902
+  662:  -19.78902
+  663:  -19.78902
+  664:  -19.78902
+  665:  -19.78902
+  666:  -19.78902
+  667:  -19.78902
+  668:  -19.78902
+  669:  -19.78902
+  670:  -19.78902
+  671:  -19.78902
+  672:  -19.78902
+  673:  -19.78902
+  674:  -19.78902
+  675:  -19.78902
+  676:  -19.78902
+  677:  -19.78902
+  678:  -19.78902
+  679:  -19.78902
+  680:  -19.78902
+  681:  -19.78902
+  682:  -19.78902
+  683:  -19.78902
+  684:  -19.78902
+  685:  -19.78902
+  686:  -19.78902
+  687:  -19.78902
+  688:  -19.78902
+  689:  -19.78902
+  690:  -19.78902
+  691:  -19.78902
+  692:  -19.78902
+  693:  -19.78902
+  694:  -19.78902
+  695:  -19.78902
+  696:  -19.78902
+  697:  -19.78902
+  698:  -19.78902
+  699:  -19.78902
+  700:  -19.78902
+  701:  -19.78902
+  702:  -19.78902
+  703:  -19.78902
+  704:  -19.78902
+  705:  -19.61470
+  706:  -19.61470
+  707:  -19.61470
+  708:  -19.61470
+  709:  -19.61470
+  710:  -19.61470
+  711:  -19.61470
+  712:  -19.61470
+  713:  -19.61470
+  714:  -19.61470
+  715:  -19.61470
+  716:  -19.61470
+  717:  -19.61470
+  718:  -19.61470
+  719:  -19.61470
+  720:  -19.61470
+  721:  -19.61470
+  722:  -19.61470
+  723:  -19.61470
+  724:  -19.61470
+  725:  -19.61470
+  726:  -19.61470
+  727:  -19.61470
+  728:  -19.53111
+  729:  -19.53111
+  730:  -19.53111
+  731:  -19.53111
+  732:  -19.53111
+  733:  -19.53111
+  734:  -19.53111
+  735:  -19.53111
+  736:  -19.53111
+  737:  -19.53111
+  738:  -19.53111
+  739:  -19.53111
+  740:  -19.53111
+  741:  -19.53111
+  742:  -19.53111
+  743:  -19.53111
+  744:  -19.53111
+  745:  -19.53111
+  746:  -19.15985
+  747:  -19.15985
+  748:  -19.15985
+  749:  -19.15985
+  750:  -19.15985
+  751:  -19.15985
+  752:  -19.15985
+  753:  -19.15985
+  754:  -19.15985
+  755:  -19.15985
+  756:  -19.15985
+  757:  -19.15985
+  758:  -18.88588
+  759:  -18.88588
+  760:  -18.88588
+  761:  -18.88588
+  762:  -18.88588
+  763:  -18.88588
+  764:  -18.88588
+  765:  -18.88588
+  766:  -18.88588
+  767:  -18.88588
+  768:  -18.88588
+  769:  -18.88588
+  770:  -18.49071
+  771:  -18.49071
+  772:  -18.49071
+  773:  -18.49071
+  774:  -18.49071
+  775:  -18.49071
+  776:  -18.49071
+  777:  -18.49071
+  778:  -18.49071
+  779:  -18.49071
+  780:  -18.49071
+  781:  -18.49071
+  782:  -18.49071
+  783:  -18.49071
+  784:  -18.49071
+  785:  -18.49071
+  786:  -18.49071
+  787:  -18.49071
+  788:  -18.49071
+  789:  -18.49071
+  790:  -18.49071
+  791:  -18.49071
+  792:  -18.49071
+  793:  -18.47246
+  794:  -18.47246
+  795:  -18.47246
+  796:  -18.47246
+  797:  -18.47246
+  798:  -18.47246
+  799:  -18.35462
+  800:  -18.35462
+  801:  -18.35462
+  802:  -18.35462
+  803:  -18.35462
+  804:  -18.35462
+  805:  -18.35462
+  806:  -18.35462
+  807:  -18.35462
+  808:  -18.35462
+  809:  -18.35462
+  810:  -18.35462
+  811:  -18.05705
+  812:  -18.05705
+  813:  -18.05705
+  814:  -18.05705
+  815:  -18.05705
+  816:  -18.05705
+  817:  -18.05705
+  818:  -18.05705
+  819:  -18.05705
+  820:  -18.05705
+  821:  -18.05705
+  822:  -18.05705
+  823:  -18.05705
+  824:  -18.05705
+  825:  -18.05705
+  826:  -18.05705
+  827:  -18.05705
+  828:  -18.05705
+  829:  -18.05705
+  830:  -18.05705
+  831:  -18.05705
+  832:  -18.05705
+  833:  -18.05705
+  834:  -18.05705
+  835:  -18.05705
+  836:  -18.05705
+  837:  -18.05705
+  838:  -18.05705
+  839:  -18.05705
+  840:  -18.05705
+  841:  -18.05705
+  842:  -18.05705
+  843:  -18.05705
+  844:  -18.05705
+  845:  -18.05705
+  846:  -18.05705
+  847:  -16.69923
+  848:  -16.69923
+  849:  -16.69923
+  850:  -16.69923
+  851:  -16.69923
+  852:  -16.69923
+  853:  -16.52492
+  854:  -16.52492
+  855:  -16.52492
+  856:  -16.52492
+  857:  -16.52492
+  858:  -16.42977
+  859:  -16.42977
+  860:  -16.42977
+  861:  -16.42977
+  862:  -16.42977
+  863:  -16.42977
+  864:  -16.42977
+  865:  -16.42977
+  866:  -16.42977
+  867:  -16.42977
+  868:  -16.42977
+  869:  -16.42977
+  870:  -16.42526
+  871:  -16.42526
+  872:  -16.42526
+  873:  -16.42526
+  874:  -16.42526
+  875:  -16.42526
+  876:  -16.25095
+  877:  -16.25095
+  878:  -16.25095
+  879:  -16.25095
+  880:  -16.25095
+  881:  -16.25095
+  882:  -15.79610
+  883:  -15.79610
+  884:  -15.79610
+  885:  -15.79610
+  886:  -15.79610
+  887:  -15.79610
+  888:  -15.77218
+  889:  -15.77218
+  890:  -15.77218
+  891:  -15.77218
+  892:  -15.77218
+  893:  -15.77218
+  894:  -15.75393
+  895:  -15.75393
+  896:  -15.75393
+  897:  -15.75393
+  898:  -15.75393
+  899:  -15.75393
+  900:  -15.38267
+  901:  -15.38267
+  902:  -15.38267
+  903:  -15.38267
+  904:  -15.38267
+  905:  -15.38267
+  906:  -15.10871
+  907:  -15.10871
+  908:  -15.10871
+  909:  -15.10871
+  910:  -15.10871
+  911:  -15.10871
+  912:  -14.69329
+  913:  -14.69329
+  914:  -14.69329
+  915:  -14.69329
+  916:  -14.69329
+  917:  -14.69329
+  918:  -14.52097
+  919:  -14.52097
+  920:  -14.52097
+  921:  -14.52097
+  922:  -14.52097
+  923:  -14.52097
+  924:  -12.48143
+  925:  -12.48143
+  926:  -12.48143
+  927:  -12.48143
+  928:  -12.48143
+  929:  -12.15837
+  930:  -12.15837
+  931:  -12.15837
+  932:  -12.15837
+  933:  -12.15837
+  934:  -12.15837
+  935:  -12.06035
+  936:  -12.06035
+  937:  -12.06035
+  938:  -12.06035
+  939:  -12.06035
+  940:  -12.06035
+  941:  -12.05440
+  942:  -12.05440
+  943:  -12.05440
+  944:  -12.05440
+  945:  -12.05440
+  946:  -12.05440
+  947:  -10.54129
+  948:  -10.54129
+  949:  -10.54129
+  950:  -10.54129
+  951:  -10.54129
+  952:  -10.54129
+  953:   -9.76290
+  954:   -9.76290
+  955:   -9.76290
+  956:   -9.76290
+  957:   -9.76290
+  958:   -9.76290
+  959:   -7.43651
+  960:   -7.43651
+  961:   -7.43651
+  962:   -7.43651
+  963:   -7.43651
+  964:   -7.43651
+  965:   -4.44116
+  966:   -4.44116
+  967:   -4.44116
+  968:   -4.44116
+  969:   -4.44116
+  970:   -4.44116
+  971:   -0.27397
+  972:   -0.27397
+  973:   -0.27397
+  974:   -0.27397
+  975:   -0.27397
+  976:   -0.27397
+  977:    7.55435
+  978:    7.55435
+  979:    7.55435
+  980:    7.55435
+  981:    7.55435
+  982:    7.55435
+  983:   14.69397
+  984:   14.69397
+  985:   14.69397
+  986:   14.69397
+  987:   14.69397
+  988:   14.69397
+  989:   29.90592
+  990:   29.90592
+  991:   29.90592
+  992:   29.90592
+  993:   29.90592
+  994:   29.90592
+  995:   45.88618
+  996:   45.88618
+  997:   45.88618
+  998:   45.88618
+  999:   45.88618
+Scorer CriticalWordCountReporter
+Input arguments: []
