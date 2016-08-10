@@ -1,0 +1,6 @@
+language: java
+branches:
+  except:
+    - legacy
+    - experimental
+    
