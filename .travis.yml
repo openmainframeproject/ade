@@ -3,4 +3,5 @@ branches:
   except:
     - legacy
     - experimental
-    
+before_install:
+- export TZ=America/New_York
