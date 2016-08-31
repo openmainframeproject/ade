@@ -8,8 +8,7 @@ addons:
   sonarqube: true
 env:
   global:
-    - secure: d043ef3ea7d081203e4eca0ac14b14d0054b6c43
     - SONAR_TOKEN: d043ef3ea7d081203e4eca0ac14b14d0054b6c43
     - SONAR_HOST_URL: https://sonarqube.com
 script:
-  - sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.host.url=$SONAR_HOST_URL 
+  - sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.host.url=$SONAR_HOST_URL -X
