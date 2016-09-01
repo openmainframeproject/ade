@@ -41,12 +41,12 @@ elif [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ -n "${GITHUB_TOKEN-}" ]; then
 	# http://docs.travis-ci.com/user/pull-requests/#Security-Restrictions-when-testing-Pull-Requests
 	# That's why the analysis does not need to be executed if the variable GITHUB_TOKEN is not defined.
 	echo "Starting Pull Request analysis by SonarQube..."
-	sonar-scanner \
-		-Dsonar.host.url=$SONAR_HOST_URL \
-		-Dsonar.login=$SONAR_TOKEN \
-		-Dsonar.analysis.mode=preview \
-		-Dsonar.github.oauth=$GITHUB_TOKEN \
-		-Dsonar.github.repository=$TRAVIS_REPO_SLUG \
-		-Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST
+	#sonar-scanner \
+	#	-Dsonar.host.url=$SONAR_HOST_URL \
+	#	-Dsonar.login=$SONAR_TOKEN \
+	#	-Dsonar.analysis.mode=preview \
+	#	-Dsonar.github.oauth=$GITHUB_TOKEN \
+	#	-Dsonar.github.repository=$TRAVIS_REPO_SLUG \
+	#	-Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST
 fi
 # When neither on master branch nor on a non-external pull request => nothing to do
