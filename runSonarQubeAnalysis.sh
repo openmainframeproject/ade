@@ -21,7 +21,7 @@ installSonarQubeScanner() {
 installSonarQubeScanner
 # And set the related JVM options - this is where the size of the JVM can be increased if required (e.g. "-Xmx1G -Xms128m").
 export SONAR_SCANNER_OPTS="-server"
-
+echo $UID
 # And run the analysis
 # It assumes that there's a sonar-project.properties file at the root of the repo
 if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
@@ -50,4 +50,3 @@ elif [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ -n "${GITHUB_TOKEN-}" ]; then
 		-Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST
 fi
 # When neither on master branch nor on a non-external pull request => nothing to do
-echo $UID
