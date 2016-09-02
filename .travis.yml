@@ -5,7 +5,7 @@ branches:
     - legacy
     - experimental
 addons:
-  sonarqube: true
+  sonarqube: false
 env:
   global:
     - SONAR_TOKEN: d043ef3ea7d081203e4eca0ac14b14d0054b6c43
