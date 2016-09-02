@@ -18,7 +18,7 @@ installSonarQubeScanner() {
 
 # Install the SonarQube Scanner
 # TODO: Would be nice to have it pre-installed by Travis somehow
-installSonarQubeScanner
+#installSonarQubeScanner
 # And set the related JVM options - this is where the size of the JVM can be increased if required (e.g. "-Xmx1G -Xms128m").
 export SONAR_SCANNER_OPTS="-server"
 echo $USER
