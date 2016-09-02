@@ -1,12 +1,11 @@
 language: java
 jdk: oraclejdk8
+install: true
 branches:
   except:
     - legacy
     - experimental
-addons:
-  sonarqube: false
-  
+
 cache:
   directories:
     - '$HOME/.sonar/cache'
@@ -16,4 +15,4 @@ env:
     - SONAR_TOKEN: d043ef3ea7d081203e4eca0ac14b14d0054b6c43
     - SONAR_HOST_URL: https://sonarqube.com
 script:
-    - runSonarQubeAnalysis.sh
+    - ./runSonarQubeAnalysis.sh
