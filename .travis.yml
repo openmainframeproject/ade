@@ -2,6 +2,7 @@ language: java
 jdk: oraclejdk8
 install: true
 sudo: false
+
 branches:
   except:
     - legacy
@@ -15,5 +16,9 @@ env:
   global:
     - SONAR_TOKEN: d043ef3ea7d081203e4eca0ac14b14d0054b6c43
     - SONAR_HOST_URL: https://sonarqube.com
+	
 script:
     - ./runSonarQubeAnalysis.sh
+
+before_install:
+- export TZ=America/New_York
