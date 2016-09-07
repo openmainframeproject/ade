@@ -21,6 +21,14 @@ Please see http://openmainframeproject.github.io/ade/ for documentation on ADE.
 
 ## Releases
 
+### Fall Kill 1.0.3
+
+- Support for Core Infrastructure Initiative
+   - add travis-ci build for every pull request
+   - analyze every pull request with Sonarqube
+   - store results of Sonarqube analysis at Sonarqube.com
+- Add sample to mask sensitive data within Linux logs to allow sharing of logs
+
 ### Poesten Kill 1.0.2
 
 - Support for changing analytics

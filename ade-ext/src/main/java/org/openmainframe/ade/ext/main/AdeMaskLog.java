@@ -28,7 +28,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Calendar;
-import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -55,14 +54,9 @@ import org.openmainframe.ade.ext.os.parser.LinuxSyslog5424ParserBase;
 import org.openmainframe.ade.ext.os.parser.LinuxSyslogLineParser;
 import org.openmainframe.ade.ext.service.AdeExtMessageHandler;
 import org.openmainframe.ade.ext.os.AdeExtPropertiesFactory;
-import org.openmainframe.ade.ext.os.LinuxAdeExtProperties;
 import org.openmainframe.ade.ext.os.AdeExtProperties;
 
-import static org.openmainframe.ade.ext.os.parser.ReaderLoggerMessages.*;
-
-
-
-/** Main to mask private information in a log*/
+/** Main to mask private information in a log */
 public class AdeMaskLog extends ExtControlProgram {
 
 	/**
@@ -71,33 +65,40 @@ public class AdeMaskLog extends ExtControlProgram {
 	private File m_outputFile;
 	private File m_inputFile;
 	/**
-     * The parser for a line of Linux syslogs.
-     */
-    private static LinuxSyslogLineParser[] m_lineParsers;
+	 * The parser for a line of Linux syslogs.
+	 */
+	private static LinuxSyslogLineParser[] m_lineParsers;
 
-    private static Pattern VALID_IPV4_PATTERN = null;
-    private static Pattern VALID_IPV6_PATTERN = null;
-    private static Pattern Valid_email_Pattern = null;
-    private static final String ipv4Pattern = "(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}([01]?\\d\\d?|2[0-4]\\d|25[0-5])";
-    private static final String ipv6Pattern = "([0-9a-f]{1,4}:){7}([0-9a-f]){1,4}";
+	private static Pattern VALID_IPV4_PATTERN = null;
+	private static Pattern VALID_IPV6_PATTERN = null;
+	private static Pattern Valid_email_Pattern = null;
+	private static final String ipv4Pattern = "(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}([01]?\\d\\d?|2[0-4]\\d|25[0-5])";
+	private static final String ipv6Pattern = "([0-9a-f]{1,4}:){7}([0-9a-f]){1,4}";
 
-    //pattern source: <a href="http://regxlib.com/REDetails.aspx?regexp_id=26" target="_blank" rel="nofollow">http://regxlib.com/REDetails.aspx?regexp_id=26</a>
-    private static final String emailPattern =  "^([a-zA-Z0-9_\\-\\.])+@(([0-2]?[0-5]?[0-5]\\.[0-2]?[0-5]?[0-5]" + 
-		      "\\.[0-2]?[0-5]?[0-5]\\.[0-2]?[0-5]?[0-5])|((([a-zA-Z0-9\\-])+\\.)" +
-		      "+([a-zA-Z\\-])+))$";
-	
-    private static String m_systemName = null;
-    private static String m_companyName = null;
-    private static String m_companyNameNew = null;
+	// pattern source: <a href="http://regxlib.com/REDetails.aspx?regexp_id=26"
+	// target="_blank"
+	// rel="nofollow">http://regxlib.com/REDetails.aspx?regexp_id=26</a>
+	private static final String emailPattern = "^([a-zA-Z0-9_\\-\\.])+@(([0-2]?[0-5]?[0-5]\\.[0-2]?[0-5]?[0-5]"
+			+ "\\.[0-2]?[0-5]?[0-5]\\.[0-2]?[0-5]?[0-5])|((([a-zA-Z0-9\\-])+\\.)"
+			+ "+([a-zA-Z\\-])+))$";
+
+	private static String m_systemName = null;
+	private static String m_companyName = null;
+	private static String m_companyNameNew = null;
+	private static Boolean m_maskTCPIPAddress = true;
+	private static Boolean m_maskEmailAddress = true;
+	private static String localHost = "127.0.0.1";
 
 	/**
-     * Constructor to pass in the requestType to the super class.
-     * @param requestType The request type of this class.
-	 * @return 
-     */
-    protected AdeMaskLog(AdeExtRequestType requestType) {
-        super(requestType);
-    }
+	 * Constructor to pass in the requestType to the super class.
+	 * 
+	 * @param requestType
+	 *            The request type of this class.
+	 * @return
+	 */
+	protected AdeMaskLog(AdeExtRequestType requestType) {
+		super(requestType);
+	}
 
 	/**
 	 * Parse the input arguments
@@ -112,33 +113,42 @@ public class AdeMaskLog extends ExtControlProgram {
 
 		Option outputFileOpt = OptionBuilder.withLongOpt("output").hasArg(true)
 				.withArgName("FILE").isRequired(true)
-				.withDescription("Output file name ")
-				.create('o');
+				.withDescription("Output file name ").create('o');
 		options.addOption(outputFileOpt);
 
 		Option inputFileOpt = OptionBuilder.withLongOpt("input").hasArg(true)
 				.withArgName("FILE").isRequired(true)
-				.withDescription("Input file name")
-				.create('f');
+				.withDescription("Input file name").create('f');
 		options.addOption(inputFileOpt);
 
-		Option systemNameOpt = OptionBuilder.withLongOpt("systemname").hasArg(true)
-				.withArgName("SYSTEM_NAME").isRequired(true)
-				.withDescription("String to replace system name")
-				.create('s');
+		Option systemNameOpt = OptionBuilder.withLongOpt("systemname")
+				.hasArg(true).withArgName("SYSTEM_NAME").isRequired(false)
+				.withDescription("String to replace system name").create('s');
 		options.addOption(systemNameOpt);
 
-		Option companyNameOpt = OptionBuilder.withLongOpt("companyname").hasArg(true)
-				.withArgName("COMPANY_NAME").isRequired(true)
-				.withDescription("String to find company name")
-				.create('c');
+		Option companyNameOpt = OptionBuilder
+				.withLongOpt("companyname")
+				.hasArgs(2)
+				.withArgName("COMPANY_NAME> <REPLACEMENT_COMPANY_NAME")
+				.isRequired(false)
+				.withDescription(
+						"String to find company name and replacement company name")
+				.withValueSeparator(' ').create('c');
 		options.addOption(companyNameOpt);
-		
-		Option companyNameNewOpt = OptionBuilder.withLongOpt("companynamenew").hasArg(true)
-				.withArgName("COMPANY_NAME_NEW").isRequired(true)
-				.withDescription("String to replace company name")
-				.create('n');
-		options.addOption(companyNameNewOpt);
+
+		Option IPAddressMaskOpt = OptionBuilder
+				.withLongOpt("maskIPAddress")
+				.withDescription(
+						"Do not mask IP address with local host IP address")
+				.create('t');
+		options.addOption(IPAddressMaskOpt);
+
+		Option EmailAddressMaskOpt = OptionBuilder
+				.withLongOpt("maskEmailAddress")
+				.withDescription(
+						"Do not Mask email address with gmail.com address")
+				.create('e');
+		options.addOption(EmailAddressMaskOpt);
 
 		CommandLineParser parser = new GnuParser();
 		CommandLine line = null;
@@ -176,196 +186,221 @@ public class AdeMaskLog extends ExtControlProgram {
 			m_inputFile = new File(line.getOptionValue(inputFileOpt
 					.getLongOpt()));
 		}
-		
+
 		if (line.hasOption(systemNameOpt.getLongOpt())) {
 			m_systemName = line.getOptionValue(systemNameOpt.getLongOpt());
 		}
 
 		if (line.hasOption(companyNameOpt.getLongOpt())) {
-			m_companyName = line.getOptionValue(companyNameOpt.getLongOpt());
+			String[] work_arg = line.getOptionValues(companyNameOpt
+					.getLongOpt());
+			m_companyName = work_arg[0];
+			m_companyNameNew = work_arg[1];
 		}
 
-		if (line.hasOption(companyNameNewOpt.getLongOpt())) {
-			m_companyNameNew = line.getOptionValue(companyNameNewOpt.getLongOpt());
+		if (line.hasOption(IPAddressMaskOpt.getLongOpt())) {
+			m_maskTCPIPAddress = false;
 		}
 
+		if (line.hasOption(EmailAddressMaskOpt.getLongOpt())) {
+			m_maskEmailAddress = false;
+		}
 	}
+
 	/**
-	 *   Read and write file specified by input and output file name
-	 *   mask system name, ip addresses, email 
+	 * Read and write file specified by input and output file name mask system
+	 * name, ip addresses, email
 	 * 
-	 * 	 * @see org.openmainframe.ade.main.ControlProgram#doControlLogic()
+	 * * @see org.openmainframe.ade.main.ControlProgram#doControlLogic()
 	 */
 	protected boolean doControlLogic() throws AdeException {
-	
-		
-	createParsers();
-	createPattern();
-	
-	// open input file
-	FileInputStream fis = null;
-	try {
-		fis = new FileInputStream(m_inputFile);
-	} catch (FileNotFoundException e) {
-		e.printStackTrace();
-	}
- 
-	//Construct BufferedReader from InputStreamReader
-	BufferedReader br = new BufferedReader(new InputStreamReader(fis));
 
-	// open output file
-	FileWriter fos = null;
-	try {
-		fos = new FileWriter(m_outputFile,false);
+		createParsers();
+		createPattern();
+
+		// open input file
+		FileInputStream fis = null;
+		try {
+			fis = new FileInputStream(m_inputFile);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		// Construct BufferedReader from InputStreamReader
+		BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+
+		// open output file
+		FileWriter fos = null;
+		try {
+			fos = new FileWriter(m_outputFile, false);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
- 
-	//Construct BufferedWriter from OutputStreamWriter
-	BufferedWriter bw = new BufferedWriter(fos);
- 
-	// read first record of file
-	String line = null;
-	try {
-		line = br.readLine();
-	} catch (IOException e1) {
-		e1.printStackTrace();
-	}
-	// process all records in file
-	while (line != null) {
-		String write_line = generateMaskedLine(line);
+
+		// Construct BufferedWriter from OutputStreamWriter
+		BufferedWriter bw = new BufferedWriter(fos);
+
+		// read first record of file
+		String line = null;
 		try {
-			bw.write(write_line);
-			bw.write(System.lineSeparator());
+			line = br.readLine();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		// process all records in file
+		while (line != null) {
+			String write_line = generateMaskedLine(line);
+			try {
+				bw.write(write_line);
+				bw.write(System.lineSeparator());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			try {
+				line = br.readLine();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+
+		try {
+			br.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 		try {
-			line = br.readLine();
-			} catch (IOException e1) {
-				e1.printStackTrace();
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-	}
- 
-	try {
-		br.close();
-	} catch (IOException e) {
-		e.printStackTrace();
-	}
-	
-
-	try {
-		bw.close();
-	} catch (IOException e) {
-		e.printStackTrace();
-	}
-	return true;
-
+		return true;
 
 	}
-	
+
 	/**
 	 * Create Pattern to find email and IP address
 	 */
 	private void createPattern() {
-		
-	      VALID_IPV4_PATTERN = Pattern.compile(ipv4Pattern, Pattern.CASE_INSENSITIVE);
-	      VALID_IPV6_PATTERN = Pattern.compile(ipv6Pattern, Pattern.CASE_INSENSITIVE);
-	      Valid_email_Pattern = Pattern.compile(emailPattern);
-			  //pattern source: <a href="http://regxlib.com/REDetails.aspx?regexp_id=26" target="_blank" rel="nofollow">http://regxlib.com/REDetails.aspx?regexp_id=26</a>
+
+		VALID_IPV4_PATTERN = Pattern.compile(ipv4Pattern,
+				Pattern.CASE_INSENSITIVE);
+		VALID_IPV6_PATTERN = Pattern.compile(ipv6Pattern,
+				Pattern.CASE_INSENSITIVE);
+		Valid_email_Pattern = Pattern.compile(emailPattern);
+		// pattern source: <a
+		// href="http://regxlib.com/REDetails.aspx?regexp_id=26" target="_blank"
+		// rel="nofollow">http://regxlib.com/REDetails.aspx?regexp_id=26</a>
 
 	}
 
 	/**
-	 * Create Parser
+	 * Create Parser for Linux log
 	 * 
 	 */
 	private void createParsers() {
-		
+
 		AdeExtOperatingSystemType m_osType;
 		AdeExtProperties linuxProperties = null;
 		AdeExtPropertiesFactory adeExtPropertiesFactory = new AdeExtPropertiesFactory();
 		m_osType = AdeExtOperatingSystemType.LINUX;
 		linuxProperties = adeExtPropertiesFactory.getAdeExtProperties(m_osType);
-		
+
 		// create parser
-			
+
 		try {
 			m_lineParsers = new LinuxSyslogLineParser[] {
-			                new LinuxSyslog5424ParserBase(),
-			                new LinuxSyslog3164ParserWithMark(),
-			                new LinuxSyslog3164ParserWithCompAndPid(),
-			                new LinuxSyslog3164ParserFreeForm(),
-			};
+					new LinuxSyslog5424ParserBase(),
+					new LinuxSyslog3164ParserWithMark(),
+					new LinuxSyslog3164ParserWithCompAndPid(),
+					new LinuxSyslog3164ParserFreeForm(), };
 		} catch (AdeException e) {
-		
+
 			e.printStackTrace();
 		}
-		 LinuxSyslog3164ParserBase.setAdeExtProperties((LinuxAdeExtProperties) linuxProperties);
-		((LinuxAdeExtProperties) linuxProperties).setYear(java.util.Calendar.getInstance().get(Calendar.YEAR));
-		
+		LinuxSyslog3164ParserBase
+				.setAdeExtProperties((LinuxAdeExtProperties) linuxProperties);
+		((LinuxAdeExtProperties) linuxProperties).setYear(java.util.Calendar
+				.getInstance().get(Calendar.YEAR));
+
 	}
 
 	/**
 	 * parse line then invoke routines to mask data within the line
+	 * 
 	 * @param line
 	 * @return
 	 */
-	private  String generateMaskedLine(String currentLine) {
+	private String generateMaskedLine(String currentLine) {
 		boolean gotLine = false;
 		String outline = null;
 		for (LinuxSyslogLineParser lineParser : m_lineParsers) {
-            gotLine = lineParser.parseLine(currentLine);
-            if (gotLine) {
-            	String oldSystemName = lineParser.getSource();
-            	String oldText = lineParser.getMessageBody();
-            	return outline = createNewLine(currentLine, oldSystemName,oldText);
-            }
-		}    
+			gotLine = lineParser.parseLine(currentLine);
+			if (gotLine) {
+				String oldSystemName = lineParser.getSource();
+				String oldText = lineParser.getMessageBody();
+				return outline = createNewLine(currentLine, oldSystemName,
+						oldText);
+			}
+		}
 		outline = currentLine;
 		return outline;
 	}
+
 	/**
 	 * Create new line by replacing system name, email, IP address
+	 * 
 	 * @param currentLine
 	 * @param oldSystemName
 	 * @param oldText
 	 * @return
 	 */
-	private String createNewLine(String currentLine, String oldSystemName, String oldText) {
-		
-		String newText = maskIPAddress(currentLine,oldText);
-		currentLine = maskEmail(currentLine,oldText, newText);
+	private String createNewLine(String currentLine, String oldSystemName,
+			String oldText) {
+
+		String newText = currentLine;
+
+		if (m_maskTCPIPAddress == true) {
+			newText = maskIPAddress(currentLine, oldText);
+		}
+		if (m_maskEmailAddress == true) {
+			currentLine = maskEmail(currentLine, oldText, newText);
+		}
 		currentLine = maskCompanyName(currentLine);
-		currentLine = maskSystemName(currentLine,oldSystemName);
-				
+		currentLine = maskSystemName(currentLine, oldSystemName);
+
 		return currentLine;
 	}
 
 	private String maskCompanyName(String currentLine) {
-		return currentLine.replace(m_companyName,m_companyNameNew);
+		return currentLine.replace(m_companyName, m_companyNameNew);
 	}
 
 	private String maskIPAddress(String currentLine, String oldText) {
 		String[] textTokens = oldText.split("\\s+");
 		int tokenCount = textTokens.length;
 		String newText = oldText;
-		String localHost = "127.0.0.1";
 		String delims = "[:|=|<|>|(|)|\\[|\\]]";
 		for (int j = 0; j < tokenCount; j++) {
-			String [] strippedToken = textTokens[j].split(delims);
+			String[] strippedToken = textTokens[j].split(delims);
 			int strippedTokenCount = strippedToken.length;
 			for (int k = 0; k < strippedTokenCount; k++) {
-				if (isIpAddress(strippedToken[k])){
-					newText = newText.replace(textTokens[j], localHost);
-				}	
+				if (isIpAddress(strippedToken[k])) {
+					newText = newText.replace(strippedToken[k], localHost);
+				}
 			}
 		}
 		return newText;
 	}
-
+/**
+ * change email address to myEmail@gmail.com
+ * 
+ * @param current line
+ * @param text to be processed
+ * @param text after processing
+ */
 	private String maskEmail(String currentLine, String oldText, String newText) {
 		String[] textTokens = oldText.split("\\s+");
 		int tokenCount = textTokens.length;
@@ -373,12 +408,12 @@ public class AdeMaskLog extends ExtControlProgram {
 		String localHost = "myEmail@gmail.com";
 		String delims = "[:|=|<|>|(|)|\\[|\\]]";
 		for (int j = 0; j < tokenCount; j++) {
-			String [] strippedToken = textTokens[j].split(delims);
+			String[] strippedToken = textTokens[j].split(delims);
 			int strippedTokenCount = strippedToken.length;
 			for (int k = 0; k < strippedTokenCount; k++) {
-				if (isValidEmail(strippedToken[k])){
-					newText = newText.replace(textTokens[j], localHost);
-				}	
+				if (isValidEmail(strippedToken[k])) {
+					newText = newText.replace(strippedToken[k], localHost);
+				}
 			}
 		}
 		newLine = currentLine.replace(oldText, newText);
@@ -387,100 +422,77 @@ public class AdeMaskLog extends ExtControlProgram {
 
 	private String maskSystemName(String currentLine, String oldSystemName) {
 
-		return currentLine.replace(oldSystemName,m_systemName);
+		return currentLine.replace(oldSystemName, m_systemName);
 	}
+
 	/**
-	 * Check if word contains an email address 
-	 * @param email
+	 * Check if word contains an email address
+	 * 
+	 * @param token to be analyzed
 	 * @return
 	 */
-	public static boolean isValidEmail(String email)
-	{
-	  Matcher matcher = Valid_email_Pattern.matcher(email);
-	  return matcher.find();
+	public static boolean isValidEmail(String email) {
+		Matcher matcher = Valid_email_Pattern.matcher(email);
+		return matcher.find();
 	}
-	 /**
-	   * Determine if the given string is a valid IPv4 or IPv6 address.  This method
-	   * uses pattern matching to see if the given string could be a valid IP address.
-	   *
-	   * @param ipAddress A string that is to be examined to verify whether or not
-	   *  it could be a valid IP address.
-	   * @return <code>true</code> if the string is a value that is a valid IP address,
-	   *  <code>false</code> otherwise.
-	   */
-	  public static boolean isIpAddress(String ipAddress) {
 
-	    Matcher m1 = VALID_IPV4_PATTERN.matcher(ipAddress);
-	    if (m1.matches()) {
-	      return true;
-	    }
-	    Matcher m2 = VALID_IPV6_PATTERN.matcher(ipAddress);
-	    return m2.matches();
-	  }
-	
 	/**
-	 * Output error related to the invocation of AdeMaskLog
+	 * Determine if the given string is a valid IPv4 or IPv6 address. This
+	 * method uses pattern matching to see if the given string could be a valid
+	 * IP address.
 	 *
-	 * @param errorMsg
-	 * @throws AdeUsageException
+	 * @param ipAddress
+	 *            A string that is to be examined to verify whether or not it
+	 *            could be a valid IP address.
+	 * @return <code>true</code> if the string is a value that is a valid IP
+	 *         address, <code>false</code> otherwise.
 	 */
-	private static void usageError(String errorMsg) throws AdeUsageException {
+	public static boolean isIpAddress(String ipAddress) {
 
-		System.out.flush();
-		System.err.println("Usage:");
-		System.err.println("\tAdeMaskLogMain ");
-		System.err.println();
-		System.err.println("Hides information contained in a Linux Log");
-		System.err.println("system name");
-		System.err.println("e-mail addresses");
-		System.err.println("company name");
-		System.err.println();
-		System.err.println("-f input file name");
-		System.err.println("-o output file name");
-		System.err.println();
-		System.err.println("-h returns help information");
-		System.err.flush();
-
-		if (errorMsg != "")
-			throw new AdeUsageException(errorMsg);
-
+		Matcher m1 = VALID_IPV4_PATTERN.matcher(ipAddress);
+		if (m1.matches()) {
+			return true;
+		}
+		Matcher m2 = VALID_IPV6_PATTERN.matcher(ipAddress);
+		return m2.matches();
 	}
-		/**
+
+	/**
 	 * The entry point of AdeMaskLog
 	 * 
 	 * @param args
 	 * @throws AdeException
 	 */
 
-    public static void main(String [] args) throws AdeException {
-		
-        AdeExtRequestType requestType = AdeExtRequestType.MASK_LOG;
-        new AdeExtMessageHandler();
+	public static void main(String[] args) throws AdeException {
+
+		AdeExtRequestType requestType = AdeExtRequestType.MASK_LOG;
+		new AdeExtMessageHandler();
 		System.err.println("Running Ade: " + requestType);
-        final AdeMaskLog instance = new AdeMaskLog(requestType);
-        ((AdeMaskLog) instance).AdeMaskLog(args);
+		final AdeMaskLog instance = new AdeMaskLog(requestType);
+		((AdeMaskLog) instance).AdeMaskLog(args);
 
 	}
 
-    protected final void AdeMaskLog(String[] args) {
-        // Exception handlers expected to invoke System.exit
-        try {
-            run(args);
+	protected final void AdeMaskLog(String[] args) {
+		// Exception handlers expected to invoke System.exit
+		try {
+			run(args);
 
-        } catch (AdeUsageException e) {
-            getMessageHandler().handleUserException(e);
-        } catch (AdeInternalException e) {
-            getMessageHandler().handleAdeInternalException(e);
-        } catch (AdeException e) {
-            getMessageHandler().handleAdeException(e);
-        } catch (Throwable e) {
-            getMessageHandler().handleUnexpectedException(e);
-        } finally {
-            // Won't get called in error cases due to use of System.ext.
-            // This apppears to be a no-op anyway.
-            quietCleanup();
-        }
+		} catch (AdeUsageException e) {
+			getMessageHandler().handleUserException(e);
+		} catch (AdeInternalException e) {
+			getMessageHandler().handleAdeInternalException(e);
+		} catch (AdeException e) {
+			getMessageHandler().handleAdeException(e);
+		} catch (Throwable e) {
+			getMessageHandler().handleUnexpectedException(e);
+		} finally {
+			// Won't get called in error cases due to use of System.ext.
+			// This apppears to be a no-op anyway.
+			quietCleanup();
+		}
 
-    }
+	}
 
 }
