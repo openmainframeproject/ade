@@ -90,7 +90,7 @@ public class AdeMaskLog extends ExtControlProgram {
 	private String localHost = "127.0.0.1";
 
 	Options options = new Options();
-	
+
 	/**
 	 * Constructor to pass in the requestType to the super class.
 	 * 
@@ -113,12 +113,12 @@ public class AdeMaskLog extends ExtControlProgram {
 		options.addOption(helpOpt);
 
 		Option outputFileOpt = OptionBuilder.withLongOpt("output").hasArg(true)
-				.withArgName("FILE").isRequired(true)
+				.withArgName("FILE").isRequired(false)
 				.withDescription("Output file name ").create('o');
 		options.addOption(outputFileOpt);
 
 		Option inputFileOpt = OptionBuilder.withLongOpt("input").hasArg(true)
-				.withArgName("FILE").isRequired(true)
+				.withArgName("FILE").isRequired(false)
 				.withDescription("Input file name").create('f');
 		options.addOption(inputFileOpt);
 
@@ -158,11 +158,13 @@ public class AdeMaskLog extends ExtControlProgram {
 			// parse the command line arguments
 			line = parser.parse(options, args);
 		} catch (MissingOptionException exp) {
+
 			System.out.println("Command line parsing failed.  Reason: "
 					+ exp.getMessage());
 			System.out.println();
-			new HelpFormatter().printHelp(ControlDB.class.getName(), options);
-			System.exit(0);
+			new HelpFormatter().printHelp(AdeMaskLog.class.getName(), options);
+			throw new AdeUsageException("Command Line parsing failed", exp);
+
 		} catch (ParseException exp) {
 			// oops, something went wrong
 			System.err.println("Parsing failed.  Reason: " + exp.getMessage());
@@ -182,19 +184,26 @@ public class AdeMaskLog extends ExtControlProgram {
 			mOutputFile = new File(line.getOptionValue(outputFileOpt
 					.getLongOpt()));
 		}
+		else{
+			throw new AdeUsageException("Command Line parsing failed missing output file name");
+		}
 
 		if (line.hasOption(inputFileOpt.getLongOpt())) {
-			mInputFile = new File(line.getOptionValue(inputFileOpt
-					.getLongOpt()));
+			mInputFile = new File(
+					line.getOptionValue(inputFileOpt.getLongOpt()));
 		}
+		else{
+			throw new AdeUsageException("Command Line parsing failed missing input file name");
+		}
+
 
 		if (line.hasOption(systemNameOpt.getLongOpt())) {
 			mSystemName = line.getOptionValue(systemNameOpt.getLongOpt());
 		}
 
 		if (line.hasOption(companyNameOpt.getLongOpt())) {
-			String[] workArg = line.getOptionValues(companyNameOpt
-					.getLongOpt());
+			String[] workArg = line
+					.getOptionValues(companyNameOpt.getLongOpt());
 			mCompanyName = workArg[0];
 			mCompanyNameNew = workArg[1];
 		}
@@ -286,21 +295,21 @@ public class AdeMaskLog extends ExtControlProgram {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
-		
+
 		try {
 			fis.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
-		
+
 		try {
 			fos.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
-		
+
 		return true;
 
 	}
@@ -324,8 +333,10 @@ public class AdeMaskLog extends ExtControlProgram {
 	/**
 	 * Create Parser for Linux log
 	 * 
+	 * @throws AdeInternalException
+	 * 
 	 */
-	private static void createParsers() {
+	private static void createParsers() throws AdeInternalException {
 
 		AdeExtOperatingSystemType m_osType;
 		AdeExtProperties linuxProperties;
@@ -344,6 +355,7 @@ public class AdeMaskLog extends ExtControlProgram {
 		} catch (AdeException e) {
 
 			e.printStackTrace();
+			throw new AdeInternalException("Parser construction failure");
 		}
 		LinuxSyslog3164ParserBase
 				.setAdeExtProperties((LinuxAdeExtProperties) linuxProperties);
@@ -366,8 +378,7 @@ public class AdeMaskLog extends ExtControlProgram {
 			if (gotLine) {
 				String oldSystemName = lineParser.getSource();
 				String oldText = lineParser.getMessageBody();
-				return createNewLine(currentLine, oldSystemName,
-						oldText);
+				return createNewLine(currentLine, oldSystemName, oldText);
 			}
 		}
 		outline = currentLine;
@@ -419,13 +430,17 @@ public class AdeMaskLog extends ExtControlProgram {
 		}
 		return newText;
 	}
-/**
- * change email address to myEmail@gmail.com
- * 
- * @param current line
- * @param text to be processed
- * @param text after processing
- */
+
+	/**
+	 * change email address to myEmail@gmail.com
+	 * 
+	 * @param current
+	 *            line
+	 * @param text
+	 *            to be processed
+	 * @param text
+	 *            after processing
+	 */
 	private String maskEmail(String currentLine, String oldText, String newText) {
 		String[] textTokens = oldText.split("\\s+");
 		int tokenCount = textTokens.length;
@@ -453,7 +468,8 @@ public class AdeMaskLog extends ExtControlProgram {
 	/**
 	 * Check if word contains an email address
 	 * 
-	 * @param token to be analyzed
+	 * @param token
+	 *            to be analyzed
 	 * @return
 	 */
 	public static boolean isValidEmail(String email) {
@@ -482,26 +498,6 @@ public class AdeMaskLog extends ExtControlProgram {
 		return m2.matches();
 	}
 
-
-    /**
-     * Output an usageError together with a Help Message
-     * @param errorMsg
-     * @throws AdeUsageException
-     */
-    protected void usageError(String errorMsg) throws AdeUsageException {
-        printHelp();
-        throw new AdeUsageException(errorMsg);
-    }
-
-    /**
-     * Print a Syntax Help 
-     */
-    protected void printHelp() {
-        System.out.flush();
-        HelpFormatter formatter = new HelpFormatter();
-        formatter.printHelp(this.getClass().getName(), options);
-    }
-    
 	/**
 	 * The entry point of AdeMaskLog
 	 * 
@@ -515,7 +511,7 @@ public class AdeMaskLog extends ExtControlProgram {
 		new AdeExtMessageHandler();
 		System.err.println("Running Ade: " + requestType);
 		final AdeMaskLog instance = new AdeMaskLog(requestType);
-		((AdeMaskLog) instance).AdeMaskLog(args);
+		(instance).AdeMaskLog(args);
 
 	}
 
