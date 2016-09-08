@@ -89,6 +89,8 @@ public class AdeMaskLog extends ExtControlProgram {
 	private Boolean mMaskEmailAddress = true;
 	private String localHost = "127.0.0.1";
 
+	Options options = new Options();
+	
 	/**
 	 * Constructor to pass in the requestType to the super class.
 	 * 
@@ -105,7 +107,6 @@ public class AdeMaskLog extends ExtControlProgram {
 	 */
 	@SuppressWarnings("static-access")
 	protected void parseArgs(String[] args) throws AdeUsageException {
-		Options options = new Options();
 
 		Option helpOpt = new Option("h", "help", false,
 				"Mask potentially sensitive information in Linux Log RFC 3164 format");
@@ -213,6 +214,7 @@ public class AdeMaskLog extends ExtControlProgram {
 	 * 
 	 * * @see org.openmainframe.ade.main.ControlProgram#doControlLogic()
 	 */
+	@SuppressWarnings("resource")
 	protected boolean doControlLogic() throws AdeException {
 
 		createParsers();
@@ -224,6 +226,7 @@ public class AdeMaskLog extends ExtControlProgram {
 			fis = new FileInputStream(mInputFile);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 
 		// Construct BufferedReader from InputStreamReader
@@ -235,8 +238,10 @@ public class AdeMaskLog extends ExtControlProgram {
 			fos = new FileWriter(mOutputFile, false);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		} catch (IOException e) {
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 
 		// Construct BufferedWriter from OutputStreamWriter
@@ -248,6 +253,7 @@ public class AdeMaskLog extends ExtControlProgram {
 			line = br.readLine();
 		} catch (IOException e1) {
 			e1.printStackTrace();
+			throw new RuntimeException(e1);
 		}
 		// process all records in file
 		while (line != null) {
@@ -257,11 +263,13 @@ public class AdeMaskLog extends ExtControlProgram {
 				bw.write(System.lineSeparator());
 			} catch (IOException e) {
 				e.printStackTrace();
+				throw new RuntimeException(e);
 			}
 			try {
 				line = br.readLine();
 			} catch (IOException e1) {
 				e1.printStackTrace();
+				throw new RuntimeException(e1);
 			}
 		}
 
@@ -269,24 +277,28 @@ public class AdeMaskLog extends ExtControlProgram {
 			br.close();
 		} catch (IOException e) {
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 
 		try {
 			bw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 		
 		try {
 			fis.close();
 		} catch (IOException e) {
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 		
 		try {
 			fos.close();
 		} catch (IOException e) {
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 		
 		return true;
@@ -470,6 +482,26 @@ public class AdeMaskLog extends ExtControlProgram {
 		return m2.matches();
 	}
 
+
+    /**
+     * Output an usageError together with a Help Message
+     * @param errorMsg
+     * @throws AdeUsageException
+     */
+    protected void usageError(String errorMsg) throws AdeUsageException {
+        printHelp();
+        throw new AdeUsageException(errorMsg);
+    }
+
+    /**
+     * Print a Syntax Help 
+     */
+    protected void printHelp() {
+        System.out.flush();
+        HelpFormatter formatter = new HelpFormatter();
+        formatter.printHelp(this.getClass().getName(), options);
+    }
+    
 	/**
 	 * The entry point of AdeMaskLog
 	 * 
