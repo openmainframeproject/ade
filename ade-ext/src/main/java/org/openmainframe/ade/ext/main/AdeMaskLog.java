@@ -251,8 +251,8 @@ public class AdeMaskLog extends ExtControlProgram {
 
 			// process all records in file
 			while (line != null) {
-				String write_line = generateMaskedLine(line);
-				bw.write(write_line);
+				String writeLine = generateMaskedLine(line);
+				bw.write(writeLine);
 				bw.write(System.lineSeparator());
 				line = br.readLine();
 
@@ -323,8 +323,7 @@ public class AdeMaskLog extends ExtControlProgram {
 					new LinuxSyslog3164ParserWithCompAndPid(),
 					new LinuxSyslog3164ParserFreeForm(), };
 		} catch (AdeException e) {
-
-			e.printStackTrace();
+			logger.error("Failure during parser construction", e);
 			throw new AdeInternalException("Parser construction failure");
 		}
 		LinuxSyslog3164ParserBase
@@ -374,10 +373,10 @@ public class AdeMaskLog extends ExtControlProgram {
 		if (mMaskEmailAddress) {
 			currentLine = maskEmail(currentLine, oldText, newText);
 		}
-		currentLine = maskCompanyName(currentLine);
-		currentLine = maskSystemName(currentLine, oldSystemName);
+		String updatedLine = maskCompanyName(currentLine);
+		String finishedLine = maskSystemName(updatedLine, oldSystemName);
 
-		return currentLine;
+		return finishedLine;
 	}
 	/**
 	 * Overlay company name with masked value
@@ -446,8 +445,7 @@ public class AdeMaskLog extends ExtControlProgram {
 	/**
 	 * Check if word contains an email address
 	 * 
-	 * @param token
-	 *            to be analyzed
+	 * @param email token to be analyzed
 	 * @return
 	 */
 	public static boolean isValidEmail(String email) {
