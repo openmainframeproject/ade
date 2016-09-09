@@ -262,11 +262,11 @@ public class AdeMaskLog extends ExtControlProgram {
 			br.close();
 			bw.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
+			logger.error("File not found exception", e);
+			throw new AdeUsageException(e.getMessage());
 		} catch (IOException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
+			logger.error("IO exception", e);
+			throw new AdeInternalException(e.getMessage());
 		} finally {
 			try {
 				if (fis != null) {
@@ -276,8 +276,7 @@ public class AdeMaskLog extends ExtControlProgram {
 					fos.close();
 				}
 			} catch (IOException e) {
-				e.printStackTrace();
-				throw new RuntimeException(e);
+				logger.error("IO exception during close", e);
 			}
 
 		}
