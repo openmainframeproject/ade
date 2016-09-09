@@ -55,6 +55,8 @@ import org.openmainframe.ade.ext.os.parser.LinuxSyslogLineParser;
 import org.openmainframe.ade.ext.service.AdeExtMessageHandler;
 import org.openmainframe.ade.ext.os.AdeExtPropertiesFactory;
 import org.openmainframe.ade.ext.os.AdeExtProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /** Main to mask private information in a log */
 public class AdeMaskLog extends ExtControlProgram {
@@ -90,8 +92,12 @@ public class AdeMaskLog extends ExtControlProgram {
 	private String localHost = "127.0.0.1";
 
 	Options options = new Options();
-
 	/**
+     * The logger for this class.
+     */
+    private static final Logger logger = LoggerFactory.getLogger(AdeMaskLog.class);
+
+    /**
 	 * Constructor to pass in the requestType to the super class.
 	 * 
 	 * @param requestType
@@ -159,22 +165,19 @@ public class AdeMaskLog extends ExtControlProgram {
 			line = parser.parse(options, args);
 		} catch (MissingOptionException exp) {
 
-			System.out.println("Command line parsing failed.  Reason: "
-					+ exp.getMessage());
-			System.out.println();
 			new HelpFormatter().printHelp(AdeMaskLog.class.getName(), options);
 			throw new AdeUsageException("Command Line parsing failed", exp);
 
 		} catch (ParseException exp) {
 			// oops, something went wrong
-			System.err.println("Parsing failed.  Reason: " + exp.getMessage());
+			logger.error("Parsing failed", exp);
 			throw new AdeUsageException("Argument Parsing failed", exp);
 		}
 
 		if (line.hasOption('h')) {
 			new HelpFormatter().printHelp(this.getClass().getSimpleName(),
 					options);
-			System.exit(0);
+		    System.exit(0);
 		}
 		if (line.hasOption(helpOpt.getLongOpt())) {
 			new HelpFormatter().printHelp(getClass().getSimpleName(), options);
