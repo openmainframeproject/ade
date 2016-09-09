@@ -74,13 +74,13 @@ public class AdeMaskLog extends ExtControlProgram {
 	private static Pattern validIPV4Pattern;
 	private static Pattern validIPV6Pattern;
 	private static Pattern validEmailPattern;
-	private static final String IPV4Pattern = "(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}([01]?\\d\\d?|2[0-4]\\d|25[0-5])";
-	private static final String IPV6Pattern = "([0-9a-f]{1,4}:){7}([0-9a-f]){1,4}";
+	private static final String IPV4PATTERN = "(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}([01]?\\d\\d?|2[0-4]\\d|25[0-5])";
+	private static final String IPV6PATTERN = "([0-9a-f]{1,4}:){7}([0-9a-f]){1,4}";
 
 	// pattern source: <a href="http://regxlib.com/REDetails.aspx?regexp_id=26"
 	// target="_blank"
 	// rel="nofollow">http://regxlib.com/REDetails.aspx?regexp_id=26</a>
-	private static final String EmailPattern = "^([a-zA-Z0-9_\\-\\.])+@(([0-2]?[0-5]?[0-5]\\.[0-2]?[0-5]?[0-5]"
+	private static final String EMAILlPATTERN = "^([a-zA-Z0-9_\\-\\.])+@(([0-2]?[0-5]?[0-5]\\.[0-2]?[0-5]?[0-5]"
 			+ "\\.[0-2]?[0-5]?[0-5]\\.[0-2]?[0-5]?[0-5])|((([a-zA-Z0-9\\-])+\\.)"
 			+ "+([a-zA-Z\\-])+))$";
 
@@ -93,11 +93,12 @@ public class AdeMaskLog extends ExtControlProgram {
 
 	Options options = new Options();
 	/**
-     * The logger for this class.
-     */
-    private static final Logger logger = LoggerFactory.getLogger(AdeMaskLog.class);
+	 * The logger for this class.
+	 */
+	private static final Logger logger = LoggerFactory
+			.getLogger(AdeMaskLog.class);
 
-    /**
+	/**
 	 * Constructor to pass in the requestType to the super class.
 	 * 
 	 * @param requestType
@@ -177,7 +178,7 @@ public class AdeMaskLog extends ExtControlProgram {
 		if (line.hasOption('h')) {
 			new HelpFormatter().printHelp(this.getClass().getSimpleName(),
 					options);
-		    System.exit(0);
+			System.exit(0);
 		}
 		if (line.hasOption(helpOpt.getLongOpt())) {
 			new HelpFormatter().printHelp(getClass().getSimpleName(), options);
@@ -186,19 +187,18 @@ public class AdeMaskLog extends ExtControlProgram {
 		if (line.hasOption(outputFileOpt.getLongOpt())) {
 			mOutputFile = new File(line.getOptionValue(outputFileOpt
 					.getLongOpt()));
-		}
-		else{
-			throw new AdeUsageException("Command Line parsing failed missing output file name");
+		} else {
+			throw new AdeUsageException(
+					"Command Line parsing failed missing output file name");
 		}
 
 		if (line.hasOption(inputFileOpt.getLongOpt())) {
 			mInputFile = new File(
 					line.getOptionValue(inputFileOpt.getLongOpt()));
+		} else {
+			throw new AdeUsageException(
+					"Command Line parsing failed missing input file name");
 		}
-		else{
-			throw new AdeUsageException("Command Line parsing failed missing input file name");
-		}
-
 
 		if (line.hasOption(systemNameOpt.getLongOpt())) {
 			mSystemName = line.getOptionValue(systemNameOpt.getLongOpt());
@@ -226,93 +226,61 @@ public class AdeMaskLog extends ExtControlProgram {
 	 * 
 	 * * @see org.openmainframe.ade.main.ControlProgram#doControlLogic()
 	 */
-	@SuppressWarnings("resource")
+
 	protected boolean doControlLogic() throws AdeException {
 
 		createParsers();
 		createPattern();
 
-		// open input file
 		FileInputStream fis = null;
-		try {
-			fis = new FileInputStream(mInputFile);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
-
-		// Construct BufferedReader from InputStreamReader
-		BufferedReader br = new BufferedReader(new InputStreamReader(fis));
-
-		// open output file
 		FileWriter fos = null;
 		try {
+			// open input file
+			// open output file
+			fis = new FileInputStream(mInputFile);
 			fos = new FileWriter(mOutputFile, false);
+
+			// Construct BufferedReader from InputStreamReader
+			// Construct BufferedWriter from OutputStreamWriter
+			BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+			BufferedWriter bw = new BufferedWriter(fos);
+
+			// read first record of file
+			String line = null;
+			line = br.readLine();
+
+			// process all records in file
+			while (line != null) {
+				String write_line = generateMaskedLine(line);
+				bw.write(write_line);
+				bw.write(System.lineSeparator());
+				line = br.readLine();
+
+			}
+			
+			// close 
+			br.close();
+			bw.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
-		}
-
-		// Construct BufferedWriter from OutputStreamWriter
-		BufferedWriter bw = new BufferedWriter(fos);
-
-		// read first record of file
-		String line = null;
-		try {
-			line = br.readLine();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-			throw new RuntimeException(e1);
-		}
-		// process all records in file
-		while (line != null) {
-			String write_line = generateMaskedLine(line);
+		} finally {
 			try {
-				bw.write(write_line);
-				bw.write(System.lineSeparator());
+				if (fis != null) {
+					fis.close();
+				}
+				if (fos != null) {
+					fos.close();
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 				throw new RuntimeException(e);
 			}
-			try {
-				line = br.readLine();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-				throw new RuntimeException(e1);
-			}
-		}
 
-		try {
-			br.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
 		}
-
-		try {
-			bw.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
-
-		try {
-			fis.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
-
-		try {
-			fos.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
-
 		return true;
 
 	}
@@ -320,13 +288,13 @@ public class AdeMaskLog extends ExtControlProgram {
 	/**
 	 * Create Pattern to find email and IP address
 	 */
-	private void createPattern() {
+	private static void createPattern() {
 
-		validIPV4Pattern = Pattern.compile(IPV4Pattern,
+		validIPV4Pattern = Pattern.compile(IPV4PATTERN,
 				Pattern.CASE_INSENSITIVE);
-		validIPV6Pattern = Pattern.compile(IPV6Pattern,
+		validIPV6Pattern = Pattern.compile(IPV6PATTERN,
 				Pattern.CASE_INSENSITIVE);
-		validEmailPattern = Pattern.compile(EmailPattern);
+		validEmailPattern = Pattern.compile(EMAILlPATTERN);
 		// pattern source: <a
 		// href="http://regxlib.com/REDetails.aspx?regexp_id=26" target="_blank"
 		// rel="nofollow">http://regxlib.com/REDetails.aspx?regexp_id=26</a>
@@ -412,11 +380,19 @@ public class AdeMaskLog extends ExtControlProgram {
 
 		return currentLine;
 	}
-
+	/**
+	 * Overlay company name with masked value
+	 * @param currentLine
+	 * @return
+	 */
 	private String maskCompanyName(String currentLine) {
 		return currentLine.replace(mCompanyName, mCompanyNameNew);
 	}
-
+	/**
+	 * Replace IP address with standard well known value for local host
+	 * @param oldText
+	 * @return
+	 */
 	private String maskIPAddress(String oldText) {
 		String[] textTokens = oldText.split("\\s+");
 		int tokenCount = textTokens.length;
