@@ -139,7 +139,8 @@ public class ExtAnalyzedIntervalV2FullXmlStorer extends ExtendedAnalyzedInterval
 
                 xmlStreamWriter = new PrintWriter(zos);
             } else {
-                xmlStreamWriter = new OutputStreamWriter(new FileOutputStream(outFile), "UTF-8");
+            	fos = new FileOutputStream(outFile);
+                xmlStreamWriter = new OutputStreamWriter(fos, "UTF-8");
             }
             xmlStreamWriter.write("<?xml version='1.0' encoding='UTF-8' ?> \n");
             xmlStreamWriter.write("<?xml-stylesheet href='" + XSL_FILENAME + "' type=\"text/xsl\" ?> \n");

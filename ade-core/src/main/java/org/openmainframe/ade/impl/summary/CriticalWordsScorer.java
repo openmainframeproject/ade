@@ -16,7 +16,7 @@
     You should have received a copy of the GNU General Public License
     along with ADE.  If not, see <http://www.gnu.org/licenses/>.
  
-*/
+ */
 package org.openmainframe.ade.impl.summary;
 
 import java.io.BufferedReader;
@@ -26,7 +26,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
-import java.util.Set;
 
 import org.openmainframe.ade.exceptions.AdeInternalException;
 
@@ -36,67 +35,78 @@ import org.openmainframe.ade.exceptions.AdeInternalException;
  */
 public class CriticalWordsScorer {
 
-    public static final int INIT_SIZE = 30;
-    private Set<String> m_criticalWordsSet = null;
-    private File m_criticalWordsFile = null;
+	public static final int INIT_SIZE = 30;
+	private HashSet<String> m_criticalWordsSet = null;
+	private File m_criticalWordsFile = null;
 
-    public CriticalWordsScorer(String criticalWordsFile) throws AdeInternalException {
-        m_criticalWordsFile = new File(criticalWordsFile);
-        m_criticalWordsSet = new HashSet<String>(INIT_SIZE);
-        init();
-    }
+	public CriticalWordsScorer(String criticalWordsFile)
+			throws AdeInternalException {
+		m_criticalWordsFile = new File(criticalWordsFile);
+		m_criticalWordsSet = new HashSet<String>(INIT_SIZE);
+		init();
+	}
 
-    private void init() throws AdeInternalException {
-        BufferedReader br = null;
-        String line;
-        try {
-            br = new BufferedReader(new InputStreamReader(
-                    new FileInputStream(m_criticalWordsFile), StandardCharsets.UTF_8));
-            while (null != (line = br.readLine())) {
-                /* Line start with # is a comment */
-                if (line.startsWith("#")) {
-                    continue;
-                }
+	private void init() throws AdeInternalException {
+		BufferedReader br = null;
+		FileInputStream fis = null;
+		String line = null;
 
-                String[] tokens = line.split("\\s+");
-                if (tokens.length != 1) {
-                    throw new AdeInternalException("Multiple words in line not allowed: " + line);
-                }
-                m_criticalWordsSet.add(tokens[0].toLowerCase());
-            }
-        } catch (IOException e) {
-            throw new AdeInternalException("Error: unable to initiliaze text score", e);
-        } finally {
-            try {
-                if (br != null) {
-                    br.close();
-                }
-            } catch (IOException e) {
-                throw new AdeInternalException("Error: closing text score file", e);
-            }
-        }
-    }
+		try {
+			fis = new FileInputStream(m_criticalWordsFile);
+			br = new BufferedReader(new InputStreamReader(fis,
+					StandardCharsets.UTF_8));
+			while (null != (line = br.readLine())) {
+				/* Line start with # is a comment */
+				if (line.startsWith("#")) {
+					continue;
+				}
 
-    /**
-     * Return the score of message, based on the critical keywords
-     * found within the message body.
-     * 
-     * @param text - the message to be analyzed
-     * @return the score of the provided message
-     */
-    public int calcScore(String text) {
-        int score = 0;
-        if (text == null || text.length() == 0) {
-            return score;
-        }
-        String[] tokens = text.split("\\s+");
-        for (int i = 0; i < tokens.length; i++) {
-            String word = tokens[i].toLowerCase();
-            if (m_criticalWordsSet.contains(word)) {
-                score++;
-            }
-        }
-        return score;
-    }
+				String[] tokens = line.split("\\s+");
+				if (tokens.length != 1) {
+					throw new AdeInternalException(
+							"Multiple words in line not allowed: " + line);
+				}
+				m_criticalWordsSet.add(tokens[0].toLowerCase());
+			}
+		} catch (IOException e) {
+			throw new AdeInternalException(
+					"Error: unable to initiliaze text score", e);
+		} finally {
+			try {
+				if (br != null) {
+					br.close();
+				}
+				if (fis != null) {
+					fis.close();
+				}
+			} catch (IOException e) {
+				throw new AdeInternalException(
+						"Error: closing text score file", e);
+			}
+		}
+	}
+
+	/**
+	 * Return the score of message, based on the critical keywords found within
+	 * the message body.
+	 * 
+	 * @param text
+	 *            - the message to be analyzed
+	 * @return the score of the provided message
+	 */
+	public int calcScore(String text) {
+		int score = 0;
+		if (text == null || text.length() == 0) {
+			return score;
+		}
+		String[] tokens = text.split("\\s+");
+		for (int i = 0; i < tokens.length; i++) {
+			String word = tokens[i].toLowerCase();
+			if (m_criticalWordsSet.contains(word)) {
+				score++;
+			}
+		}
+		return score;
+	}
 
 }

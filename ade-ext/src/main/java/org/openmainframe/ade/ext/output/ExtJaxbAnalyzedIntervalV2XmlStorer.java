@@ -332,6 +332,7 @@ public class ExtJaxbAnalyzedIntervalV2XmlStorer extends ExtendedAnalyzedInterval
          * filesystem.
          */
         File tempOutputFile = new File(outFile.getParent(), outFile.getName() + ".tmp");
+        FileOutputStream fos = null;
         if (m_verbose) {
             System.out.println("saving xml in " + outFile.getAbsolutePath());
         }
@@ -339,7 +340,8 @@ public class ExtJaxbAnalyzedIntervalV2XmlStorer extends ExtendedAnalyzedInterval
         try {
             File parentdir = outFile.getParentFile();
             parentdir.mkdirs();
-            xmlStreamWriter = new OutputStreamWriter(new FileOutputStream(tempOutputFile), "UTF-8");
+            fos = new FileOutputStream(tempOutputFile);
+            xmlStreamWriter = new OutputStreamWriter(fos, "UTF-8");
             xmlStreamWriter.write("<?xml version='1.0' encoding='UTF-8' ?> \n");
             xmlStreamWriter.write("<?xml-stylesheet href='" + XSL_FILENAME + "' type='text/xsl' ?> \n");
 
@@ -365,6 +367,14 @@ public class ExtJaxbAnalyzedIntervalV2XmlStorer extends ExtendedAnalyzedInterval
             throw new AdeInternalException("Failed to write xml file for interval " + outFile.getName()
                     + " of source " + m_source.getSourceId(), e);
         } finally {
+        	try {
+        		if (fos != null){
+        			fos.close();
+        		}
+        	}catch (IOException e) {
+                    throw new AdeInternalException("Failed to close xml file for interval " + outFile.getName()
+                            + " of source " + m_source.getSourceId(), e);
+                }	
             org.apache.commons.io.FileUtils.deleteQuietly(tempOutputFile);
         }
     }
