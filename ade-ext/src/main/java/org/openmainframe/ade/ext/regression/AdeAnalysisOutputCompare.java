@@ -311,9 +311,9 @@ public class AdeAnalysisOutputCompare {
 		} catch (SAXException | IOException e) {
 			logger.error("Error encountered with the Diff.", e);
 		} finally {
-			if (fisBaseline != null) {
-				fisNew.close();
-			}
+
+			fisBaseline.close();
+				
 			if (fisNew != null) {
 				fisNew.close();
 			}
