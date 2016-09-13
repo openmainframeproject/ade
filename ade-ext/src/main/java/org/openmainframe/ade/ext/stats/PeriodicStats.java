@@ -228,10 +228,10 @@ public abstract class PeriodicStats {
 					new OutputStreamWriter(fos, StandardCharsets.UTF_8)));
 			writer.println(textLine);
 			writer.close();
-		} catch (Throwable t) {
+		} catch (IOException t) {
 			final String msg = String
 					.format("Unexpected throwable (%s) while appending to: %s. Statistics recording halted.",
-							t.toString(), statsFilePath);
+							t.toString(), t, statsFilePath);
 			logger.error(msg, t);
 			throw new AdeInternalException(msg, t);
 		} finally {
@@ -241,7 +241,7 @@ public abstract class PeriodicStats {
 				}
 			} catch (IOException t) {
 				final String msg = String.format(
-						"Unexpected throwable (%s) while closing: %s.",
+						"Unexpected throwable (%s) while closing: %s.", t,
 						statsFilePath);
 				logger.error(msg, t);
 			}

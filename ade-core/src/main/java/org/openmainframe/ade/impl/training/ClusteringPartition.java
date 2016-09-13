@@ -200,8 +200,8 @@ public class ClusteringPartition implements Serializable {
 					fis.close();
 				}
 			} catch (IOException e) {
-				throw new AdeInternalException(
-						"Error: closing cluster partition file", e);
+				logger.error(
+						"Error closing the file " + m_initialPartitionFileName, e);
 			}
 		}
 		if (clusterIndex >= numClusters) {
