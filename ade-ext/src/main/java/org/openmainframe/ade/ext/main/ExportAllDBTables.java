@@ -244,7 +244,7 @@ public class ExportAllDBTables extends DBDataCollector {
 				try {
 					rs.close();
 				} catch (SQLException e) {
-					logger.debug("Exception in closing result set.", e);
+					logger.error("Exception in closing result set.", e);
 				}
 			}
 
@@ -252,7 +252,7 @@ public class ExportAllDBTables extends DBDataCollector {
 				try {
 					statement.close();
 				} catch (SQLException e) {
-					logger.debug("Exception in closing statement.", e);
+					logger.error("Exception in closing statement.", e);
 				}
 			}
 
@@ -260,7 +260,7 @@ public class ExportAllDBTables extends DBDataCollector {
 				try {
 					ps.close();
 				} catch (SQLException e) {
-					logger.debug("Exception in closing statement.", e);
+					logger.error("Exception in closing statement.", e);
 				}
 			}
 		}
@@ -322,9 +322,9 @@ public class ExportAllDBTables extends DBDataCollector {
 					fos.close();
 				}
 			} catch (SQLException e) {
-				throw new AdeExtInternalException("SQLException caught during close: " + e, e);	
+				logger.error("SQLException caught during close: " + e, e);	
 			} catch (IOException e) {
-				throw new AdeExtInternalException("IOException caught during close: " + e, e);
+				logger.error("IOException caught during close: " + e, e);
 			}
 		}
 	}

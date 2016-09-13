@@ -244,7 +244,6 @@ public abstract class PeriodicStats {
 						"Unexpected throwable (%s) while closing: %s.",
 						statsFilePath);
 				logger.error(msg, t);
-				throw new AdeInternalException(msg, t);
 			}
 		}
 	}

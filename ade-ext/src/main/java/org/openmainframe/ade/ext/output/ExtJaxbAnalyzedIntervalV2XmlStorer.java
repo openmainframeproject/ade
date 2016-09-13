@@ -372,7 +372,7 @@ public class ExtJaxbAnalyzedIntervalV2XmlStorer extends ExtendedAnalyzedInterval
         			fos.close();
         		}
         	}catch (IOException e) {
-                    throw new AdeInternalException("Failed to close xml file for interval " + outFile.getName()
+                   s_logger.error("Failed to close xml file for interval " + outFile.getName()
                             + " of source " + m_source.getSourceId(), e);
                 }	
             org.apache.commons.io.FileUtils.deleteQuietly(tempOutputFile);

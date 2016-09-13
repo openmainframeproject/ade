@@ -685,7 +685,7 @@ public class ExtJaxbAnalyzedPeriodV2XmlStorer extends AnalyzedIntervalOutputer {
         			fos.close();
         		}
         	}catch (IOException e) {
-                    throw new AdeInternalException("Failed to close xml file for period " + outFile.getName()
+                    s_logger.error("Failed to close xml file for period " + outFile.getName()
                             + " of source " + m_source.getSourceId(), e);
                 }	
             org.apache.commons.io.FileUtils.deleteQuietly(tempOutputFile);

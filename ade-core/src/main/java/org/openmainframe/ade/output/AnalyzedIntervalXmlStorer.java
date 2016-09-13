@@ -247,14 +247,14 @@ public class AnalyzedIntervalXmlStorer extends AnalyzedIntervalOutputer {
                 try {
                     xmlStreamWriter.close();
                 } catch (IOException e) {
-                    throw new AdeInternalException("Failed to close file: " + outFile.getName(), e);
+                    logger.error("Failed to close file: " + outFile.getName(), e);
                 }
             }
             if (fos != null) {
                 try {
                     fos.close();
                 } catch (IOException e) {
-                    throw new AdeInternalException("Failed to close file: " + outFile.getName(), e);
+                    logger.error("Failed to close file: " + outFile.getName(), e);
                 }
             }
         }
