@@ -20,6 +20,7 @@
 package org.openmainframe.ade.output;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -221,11 +222,14 @@ public class AnalyzedIntervalXmlStorer extends AnalyzedIntervalOutputer {
             logger.info("saving xml in " + outFile.getAbsolutePath());
         }
         OutputStreamWriter xmlStreamWriter = null;
+        FileOutputStream fos = null;
+      
         try {
             final File parentdir = outFile.getParentFile();
             parentdir.mkdirs();
             outFile.createNewFile();
-            xmlStreamWriter = new OutputStreamWriter(new FileOutputStream(outFile), StandardCharsets.UTF_8);
+            fos = new FileOutputStream(outFile);
+            xmlStreamWriter = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
             xmlStreamWriter.write("<?xml version='1.0' encoding='UTF-8' ?> \n");
             xmlStreamWriter.write("<?xml-stylesheet href=\"./xslt/AnalyzedInterval.xsl\" type=\"text/xsl\" ?> \n");
 
@@ -243,14 +247,21 @@ public class AnalyzedIntervalXmlStorer extends AnalyzedIntervalOutputer {
                 try {
                     xmlStreamWriter.close();
                 } catch (IOException e) {
-                    throw new AdeInternalException("Failed to close file: " + outFile.getName(), e);
+                    logger.error("Failed to close file: " + outFile.getName(), e);
+                }
+            }
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    logger.error("Failed to close file: " + outFile.getName(), e);
                 }
             }
         }
     }
 
     public static Collection<IAnalyzedMessageSummary> getSortedMessages(IAnalyzedInterval interval) {
-        final List<IAnalyzedMessageSummary> sortedMessages = new ArrayList<IAnalyzedMessageSummary>();
+        final ArrayList<IAnalyzedMessageSummary> sortedMessages = new ArrayList<IAnalyzedMessageSummary>();
         sortedMessages.addAll(interval.getAnalyzedMessages());
         Collections.sort(sortedMessages, new AnomalyScoreComparator());
         return sortedMessages;

@@ -649,10 +649,12 @@ public class ExtJaxbAnalyzedPeriodV2XmlStorer extends AnalyzedIntervalOutputer {
             System.out.println("saving xml in " + outFile.getAbsolutePath());
         }
         OutputStreamWriter xmlStreamWriter;
+        FileOutputStream fos = null;
         try {
             File parentdir = outFile.getParentFile();
             parentdir.mkdirs();
-            xmlStreamWriter = new OutputStreamWriter(new FileOutputStream(tempOutputFile), StandardCharsets.UTF_8);
+            fos = new FileOutputStream(tempOutputFile);
+            xmlStreamWriter = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
             xmlStreamWriter.write("<?xml version='1.0' encoding='UTF-8' ?> \n");
             xmlStreamWriter.write("<?xml-stylesheet href='" + XSL_FILENAME + "' type='text/xsl' ?>\n");
 
@@ -675,9 +677,17 @@ public class ExtJaxbAnalyzedPeriodV2XmlStorer extends AnalyzedIntervalOutputer {
             }
 
         } catch (JAXBException|IOException e) {
-            throw new AdeInternalException("Failed to write xml file for interval " + outFile.getName()
+            throw new AdeInternalException("Failed to write xml file for period " + outFile.getName()
                     + " of source " + m_source.getSourceId(), e);
         } finally {
+        	try {
+        		if (fos != null){
+        			fos.close();
+        		}
+        	}catch (IOException e) {
+                    s_logger.error("Failed to close xml file for period " + outFile.getName()
+                            + " of source " + m_source.getSourceId(), e);
+                }	
             org.apache.commons.io.FileUtils.deleteQuietly(tempOutputFile);
         }
 
