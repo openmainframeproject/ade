@@ -28,6 +28,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
 
 import org.openmainframe.ade.exceptions.AdeInternalException;
+import org.openmainframe.ade.impl.training.ClusteringPartition;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Used for critical words feature in analysis.
@@ -38,7 +41,9 @@ public class CriticalWordsScorer {
 	public static final int INIT_SIZE = 30;
 	private HashSet<String> m_criticalWordsSet = null;
 	private File m_criticalWordsFile = null;
-
+	private static final Logger logger = LoggerFactory
+			.getLogger(CriticalWordsScorer.class);
+	
 	public CriticalWordsScorer(String criticalWordsFile)
 			throws AdeInternalException {
 		m_criticalWordsFile = new File(criticalWordsFile);
@@ -80,8 +85,7 @@ public class CriticalWordsScorer {
 					fis.close();
 				}
 			} catch (IOException e) {
-				throw new AdeInternalException(
-						"Error: closing text score file", e);
+				logger.error("Error closing the file ",e);
 			}
 		}
 	}
