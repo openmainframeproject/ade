@@ -40,6 +40,9 @@ import org.openmainframe.ade.exceptions.AdeInternalException;
 import org.openmainframe.ade.impl.PropertyAnnotation.Property;
 import org.openmainframe.ade.impl.jaxb.AnalyzedIntervalType;
 import org.openmainframe.ade.impl.jaxb.ObjectFactory;
+import org.openmainframe.ade.impl.summary.CriticalWordsScorer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class take the output XML data from the Ade 3.1 (Called V2 Full Format), write it out to the
@@ -69,7 +72,12 @@ public class ExtAnalyzedIntervalV2FullXmlStorer extends ExtendedAnalyzedInterval
      * This include all the XSL resources from the super class, and this class.
      */
     private static final String[] s_thisXSLResources = { "AnalyzedInterval.xsl", "global.css" };
-
+    
+    /**
+     * setup logger for errors
+     */
+	private static final Logger logger = LoggerFactory
+			.getLogger(ExtAnalyzedIntervalV2FullXmlStorer.class);
     /**
      * Default constructor
      * @throws AdeException 
@@ -139,7 +147,8 @@ public class ExtAnalyzedIntervalV2FullXmlStorer extends ExtendedAnalyzedInterval
 
                 xmlStreamWriter = new PrintWriter(zos);
             } else {
-                xmlStreamWriter = new OutputStreamWriter(new FileOutputStream(outFile), "UTF-8");
+            	fos = new FileOutputStream(outFile);
+                xmlStreamWriter = new OutputStreamWriter(fos, "UTF-8");
             }
             xmlStreamWriter.write("<?xml version='1.0' encoding='UTF-8' ?> \n");
             xmlStreamWriter.write("<?xml-stylesheet href='" + XSL_FILENAME + "' type=\"text/xsl\" ?> \n");
@@ -159,7 +168,7 @@ public class ExtAnalyzedIntervalV2FullXmlStorer extends ExtendedAnalyzedInterval
                 try {
                     zos.close();
                 } catch (IOException e) {
-                    throw new AdeInternalException("Failed to close ZIPOutputStream: " + outFile.getName(), e);
+                    logger.error("Failed to close ZIPOutputStream: " + outFile.getName(), e);
                 }
             }
 
@@ -167,14 +176,14 @@ public class ExtAnalyzedIntervalV2FullXmlStorer extends ExtendedAnalyzedInterval
                 try {
                     fos.close();
                 } catch (IOException e) {
-                    throw new AdeInternalException("Failed to close FileOutputStream: " + outFile.getName(), e);
+                    logger.error("Failed to close FileOutputStream: " + outFile.getName(), e);
                 }
             }
             if (xmlStreamWriter != null) {
                 try {
                     xmlStreamWriter.close();
                 } catch (IOException e) {
-                    throw new AdeInternalException("Failed to close file: " + outFile.getName(), e);
+                    logger.error("Failed to close file: " + outFile.getName(), e);
                 }
             }
         }
