@@ -28,6 +28,8 @@ Please see http://openmainframeproject.github.io/ade/ for documentation on ADE.
    - analyze every pull request with Sonarqube
    - store results of Sonarqube analysis at Sonarqube.com
 - Add sample to mask sensitive data within Linux logs to allow sharing of logs
+- Fix problem with train_test.sh
+- Fix additional problems identified by Sonarqube
 
 ### Poesten Kill 1.0.2
 
