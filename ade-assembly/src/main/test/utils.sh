@@ -163,7 +163,7 @@ create_test_db() {
 create_default_ag() {
   AG_JSON_DEF_FILENAME="/tmp/reg_ag.json"
   AG_JSON_DEF="{ \
-    \"groups\":{\"model\":[{\"name\" : \"default\", \"dataType\": \"syslog\", \"evaluationOrder\" : 1, \"ruleName\" : \"default\"}]}, \
+    \"groups\":{\"modelgroups\":[{\"name\" : \"default\", \"dataType\": \"syslog\", \"evaluationOrder\" : 1, \"ruleName\" : \"default\"}]}, \
     \"rules\":[{\"name\" : \"default\", \"description\" : \"regression test rule to match all systems\", \"membershipRule\" : \"*\" }] \
     }"
   echo $AG_JSON_DEF > $AG_JSON_DEF_FILENAME  # copy group definition into a file
