@@ -22,6 +22,7 @@ Please see http://openmainframeproject.github.io/ade/ for documentation on ADE.
 ## Releases
 
 ### Fall Kill 1.0.3
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/378/badge)](https://bestpractices.coreinfrastructure.org/projects/378)
 
 - Support for Core Infrastructure Initiative
    - add travis-ci build for every pull request
