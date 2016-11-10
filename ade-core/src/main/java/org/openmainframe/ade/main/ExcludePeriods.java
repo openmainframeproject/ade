@@ -17,7 +17,7 @@
     along with ADE.  If not, see <http://www.gnu.org/licenses/>.
  
  */
-org.openmainframe.ade.main;
+package org.openmainframe.ade.main;
 
 import java.util.Collection;
 import java.util.Set;
