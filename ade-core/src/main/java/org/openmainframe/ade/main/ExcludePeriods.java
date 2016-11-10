@@ -17,17 +17,15 @@
     along with ADE.  If not, see <http://www.gnu.org/licenses/>.
  
  */
+
 package org.openmainframe.ade.main;
 
 import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.logging.Logger;
 
-import org.openmainframe.ade.ADE;
-import org.openmainframe.ade.data.Source;
-import org.openmainframe.ade.dataStore.DataStoreSources;
-import org.openmainframe.ade.exceptions.ADEException;
-import org.openmainframe.ade.exceptions.ADEUsageException;
+import javax.xml.transform.Source;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -38,10 +36,18 @@ import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.OptionGroup;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
-import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 import org.joda.time.format.ISOPeriodFormat;
+import org.openmainframe.ade.Ade;
+import org.openmainframe.ade.data.IPeriod;
+import org.openmainframe.ade.data.ISource;
+import org.openmainframe.ade.dataStore.IDataStoreSources;
+import org.openmainframe.ade.exceptions.AdeException;
+import org.openmainframe.ade.exceptions.AdeUsageException;
+import org.openmainframe.ade.ext.main.Train;
+import org.openmainframe.ade.main.ControlProgram;
+import org.openmainframe.ade.main.TrainLogs;
 
 public class ExcludePeriods extends ControlProgram {
 	
@@ -80,28 +86,31 @@ public class ExcludePeriods extends ControlProgram {
 	protected Collection<Source> m_sources;
 
 	@Override
-	protected boolean doControlLogic() throws ADEException {
+	protected boolean doControlLogic() throws AdeException {
 		excludePeriods(m_sources, m_startDate, m_endDate, m_exclude);
 		return true;
 	}
 	
-	protected void excludePeriods(Collection<Source> sources, DateTime startDate, DateTime endDate, boolean exclude) throws ADEException {
+	protected void excludePeriods(Collection<Source> sources, 
+			DateTime startDate, DateTime endDate, boolean exclude) 
+					throws AdeException {
 		// for all sources
 		for (Source source: m_sources) {
 			String msg = "Beginning to operate on source: "+source;
 			System.out.println(msg);
 			m_logger.info(msg);
 			
-			for (org.openmainframe.ade.data.Period period: TrainLogs.getSourcePeriods(source, m_startDate, m_endDate)) {
+			for (IPeriod period: 
+				TrainLogs.getSourcePeriods((ISource) source, m_startDate, m_endDate)) {
 				period.setExcludeFromTraining(m_exclude);
-				ADE.getADE().getDataStore().periods().updatePeriodMetaData(period);
+				Ade.getAde().getDataStore().periods().updatePeriodMetaData(period);
 			}
 		}
 	}
 
 	@SuppressWarnings("static-access")
 	@Override
-	protected void parseArgs(String[] args) throws ADEException {
+	protected void parseArgs(String[] args) throws AdeException {
 		Option helpOpt = new Option("h", "help", false, "Print help message and exit");
 
 		Option includeOpt = OptionBuilder
@@ -174,7 +183,7 @@ public class ExcludePeriods extends ControlProgram {
 			line = parser.parse(options, args);
 		} catch (ParseException exp) {
 			new HelpFormatter().printHelp(HELP+"\nOptions:", options );
-			throw new ADEUsageException("Command line parsing failed", exp);
+			throw new AdeUsageException("Command line parsing failed", exp);
 		}
 
 		if (line.hasOption(helpOpt.getOpt())) {
@@ -186,11 +195,11 @@ public class ExcludePeriods extends ControlProgram {
 		m_exclude = !line.hasOption(INCLUDE_OPT);
 		
 		if (line.hasOption(UNSELECT_SOURCES_OPT) && !line.hasOption(ALL_SOURCES_OPT)) {
-			throw new ADEUsageException("'"+UNSELECT_SOURCES_OPT+"' cannot be used without '"+ALL_SOURCES_OPT+"'");
+			throw new AdeUsageException("'"+UNSELECT_SOURCES_OPT+"' cannot be used without '"+ALL_SOURCES_OPT+"'");
 		}
 
 		if (line.hasOption(ALL_SOURCES_OPT)) {
-			Collection<Source> allSources = ADE.getADE().getDataStore().sources().getAllSources();
+			Collection<ISource> allSources = Ade.getAde().getDataStore().sources().getAllSources();
 			System.out.println("Operating on all available sources");
 			if (!line.hasOption(UNSELECT_SOURCES_OPT)) {
 				m_sources = allSources;
@@ -206,7 +215,7 @@ public class ExcludePeriods extends ControlProgram {
 		}
 		
 		if (line.hasOption(DURATION_OPT) && line.hasOption(START_DATE_OPT) && line.hasOption(END_DATE_OPT)) {
-			throw new ADEUsageException("Cannot use '"+START_DATE_OPT+"', '"+END_DATE_OPT+"' and '"+DURATION_OPT+"' together");
+			throw new AdeUsageException("Cannot use '"+START_DATE_OPT+"', '"+END_DATE_OPT+"' and '"+DURATION_OPT+"' together");
 		}
 		if (line.hasOption(DURATION_OPT)) {
 			this.m_period = ISOPeriodFormat.standard().parsePeriod(line.getOptionValue(DURATION_OPT));
@@ -229,25 +238,25 @@ public class ExcludePeriods extends ControlProgram {
 		}
 	}
 
-	private static Set<Source> parseSources(String[] rawSources) throws ADEException {
-		DataStoreSources sourcesStore = ADE.getADE().getDataStore().sources();
+	private static Set<Source> parseSources(String[] rawSources) throws AdeException {
+		IDataStoreSources sourcesStore = Ade.getAde().getDataStore().sources();
 		Set<Source> sources = new TreeSet<Source>();
 		for (String rawSource: rawSources) {
-			Source source;
+			ISource source;
 			try {
 				source = sourcesStore.getSource(rawSource);
 				if (source == null) {
-					throw new ADEUsageException("Unknown source: "+rawSource);
+					throw new AdeUsageException("Unknown source: "+rawSource);
 				}
 				sources.add(source);
-			} catch (ADEException e) {
-				new ADEUsageException("Failed parsing sources: "+rawSources, e);
+			} catch (AdeException e) {
+				new AdeUsageException("Failed parsing sources: "+rawSources, e);
 			}
 		}
 		return sources;
 	}
 	
-	public static void main(String[] args) throws ADEException {
+	public static void main(String[] args) throws AdeException {
 		new ExcludePeriods().runMain(args);
 	}
 
