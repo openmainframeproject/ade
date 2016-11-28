@@ -48,6 +48,7 @@ import org.openmainframe.ade.exceptions.AdeUsageException;
 import org.openmainframe.ade.ext.main.Train;
 import org.openmainframe.ade.main.ControlProgram;
 import org.openmainframe.ade.main.TrainLogs;
+import org.slf4j.LoggerFactory;
 
 public class ExcludePeriods extends ControlProgram {
 	
@@ -58,9 +59,15 @@ public class ExcludePeriods extends ControlProgram {
 	private static final String DURATION_OPT = "duration";
 	private static final String START_DATE_OPT = "start-date";
 	private static final String END_DATE_OPT = "end-date";
+	   /**
+     * non-static logger, useful also for extending classes
+     */
+    protected org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
+    /**
+     * static logger useful for static methods
+     */
+    protected static org.slf4j.Logger s_logger = LoggerFactory.getLogger(Train.class);
 
-	protected Logger m_logger = Logger.getLogger(this.getClass());
-	
 	private final String HELP = getClass()+": Operate on data belonging to selected " +
 			"sources from a specified time span. Periods are selected if fully " +
 			"contained in the date range (inclusive).\n" +
@@ -83,7 +90,7 @@ public class ExcludePeriods extends ControlProgram {
 	protected DateTime m_endDate = null;
 	protected DateTime m_startDate = null;
 
-	protected Collection<Source> m_sources;
+	protected Collection<ISource> m_sources;
 
 	@Override
 	protected boolean doControlLogic() throws AdeException {
@@ -91,14 +98,14 @@ public class ExcludePeriods extends ControlProgram {
 		return true;
 	}
 	
-	protected void excludePeriods(Collection<Source> sources, 
+	protected void excludePeriods(Collection<ISource> m_sources2, 
 			DateTime startDate, DateTime endDate, boolean exclude) 
 					throws AdeException {
 		// for all sources
-		for (Source source: m_sources) {
+		for (ISource source: m_sources) {
 			String msg = "Beginning to operate on source: "+source;
 			System.out.println(msg);
-			m_logger.info(msg);
+			logger.info(msg);
 			
 			for (IPeriod period: 
 				TrainLogs.getSourcePeriods((ISource) source, m_startDate, m_endDate)) {
@@ -204,9 +211,9 @@ public class ExcludePeriods extends ControlProgram {
 			if (!line.hasOption(UNSELECT_SOURCES_OPT)) {
 				m_sources = allSources;
 			} else {
-				Set<Source> unselectedSources = parseSources(line.getOptionValues(UNSELECT_SOURCES_OPT));
+				Collection<ISource> unselectedSources = parseSources(line.getOptionValues(UNSELECT_SOURCES_OPT));
 				System.out.println("Omitting sources: "+unselectedSources.toString());
-				m_sources = new TreeSet<Source>(allSources);
+				m_sources = new TreeSet<ISource>(allSources);
 				m_sources.removeAll(unselectedSources);
 			}
 		} else if (line.hasOption(SELECT_SOURCES_OPT)) {
@@ -238,9 +245,9 @@ public class ExcludePeriods extends ControlProgram {
 		}
 	}
 
-	private static Set<Source> parseSources(String[] rawSources) throws AdeException {
+	private static Collection<ISource> parseSources(String[] rawSources) throws AdeException {
 		IDataStoreSources sourcesStore = Ade.getAde().getDataStore().sources();
-		Set<Source> sources = new TreeSet<Source>();
+		Collection<ISource> sources = new TreeSet<ISource>();
 		for (String rawSource: rawSources) {
 			ISource source;
 			try {
