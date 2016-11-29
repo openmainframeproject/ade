@@ -21,11 +21,9 @@
 package org.openmainframe.ade.main;
 
 import java.util.Collection;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.logging.Logger;
 
-import javax.xml.transform.Source;
+import java.util.TreeSet;
+
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -45,7 +43,7 @@ import org.openmainframe.ade.data.ISource;
 import org.openmainframe.ade.dataStore.IDataStoreSources;
 import org.openmainframe.ade.exceptions.AdeException;
 import org.openmainframe.ade.exceptions.AdeUsageException;
-import org.openmainframe.ade.ext.main.Train;
+
 import org.openmainframe.ade.main.ControlProgram;
 import org.openmainframe.ade.main.TrainLogs;
 import org.slf4j.LoggerFactory;
