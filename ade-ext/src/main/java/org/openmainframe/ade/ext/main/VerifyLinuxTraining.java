@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -140,6 +141,11 @@ public class VerifyLinuxTraining extends ExtControlProgram {
      * path to trace files
      */
     private File m_traceOutputPath;
+    /**
+     * indication that duration instead of start and end date should be used
+     * for training period
+     */
+	private CharSequence duration_key = "-d";
     
     public VerifyLinuxTraining() {
         super(AdeExtRequestType.CHECK_LINUX_MESSAGES);
@@ -215,6 +221,9 @@ public class VerifyLinuxTraining extends ExtControlProgram {
      */
     @Override
     protected final void parseArgs(String[] args) throws AdeException {
+    	
+        int m_duration = 0;
+        
         if (args.length == 0) {
             usageError("Expecting at least one argument");
             return;
@@ -223,21 +232,48 @@ public class VerifyLinuxTraining extends ExtControlProgram {
             usageError("Too many arguments");
         }
         m_analysisGroupId = args[0];
-        if (args.length > 1) {
-            m_startDate = ExtDateTimeUtils.startOfDay(ArgumentConstants.parseDate(args[1]));
-        } else {
-            // This has to be set or the period queries will fail
-            usageError("Expecting start date argument");
+        if (args[1].contains(duration_key )){
+          	/* extract duration of training */
+        	if (args.length > 2) {
+        		try {
+         		   m_duration = Integer.parseInt(args[2]);
+         		}
+         		catch(NumberFormatException e){
+         			System.out.println("Duration requires number of day- "
+         					+ "value provided: " + args[3]);
+               		 usageError("Incorrect training duration specified");
+         		}
+        	}
+        	else{
+       			System.out.println("Duration requires number of day- "
+    					+ "value provided: ");
+       		 usageError("Incorrect training duration specified");
+        	}
+    		m_endDate = new Date();
+ 
+           	Calendar m_start = Calendar.getInstance(); 
+           	m_start.setTime(m_endDate);
+           	m_start.add(Calendar.DATE, m_duration);
+           	Date m_endDate = m_start.getTime();
+
         }
-        if (args.length > 2) {
-            m_endDate = ArgumentConstants.parseDate(args[2]);
+        else {
+        	if (args.length > 1) {
+        		m_startDate = ExtDateTimeUtils.startOfDay(ArgumentConstants.parseDate(args[1]));
+        	} else {
+            // This has to be set or the period queries will fail
+        		usageError("Expecting start date argument");
+        	}
+        	if (args.length > 2) {
+        		m_endDate = ArgumentConstants.parseDate(args[2]);
 
             // Move to end of day.
-            m_endDate = ExtDateTimeUtils.daysAfter(ExtDateTimeUtils.startOfDay(m_endDate), 1);
-        } else {
+        		m_endDate = ExtDateTimeUtils.daysAfter(ExtDateTimeUtils.startOfDay(m_endDate), 1);
+        	} else {
             // This has to be set for queries to work.
-            usageError("Expecting end date argument");
-        }
+        		usageError("Expecting end date argument");
+        	}
+        }	
     }
 
     /**
@@ -251,6 +287,7 @@ public class VerifyLinuxTraining extends ExtControlProgram {
         System.out.flush();
         System.err.println("Usage:");
         System.err.println("\tVerifyLinuxTraining <analysis_group> <start date> <end date> ");
+        System.err.println("\ttrain <analysis_group_name> <training period> | <-d duration>");
         System.err.println();
         System.err.println("Determines if the date range includes sufficient methods to allow training for the analysis group");
         System.err.println();

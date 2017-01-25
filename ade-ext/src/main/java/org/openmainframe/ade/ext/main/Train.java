@@ -19,6 +19,8 @@
 */
 package org.openmainframe.ade.ext.main;
 
+
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import org.joda.time.DateTime;
@@ -69,6 +71,7 @@ public class Train extends TrainLogs {
      */
     private DateTime m_startDateTime;
     private DateTime m_endDateTime;
+	private CharSequence duration_key = "-d";
 
     /**
      * Parse the AdeExt Argument.  This method is used to parse
@@ -81,6 +84,7 @@ public class Train extends TrainLogs {
     public final ArrayList<String> parseAdeExtArgs(String[] args) throws AdeException {
         ArrayList<String> adeArgs;
         adeArgs = new ArrayList<String>();
+        int m_duration = 0;
 
         if (args.length == 0) {
             usageError("Expecting at least one argument");
@@ -108,36 +112,71 @@ public class Train extends TrainLogs {
         //"MM/dd/yyyy HH:mm ZZZ"
         final DateTimeFormatter outFormatter = DateTimeFormat.forPattern("MM/dd/yyyy HH:mm ZZZ").withOffsetParsed()
                 .withZoneUTC();
-
+        /* check for duration indicator instead of start or end date */
+        if (args[1].contains(duration_key )){
+        	/* extract duration of training */
+        	String[] values = args[1].split((String) duration_key);
+        	if (values[1] == null) {
+       			System.out.println("Duration requires number of day- "
+    					+ "value provided: " + values[1]);
+       		 usageError("Incorrect training duration specified");
+        	}
+        	else {
+        		try {
+        		   m_duration = Integer.parseInt(values[1]);
+        		}
+        		catch(NumberFormatException e){
+        			System.out.println("Duration requires number of day- "
+        					+ "value provided: " + values[1]);
+              		 usageError("Incorrect training duration specified");
+        		}
+        	}
+    		m_endDateTime = new DateTime();
+           	adeArgs.add("-start-date");
+           	m_startDateTime = m_endDateTime.minusDays(m_duration);
+           	adeArgs.add(m_startDateTime.toString(outFormatter));
+        	adeArgs.add("-end-date");
+    		adeArgs.add(m_endDateTime.toString(outFormatter));
+        }
+        else {
         /* Handle the end date if exist */
 
-        if (args.length > 2) {
-            final DateTimeFormatter formatter = DateTimeFormat.forPattern("MM/dd/yyyy").withOffsetParsed().withZoneUTC();
-            m_endDateTime = formatter.parseDateTime(args[2]);
-
+        	if (args.length > 2) {
+        		final DateTimeFormatter formatter = DateTimeFormat.forPattern("MM/dd/yyyy").withOffsetParsed().withZoneUTC();
+        		try {
+        			m_endDateTime = formatter.parseDateTime(args[2]);
+        		}
+        		catch(IllegalArgumentException parseEx){
+        			usageError("Incorrect end date specifed");;
+        	    }
             /* Move the endDate's time to the end of date.  AdeCore requires the end date
              * to be the start day of the next day. 
              * 
              * For example, if the endDate specified is 10/10.  The endDate will be set to
              * 10/11 00:00:00.  This will include the entire 10/10 in the Model.  */
-            adeArgs.add("-end-date");
-            m_endDateTime = m_endDateTime.withDurationAdded(Duration.standardDays(1), 1);
-            adeArgs.add(m_endDateTime.toString(outFormatter));
-        } else {
+        		adeArgs.add("-end-date");
+        		m_endDateTime = m_endDateTime.withDurationAdded(Duration.standardDays(1), 1);
+        		adeArgs.add(m_endDateTime.toString(outFormatter));
+        	} else {
             /* If endDate wasn't specified, don't specify it. */
-            m_endDateTime = null;
-        }
+        		m_endDateTime = null;
+        	}
 
         /* Handle the start date if exist */
-        if (args.length > 1) {
-            final DateTimeFormatter formatter = DateTimeFormat.forPattern("MM/dd/yyyy").withOffsetParsed().withZoneUTC();
-            m_startDateTime = formatter.parseDateTime(args[1]);
-            adeArgs.add("-start-date");
-            adeArgs.add(m_startDateTime.toString(outFormatter));
-        } else {
-            m_startDateTime = null;
-        }
-
+        	if (args.length > 1) {
+        		final DateTimeFormatter formatter = DateTimeFormat.forPattern("MM/dd/yyyy").withOffsetParsed().withZoneUTC();
+        		try{
+        			m_startDateTime = formatter.parseDateTime(args[1]);
+        		}
+        		catch(IllegalArgumentException parseEx){
+        			usageError("Incorrect start date specifed");;
+        	    }
+        		adeArgs.add("-start-date");
+        		adeArgs.add(m_startDateTime.toString(outFormatter));
+        	} else {
+        		m_startDateTime = null;
+        	}
+        }	
         /* call the super class with the converted arguments */
         StringBuilder bldadeArgsString = new StringBuilder("");
         for (String arg : adeArgs) {
@@ -183,7 +222,9 @@ public class Train extends TrainLogs {
         System.out.flush();
         System.err.println("Usage:");
         System.err.println("\ttrain <analysis_group_name> [<start date> | <start date> <end date>] ");
+        System.err.println("\ttrain <analysis_group_name> -d<training period> ");
         System.err.println("\ttrain all [<start date> | <start date> <end date>");
+        System.err.println("\ttrain all [<start date> | -d<training period>");
         System.err.println();
         System.err.println("Reads summary of all messages within the specified dates and system id");
         System.err.println("and updates the default model for this system.");
