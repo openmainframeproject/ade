@@ -147,6 +147,11 @@ public class VerifyLinuxTraining extends ExtControlProgram {
      */
 	private CharSequence duration_key = "-d";
     
+	/**
+	 *  indication that help is requested
+	 */
+	private CharSequence help_key = "-h";
+	
     public VerifyLinuxTraining() {
         super(AdeExtRequestType.CHECK_LINUX_MESSAGES);
     }
@@ -226,13 +231,18 @@ public class VerifyLinuxTraining extends ExtControlProgram {
         
         if (args.length == 0) {
             usageError("Expecting at least one argument");
-            return;
         }
         if (args.length > 3) {
             usageError("Too many arguments");
         }
+        if (args[0].contains(help_key )){
+            usageError("Help information");
+        }
+       	if (args.length <= 1) {
+    		usageError("Expecting start date argument");
+    	}
         m_analysisGroupId = args[0];
-        if (args[1].contains(duration_key )){
+        if (args[1].contains(duration_key) 	){
           	/* extract duration of training */
         	if (args.length > 2) {
         		try {
@@ -253,17 +263,14 @@ public class VerifyLinuxTraining extends ExtControlProgram {
  
            	Calendar m_start = Calendar.getInstance(); 
            	m_start.setTime(m_endDate);
-           	m_start.add(Calendar.DATE, m_duration);
-           	Date m_endDate = m_start.getTime();
+           	m_start.add(Calendar.DATE, -m_duration);
+           	m_startDate = m_start.getTime();
 
         }
         else {
-        	if (args.length > 1) {
-        		m_startDate = ExtDateTimeUtils.startOfDay(ArgumentConstants.parseDate(args[1]));
-        	} else {
-            // This has to be set or the period queries will fail
-        		usageError("Expecting start date argument");
-        	}
+
+       		m_startDate = ExtDateTimeUtils.startOfDay(ArgumentConstants.parseDate(args[1]));
+
         	if (args.length > 2) {
         		m_endDate = ArgumentConstants.parseDate(args[2]);
 
