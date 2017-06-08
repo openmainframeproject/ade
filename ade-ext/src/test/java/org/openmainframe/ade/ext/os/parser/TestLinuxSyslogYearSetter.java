@@ -66,17 +66,18 @@ public class TestLinuxSyslogYearSetter {
         dt = new DateTime(dtz);
         assertEquals("messageTimeDifference < 0 ",-100,lsys.getDesiredYear(dt));
     }
-    
+
     @Test
     public void testGetDesiredYearWithTimeDifferenceOverAllowedTime() {
         lsys = new LinuxSyslogYearSetter("", -2);
-        DateTimeZone dtz = DateTimeZone.forID("Asia/Jakarta");
-        DateTime dt = new DateTime(1L);
-        lsys.getDesiredYear(dt);
-        
+        DateTimeZone dtz;
         dtz = DateTimeZone.forID("America/New_York");
+        DateTime dt = new DateTime(1L, dtz);
+        lsys.getDesiredYear(dt);
+
         dt = new DateTime(dtz);
-        assertEquals("absolute messageTimeDifference > DECREMENT_DAYS_ALLOWANCE_IN_MILLIS ",-1,lsys.getDesiredYear(dt));
+        int actual = lsys.getDesiredYear(dt);
+        assertEquals("absolute messageTimeDifference > DECREMENT_DAYS_ALLOWANCE_IN_MILLIS ",-1, actual);
     }
     
     @Test
@@ -96,11 +97,13 @@ public class TestLinuxSyslogYearSetter {
         String source = "aSource";
         int nineties = 1990;
         lsys = new LinuxSyslogYearSetter(source, nineties);
-        DateTime dt = new DateTime(0L);
+        DateTimeZone dtz = DateTimeZone.forID("America/New_York");
+        DateTime dt = new DateTime(0L, dtz);
         lsys.getDesiredYear(dt);
-        
-        assertEquals("Testing toString output "," source="+ source 
+
+        String actual = lsys.toString();
+        assertEquals("Testing toString output "," source="+ source
                         + " year="+ nineties
-                        + " lastSeenMessage=1 Jan 1991 00:00:00(662688000000)",lsys.toString());
+                        + " lastSeenMessage=1 Jan 1991 00:00:00(662688000000)", actual);
     }
 }
