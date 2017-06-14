@@ -94,7 +94,7 @@ public class LastSeenScorer extends MessageScorer {
          * Maps the time difference in seconds from the most recently seen message instance since some message 
          * instance x with the same message id to the number of times this time difference has been seen.
          */
-        TreeMap<Integer, Integer> mPointDifferences;
+        TreeMap<Long, Integer> mPointDifferences;
         /**
          * The total number of points we have added.
          */
@@ -105,7 +105,7 @@ public class LastSeenScorer extends MessageScorer {
          * and a point's value. (max is the time difference that occurs the most in mPointDifferences and a 
          * point's value is the number of occurrences for this time difference/point).
          */
-        private TreeMap<Integer, Double> m_pointScores;
+        private TreeMap<Long, Double> m_pointScores;
         /**
          * Log of the max delta/point value.
          */
@@ -121,7 +121,7 @@ public class LastSeenScorer extends MessageScorer {
         public PerodicityBounder() {
             mMinimalPointsPerCluster = 10;
             mTrained = false;
-            mPointDifferences = new TreeMap<Integer, Integer>();
+            mPointDifferences = new TreeMap<Long, Integer>();
             m_pointScores = null;
             mPoints = 0;
         }
@@ -133,9 +133,9 @@ public class LastSeenScorer extends MessageScorer {
          * occurred at time T then the other message instance time is less than time T and is the 
          * MOST RECENTLY seen message instance with this message id.
          */
-        public void addPoints(Integer[] deltas) {
+        public void addPoints(Long[] deltas) {
             if (deltas != null) {
-                for (int delta : deltas) {
+                for (long delta : deltas) {
                     addPoint(delta);
                 }
             }
@@ -156,7 +156,7 @@ public class LastSeenScorer extends MessageScorer {
                         logger.info("trainig last seen model for "
                                 + name);
                     }
-                    for (Entry<Integer, Integer> pointDiff : mPointDifferences.entrySet()) {
+                    for (Entry<Long, Integer> pointDiff : mPointDifferences.entrySet()) {
                         logger.info("  " + pointDiff.getKey() + ", "
                                 + pointDiff.getValue());
                     }
@@ -180,8 +180,8 @@ public class LastSeenScorer extends MessageScorer {
             m_llMax = -Math.log((double) max / mPoints);
             if (max > m_minimalMax
                     && ((double) mPoints) / mPointDifferences.size() > m_minimalConcentration) {
-                m_pointScores = new TreeMap<Integer, Double>();
-                for (Entry<Integer, Integer> entry : mPointDifferences
+                m_pointScores = new TreeMap<Long, Double>();
+                for (Entry<Long, Integer> entry : mPointDifferences
                         .entrySet()) {
                     final Integer v = entry.getValue();
                     if (v > 1) {
@@ -198,7 +198,7 @@ public class LastSeenScorer extends MessageScorer {
          */
         private int getMaxValue() {
             int max = 0;
-            for (Entry<Integer, Integer> e : mPointDifferences.entrySet()) {
+            for (Entry<Long, Integer> e : mPointDifferences.entrySet()) {
                 final int v = e.getValue();
                 if (v > max) {
                     max = v;
@@ -216,7 +216,7 @@ public class LastSeenScorer extends MessageScorer {
          * MOST RECENTLY seen message instance with this message id.
          * @return the scores for each delta.
          */
-        public double[] getScore(Integer[] deltas) {
+        public double[] getScore(Long[] deltas) {
             if (deltas == null) {
                 return new double[0];
             }
@@ -261,7 +261,7 @@ public class LastSeenScorer extends MessageScorer {
          * @param distanceFromLastPoint The number of seconds distance from the last point. i.e. the last
          * time this message instance occurred.
          */
-        private void addPoint(int distanceFromLastPoint) {
+        private void addPoint(long distanceFromLastPoint) {
             assert distanceFromLastPoint >= 0;
             Integer count = mPointDifferences.get(distanceFromLastPoint);
             if (count == null) {
@@ -282,7 +282,7 @@ public class LastSeenScorer extends MessageScorer {
                 out.println("Last seen model for " + name + ": " + getLLMax());
             }
             if (m_pointScores != null && !m_pointScores.isEmpty()) {
-                for (Entry<Integer, Double> pointScore : m_pointScores.entrySet()) {
+                for (Entry<Long, Double> pointScore : m_pointScores.entrySet()) {
                     out.println("  " + pointScore.getKey() + ", "
                             + pointScore.getValue());
                 }
@@ -381,7 +381,7 @@ public class LastSeenScorer extends MessageScorer {
             throws AdeException, AdeFlowException {
         for (IAnalyzedMessageSummary ms : analyzedInterval.getAnalyzedMessages()) {
             final String messageId = ms.getMessageId();
-            final Integer[] delta = extractDelta(ms);
+            final Long[] delta = extractDelta(ms);
             PerodicityBounder perodicityBounder = m_lastSeen.get(messageId);
             if (perodicityBounder == null) {
                 perodicityBounder = new PerodicityBounder();
@@ -398,7 +398,7 @@ public class LastSeenScorer extends MessageScorer {
      * statistics and information on message instances. i.e. text body message, message id, severity, etc.
      * @return The delta values in an integer array.
      */
-    protected Integer[] extractDelta(IAnalyzedMessageSummary ms) {
+    protected Long[] extractDelta(IAnalyzedMessageSummary ms) {
         final String rawDelta = ms.getStatistics().getStringStat(
                 LastSeenLoggingScorerContinuous.class.getSimpleName() + "."
                         + "res");
@@ -407,9 +407,9 @@ public class LastSeenScorer extends MessageScorer {
         }
         final List<String> stringDelta = Arrays.asList(StringUtils.split(
                 StringUtils.substringBetween(rawDelta, "[", "]"), ", "));
-        final Integer[] delta = new Integer[stringDelta.size()];
+        final Long[] delta = new Long[stringDelta.size()];
         for (int i = 0; i < stringDelta.size(); ++i) {
-            delta[i] = Integer.decode(stringDelta.get(i));
+            delta[i] = Long.decode(stringDelta.get(i));
         }
         return delta;
     }
