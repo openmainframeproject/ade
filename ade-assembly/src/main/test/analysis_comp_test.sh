@@ -264,7 +264,7 @@ if [ $? -ne 0 ]; then
 fi
 
 ## upload logfile for system
-issue_command "$BIN_DIR/upload -d $BASELINE_UPLOAD_DIR"
+issue_command "$BIN_DIR/upload -d $BASELINE_UPLOAD_DIR" -years 2015
 if [ $? -ne 0 ]; then
   echo "ERROR: Failed to upload data from $BASELINE_UPLOAD_DIR. Exiting"
   cleanup_and_exit 1
