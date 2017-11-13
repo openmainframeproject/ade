@@ -21,6 +21,11 @@ Please see http://openmainframeproject.github.io/ade/ for documentation on ADE.
 
 ## Releases
 
+### Saw Kill 1.0.4
+
+- Fix problems with timezone in Junit test
+- Fix problems with year of test data in function test 
+
 ### Fall Kill 1.0.3
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/378/badge)](https://bestpractices.coreinfrastructure.org/projects/378)
 
