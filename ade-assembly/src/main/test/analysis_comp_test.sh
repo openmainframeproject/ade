@@ -264,7 +264,7 @@ if [ $? -ne 0 ]; then
 fi
 
 ## upload logfile for system
-issue_command "$BIN_DIR/upload -d $BASELINE_UPLOAD_DIR"
+issue_command "$BIN_DIR/upload -d $BASELINE_UPLOAD_DIR -years 2015"
 if [ $? -ne 0 ]; then
   echo "ERROR: Failed to upload data from $BASELINE_UPLOAD_DIR. Exiting"
   cleanup_and_exit 1
@@ -278,11 +278,18 @@ if [ $? -ne 0 ]; then
 fi
 
 ## analyze logfile
-issue_command "$BIN_DIR/analyze -d $BASELINE_ANALYZE_DIR"
+issue_command "$BIN_DIR/analyze -f $BASELINE_ANALYZE_DIR/AnalyzeSyslog_20151130_20151206.log.gz -years 2015"
 if [ $? -ne 0 ]; then
   echo "ERROR: Failed to analyze data from $BASELINE_ANALYZE_DIR. Exiting"
   cleanup_and_exit 1
 fi 
+
+issue_command "$BIN_DIR/analyze -f $BASELINE_ANALYZE_DIR/AnalyzeSyslog_20151208_20151213.log.gz -years 2015"
+if [ $? -ne 0 ]; then
+  echo "ERROR: Failed to analyze data from $BASELINE_ANALYZE_DIR. Exiting"
+  cleanup_and_exit 1
+fi 
+
 
 echo
 echo "Performing compare of baseline to new analysis results..."

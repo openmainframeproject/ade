@@ -300,7 +300,7 @@ if [ $? -ne 0 ]; then
 fi
 
 ## analyze logfile
-issue_command "$BIN_DIR/analyze -d $BASELINE_ANALYZE_DIR"
+issue_command "$BIN_DIR/analyze -d $BASELINE_ANALYZE_DIR -years 2015"
 if [ $? -ne 0 ]; then
   echo "ERROR: Failed to analyze data from $BASELINE_ANALYZE_DIR. Exiting"
   cleanup_and_exit 1
