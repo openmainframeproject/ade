@@ -31,7 +31,8 @@ if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
 	echo "Starting analysis by SonarQube..."
 	sonar-scanner \
 		-Dsonar.host.url=$SONAR_HOST_URL \
-		-Dsonar.login=$SONAR_TOKEN
+		-Dsonar.login=$SONAR_TOKEN \
+		-e
 
 elif [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ -n "${GITHUB_TOKEN-}" ]; then
 	# => This will analyse the PR and display found issues as comments in the PR, but it won't push results to the SonarQube server
