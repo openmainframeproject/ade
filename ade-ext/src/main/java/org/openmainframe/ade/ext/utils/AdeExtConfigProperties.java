@@ -45,6 +45,7 @@ public class AdeExtConfigProperties {
     private static final String MSG_RATE_10MIN_SUBINTERVAL_LIST = "adeext.msgRate10MinSubIntervalList";
     private static final String MSG_RATE_MERGE_SOURCE = "adeext.msgRateMergeSource";
     private static final String STATS_ROOT_DIR = "adeext.statsRootDir";
+    private static final String USE_SPARK = "adeext.useSparkLogs";
   
     /* Constants for config property default values */
     private static final String DEFAULT_STATS_ROOT_DIR = "output/ade-stats";
@@ -63,6 +64,7 @@ public class AdeExtConfigProperties {
     private final short[] m_msgRate10MinSubIntervalList;
     private final boolean m_isMsgRateMergeSource;
     private final String m_statsRootDir;
+    private final boolean m_useSparkLogs;
 
     /**
      * Set the AdeExtConfigProperties from the specified property file.
@@ -158,6 +160,15 @@ public class AdeExtConfigProperties {
             m_statsRootDir = DEFAULT_STATS_ROOT_DIR;
         }
 
+        /* Type of logs to use. True: Spark logs. Defaults to Linux Syslogs */
+
+        if (m_props.containsKey(USE_SPARK)){
+            m_useSparkLogs = m_props.getBooleanProperty(USE_SPARK);
+        }
+        else{
+            m_useSparkLogs = false;
+        }
+
         m_props.verifyAllPropertiesUsed();
     }
 
@@ -219,6 +230,11 @@ public class AdeExtConfigProperties {
     /** Whether the runtimeModelData should be stored at source level, and null if it's undefined */
     public final Boolean isRuntimeModelDataStoreAtSource() {
         return m_isRuntimeModelDataStoreAtSource;
+    }
+
+    /** Return if we're using Spark logs or Linux Syslogs. (true implies Spark logs) */
+    public final Boolean isSparkLog(){
+        return m_useSparkLogs;
     }
 
     /**

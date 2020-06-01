@@ -7,6 +7,7 @@ adeext.parseErrorToKeep=100
 adeext.parseErrorDaysTolerate=2
 adeext.parseErrorTrackNullComponent=false
 adeext.runtimeModelDataStoreAtSource=true
+adeext.useSparkLogs=true
 
 adeext.msgRate10MinSlotsToKeep=24
 adeext.msgRate10MinSubIntervalList=1,2,3,6,12,24
