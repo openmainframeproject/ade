@@ -1,2 +1,16 @@
 *~
 target
+ade-assembly/.classpath/
+ade-assembly/.project/
+ade-assembly/.settings/
+ade-assembly/derby.log
+
+ade-core/.classpath/
+ade-core/.project/
+ade-core/.settings/
+ade-core/derby.log
+
+ade-ext/.classpath/
+ade-ext/.project/
+ade-ext/.settings/
+ade-ext/derby.log
