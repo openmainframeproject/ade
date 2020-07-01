@@ -36,14 +36,10 @@ public class SparklogParser extends SparklogParserBase {
     /**
      * Pattern object for matching against the base RFC3164 header, the optional BOM_AND_PRI which gets the
      * option UTF-8 Byte Order mark and priority values, and regex that finds the component id, process id,
-     * and message body. Within a Linux log, COMPONENT name "([-_./a-zA-Z0-9]*[-_./a-zA-Z]+[-_./a-zA-Z0-9]*)"
-     * is expected to contain at least one non-digit character.  This requirement is driven by some Linux
-     * logs that have unique numeric value followed by ":" at the position of the component name.  These numeric
-     * values does not help group the messages together, and causes the database to run out of assign-able unique
-     * IDs quickly.
+     * and message body.
      */
     private static final Pattern pattern = Pattern.compile(SPARK_HEADER
-            + BOM_AND_PRI + "([-_./a-zA-Z0-9]*[-_./a-zA-Z]+[-_./a-zA-Z0-9]*)(?:\\[([0-9]*)\\])?: (.*)$");
+            + BOM_AND_PRI + "([-_./a-zA-Z0-9]*[-_./a-zA-Z]+[-_./a-zA-Z0-9]*)?: (.*)$");
 
     /*
      * Identifies the regex capturing groups for the parts that we want to extract. The component id,
