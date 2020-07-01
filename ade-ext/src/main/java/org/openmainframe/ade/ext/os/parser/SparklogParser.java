@@ -50,8 +50,7 @@ public class SparklogParser extends SparklogParserBase {
      * process id, and the message text are additional capturing groups on top of the header groups.
      */
     private static final int COMP_GROUP = SPARK_HEADER_GROUPS + 1;
-    private static final int PID_GROUP = SPARK_HEADER_GROUPS + 2;
-    private static final int MSG_GROUP = SPARK_HEADER_GROUPS + 3;
+    private static final int MSG_GROUP = SPARK_HEADER_GROUPS + 2;
     
     /**
      * Default constructor to call its parent constructor.
@@ -83,7 +82,7 @@ public class SparklogParser extends SparklogParserBase {
     @Override
     public boolean parseLine(String line) {
         return parseLine(pattern, SPARK_HEADER_TIMESTAMP_GROUP,
-                SPARK_HEADER_HOSTNAME_GROUP, MSG_GROUP, line);
+                SPARK_HEADER_HOSTNAME_GROUP, COMP_GROUP, MSG_GROUP, line);
     }
 
 }

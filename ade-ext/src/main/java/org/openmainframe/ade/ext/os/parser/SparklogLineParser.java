@@ -59,7 +59,11 @@ public abstract class SparklogLineParser {
      * Body of the message.  Note: this doesn't have to be ASCII.
      */
     protected String m_text;
-    
+
+    /**
+     * Component of the message
+     */
+    protected String m_component;
 
     /**
      * Whether the hostname truncation has already been logged.
@@ -136,7 +140,7 @@ public abstract class SparklogLineParser {
      * @return false if the line could not be parsed.
      */
     protected final boolean parseLine(Pattern pattern, int timestamp, int hostname,
-            int msg, String line) {
+            int comp, int msg, String line) {
         final Matcher matcher = pattern.matcher(line);
         if (matcher.matches()) {
             try {
@@ -161,6 +165,7 @@ public abstract class SparklogLineParser {
                 m_source = m_source.toLowerCase();
                 m_msgTime = toDate(m_source, msgTimeStr);
                 m_text = toString(matcher, msg);
+                m_component = toString(matcher, comp);
 
                 return true;
             } catch (IllegalArgumentException e) {
@@ -223,5 +228,12 @@ public abstract class SparklogLineParser {
     public String toString() {
         return String.format("timestamp=(%s) hostname=(%s) msg=(%s)",
                 m_msgTime, m_source, m_text);
+    }
+
+    /**
+     * Set component of message. Used in SparklogMessageReader.
+     */
+    public void setSource(String component){
+        m_source = component;
     }
 }

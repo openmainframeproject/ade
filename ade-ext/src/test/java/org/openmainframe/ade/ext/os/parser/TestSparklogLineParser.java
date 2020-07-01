@@ -43,13 +43,13 @@ public class TestSparklogLineParser {
     @Test
     public void testParseLineWithBadPattern() { 
         Pattern pattern = Pattern.compile("^([(][^)]+[)])? CMD [(](.*)[)] ?$");
-        assertEquals("Pattern doesnt match ",false, slp.parseLine(pattern,1,4,5,"() CMD ()"));
+        assertEquals("Pattern doesnt match ",false, slp.parseLine(pattern,1,4,5,2,"() CMD ()"));
     }
     
     @Test
     public void testParseLineWithMatchingPattern() {
         Pattern pattern = Pattern.compile("^([^:]+):.*COMMAND=(.*)$");
-        assertEquals("Pattern matches for all parameters ",true, slp.parseLine(pattern,1,2,2,"(username):.COMMAND=nub"));
+        assertEquals("Pattern matches for all parameters ",true, slp.parseLine(pattern,1,2,2,2,"(username):.COMMAND=nub"));
     }
     
     @Test
@@ -61,28 +61,28 @@ public class TestSparklogLineParser {
     @Test
     public void testParseLineWith255CharacterHostnameSecondTime() { 
         Pattern pattern = Pattern.compile("^([^:]+):.*COMMAND=(.*)$");
-        slp.parseLine(pattern,1,1,1,longString + ":.COMMAND=nub");
+        slp.parseLine(pattern,1,1,1,1,longString + ":.COMMAND=nub");
         
         assertEquals("Hostname over 255 characters but we go through parseLine twice to skip the logging "
-                ,true,slp.parseLine(pattern,1,1,1,longString + ":.COMMAND=nub"));
+                ,true,slp.parseLine(pattern,1,1,1,1,longString + ":.COMMAND=nub"));
     }
     
     @Test
     public void testGettersGetCorrectInfoAfterRunningParseLine() {
         Pattern pattern = Pattern.compile("^([^:]+):.*COMMAND=(.*)$");
-        slp.parseLine(pattern,0,1,0,"(username):.COMMAND=nub");
+        slp.parseLine(pattern,0,1,0,1,"(username):.COMMAND=nub");
         
         assertEquals("The message time is thee",null,slp.getMsgTime());
         assertEquals("The source is in the first matched group third param ","(username)",slp.getSource());
      
-        slp.parseLine(pattern,0,0,2,"(PID!):.COMMAND=msgBody");
+        slp.parseLine(pattern,0,0,2,2,"(PID!):.COMMAND=msgBody");
         assertEquals("The messsage body is in second group and 6th param","msgBody",slp.getMessageBody());
     }
     
     @Test
     public void testToString() {
         Pattern pattern = Pattern.compile("^([^:]+):.*COMMAND=(.*)$");
-        slp.parseLine(pattern,2,2,2,"(username):.COMMAND=nub");
+        slp.parseLine(pattern,2,2,2,2,"(username):.COMMAND=nub");
         assertEquals("Testing to String works correctly "
                 , "timestamp=(null) "
                 + "hostname=(nub) "

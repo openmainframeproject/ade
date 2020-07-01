@@ -85,7 +85,7 @@ public abstract class SparklogParserBase extends SparklogLineParser {
     protected static final String SPARK_HEADER = "^" + SPARK_TIMESTAMP + " " + SPARK_HOSTNAME + " ";
 
     /*
-     * Within the RFC3164_HEADER regex string above, identify the regex
+     * Within the SPARK_HEADER regex string above, identify the regex
      * capturing groups for the parts that we want to extract.
      */
     protected static final int SPARK_HEADER_TIMESTAMP_GROUP = 1;
