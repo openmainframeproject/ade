@@ -78,7 +78,7 @@ public abstract class SparklogParserBase extends SparklogLineParser {
     /**
      * Regular expression to extract the time-stamp from the header.
      */
-    public static final String SPARK_TIMESTAMP = "\\d{2}/\\d{2}/\\d{2} \\d{2}:\\d{2}:\\d{2}";
+    public static final String SPARK_TIMESTAMP = "(\\d{2}/\\d{2}/\\d{2} \\d{2}:\\d{2}:\\d{2})";
     /**
      * Regular expression to extract header information. (The priority, time-stamp, and host name)
      */

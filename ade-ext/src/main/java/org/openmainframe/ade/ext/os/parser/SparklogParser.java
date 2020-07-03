@@ -39,7 +39,7 @@ public class SparklogParser extends SparklogParserBase {
      * and message body.
      */
     private static final Pattern pattern = Pattern.compile(SPARK_HEADER
-            + BOM_AND_PRI + "([-_./a-zA-Z0-9]*[-_./a-zA-Z]+[-_./a-zA-Z0-9]*)?: (.*)$");
+            + "([-_./a-zA-Z0-9]*[-_./a-zA-Z])?: (.*)$");
 
     /*
      * Identifies the regex capturing groups for the parts that we want to extract. The component id,

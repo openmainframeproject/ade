@@ -55,7 +55,7 @@ public class TestSparklogLineParser {
     @Test
     public void testParseLineWith255CharacterHostname() { 
         Pattern pattern = Pattern.compile("^([^:]+):.*COMMAND=(.*)$");
-        assertEquals("Pattern matches but hostname has over 255 chars ",true, slp.parseLine(pattern,1,1,1,longString + ":.COMMAND=nub"));
+        assertEquals("Pattern matches but hostname has over 255 chars ",true, slp.parseLine(pattern,1,1,1,1,longString + ":.COMMAND=nub"));
     }
     
     @Test

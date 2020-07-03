@@ -25,6 +25,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.util.TimeZone;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -68,13 +70,6 @@ public class TestSparklogParserBase {
                 ,DateTimeZone.forOffsetMillis(tz.getRawOffset()),pid.getInputTimeZone());
     }
     
-    @Test (expected = IllegalArgumentException.class)
-    public void testToDateWithIllegalArgumentException() throws AdeException {
-        setup();
-        SparklogParserBase pid = new SparklogParser(null);
-        assertEquals("Illegal Argument = bad String ",null,pid.toDate("01/20/2016",""));
-    }
-    
     @Test 
     public void testToDate() throws AdeException {
         LinuxAdeExtProperties laep = mock(LinuxAdeExtProperties.class, RETURNS_DEEP_STUBS);
@@ -87,6 +82,30 @@ public class TestSparklogParserBase {
         
         assertEquals("toDate with good input. Since yearSetter is null the year will be 1 "
                 ,date.toDate(),pid.toDate("","01/02/03 10:05:25"));
+    }
+
+
+    @Test
+    public void testRegexPatternsTimeStamp() throws AdeException{
+    setup();
+    String line = "17/06/08 14:37:39 INFO ExecutorRunnable: Starting Executor Container";
+    SparklogParser s = new SparklogParser(null);
+    s.parseLine(line);
+    Calendar c = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+
+    // Time Stamp checks
+    c.setTime(s.getMsgTime());
+    assertEquals(c.get(Calendar.YEAR), 2008);
+    assertEquals(c.get(Calendar.MONTH), 5);
+    assertEquals(c.get(Calendar.DAY_OF_MONTH), 17);
+    assertEquals(c.get(Calendar.HOUR_OF_DAY), 14);
+    assertEquals(c.get(Calendar.MINUTE), 37);
+    assertEquals(c.get(Calendar.SECOND), 39);
+
+    // Tests for source , component and message body
+    assertEquals("info", s.getSource());
+    assertEquals("ExecutorRunnable", s.getComponent());
+    assertEquals("Starting Executor Container", s.getMessageBody());
     }
    
 }

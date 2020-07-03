@@ -197,6 +197,14 @@ public abstract class SparklogLineParser {
     }
 
     /**
+     * Returns the component of the message.
+     * @return the component
+     */
+    public final String getComponent(){
+        return m_component;
+    }
+
+    /**
      * Returns the source name.
      * @return the source name string value.
      */
@@ -228,12 +236,5 @@ public abstract class SparklogLineParser {
     public String toString() {
         return String.format("timestamp=(%s) hostname=(%s) msg=(%s)",
                 m_msgTime, m_source, m_text);
-    }
-
-    /**
-     * Set component of message. Used in SparklogMessageReader.
-     */
-    public void setSource(String component){
-        m_source = component;
     }
 }
