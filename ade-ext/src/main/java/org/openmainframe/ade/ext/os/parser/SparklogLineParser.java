@@ -130,7 +130,7 @@ public abstract class SparklogLineParser {
     /**
      * Parses a line based on a regex Pattern.  For each capturing group
      * number that is non-zero, the corresponding instance variable
-     * is set.
+     * is set. (Assigns m_component = master, remove this once we have newer logs)
      * NOTE: There is no pid present in spark logs.
      * @param pattern  - The pattern to parse.
      * @param timestamp - Capturing group number for the timestamp.
@@ -165,8 +165,8 @@ public abstract class SparklogLineParser {
                 m_source = m_source.toLowerCase();
                 m_msgTime = toDate(m_source, msgTimeStr);
                 m_text = toString(matcher, msg);
-                m_component = toString(matcher, comp);
-
+                //m_component = toString(matcher, comp);
+                m_component = "master";
                 return true;
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();

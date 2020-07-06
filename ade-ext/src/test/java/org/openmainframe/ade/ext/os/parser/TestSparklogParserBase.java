@@ -104,7 +104,8 @@ public class TestSparklogParserBase {
 
     // Tests for source , component and message body
     assertEquals("info", s.getSource());
-    assertEquals("ExecutorRunnable", s.getComponent());
+    //assertEquals("ExecutorRunnable", s.getComponent());
+    assertEquals("master", s.getComponent());
     assertEquals("Starting Executor Container", s.getMessageBody());
     }
    

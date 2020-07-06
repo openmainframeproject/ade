@@ -50,6 +50,8 @@ import org.openmainframe.ade.ext.os.parser.LinuxSyslog3164ParserBase;
 import org.openmainframe.ade.ext.os.parser.LinuxSyslog3164ParserFreeForm;
 import org.openmainframe.ade.ext.os.parser.LinuxSyslog3164ParserWithCompAndPid;
 import org.openmainframe.ade.ext.os.parser.LinuxSyslog3164ParserWithMark;
+import org.openmainframe.ade.ext.os.parser.SparklogParserBase;
+import org.openmainframe.ade.ext.os.parser.SparklogParser;
 import org.openmainframe.ade.ext.os.parser.LinuxSyslog5424ParserBase;
 import org.openmainframe.ade.ext.os.parser.LinuxSyslogLineParser;
 import org.openmainframe.ade.ext.service.AdeExtMessageHandler;
