@@ -248,4 +248,5 @@ public abstract class SparklogParserBase extends SparklogLineParser {
     public final DateTime getLastDeterminedDateTime() {
         return null;
     }
+
 }
