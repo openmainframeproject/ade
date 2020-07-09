@@ -275,7 +275,7 @@ public class SparklogMessageReader extends AdeMessageReader {
                             msgId,
                             lineParser.getMessageBody(),
                             lineParser.getSource(),
-                            null); // Severity = null for Spark 
+                            lineParser.getSeverity()); // Severity = null for Spark 
                     /* Setting the messageInstanceWaiting to null, which would stop wrappers such as SUDO or CRON
                        to be passed to ade. */              
                     m_messageInstanceWaiting = null;              

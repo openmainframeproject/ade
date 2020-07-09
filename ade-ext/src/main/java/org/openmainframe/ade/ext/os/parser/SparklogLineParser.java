@@ -24,6 +24,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.openmainframe.ade.actions.IParsingQualityReporter;
+import org.openmainframe.ade.data.IMessageInstance.Severity;
 import org.openmainframe.ade.ext.os.LinuxAdeExtProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -92,10 +93,11 @@ public abstract class SparklogLineParser {
     protected String m_source;
 
     /**
-     Severity of the message.
+     * Severity of the message.
+     */
     protected Severity m_severity = Severity.UNKNOWN;
     // Not considering this field for the moment
-    */
+
     
     /**
      * Parses a line and sets the instance variables from it.
@@ -202,6 +204,14 @@ public abstract class SparklogLineParser {
      */
     public final String getComponent(){
         return m_component;
+    }
+
+    /**
+     * Returns the severity level of the log message.
+     * @return the severity value.
+     */
+    public final Severity getSeverity() {
+        return m_severity;
     }
 
     /**
