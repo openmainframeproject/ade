@@ -111,7 +111,7 @@ public abstract class SparklogParserBase extends SparklogLineParser {
      * between the month and day.
      */
     protected static final DateTimeFormatter[] dt_formatters = {
-            DateTimeFormat.forPattern("dd/MM/yy HH:mm:ss").withZoneUTC()
+            DateTimeFormat.forPattern("yy/MM/dd HH:mm:ss").withZoneUTC()
     };
     /**
      * Constructor for initializing the properties file and various time properties.

@@ -78,7 +78,7 @@ public class TestSparklogParserBase {
         when(laep.isYearDefined()).thenReturn(true);
 
         pid.setAdeExtProperties(laep);
-        DateTime date = DateTimeFormat.forPattern("dd/MM/yy HH:mm:ss").withZoneUTC().parseDateTime("01/02/03 10:05:25");
+        DateTime date = DateTimeFormat.forPattern("yy/MM/dd HH:mm:ss").withZoneUTC().parseDateTime("01/02/03 10:05:25");
         
         assertEquals("toDate with good input. Since yearSetter is null the year will be 1 "
                 ,date.toDate(),pid.toDate("","01/02/03 10:05:25"));
@@ -95,9 +95,9 @@ public class TestSparklogParserBase {
 
     // Time Stamp checks
     c.setTime(s.getMsgTime());
-    assertEquals(c.get(Calendar.YEAR), 2008);
+    assertEquals(c.get(Calendar.YEAR), 2017);
     assertEquals(c.get(Calendar.MONTH), 5);
-    assertEquals(c.get(Calendar.DAY_OF_MONTH), 17);
+    assertEquals(c.get(Calendar.DAY_OF_MONTH), 8);
     assertEquals(c.get(Calendar.HOUR_OF_DAY), 14);
     assertEquals(c.get(Calendar.MINUTE), 37);
     assertEquals(c.get(Calendar.SECOND), 39);
