@@ -49,6 +49,13 @@ public interface IAdeConfigProperties {
     String getFlowLayoutFile();
 
     /**
+     * Speciifies if running ADE on Spark logs.
+     * @return boolean : True if running on Spark logs.
+     */
+
+    Boolean getUseSparkLogs();
+
+    /**
      * @return the mode of the period, which is an enum
      * describing the duration (and alignment) of the period
      * @throws AdeInternalException

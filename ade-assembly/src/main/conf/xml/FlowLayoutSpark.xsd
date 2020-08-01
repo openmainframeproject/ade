@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ 
+ Copyright IBM Corp. 2016
+ This file is part of Anomaly Detection Engine for Linux Logs (ADE).
+ ADE is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ ADE is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ You should have received a copy of the GNU General Public License
+ along with ADE.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://flow.impl.ade.openmainframe.org/factory" 
+xmlns:tns="http://flow.impl.ade.openmainframe.org/factory" 
+xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+jaxb:version="2.0"
+elementFormDefault="qualified">
+
+    <element name="Layout" type="tns:LayoutType">
+       <key name="framingFlowKey">
+         <selector xpath="tns:FramingFlow"/>
+         <field xpath="@name" />
+       </key>
+       <keyref name="framingFlowRef1" refer="tns:framingFlowKey">
+          <selector xpath="tns:AnalysisGroupFlow" />
+          <field xpath="tns:AnalysisFramingFlow" />
+       </keyref>
+       <keyref name="framingFlowRef2" refer="tns:framingFlowKey">
+          <selector xpath="tns:AnalysisGroupFlow/tns:ScoringSchema" />
+          <field xpath="tns:TrainingFramingFlow" />
+       </keyref>
+       <keyref name="framingFlowRef3" refer="tns:framingFlowKey">
+          <selector xpath="tns:AnalysisGroupFlow/tns:Outputer" />
+          <field xpath="tns:TrainingFramingFlow" />
+       </keyref>
+       
+       <key name="scorerKey">
+	      <selector xpath="tns:AnalysisGroupFlow/tns:ScoringSchema"/>
+	      <field xpath="@id" />
+       </key>
+       <keyref name="ScorerRef1" refer="tns:scorerKey">
+          <selector xpath="tns:AnalysisGroupFlow/tns:ScoringSchema/tns:LinkedScorer" />
+          <field xpath="tns:Scorer" />
+       </keyref>
+       <keyref name="ScorerRef2" refer="tns:scorerKey">
+          <selector xpath="tns:AnalysisGroupFlow/tns:ScoringSchema/tns:DependsOn" />
+          <field xpath="." />
+       </keyref>
+       <keyref name="ScorerRef3" refer="tns:scorerKey">
+          <selector xpath="tns:AnalysisGroupFlow" />
+          <field xpath="tns:FinalAnomalyIntervalScorer" />
+       </keyref>
+       <keyref name="ScorerRef4" refer="tns:scorerKey">
+          <selector xpath="tns:AnalysisGroupFlow" />
+          <field xpath="tns:FinalAnomalyMessageScorer" />
+       </keyref>
+    </element>
+
+    <complexType name="LayoutType">
+    	<sequence>
+       	    <element name="FramingFlow"
+    			 type="tns:FramingFlowType" maxOccurs="unbounded" minOccurs="1"/>
+    		<element name="AnalysisGroupFlow"
+    			type="tns:AnalysisGroupFlowType" maxOccurs="unbounded" minOccurs="1"/>    		
+    	</sequence>
+    </complexType>
+
+
+    <complexType name="PropertyType">
+    	<sequence></sequence>
+    	<attribute name="Key" type="string"></attribute>
+    	<attribute name="Value" type="string"></attribute>
+    </complexType>
+
+    <complexType name="LinkType">
+    	<sequence></sequence>
+    	<attribute name="Key" type="string"></attribute>
+    	<attribute name="Scorer" type="string">
+    	</attribute>
+    </complexType>
+
+
+    <complexType name="FramingFlowType">
+    	<sequence>
+    		<element name="FramerClass" type="string" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="FramerProperty" type="tns:PropertyType"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    	</sequence>
+    	<attribute name="name" type="string" use="required"></attribute>
+    	<attribute name="databaseId" type="int" use="required"></attribute>
+    	<attribute name="duration" type="long" use="required"></attribute>
+    	<attribute name="consecutive" type="boolean" use="required"></attribute>
+    </complexType>
+
+
+	<simpleType name="ScoredEntityEnum">
+		<restriction base="string">
+			<enumeration value="message"></enumeration>
+			<enumeration value="interval"></enumeration>
+		</restriction>
+   	</simpleType>    
+
+
+    <complexType name="ScoringSchemaType">
+    	<sequence>
+    		<element name="ScorerClass" type="string" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="ScorerProperty" type="tns:PropertyType"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    		<element name="LinkedScorer" type="tns:LinkType"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    		<element name="TrainingFramingFlow" type="string" minOccurs="0"/>    		    			           	
+    		<element name="DependsOn" type="string"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>    		
+    	</sequence>
+
+        <attribute name="id" type="string" use="required"/>
+        
+        <attribute name="ScoredEntity" use="required" type="tns:ScoredEntityEnum"></attribute>
+    </complexType>
+
+    <complexType name="AnalysisGroupFlowType">
+    		<sequence>
+    		<element name="UploadFramingFlow" type="string" maxOccurs="1" minOccurs="0"/>
+    		<element name="TrainingIntervalFactor" type="int" maxOccurs="1" minOccurs="0"/>
+    		<element name="AnalysisFramingFlow" type="string" maxOccurs="1" minOccurs="0"/>    		    			    	
+    		<element name="ScoringSchema" type="tns:ScoringSchemaType"
+    			maxOccurs="unbounded" minOccurs="1">
+    		</element>
+    		<element name="Outputer" type="tns:OutputerType"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    		<element name="FinalAnomalyMessageScorer" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="FinalAnomalyIntervalScorer" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    	<attribute name="name" type="string" use="required"></attribute>
+    </complexType>
+    
+    <complexType name="OutputerType">
+    	<sequence>
+    		<element name="OutputerClass" type="string" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="OutputerProperty" type="tns:PropertyType"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    		<element name="LinkedScorer" type="tns:LinkType"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    		<element name="TrainingFramingFlow" type="string"
+    			maxOccurs="1" minOccurs="0"/>    			      	
+    	</sequence>
+
+        <attribute name="id" type="string" use="required"/>
+        
+    </complexType>
+    
+    
+    
+</schema>

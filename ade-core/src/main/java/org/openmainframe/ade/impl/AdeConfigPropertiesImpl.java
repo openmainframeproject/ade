@@ -90,8 +90,15 @@ public class AdeConfigPropertiesImpl implements IAdeConfigProperties {
     @Property(key = ADE_PREFIX + "tempPath", required = false, help = "Optional path to store temporary files")
     private String m_tempPath = null;
 
+    @Property(key = ADE_PREFIX + "useSparkLogs", help = "Type of logs to run ade on")
+    private boolean m_useSparkLogs;
+
     @Property(key = ADE_PREFIX + "flowLayoutFile", help = "Path to Flow Layout file")
     private String m_flowLayoutFile;
+
+    @Property(key = ADE_PREFIX + "flowLayoutFileSpark",
+                help = "Path to Flow Layout file for spark (matters only when ade.useSparkLogs=true)")
+    private String m_flowLayoutFileSpark;
 
     @Property(key = ADE_PREFIX + "userRulesFile", required = false, help = "Optional path to User Rules file")
     private String m_userRulesFile = null;
@@ -254,6 +261,10 @@ public class AdeConfigPropertiesImpl implements IAdeConfigProperties {
     private void validateProps() throws AdeUsageException {
         try {
             FileUtils.assertExists(new File(m_criticalWordsFile), new File(m_flowLayoutFile));
+            if (m_useSparkLogs){
+                FileUtils.assertExists(new File(m_criticalWordsFile), new File(m_flowLayoutFileSpark));
+            }
+            
         } catch (FileNotFoundException e) {
             throw new AdeUsageException("File specified in setup properties not found!", e);
         }
@@ -285,7 +296,15 @@ public class AdeConfigPropertiesImpl implements IAdeConfigProperties {
 
     @Override
     public final String getFlowLayoutFile() {
+        if (m_useSparkLogs){
+            return m_flowLayoutFileSpark;
+        }
         return m_flowLayoutFile;
+    }
+
+    @Override
+    public final Boolean getUseSparkLogs() {
+        return m_useSparkLogs;
     }
 
     @Override

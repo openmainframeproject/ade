@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ 
+ Copyright IBM Corp. 2012, 2016
+ This file is part of Anomaly Detection Engine for Linux Logs (ADE).
+
+ ADE is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ ADE is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with ADE.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<tns:Layout xmlns:tns="http://flow.impl.ade.openmainframe.org/factory" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="FlowLayoutSpark.xsd ">
+  <!--  In order to stay compatible with 1.8 behavior (the Summary Type stored in the DB Table),
+        databaseId must be 0 for tenMinutes, and all upload must be using tenMinutes -->
+  <tns:FramingFlow consecutive="true" duration="60000" name="oneMinuteTrain" databaseId="0">
+    <tns:FramerClass>ConsecutiveTimeFramer</tns:FramerClass>
+  </tns:FramingFlow>
+  <tns:FramingFlow consecutive="true" duration="600000" name="tenMinutesTrain" databaseId="0">
+    <tns:FramerClass>ConsecutiveTimeFramer</tns:FramerClass>
+  </tns:FramingFlow>
+  <tns:FramingFlow consecutive="true" duration="600000" name="tenMinutes" databaseId="0">
+    <tns:FramerClass>ContinuousTimeFramer</tns:FramerClass>
+    <tns:FramerProperty Key="Permanent_Split_Factor" Value="1"/>
+    <tns:FramerProperty Key="Temporary_Split_Factor" Value="5"/>
+  </tns:FramingFlow>
+  <tns:FramingFlow consecutive="true" duration="1200000" name="twentyMinutesTrain" databaseId="2">
+    <tns:FramerClass>ConsecutiveTimeFramer</tns:FramerClass>
+  </tns:FramingFlow>
+  <tns:FramingFlow consecutive="true" duration="1200000" name="twentyMinutes" databaseId="2">
+    <tns:FramerClass>ContinuousTimeFramer</tns:FramerClass>
+    <tns:FramerProperty Key="Permanent_Split_Factor" Value="2"/>
+    <tns:FramerProperty Key="Temporary_Split_Factor" Value="5"/>
+  </tns:FramingFlow>
+  <tns:FramingFlow consecutive="true" duration="1800000" name="thirtyMinutesTrain" databaseId="3">
+    <tns:FramerClass>ConsecutiveTimeFramer</tns:FramerClass>
+  </tns:FramingFlow>
+  <tns:FramingFlow consecutive="true" duration="1800000" name="thirtyMinutes" databaseId="3">
+    <tns:FramerClass>ContinuousTimeFramer</tns:FramerClass>
+    <tns:FramerProperty Key="Permanent_Split_Factor" Value="3"/>
+    <tns:FramerProperty Key="Temporary_Split_Factor" Value="5"/>
+  </tns:FramingFlow>
+  <tns:FramingFlow consecutive="true" duration="2400000" name="fortyMinutesTrain" databaseId="4">
+    <tns:FramerClass>ConsecutiveTimeFramer</tns:FramerClass>
+  </tns:FramingFlow>
+  <tns:FramingFlow consecutive="true" duration="2400000" name="fortyMinutes" databaseId="4">
+    <tns:FramerClass>ContinuousTimeFramer</tns:FramerClass>
+    <tns:FramerProperty Key="Permanent_Split_Factor" Value="4"/>
+    <tns:FramerProperty Key="Temporary_Split_Factor" Value="5"/>
+  </tns:FramingFlow>
+  <tns:FramingFlow consecutive="true" duration="3600000" name="oneHourTrain" databaseId="6">
+    <tns:FramerClass>ConsecutiveTimeFramer</tns:FramerClass>
+  </tns:FramingFlow>
+  <tns:FramingFlow consecutive="true" duration="3600000" name="oneHour" databaseId="6">
+    <tns:FramerClass>ContinuousTimeFramer</tns:FramerClass>
+    <tns:FramerProperty Key="Permanent_Split_Factor" Value="6"/>
+    <!--60 minutes will be split into 6 permanent XML output, which is 10 minutes per output-->
+    <tns:FramerProperty Key="Temporary_Split_Factor" Value="5"/>
+    <!--10 minutes will be split into 5 temporary XML output, which is 2 minutes per output-->
+  </tns:FramingFlow>
+  <tns:FramingFlow consecutive="true" duration="7200000" name="twoHoursTrain" databaseId="12">
+    <tns:FramerClass>ConsecutiveTimeFramer</tns:FramerClass>
+  </tns:FramingFlow>
+  <tns:FramingFlow consecutive="true" duration="7200000" name="twoHours" databaseId="12">
+    <tns:FramerClass>ContinuousTimeFramer</tns:FramerClass>
+    <tns:FramerProperty Key="Permanent_Split_Factor" Value="12"/>
+    <tns:FramerProperty Key="Temporary_Split_Factor" Value="5"/>
+  </tns:FramingFlow>
+  <tns:FramingFlow consecutive="true" duration="10800000" name="threeHoursTrain" databaseId="18">
+    <tns:FramerClass>ConsecutiveTimeFramer</tns:FramerClass>
+  </tns:FramingFlow>
+  <tns:FramingFlow consecutive="true" duration="10800000" name="threeHours" databaseId="18">
+    <tns:FramerClass>ContinuousTimeFramer</tns:FramerClass>
+    <tns:FramerProperty Key="Permanent_Split_Factor" Value="18"/>
+    <tns:FramerProperty Key="Temporary_Split_Factor" Value="5"/>
+  </tns:FramingFlow>
+  <!-- *************************************************************** -->
+  <!-- SPARK                                                           -->
+  <!-- *************************************************************** -->
+  <tns:AnalysisGroupFlow name="SPARK">
+    <tns:UploadFramingFlow>oneMinuteTrain</tns:UploadFramingFlow>
+    <tns:TrainingIntervalFactor>1</tns:TrainingIntervalFactor>
+    <tns:AnalysisFramingFlow>oneMinuteTrain</tns:AnalysisFramingFlow>
+    <tns:ScoringSchema id="SPARK61" ScoredEntity="message">
+      <tns:ScorerClass>CriticalWordCountReporter</tns:ScorerClass>
+    </tns:ScoringSchema>
+    <tns:ScoringSchema id="SPARK01" ScoredEntity="message">
+      <tns:ScorerClass>ClusteringContextScore</tns:ScorerClass>
+      <tns:ScorerProperty Key="numClustersSqrtNumMsgs" Value="true"/>
+      <tns:ScorerProperty Key="numClustersSqrtNumMsgsFactor" Value="3"/>
+      <tns:ScorerProperty Key="numRuns" Value="50"/>
+      <tns:ScorerProperty Key="clusterContextFraction" Value="0.3"/>
+      <tns:ScorerProperty Key="seed" Value="1"/>
+      <tns:ScorerProperty Key="maxTrials" Value="100000"/>
+      <tns:ScorerProperty Key="maxIdleTrials" Value="15000"/>
+      <tns:ScorerProperty Key="minAppearThresh" Value="3"/>
+      <tns:ScorerProperty Key="alpha" Value="0.1"/>
+      <tns:ScorerProperty Key="minAverageInformationRatio" Value="2"/>
+      <tns:ScorerProperty Key="allowEmptyClusters" Value="false"/>
+      <tns:ScorerProperty Key="useTimelineForMutualInformation" Value="true"/>
+      <tns:ScorerProperty Key="trace" Value="false"/>
+    </tns:ScoringSchema>
+    <tns:ScoringSchema id="SPARK02" ScoredEntity="message">
+      <tns:ScorerClass>FullBernoulliClusterAwareScore</tns:ScorerClass>
+      <tns:ScorerProperty Key="ClusteringScorer" Value="ClusteringContextScore"/>
+      <tns:ScorerProperty Key="FullProb" Value="true"/>
+      <tns:DependsOn>SPARK01</tns:DependsOn>
+    </tns:ScoringSchema>
+    <tns:ScoringSchema id="SPARK11" ScoredEntity="message">
+      <tns:ScorerClass>LastSeenLoggingScorerContinuous</tns:ScorerClass>
+    </tns:ScoringSchema>
+    <tns:ScoringSchema id="SPARK12" ScoredEntity="message">
+      <tns:ScorerClass>LastSeenScorer</tns:ScorerClass>
+      <tns:DependsOn>SPARK11</tns:DependsOn>
+    </tns:ScoringSchema>
+    <tns:ScoringSchema id="SPARK21" ScoredEntity="message">
+      <tns:ScorerClass>BestOfTwoScorer</tns:ScorerClass>
+      <tns:ScorerProperty Key="firstScoreString" Value="FullBernoulliClusterAwareScore.logProb"/>
+      <tns:ScorerProperty Key="secondScoreString" Value="LastSeenScorer.LogProbGivenLast"/>
+      <tns:DependsOn>SPARK02</tns:DependsOn>
+      <tns:DependsOn>SPARK12</tns:DependsOn>
+    </tns:ScoringSchema>
+    <tns:ScoringSchema id="SPARK31" ScoredEntity="message">
+      <tns:ScorerClass>SeverityScore</tns:ScorerClass>
+    </tns:ScoringSchema>
+    <tns:ScoringSchema id="SPARK41" ScoredEntity="message">
+      <tns:ScorerClass>LogNormalScore</tns:ScorerClass>
+      <tns:ScorerProperty Key="baseScorer" Value="ClusteringContextScore"/>
+      <tns:ScorerProperty Key="noPeneltyOnMean" Value="true"/>
+    </tns:ScoringSchema>
+    <tns:ScoringSchema id="SPARK51" ScoredEntity="message">
+      <tns:ScorerClass>AdeWeightedMessageAnomalyScorerLogNormal</tns:ScorerClass>
+      <tns:ScorerProperty Key="baseScorer" Value="ClusteringContextScore"/>
+      <tns:ScorerProperty Key="severityScorer" Value="SeverityScore"/>
+      <tns:ScorerProperty Key="rarityScorer" Value="BestOfTwoScorer"/>
+      <tns:ScorerProperty Key="countScorer" Value="LogNormalScore"/>
+      <tns:DependsOn>SPARK01</tns:DependsOn>
+      <tns:DependsOn>SPARK31</tns:DependsOn>
+      <tns:DependsOn>SPARK21</tns:DependsOn>
+      <tns:DependsOn>SPARK41</tns:DependsOn>
+    </tns:ScoringSchema>
+    <tns:ScoringSchema id="SPARK52" ScoredEntity="interval">
+      <tns:ScorerClass>AdeAnomalyIntervalScorer</tns:ScorerClass>
+      <tns:DependsOn>SPARK51</tns:DependsOn>
+    </tns:ScoringSchema>
+    <tns:Outputer id="SPARKx12">
+      <tns:OutputerClass>org.openmainframe.ade.ext.output.ExtendedAnalyzedIntervalDbStorer</tns:OutputerClass>
+    </tns:Outputer>
+    <tns:Outputer id="SPARKx24">
+      <tns:OutputerClass>org.openmainframe.ade.ext.output.ExtJaxbAnalyzedPeriodV2XmlStorer</tns:OutputerClass>
+      <tns:OutputerProperty Key="outputOnTheFly" Value="true"/>
+      <tns:OutputerProperty Key="createXSLDirectory" Value="true"/>
+      <tns:OutputerProperty Key="formatXMLOutput" Value="true"/>
+    </tns:Outputer>
+    <tns:Outputer id="SPARKx32">
+      <tns:OutputerClass>org.openmainframe.ade.ext.output.ExtAnalyzedIntervalV2FullXmlStorer</tns:OutputerClass>
+      <tns:OutputerProperty Key="createXSLDirectory" Value="true"/>
+      <tns:OutputerProperty Key="outputInGZipFormat" Value="false"/>
+    </tns:Outputer>
+    <tns:Outputer id="SPARKx35">
+      <tns:OutputerClass>org.openmainframe.ade.ext.output.ExtJaxbAnalyzedIntervalV2XmlStorer</tns:OutputerClass>
+      <tns:OutputerProperty Key="createXSLDirectory" Value="true"/>
+      <tns:OutputerProperty Key="formatXMLOutput" Value="true"/>
+    </tns:Outputer>
+    <tns:FinalAnomalyMessageScorer>SPARK51</tns:FinalAnomalyMessageScorer>
+    <tns:FinalAnomalyIntervalScorer>SPARK52</tns:FinalAnomalyIntervalScorer>
+  </tns:AnalysisGroupFlow>
+</tns:Layout>
