@@ -195,6 +195,12 @@ public class AdeConfigPropertiesImpl implements IAdeConfigProperties {
     private Class<? extends AnalysisGroupToFlowNameMapper> m_analysisGroupToFlowNameMapper
             = AnalysisGroupToFlowNameUnityMapper.class;
 
+    @Property(key = ADE_PREFIX + "analysisGroupToFlowNameMapperClassSpark", required = false,
+            factory = FlowMapperClassFactory.class, help = "Optional class for mapping analysis groups to flow names.(Spark)"
+            + "Must extend AnalysisGroupToFlowNameMapper. Used only when ade.useSparkLogs=true")
+    private Class<? extends AnalysisGroupToFlowNameMapper> m_analysisGroupToFlowNameMapperSpark
+            = AnalysisGroupToFlowNameUnityMapper.class;
+
     @Property(key = ADE_OVERRIDE_VERSION_CHECK, required = false,
             help = "Allow Ade to run with a database version different from the JAR version")
     private boolean m_overrideVersionCheck = false;
@@ -374,6 +380,9 @@ public class AdeConfigPropertiesImpl implements IAdeConfigProperties {
 
     @Override
     public final Class<? extends AnalysisGroupToFlowNameMapper> getAnalysisGroupToFlowNameMapper() {
+        if (m_useSparkLogs){
+            return m_analysisGroupToFlowNameMapperSpark;
+        }
         return m_analysisGroupToFlowNameMapper;
     }
 

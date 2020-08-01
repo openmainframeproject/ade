@@ -15,14 +15,19 @@ adeext.msgRateMergeSource=true
 
 # --------------------------------------------------------------------
 # Paths
+# (ade.flowLayoutFileSpark and ade.analysisGroupToFlowNameMapperClassSpark
+#  are only used when ade.useSparkLogs=true
 # --------------------------------------------------------------------
 
+ade.useSparkLogs=true
 ade.flowLayoutFile=conf/xml/FlowLayout.xml
+ade.flowLayoutFileSpark=conf/xml/FlowLayoutSpark.xml
 ade.outputPath=output/
 ade.analysisOutputPath=output/continuous
 ade.xml.xsltDir=conf/xml
 ade.criticalWords.file=conf/criticalWords.txt
 ade.analysisGroupToFlowNameMapperClass=org.openmainframe.ade.ext.os.LinuxAnalysisGroupToFlowNameConstantMapper
+ade.analysisGroupToFlowNameMapperClassSpark=org.openmainframe.ade.ext.os.SparkAnalysisGroupToFlowNameConstantMapper
 ade.outputFilenameGenerator=org.openmainframe.ade.ext.output.ExtOutputFilenameGenerator
 ade.inputTimeZone=GMT+00:00
 ade.outputTimeZone=GMT
