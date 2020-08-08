@@ -23,6 +23,8 @@
         databaseId must be 0 for tenMinutes, and all upload must be using tenMinutes -->
   <tns:FramingFlow consecutive="true" duration="60000" name="oneMinuteTrain" databaseId="0">
     <tns:FramerClass>ConsecutiveTimeFramer</tns:FramerClass>
+    <tns:FramerProperty Key="Permanent_Split_Factor" Value="1"/>
+    <tns:FramerProperty Key="Temporary_Split_Factor" Value="5"/>
   </tns:FramingFlow>
   <tns:FramingFlow consecutive="true" duration="600000" name="tenMinutesTrain" databaseId="0">
     <tns:FramerClass>ConsecutiveTimeFramer</tns:FramerClass>
