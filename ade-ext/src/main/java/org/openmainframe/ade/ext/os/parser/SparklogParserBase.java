@@ -1,6 +1,9 @@
 /*
- 
-    Copyright IBM Corp. 2015, 2016
+
+    Copyright Contributors to the ADE Project.
+
+    SPDX-License-Identifier: GPL-3.0-or-later
+
     This file is part of Anomaly Detection Engine for Linux Logs (ADE).
 
     ADE is free software: you can redistribute it and/or modify
