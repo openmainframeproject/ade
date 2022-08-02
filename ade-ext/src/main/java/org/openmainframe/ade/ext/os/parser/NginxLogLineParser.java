@@ -33,12 +33,12 @@ import org.slf4j.LoggerFactory;
 import org.joda.time.DateTime;
 
 /**
- * An abstract class for extracting data from a Spark log message.
+ * An abstract class for extracting data from a Nginx log message.
  * Subclasses are expected to implement the parseLine() method to parse
  * a line and set the instance variable values as appropriate. A typical
  * subclass will call the parseLine method with a regex pattern and capturing
  * groups for each of the instance variables it wants to extract.
- * The features we consider for Spark logs are:
+ * The features we consider for Nginx logs are:
  * 1. m_timestamp : Timestamp on the message
  * 2. m_remoteAddress : Remote Address of the message
  * 3. m_remoteUser : Remote User of the message

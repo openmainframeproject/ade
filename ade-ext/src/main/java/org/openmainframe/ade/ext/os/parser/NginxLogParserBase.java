@@ -37,8 +37,8 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 /**
- * An abstract base class for Spark log parsers. This class defines regular expressions
- * for the Spark log header fields while leaving additional parsing of the message body to 
+ * An abstract base class for Nginx log parsers. This class defines regular expressions
+ * for the Nginx log header fields while leaving additional parsing of the message body to 
  * concrete subclasses.
  */
 public abstract class NginxLogParserBase extends NginxLogLineParser {
@@ -67,13 +67,6 @@ public abstract class NginxLogParserBase extends NginxLogLineParser {
      * of AdeExt main class.
      */
     private static LinuxAdeExtProperties s_linuxAdeExtProperties = null;
-    
-    /**
-     * Regular expression to extract the priority information from the header. Note: The priority is optional. 
-     * This allows logs that have been written to disk without the priority to be post-processed.
-     * protected static final String SPARK_PRI = "(?:<(\\d{1,3})>){0,1}";
-     * // We're not using this at the moment
-     */
 
     /**
      * Regular expression to extract the time-stamp from the header.17/May/2015:08:05:57 +0000
@@ -95,9 +88,8 @@ public abstract class NginxLogParserBase extends NginxLogLineParser {
     protected static final int NGINX_LOG_STATUS_GROUP = 5;
     protected static final int NGINX_LOG_BYTES_GROUP = 6;
 
-
     /**
-     * The current year. (Spark logs already contain the year)
+     * The current year. (Nginx logs already contain the year)
      */
     private final int curYear;
     
@@ -167,7 +159,7 @@ public abstract class NginxLogParserBase extends NginxLogLineParser {
     }
 
     /**
-     * Retrieves the date parsed from the header of a log. Unlike Syslog, Spark logs come with year defined.
+     * Retrieves the date parsed from the header of a log. Unlike Syslog, Nginx logs come with year defined.
      * Redefining the year in setup file is ineffective.
      * After parsing the date, we need to correct the time-zone. 
      * Then we set the dateTime to the current year. Now we need to check the dateTime and see if it's after today.
