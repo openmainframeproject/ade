@@ -49,6 +49,10 @@ public class ReaderFactory {
                 return new SparklogMessageReader(stream, parseReportFilename,
                     (LinuxAdeExtProperties) adeExtProperties);
             }
+            if (AdeExt.getAdeExt().getConfigProperties().isNginxLog()){
+                return new NginxLogMessageReader(stream, parseReportFilename,
+                    (LinuxAdeExtProperties) adeExtProperties);
+            }
             return new LinuxSyslogMessageReader(stream, parseReportFilename,
                     (LinuxAdeExtProperties) adeExtProperties);
         } else {

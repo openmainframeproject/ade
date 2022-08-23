@@ -31,6 +31,8 @@ import org.openmainframe.ade.ext.AdeExt;
 import org.openmainframe.ade.ext.os.AdeExtProperties;
 import org.openmainframe.ade.ext.os.parser.LinuxSyslogLineParser;
 import org.openmainframe.ade.ext.os.parser.LinuxSyslogMessageReader;
+import org.openmainframe.ade.ext.os.parser.NginxLogLineParser;
+import org.openmainframe.ade.ext.os.parser.NginxLogMessageReader;
 import org.openmainframe.ade.ext.os.parser.SparklogLineParser;
 import org.openmainframe.ade.ext.os.parser.SparklogMessageReader;
 import org.openmainframe.ade.ext.stats.MessageRateStats;
@@ -47,6 +49,9 @@ public class AdeInputStreamHandlerLinux extends AdeInputStreamHandlerExt {
     }
     public static boolean isSpark() throws AdeException{
         return AdeExt.getAdeExt().getConfigProperties().isSparkLog();
+    }
+    public static boolean isNginx() throws AdeException{
+        return AdeExt.getAdeExt().getConfigProperties().isNginxLog();
     }
 
     /**
@@ -79,6 +84,10 @@ public class AdeInputStreamHandlerLinux extends AdeInputStreamHandlerExt {
             // Keep statistics for this MI
             msgRateStats.addMessage(mi.getMessageId(), mi.getDateTime().getTime(), sparkReader.isWrapperMessage());
         }
+        else if (isNginx()) {
+            final NginxLogMessageReader nginxReader = (NginxLogMessageReader) a_adeInputStream.getReader();
+            msgRateStats.addMessage(mi.getMessageId(), mi.getDateTime().getTime(), nginxReader.isWrapperMessage());
+        }
         else{
             final LinuxSyslogMessageReader linuxReader = (LinuxSyslogMessageReader) a_adeInputStream.getReader();
             msgRateStats.addMessage(mi.getMessageId(), mi.getDateTime().getTime(), linuxReader.isWrapperMessage());
@@ -95,7 +104,7 @@ public class AdeInputStreamHandlerLinux extends AdeInputStreamHandlerExt {
      * @throws AdeFlowException 
      */
     private void handleLoggerUnavailable(IMessageInstance mi) throws AdeFlowException, AdeException {
-        if (!isSpark()){
+        if (!isSpark() && !isNginx()){
             if (LinuxSyslogLineParser.isSyslogNgRestarted(mi)) {
                 /* Indicate the SysLogNg has restarted.  */
                 incomingSeparator(new FileSeperator(mi.getSourceId(), "syslog-ng starting"));
@@ -103,5 +112,4 @@ public class AdeInputStreamHandlerLinux extends AdeInputStreamHandlerExt {
             }
         }
     }
-
 }

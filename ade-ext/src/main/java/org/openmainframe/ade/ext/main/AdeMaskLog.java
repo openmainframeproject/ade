@@ -54,9 +54,11 @@ import org.openmainframe.ade.ext.os.parser.LinuxSyslog3164ParserBase;
 import org.openmainframe.ade.ext.os.parser.LinuxSyslog3164ParserFreeForm;
 import org.openmainframe.ade.ext.os.parser.LinuxSyslog3164ParserWithCompAndPid;
 import org.openmainframe.ade.ext.os.parser.LinuxSyslog3164ParserWithMark;
+import org.openmainframe.ade.ext.os.parser.NginxLogParser;
 import org.openmainframe.ade.ext.os.parser.SparklogParser;
 import org.openmainframe.ade.ext.os.parser.LinuxSyslog5424ParserBase;
 import org.openmainframe.ade.ext.os.parser.LinuxSyslogLineParser;
+import org.openmainframe.ade.ext.os.parser.NginxLogLineParser;
 import org.openmainframe.ade.ext.os.parser.SparklogLineParser;
 import org.openmainframe.ade.ext.service.AdeExtMessageHandler;
 import org.openmainframe.ade.ext.os.AdeExtPropertiesFactory;
@@ -78,6 +80,8 @@ public class AdeMaskLog extends ExtControlProgram {
 	private static LinuxSyslogLineParser[] mLineParsers;
 
 	private static SparklogLineParser[] mSparkLineParsers;
+
+	private static NginxLogLineParser[] mNginxLineParsers;
 
 	private static Pattern validIPV4Pattern;
 	private static Pattern validIPV6Pattern;
@@ -235,6 +239,12 @@ public class AdeMaskLog extends ExtControlProgram {
 		return AdeExt.getAdeExt().getConfigProperties().isSparkLog();
 	}
 	
+	/**
+	 * Check if we're using Nginx logs
+	 */
+	private static boolean isNginx() throws AdeException{
+		return AdeExt.getAdeExt().getConfigProperties().isNginxLog();
+	}
 
 	/**
 	 * Read and write file specified by input and output file name mask system
@@ -340,6 +350,12 @@ public class AdeMaskLog extends ExtControlProgram {
 				};
 				SparklogParser.setAdeExtProperties((LinuxAdeExtProperties) linuxProperties);
 			}
+			else if (isNginx()) {
+				mNginxLineParsers = new NginxLogLineParser[] {
+					new NginxLogParser(),
+				};
+				NginxLogParser.setAdeExtProperties((LinuxAdeExtProperties) linuxProperties);
+			}
 			else{
 				mLineParsers = new LinuxSyslogLineParser[] {
 					new LinuxSyslog5424ParserBase(),
@@ -380,6 +396,17 @@ public class AdeMaskLog extends ExtControlProgram {
 			}
 			outline = currentLine;
 			return outline;
+		}
+
+		if (isNginx()){
+			for (NginxLogLineParser lineParser : mNginxLineParsers) {
+				gotLine = lineParser.parseLine(currentLine);
+				if (gotLine) {
+					String oldSystemName = lineParser.getRemoteAddress();
+					String oldText = lineParser.getRequest();
+					return createNewLine(currentLine, oldSystemName, oldText);
+				}
+			}
 		}
 
 		// Linux Syslogs

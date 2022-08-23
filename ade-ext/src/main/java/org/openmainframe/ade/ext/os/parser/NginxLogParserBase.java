@@ -75,7 +75,7 @@ public abstract class NginxLogParserBase extends NginxLogLineParser {
     /**
      * Regular expression to extract header information. (The priority, time-stamp, and host name)
      */
-    protected static final String NGINX_LOG = "^" + "(.*) - (.*) [" + NGINX_TIMESTAMP + "] \"(.*)\" (.*) (.*) \".*\" \".*\"";
+    public static final String NGINX_LOG = "^" + "(.*) - (.*) \\[" + NGINX_TIMESTAMP + "\\] \"(.*)\" (.*) (.*) \".*\" \".*\"";
 
     /*
      * Within the NGINX_LOG regex string above, identify the regex
@@ -184,13 +184,14 @@ public abstract class NginxLogParserBase extends NginxLogLineParser {
      */
     @Override
     public final Date toDate(String source, String dateTimeString) {
+        System.out.println(source);
         DateTime dt = null;
         for (DateTimeFormatter fmt : dt_formatters) {
             try {
                 dt = fmt.parseDateTime(dateTimeString);
-                dt = dt.withZoneRetainFields(INPUT_TIME_ZONE);
+//                dt = dt.withZoneRetainFields(INPUT_TIME_ZONE);
                 dt = dt.withZone(OUTPUT_TIME_ZONE);
-                /* AdeCore will take the Java Date object, and convert 
+                /* AdeCore will take the Java Date object, and convert
                  * it to the output time-zone, then extract the hour. */
                 return dt.toDate();
             } catch (IllegalArgumentException e) {

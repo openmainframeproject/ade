@@ -164,13 +164,14 @@ public abstract class NginxLogLineParser {
      * @param bytes - Capturing group for the number of bytes sent.
      * @return false if the line could not be parsed.
      */
-    protected final boolean parseLine(Pattern pattern, int timestamp, int remoteAddress,
-            int remoteUser, int request, int status, int bytes, String line) {
+    protected final boolean parseLine(Pattern pattern, int remoteAddress,
+            int remoteUser, int timestamp, int request, int status, int bytes, String line) {
         final Matcher matcher = pattern.matcher(line);
         if (matcher.matches()) {
             try {
                 String msgTimeString = toString(matcher, timestamp);
-                m_timestamp = toDate(m_remoteAddress, msgTimeString);
+                System.out.println(msgTimeString);
+                m_timestamp = toDate("m_remoteAddress", "msgTimeString");
                 m_remoteAddress = toString(matcher, remoteAddress);
                 m_remoteUser = toString(matcher, remoteUser);
                 m_request = toString(matcher, request);
