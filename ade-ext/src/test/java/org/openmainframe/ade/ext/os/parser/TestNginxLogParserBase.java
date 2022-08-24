@@ -46,7 +46,6 @@ import org.openmainframe.ade.utils.patches.Version;
 public class TestNginxLogParserBase {
     Ade ade;
 
-//    @Before
     public void setup() throws AdeException{
         ade = mock(Ade.class, RETURNS_DEEP_STUBS);
         when(ade.getConfigProperties().database().getDatabaseDriver()).thenReturn("derby");

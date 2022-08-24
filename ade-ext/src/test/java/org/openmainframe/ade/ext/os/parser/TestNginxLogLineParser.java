@@ -31,6 +31,7 @@ import org.openmainframe.ade.ext.os.parser.NginxLogLineParser;
 import java.util.regex.Pattern;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.openmainframe.ade.ext.os.parser.NginxLogParserBase.NGINX_LOG;
 
 public class TestNginxLogLineParser {
@@ -55,50 +56,58 @@ public class TestNginxLogLineParser {
         final Pattern pattern = Pattern.compile(NGINX_LOG);
         final String line = "93.180.71.3 - - [17/May/2015:08:05:32 +0000] \"GET /downloads/product_1 HTTP/1.1\" 304 0 \"-\" \"Debian APT-HTTP/1.3 (0.8.16~exp12ubuntu10.21)\"";
         assertEquals(true, slp.parseLine(pattern, 1,2,3,4,5,6,line));
-        System.out.println(slp);
     }
 
-//    @Test
-//    public void testParseLineWithMatchingPattern() {
-//        Pattern pattern = Pattern.compile("^([^:]+):.*COMMAND=(.*)$");
-//        assertEquals("Pattern matches for all parameters ",true, slp.parseLine(pattern,1,2,2,2,2,2,"(username):.COMMAND=nub"));
-//    }
+    @Test
+    public void testParseLineWithMatchingPattern() {
+        final Pattern pattern = Pattern.compile(NGINX_LOG);
+        final String line = "address - - [17/May/2015:08:05:32 +0000] \"GET\" 0 0 \"-\" \"-\"";
+        assertEquals("Pattern matches for all parameters ",true, slp.parseLine(pattern,1,2,3,4,5,6,line));
+    }
 
-//    @Test
-//    public void testParseLineWith255CharacterHostname() {
-//        Pattern pattern = Pattern.compile("^([^:]+):.*COMMAND=(.*)$");
-//        assertEquals("Pattern matches but hostname has over 255 chars ",true, slp.parseLine(pattern,1,1,1,1,1,1,longString + ":.COMMAND=nub"));
-//    }
+    @Test
+    public void testParseLineWith255CharacterHostname() {
+        final Pattern pattern = Pattern.compile(NGINX_LOG);
+        final String line = "address - - [17/May/2015:08:05:32 +0000] \"GET\" 0 0 \"-\" \"-\"";
+        assertTrue("Pattern matches but hostname has over 255 chars ", slp.parseLine(pattern, 1, 2, 3, 4, 5, 6, longString + line));
+    }
 
-//    @Test
-//    public void testParseLineWith255CharacterHostnameSecondTime() {
-//        Pattern pattern = Pattern.compile("^([^:]+):.*COMMAND=(.*)$");
-//        slp.parseLine(pattern,1,1,1,1,1,1,longString + ":.COMMAND=nub");
-//
-//        assertEquals("Hostname over 255 characters but we go through parseLine twice to skip the logging "
-//                ,true,slp.parseLine(pattern,1,1,1,1,1,1,longString + ":.COMMAND=nub"));
-//    }
+    @Test
+    public void testParseLineWith255CharacterHostnameSecondTime() {
+        final Pattern pattern = Pattern.compile(NGINX_LOG);
+        final String line = "address - - [17/May/2015:08:05:32 +0000] \"GET\" 0 0 \"-\" \"-\"";
+        slp.parseLine(pattern,1,2,3,4,5,6,longString + line);
 
-//    @Test
-//    public void testGettersGetCorrectInfoAfterRunningParseLine() {
-//        Pattern pattern = Pattern.compile("^([^:]+):.*COMMAND=(.*)$");
-//        slp.parseLine(pattern,0,1,0,1,0,1,"(username):.COMMAND=nub");
-//
-//        assertEquals("The message time is thee",null,slp.getMsgTime());
-//        assertEquals("The source is in the first matched group third param ","(username)",slp.getRemoteAddress());
-//
-//        slp.parseLine(pattern,0,0,2,2,2,2,"(PID!):.COMMAND=msgBody");
-//        assertEquals("The messsage body is in second group and 6th param","msgBody",slp.getRequest());
-//    }
+        assertEquals("Hostname over 255 characters but we go through parseLine twice to skip the logging "
+                ,true,slp.parseLine(pattern,1,2,3,4,5,6,longString + line));
+    }
 
-//    @Test
-//    public void testToString() {
-//        Pattern pattern = Pattern.compile("^([^:]+):.*COMMAND=(.*)$");
-//        slp.parseLine(pattern,2,2,2,2,2,2,"(username):.COMMAND=nub");
-//        assertEquals("Testing to String works correctly "
-//                , "timestamp=(null) "
-//                        + "hostname=(nub) "
-//                        + "msg=(nub)"
-//                ,slp.toString());
-//    }
+    @Test
+    public void testGettersGetCorrectInfoAfterRunningParseLine() {
+        final Pattern pattern = Pattern.compile(NGINX_LOG);
+        final String line = "address - - [17/May/2015:08:05:32 +0000] \"GET\" 0 0 \"-\" \"-\"";
+        slp.parseLine(pattern,1,2,3,4,5,6,line);
+
+        assertEquals(null, slp.getMsgTime());
+        assertEquals("address",slp.getRemoteAddress());
+        assertEquals("GET",slp.getRequest());
+        assertEquals("-", slp.getRemoteUser());
+        assertEquals(0, slp.getBytes());
+        assertEquals(0, slp.getStatus());
+    }
+
+    @Test
+    public void testToString() {
+        final Pattern pattern = Pattern.compile(NGINX_LOG);
+        final String line = "nub - nub [17/May/2015:08:05:32 +0000] \"nub\" 0 0 \"-\" \"nub\"";
+        slp.parseLine(pattern,1,2,3,4,5,6,line);
+        assertEquals("Testing to String works correctly "
+                , "timestamp=(null) "
+                        + "remote_address=(nub) "
+                        + "remote_user=(nub) "
+                        + "request=(nub) "
+                        + "status=(0) "
+                        + "bytes=(0)"
+                ,slp.toString());
+    }
 }
