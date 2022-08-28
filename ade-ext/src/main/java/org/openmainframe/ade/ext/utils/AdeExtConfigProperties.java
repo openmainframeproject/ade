@@ -167,11 +167,13 @@ public class AdeExtConfigProperties {
 
         /* Type of logs to use. Defaults to Linux Syslogs */
 
-        if (m_props.containsKey(USE_SPARK)){
+        if (m_props.containsKey(USE_SPARK) && m_props.getBooleanProperty(USE_SPARK)){
+            System.out.println("USING SPARK");
             m_useSparkLogs = m_props.getBooleanProperty(USE_SPARK);
             m_useNginxLogs = false;
         }
-        else if (m_props.containsKey(USE_NGINX)) {
+        else if (m_props.containsKey(USE_NGINX) && m_props.getBooleanProperty(USE_NGINX)) {
+            System.out.println("USING NGINX");
             m_useNginxLogs = m_props.getBooleanProperty(USE_NGINX);
             m_useSparkLogs = false;
         }

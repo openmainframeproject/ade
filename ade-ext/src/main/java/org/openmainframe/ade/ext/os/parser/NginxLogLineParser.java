@@ -179,6 +179,7 @@ public abstract class NginxLogLineParser {
                 m_bytes = Integer.parseInt(toString(matcher, bytes));
                 // m_component = toString(matcher, comp);
                 m_component = "master";
+                System.out.println("PARSED SUCCESSFULLY");
                 return true;
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();

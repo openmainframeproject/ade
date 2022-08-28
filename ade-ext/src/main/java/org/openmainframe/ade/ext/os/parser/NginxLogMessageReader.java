@@ -263,6 +263,8 @@ public class NginxLogMessageReader extends AdeMessageReader {
                     DateTime dateTime = handleDateTime(lineParser);
                     final String sourceId = getAndProcessSourceId(lineParser.getRemoteAddress());
                     if (sourceId == null) {
+                        System.out.println("source if is null");
+                        System.exit(0);
                         gotLine = false;
                         unexpectedSource = true;                
                         MessagesWithUnexpectedSource.addMessage(lineParser.getRemoteAddress(),
@@ -375,7 +377,6 @@ public class NginxLogMessageReader extends AdeMessageReader {
     /**
      * Generates message id based on the component's clustering model.
      * @param lineParser the parser being used to parse the line.
-     * @param thresholdSetter threshold for comparing two strings.
      * @return the generated message id.
      * @throws AdeException
      */
