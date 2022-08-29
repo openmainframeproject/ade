@@ -54,7 +54,7 @@ interval of the observed data. The report summary contains various calculated me
 anomaly score for each interval. Greater anomaly score means that there's a higher chance of the
 corresponding interval containing anomalous logs, thus causing unwanted behavior. This makes it
 easier to realize the source of the problem, since we now know the time interval during which unexpected
-behavior was reported in the system. The task of going throught hours of logs messages has been
+behavior was reported in the system. The task of going through hours of logs messages has been
 narrowed down to analysis of analysing just the flagged intervals, since the model is sure that
 these have reported unusual messages. In additional, for each interval in the data, ADE produces
 a summary of each message seen during the interval. This directly points to the exact message
