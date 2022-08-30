@@ -26,7 +26,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.openmainframe.ade.exceptions.AdeException;
-import org.openmainframe.ade.ext.os.parser.NginxLogLineParser;
 
 import java.util.regex.Pattern;
 
@@ -43,12 +42,6 @@ public class TestNginxLogLineParser {
         longString = "(usernameusernameusernameusernameusernameusernameusernameusernameusernameusernameusernameusernameusernameusername"
                 + "usernameusernameusernameusernameusernameusernameusernameusernameusernameusernameusernameusernameusername"
                 + "usernameusernameusernameusernameusernameusernameusernameusernameusernameusernameusernameusernameusername)";
-    }
-
-    @Test
-    public void testParseLineWithBadPattern() {
-        Pattern pattern = Pattern.compile("^([(][^)]+[)])? CMD [(](.*)[)] ?$");
-        assertEquals("Pattern doesnt match ",false, slp.parseLine(pattern,1,4,5,2, 3, 4,"() CMD ()"));
     }
 
     @Test

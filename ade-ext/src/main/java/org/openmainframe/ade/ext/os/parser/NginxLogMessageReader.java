@@ -209,7 +209,7 @@ public class NginxLogMessageReader extends AdeMessageReader {
      * Constructs a reader for a given input stream and initializes member variables.
      * @param stream Input stream for parsing.
      * @param parseReportFilename the name of the parse report.
-     * @param adeProperties Configuration flags used to specify time zone and whether to use debug parser codes.
+     * @param adeExtProperties Configuration flags used to specify time zone and whether to use debug parser codes.
      * @throws AdeInternalException
      */
     public NginxLogMessageReader(AdeInputStream stream, String parseReportFilename,
@@ -280,7 +280,7 @@ public class NginxLogMessageReader extends AdeMessageReader {
                             msgId,
                             lineParser.getRequest(),
                             lineParser.getRemoteAddress(),
-                            null); // Severity = null for Nginx 
+                            IMessageInstance.Severity.UNKNOWN); // Severity = null for Nginx
                     /* Setting the messageInstanceWaiting to null, which would stop wrappers such as SUDO or CRON
                        to be passed to ade. */              
                     m_messageInstanceWaiting = null;              

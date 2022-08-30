@@ -41,8 +41,9 @@ public class NginxLogParser extends NginxLogParserBase {
      * option UTF-8 Byte Order mark and priority values, and regex that finds the component id, process id,
      * and message body.
      */
-    private static final Pattern pattern = Pattern.compile(NGINX_LOG
-            + "([-_./a-zA-Z0-9]*[-_./a-zA-Z])?: (.*)$");
+        private static final Pattern pattern = Pattern.compile(NGINX_LOG);
+//    private static final Pattern pattern = Pattern.compile(NGINX_LOG
+//            + "([-_./a-zA-Z0-9]*[-_./a-zA-Z])?: (.*)$");
 
     /**
      * Default constructor to call its parent constructor.

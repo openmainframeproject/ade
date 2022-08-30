@@ -170,8 +170,7 @@ public abstract class NginxLogLineParser {
         if (matcher.matches()) {
             try {
                 String msgTimeString = toString(matcher, timestamp);
-                System.out.println(msgTimeString);
-                m_timestamp = toDate("m_remoteAddress", "msgTimeString");
+                m_timestamp = toDate("m_remoteAddress", msgTimeString);
                 m_remoteAddress = toString(matcher, remoteAddress);
                 m_remoteUser = toString(matcher, remoteUser);
                 m_request = toString(matcher, request);
@@ -179,7 +178,6 @@ public abstract class NginxLogLineParser {
                 m_bytes = Integer.parseInt(toString(matcher, bytes));
                 // m_component = toString(matcher, comp);
                 m_component = "master";
-                System.out.println("PARSED SUCCESSFULLY");
                 return true;
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
