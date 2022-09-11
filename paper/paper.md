@@ -141,7 +141,7 @@ provides various commands to invoke relevant functionalities.
   - `query "SQL statement"`: Perform the SQL query on the database
   - `dml "SQL statement"`: Issue the SQL statement
 
-- `upload`: Uplooads the directory or compressed file to the database. Intenally, it carries out
+- `upload`: Uploads the directory or compressed file to the database. Intenally, it carries out
     all the logs parsing and preprocessing operations.
 
 - `verify`: Used to verify if the amount of data is sufficient to train the model groups.
