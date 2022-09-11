@@ -55,8 +55,13 @@ public interface IAdeConfigProperties {
      * Speciifies if running ADE on Spark logs.
      * @return boolean : True if running on Spark logs.
      */
-
     Boolean getUseSparkLogs();
+
+    /**
+     * Speciifies if running ADE on Nginx logs.
+     * @return boolean : True if running on Nginx logs.
+     */
+    Boolean getUseNginxLogs();
 
     /**
      * @return the mode of the period, which is an enum

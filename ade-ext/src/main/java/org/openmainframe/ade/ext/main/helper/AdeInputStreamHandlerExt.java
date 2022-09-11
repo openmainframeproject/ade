@@ -101,7 +101,7 @@ public class AdeInputStreamHandlerExt extends AdeInputStreamHandler {
 
         a_adeInputStream = new AdeInputStreamExt(is, props, m_adeExtProperties, parseReportFilename);
 
-        /* Indicate this is a new file, this will allow an interval broken into 
+        /* Indicate this is a new file, this will allow an interval broken into
          * to log files. */
         incomingSeparator(new FileSeperator(file.getName()));
 
@@ -112,7 +112,7 @@ public class AdeInputStreamHandlerExt extends AdeInputStreamHandler {
     /**
      * Get the parse report filename based on the logFileName.
      * 
-     * @param logfileName
+     * @param name
      * @throws AdeException
      */
     protected final String getParseReportFilename(String name) throws AdeException {

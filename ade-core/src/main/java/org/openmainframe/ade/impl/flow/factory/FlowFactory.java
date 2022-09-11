@@ -81,7 +81,10 @@ public class FlowFactory {
             if (Ade.getAde().getConfigProperties().getUseSparkLogs()){
                 FLOW_LAYOUT_XSD_File_Name = File.separator + "FlowLayoutSpark.xsd";
             }
-            else{
+            else if (Ade.getAde().getConfigProperties().getUseNginxLogs()) {
+                FLOW_LAYOUT_XSD_File_Name = File.separator + "FlowLayoutNginx.xsd";
+            }
+            else {
                 FLOW_LAYOUT_XSD_File_Name = File.separator + "FlowLayout.xsd";
             }
         	

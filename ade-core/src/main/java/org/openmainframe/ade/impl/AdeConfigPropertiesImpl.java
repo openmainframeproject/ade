@@ -96,12 +96,19 @@ public class AdeConfigPropertiesImpl implements IAdeConfigProperties {
     @Property(key = ADE_PREFIX + "useSparkLogs", help = "Type of logs to run ade on")
     private boolean m_useSparkLogs;
 
+    @Property(key = ADE_PREFIX + "useNginxLogs", help = "Type of logs to run ade on")
+    private boolean m_useNginxLogs;
+
     @Property(key = ADE_PREFIX + "flowLayoutFile", help = "Path to Flow Layout file")
     private String m_flowLayoutFile;
 
     @Property(key = ADE_PREFIX + "flowLayoutFileSpark",
                 help = "Path to Flow Layout file for spark (matters only when ade.useSparkLogs=true)")
     private String m_flowLayoutFileSpark;
+
+    @Property(key = ADE_PREFIX + "flowLayoutFileNginx",
+                help = "Path to Flow Layout file for nginx (matters only when ade.useNginxLogs=true)")
+    private String m_flowLayoutFileNginx;
 
     @Property(key = ADE_PREFIX + "userRulesFile", required = false, help = "Optional path to User Rules file")
     private String m_userRulesFile = null;
@@ -204,6 +211,12 @@ public class AdeConfigPropertiesImpl implements IAdeConfigProperties {
     private Class<? extends AnalysisGroupToFlowNameMapper> m_analysisGroupToFlowNameMapperSpark
             = AnalysisGroupToFlowNameUnityMapper.class;
 
+    @Property(key = ADE_PREFIX + "analysisGroupToFlowNameMapperClassNginx", required = false,
+            factory = FlowMapperClassFactory.class, help = "Optional class for mapping analysis groups to flow names.(Nginx)"
+            + "Must extend AnalysisGroupToFlowNameMapper. Used only when ade.useSparkLogs=true")
+    private Class<? extends AnalysisGroupToFlowNameMapper> m_analysisGroupToFlowNameMapperNginx
+            = AnalysisGroupToFlowNameUnityMapper.class;
+
     @Property(key = ADE_OVERRIDE_VERSION_CHECK, required = false,
             help = "Allow Ade to run with a database version different from the JAR version")
     private boolean m_overrideVersionCheck = false;
@@ -273,6 +286,9 @@ public class AdeConfigPropertiesImpl implements IAdeConfigProperties {
             if (m_useSparkLogs){
                 FileUtils.assertExists(new File(m_criticalWordsFile), new File(m_flowLayoutFileSpark));
             }
+            if (m_useNginxLogs){
+                FileUtils.assertExists(new File(m_criticalWordsFile), new File(m_flowLayoutFileNginx));
+            }
             
         } catch (FileNotFoundException e) {
             throw new AdeUsageException("File specified in setup properties not found!", e);
@@ -308,12 +324,20 @@ public class AdeConfigPropertiesImpl implements IAdeConfigProperties {
         if (m_useSparkLogs){
             return m_flowLayoutFileSpark;
         }
+        if (m_useNginxLogs){
+            return m_flowLayoutFileNginx;
+        }
         return m_flowLayoutFile;
     }
 
     @Override
     public final Boolean getUseSparkLogs() {
         return m_useSparkLogs;
+    }
+
+    @Override
+    public final Boolean getUseNginxLogs() {
+        return m_useNginxLogs;
     }
 
     @Override
@@ -385,6 +409,9 @@ public class AdeConfigPropertiesImpl implements IAdeConfigProperties {
     public final Class<? extends AnalysisGroupToFlowNameMapper> getAnalysisGroupToFlowNameMapper() {
         if (m_useSparkLogs){
             return m_analysisGroupToFlowNameMapperSpark;
+        }
+        if (m_useNginxLogs){
+            return m_analysisGroupToFlowNameMapperNginx;
         }
         return m_analysisGroupToFlowNameMapper;
     }
