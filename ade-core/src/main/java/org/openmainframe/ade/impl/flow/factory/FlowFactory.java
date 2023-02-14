@@ -1,6 +1,9 @@
 /*
  
-    Copyright IBM Corp. 2010, 2016
+    Copyright Contributors to the ADE Project.
+
+    SPDX-License-Identifier: GPL-3.0-or-later
+
     This file is part of Anomaly Detection Engine for Linux Logs (ADE).
 
     ADE is free software: you can redistribute it and/or modify
@@ -68,16 +71,21 @@ public class FlowFactory {
 
     private Map<String, FlowTemplateFactory> m_flowTemplateFactories;
 
-    public static final String FLOW_LAYOUT_XSD_RESOURCE_PATH = "conf"+File.separator+"xml"+File.separator+"FlowLayout.xsd";
-    public static final String FLOW_LAYOUT_XSD_File_Name = File.separator + "FlowLayout.xsd";
+    public static String FLOW_LAYOUT_XSD_File_Name = "";
 
     public FlowFactory() throws AdeException {
         m_flowTemplateFactories = new TreeMap<String, FlowFactory.FlowTemplateFactory>();
 
         JAXBContext jaxbContext;
         try {
+            if (Ade.getAde().getConfigProperties().getUseSparkLogs()){
+                FLOW_LAYOUT_XSD_File_Name = File.separator + "FlowLayoutSpark.xsd";
+            }
+            else{
+                FLOW_LAYOUT_XSD_File_Name = File.separator + "FlowLayout.xsd";
+            }
         	
-        	String fileName_Flowlayout_xsd = Ade.getAde().getConfigProperties().getXsltDir() + FLOW_LAYOUT_XSD_File_Name;
+            String fileName_Flowlayout_xsd = Ade.getAde().getConfigProperties().getXsltDir() + FLOW_LAYOUT_XSD_File_Name;
             final File flowLayoutXsd = new File(fileName_Flowlayout_xsd);
             final SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
             Schema schema;

@@ -1,6 +1,9 @@
 /*
- 
-    Copyright IBM Corp. 2012, 2016
+
+    Copyright Contributors to the ADE Project.
+
+    SPDX-License-Identifier: GPL-3.0-or-later
+
     This file is part of Anomaly Detection Engine for Linux Logs (ADE).
 
     ADE is free software: you can redistribute it and/or modify
@@ -45,13 +48,16 @@ import org.openmainframe.ade.exceptions.AdeInternalException;
 import org.openmainframe.ade.exceptions.AdeUsageException;
 import org.openmainframe.ade.ext.main.helper.AdeExtOperatingSystemType;
 import org.openmainframe.ade.ext.main.helper.AdeExtRequestType;
+import org.openmainframe.ade.ext.AdeExt;
 import org.openmainframe.ade.ext.os.LinuxAdeExtProperties;
 import org.openmainframe.ade.ext.os.parser.LinuxSyslog3164ParserBase;
 import org.openmainframe.ade.ext.os.parser.LinuxSyslog3164ParserFreeForm;
 import org.openmainframe.ade.ext.os.parser.LinuxSyslog3164ParserWithCompAndPid;
 import org.openmainframe.ade.ext.os.parser.LinuxSyslog3164ParserWithMark;
+import org.openmainframe.ade.ext.os.parser.SparklogParser;
 import org.openmainframe.ade.ext.os.parser.LinuxSyslog5424ParserBase;
 import org.openmainframe.ade.ext.os.parser.LinuxSyslogLineParser;
+import org.openmainframe.ade.ext.os.parser.SparklogLineParser;
 import org.openmainframe.ade.ext.service.AdeExtMessageHandler;
 import org.openmainframe.ade.ext.os.AdeExtPropertiesFactory;
 import org.openmainframe.ade.ext.os.AdeExtProperties;
@@ -70,6 +76,8 @@ public class AdeMaskLog extends ExtControlProgram {
 	 * The parser for a line of Linux syslogs.
 	 */
 	private static LinuxSyslogLineParser[] mLineParsers;
+
+	private static SparklogLineParser[] mSparkLineParsers;
 
 	private static Pattern validIPV4Pattern;
 	private static Pattern validIPV6Pattern;
@@ -221,6 +229,14 @@ public class AdeMaskLog extends ExtControlProgram {
 	}
 
 	/**
+	 * Check if we're using Spark logs
+	 */
+	private static boolean isSpark() throws AdeException{
+		return AdeExt.getAdeExt().getConfigProperties().isSparkLog();
+	}
+	
+
+	/**
 	 * Read and write file specified by input and output file name mask system
 	 * name, ip addresses, email
 	 * 
@@ -317,20 +333,29 @@ public class AdeMaskLog extends ExtControlProgram {
 		// create parser
 
 		try {
-			mLineParsers = new LinuxSyslogLineParser[] {
+
+			if (isSpark()){
+				mSparkLineParsers = new SparklogLineParser[] {
+					new SparklogParser(),
+				};
+				SparklogParser.setAdeExtProperties((LinuxAdeExtProperties) linuxProperties);
+			}
+			else{
+				mLineParsers = new LinuxSyslogLineParser[] {
 					new LinuxSyslog5424ParserBase(),
 					new LinuxSyslog3164ParserWithMark(),
 					new LinuxSyslog3164ParserWithCompAndPid(),
 					new LinuxSyslog3164ParserFreeForm(), };
+					LinuxSyslog3164ParserBase
+					.setAdeExtProperties((LinuxAdeExtProperties) linuxProperties);
+					((LinuxAdeExtProperties) linuxProperties).setYear(java.util.Calendar
+					.getInstance().get(Calendar.YEAR));
+			}
+			
 		} catch (AdeException e) {
 			logger.error("Failure during parser construction", e);
 			throw new AdeInternalException("Parser construction failure");
 		}
-		LinuxSyslog3164ParserBase
-				.setAdeExtProperties((LinuxAdeExtProperties) linuxProperties);
-		((LinuxAdeExtProperties) linuxProperties).setYear(java.util.Calendar
-				.getInstance().get(Calendar.YEAR));
-
 	}
 
 	/**
@@ -339,9 +364,25 @@ public class AdeMaskLog extends ExtControlProgram {
 	 * @param line
 	 * @return
 	 */
-	private String generateMaskedLine(String currentLine) {
+	private String generateMaskedLine(String currentLine) throws AdeException{
 		boolean gotLine;
 		String outline;
+
+		// Spark logs
+		if (isSpark()){
+			for (SparklogLineParser lineParser : mSparkLineParsers) {
+				gotLine = lineParser.parseLine(currentLine);
+				if (gotLine) {
+					String oldSystemName = lineParser.getSource();
+					String oldText = lineParser.getMessageBody();
+					return createNewLine(currentLine, oldSystemName, oldText);
+				}
+			}
+			outline = currentLine;
+			return outline;
+		}
+
+		// Linux Syslogs
 		for (LinuxSyslogLineParser lineParser : mLineParsers) {
 			gotLine = lineParser.parseLine(currentLine);
 			if (gotLine) {

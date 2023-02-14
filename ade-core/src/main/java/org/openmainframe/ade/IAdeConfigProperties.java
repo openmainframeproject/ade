@@ -1,6 +1,9 @@
 /*
- 
-    Copyright IBM Corp. 2010, 2016
+
+    Copyright Contributors to the ADE Project.
+
+    SPDX-License-Identifier: GPL-3.0-or-later
+    
     This file is part of Anomaly Detection Engine for Linux Logs (ADE).
 
     ADE is free software: you can redistribute it and/or modify
@@ -47,6 +50,13 @@ public interface IAdeConfigProperties {
      * @return the flow layout file name.
      */
     String getFlowLayoutFile();
+
+    /**
+     * Speciifies if running ADE on Spark logs.
+     * @return boolean : True if running on Spark logs.
+     */
+
+    Boolean getUseSparkLogs();
 
     /**
      * @return the mode of the period, which is an enum

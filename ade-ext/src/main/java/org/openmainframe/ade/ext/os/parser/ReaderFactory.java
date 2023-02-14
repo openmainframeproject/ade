@@ -1,6 +1,9 @@
 /*
- 
-    Copyright IBM Corp. 2012, 2016
+
+    Copyright Contributors to the ADE Project.
+
+    SPDX-License-Identifier: GPL-3.0-or-later
+
     This file is part of Anomaly Detection Engine for Linux Logs (ADE).
 
     ADE is free software: you can redistribute it and/or modify
@@ -19,6 +22,7 @@
 */
 package org.openmainframe.ade.ext.os.parser;
 
+import org.openmainframe.ade.ext.AdeExt;
 import org.openmainframe.ade.AdeInputStream;
 import org.openmainframe.ade.AdeMessageReader;
 import org.openmainframe.ade.exceptions.AdeException;
@@ -41,6 +45,10 @@ public class ReaderFactory {
      */
     public AdeMessageReader getReader(AdeInputStream stream, String parseReportFilename, AdeExtProperties adeExtProperties) throws AdeException {
         if (adeExtProperties instanceof LinuxAdeExtProperties) {
+            if (AdeExt.getAdeExt().getConfigProperties().isSparkLog()){
+                return new SparklogMessageReader(stream, parseReportFilename,
+                    (LinuxAdeExtProperties) adeExtProperties);
+            }
             return new LinuxSyslogMessageReader(stream, parseReportFilename,
                     (LinuxAdeExtProperties) adeExtProperties);
         } else {

@@ -1,6 +1,9 @@
 /*
  
-    Copyright IBM Corp. 2008, 2016
+    Copyright Contributors to the ADE Project.
+
+    SPDX-License-Identifier: GPL-3.0-or-later
+
     This file is part of Anomaly Detection Engine for Linux Logs (ADE).
 
     ADE is free software: you can redistribute it and/or modify
@@ -90,8 +93,15 @@ public class AdeConfigPropertiesImpl implements IAdeConfigProperties {
     @Property(key = ADE_PREFIX + "tempPath", required = false, help = "Optional path to store temporary files")
     private String m_tempPath = null;
 
+    @Property(key = ADE_PREFIX + "useSparkLogs", help = "Type of logs to run ade on")
+    private boolean m_useSparkLogs;
+
     @Property(key = ADE_PREFIX + "flowLayoutFile", help = "Path to Flow Layout file")
     private String m_flowLayoutFile;
+
+    @Property(key = ADE_PREFIX + "flowLayoutFileSpark",
+                help = "Path to Flow Layout file for spark (matters only when ade.useSparkLogs=true)")
+    private String m_flowLayoutFileSpark;
 
     @Property(key = ADE_PREFIX + "userRulesFile", required = false, help = "Optional path to User Rules file")
     private String m_userRulesFile = null;
@@ -188,6 +198,12 @@ public class AdeConfigPropertiesImpl implements IAdeConfigProperties {
     private Class<? extends AnalysisGroupToFlowNameMapper> m_analysisGroupToFlowNameMapper
             = AnalysisGroupToFlowNameUnityMapper.class;
 
+    @Property(key = ADE_PREFIX + "analysisGroupToFlowNameMapperClassSpark", required = false,
+            factory = FlowMapperClassFactory.class, help = "Optional class for mapping analysis groups to flow names.(Spark)"
+            + "Must extend AnalysisGroupToFlowNameMapper. Used only when ade.useSparkLogs=true")
+    private Class<? extends AnalysisGroupToFlowNameMapper> m_analysisGroupToFlowNameMapperSpark
+            = AnalysisGroupToFlowNameUnityMapper.class;
+
     @Property(key = ADE_OVERRIDE_VERSION_CHECK, required = false,
             help = "Allow Ade to run with a database version different from the JAR version")
     private boolean m_overrideVersionCheck = false;
@@ -254,6 +270,10 @@ public class AdeConfigPropertiesImpl implements IAdeConfigProperties {
     private void validateProps() throws AdeUsageException {
         try {
             FileUtils.assertExists(new File(m_criticalWordsFile), new File(m_flowLayoutFile));
+            if (m_useSparkLogs){
+                FileUtils.assertExists(new File(m_criticalWordsFile), new File(m_flowLayoutFileSpark));
+            }
+            
         } catch (FileNotFoundException e) {
             throw new AdeUsageException("File specified in setup properties not found!", e);
         }
@@ -285,7 +305,15 @@ public class AdeConfigPropertiesImpl implements IAdeConfigProperties {
 
     @Override
     public final String getFlowLayoutFile() {
+        if (m_useSparkLogs){
+            return m_flowLayoutFileSpark;
+        }
         return m_flowLayoutFile;
+    }
+
+    @Override
+    public final Boolean getUseSparkLogs() {
+        return m_useSparkLogs;
     }
 
     @Override
@@ -355,6 +383,9 @@ public class AdeConfigPropertiesImpl implements IAdeConfigProperties {
 
     @Override
     public final Class<? extends AnalysisGroupToFlowNameMapper> getAnalysisGroupToFlowNameMapper() {
+        if (m_useSparkLogs){
+            return m_analysisGroupToFlowNameMapperSpark;
+        }
         return m_analysisGroupToFlowNameMapper;
     }
 
