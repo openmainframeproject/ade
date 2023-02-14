@@ -7,6 +7,7 @@ adeext.parseErrorToKeep=100
 adeext.parseErrorDaysTolerate=2
 adeext.parseErrorTrackNullComponent=false
 adeext.runtimeModelDataStoreAtSource=true
+adeext.useSparkLogs=true
 
 adeext.msgRate10MinSlotsToKeep=24
 adeext.msgRate10MinSubIntervalList=1,2,3,6,12,24
@@ -14,14 +15,19 @@ adeext.msgRateMergeSource=true
 
 # --------------------------------------------------------------------
 # Paths
+# (ade.flowLayoutFileSpark and ade.analysisGroupToFlowNameMapperClassSpark
+#  are only used when ade.useSparkLogs=true
 # --------------------------------------------------------------------
 
+ade.useSparkLogs=true
 ade.flowLayoutFile=conf/xml/FlowLayout.xml
+ade.flowLayoutFileSpark=conf/xml/FlowLayoutSpark.xml
 ade.outputPath=output/
 ade.analysisOutputPath=output/continuous
 ade.xml.xsltDir=conf/xml
 ade.criticalWords.file=conf/criticalWords.txt
 ade.analysisGroupToFlowNameMapperClass=org.openmainframe.ade.ext.os.LinuxAnalysisGroupToFlowNameConstantMapper
+ade.analysisGroupToFlowNameMapperClassSpark=org.openmainframe.ade.ext.os.SparkAnalysisGroupToFlowNameConstantMapper
 ade.outputFilenameGenerator=org.openmainframe.ade.ext.output.ExtOutputFilenameGenerator
 ade.inputTimeZone=GMT+00:00
 ade.outputTimeZone=GMT
