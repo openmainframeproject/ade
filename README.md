@@ -1,3 +1,5 @@
+**NOTICE: This project is in [Emeritus status](https://tac.openmainframeproject.org/process/lifecycle.html#emeritus-stage) and no longer maintained**
+
 # Anomaly Detection Engine for Linux Logs (ADE)
 
 ADE can process a large numbers of logs from a large number of Linux systems to
